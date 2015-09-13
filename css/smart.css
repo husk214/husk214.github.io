@@ -1,44 +1,46 @@
 @import url(pygments.css);
 @import url(reset.css);
 
-@media screen and (min-width: 641px){
+@media screen and (max-width:640px){
 img{
 max-width: 100%;
 height: auto;
 width /***/:auto;　
 }
+#container{
+width:100%;
+}
 
 body {
-    width: 800px;
+    width: 600px;
 }
 
 html { /* This stuff is for the sticky footer. */
     min-height:100%;
     position:relative;
-    font-size: 1em;
+    font-size: 14px;
     -webkit-font-smoothing: antialiased;
 }
 
 body {
     background-color:#fafafa;
     font-family:'Open Sans';
-    margin-left: auto; /* For sticky footer. */
-    margin-right: auto;
+    margin-left: 20px; /* For sticky footer. */
+    margin-right: 30px;
 }
-
 
 /* Site header. */
 
 .sitebanner {
     position: relative;
     font-size: 18;
-    top: 25px;
+    top: 20px;
 }
 
 .siteheader {
     margin-bottom: 0px;
     overflow: visible;
-    height: 100px;
+    height: 50px;
 }
 
 .siteimage {
@@ -48,8 +50,8 @@ body {
 
 .sitetitle {
     font-family: 'Merriweather';
-    font-weight: 300;
-    font-size: 1.5em;
+    font-weight: 200;
+    font-size: 1em;
     padding-left: 10px; /* Hack to dodge :hover issue. */
     position: relative; /* Hack to dodge :hover issue. */
     left: -10px; /* Hack to dodge :hover issue. */
@@ -153,6 +155,8 @@ sub {
     font-size: 0.6em;
 }
 
+
+
 /* Article */
 
 .article {
@@ -167,17 +171,13 @@ sub {
     margin-bottom: 0.5em;
 }
 
-li.none {
-    text-indent: -1.5em;
-    padding-left: 1.5em;
-    list-style: none;
-}
 /* Paragraphs. */
 
 .article p {
     line-height: 1.3em;
     margin-bottom: 1.5em;
 }
+
 
 /* Headers. */
 
@@ -186,13 +186,9 @@ li.none {
     font-size: 1.4em;
 }
 
-h1 span {
-    font-size: .6em;
-    font-family: 'Noto Sans Japanese', serif;
-}
-
 .article h2 {
     font-size: 1.2em;
+    margin-bottom: 1em;
     border-left: 10px solid #8bb92d;
     color: #333333;
     padding-top: 2px;
@@ -203,6 +199,11 @@ h1 span {
 .article h3 {
     padding-bottom: 0.8em;
     font-size: 1em;
+}
+
+h1 span {
+    font-size: 1em;
+    font-family: 'Noto Sans Japanese', serif;
 }
 
 /* Footnotes. */
@@ -264,4 +265,6 @@ footer {
     height: 30px;
     position: absolute;
 }
+
+
 }

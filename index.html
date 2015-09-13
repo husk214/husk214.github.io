@@ -1,90 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width,user-scalable=no,maximum-scale=1" />
+<link rel="stylesheet" media="all" type="text/css" href="css/style.css" />
+<link rel="stylesheet" media="all" type="text/css" href="css/smart.css" />
 
   <head>
-      <title>A. Shibagaki</title>
-      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
-      <link href='http://fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
-      <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
-      <link rel="stylesheet" type="text/css" href="css/style.css"/>
-      <meta charset="utf-8" />
+    <title> Atsushi Shibagaki 柴垣 篤志 </title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400italic,600italic,700italic,400,600,700' rel='stylesheet' type='text/css' />
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,700' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="//fonts.googleapis.com/earlyaccess/notosansjapanese.css">
+    <link rel="stylesheet" href="octicons/octicons.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"/> -->
+    <meta charset="utf-8" />
 
     <link rel='stylesheet' id='camera-css'  href='css/camera.css' type='text/css' media='all'>
     <script type='text/javascript' src='scripts/jquery.min.js'></script>
     <script type='text/javascript' src='scripts/jquery.mobile.customized.min.js'></script>
     <script type='text/javascript' src='scripts/jquery.easing.1.3.js'></script>
     <script type='text/javascript' src='scripts/camera.min.js'></script>
-
-			<script type="text/javascript">
-		  jQuery(function(){
-		      jQuery('#slide').camera();//任意のセレクタですが、今回は#slideにしています
-		  });
-			</script>
-			<!-- mathjax config similar to math.stackexchange -->
-		<script type="text/x-mathjax-config">
-		MathJax.Hub.Config({
-			jax: ["input/TeX", "output/HTML-CSS"],
-			tex2jax: {
-				inlineMath: [ ['$', '$'] ],
-				displayMath: [ ['$$', '$$']],
-				processEscapes: true,
-				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-			},
-			messageStyle: "none",
-			"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
-		});
-		</script>
-		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      messageStyle: "none",
+      "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+    });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script>
+    $(window).resize(function(){
+        var w = $(window).width();
+        var x = 770;
+        if (w < x) {
+          $('body').css("width",w-70);
+        } else {
+          $('body').css("width",700);
+        }
+    });
+    </script>
+    <script type="text/javascript">
+      jQuery(function(){
+          jQuery('#slide').camera();
+      });
+    </script>
   </head>
 
   <body id="index">
     <!-- header -->
     <header class="siteheader">
       <div class = "sitebanner">
-        <h1><a class="sitetitle nodec" href="http://deou33.github.io">Atsushi Shibagaki</a></h1>
+        <h1><a class="sitetitle nodec" href="http://deou33.github.io">Atsushi Shibagaki <span>柴垣篤志</span></a></h1>
       </div> <!-- sitebanner -->
     </header>
 
-	<div class="content">
+  <div class="content">
   <div class="article">
     <h1>Home</h1>
     <p>I am currently a master's student in the <a href="http://www-als.ics.nitech.ac.jp">Takeuchi laboratory</a>,
     at <a href="http://www.nitech.ac.jp/">Nagoya Institute of Technology</a>.
-		</p>
-	<h2>Publications</h2>
-	<h3>International Conferences (refereed)</h3>
-	<ul>
-		<li>A. Shibagaki, Y. Suzuki, M. Karasuyama and I. Takeuchi. Regularization Path of Cross-Validation Error Lower Bounds.  In Proceedings of the 29th Neural Information Processing Systems (NIPS 2015), Montreal, Canada, December 2015 (to appear).</li>
-	</ul>
-	<h3>Domestic Conferences (not refereed)</h3>
-	<ul>
-		<li>A. Shibagaki, Y. Suzuki and I. Takeuchi. Model selection with approximate validation error guarantee for L2 regularized convex loss minimization problems.  In Proceedings of Information-Based Induction Sciences and Machine Learning (IBISML), Kyoto, Japan, March 2015 (oral presentation in Japanese).</li>
-	</ul>
+    </p>
+    <h2>Publications</h2>
+    <h3>International Conferences (refereed)</h3>
+    <ul>
+      <li>A. Shibagaki, Y. Suzuki, M. Karasuyama and I. Takeuchi. Regularization Path of Cross-Validation Error Lower Bounds.  In Proceedings of the 29th Neural Information Processing Systems (<a href="https://nips.cc/Conferences/2015">NIPS 2015</a>), Montreal, Canada, December 2015 (to appear).  [<a href="http://arxiv.org/abs/1502.02344">arXiv</a>]</li>
+    </ul>
+    <h3>Domestic Conferences (not refereed)</h3>
+    <ul>
+      <li>A. Shibagaki, Y. Suzuki and I. Takeuchi. Model selection with approximate validation error guarantee for L2 regularized convex loss minimization problems.  In Proceedings of Information-Based Induction Sciences and Machine Learning (<a href="http://ibisml.org/ibisml020">IBISML</a>), Kyoto, Japan, March 2015 (oral presentation in Japanese).</li>
+    </ul>
 
-	<h2>Activities</h2>
-	<ul>
-	<li><strong>August 23rd to September 4th, 2015</strong>: <br>
-	Attended the <a href="http://www.iip.ist.i.kyoto-u.ac.jp/mlss15/doku.php">Machine Learning Summer School (MLSS) 2015</a> in Kyoto University.</li>
-	</ul>
+    <h2>Activities</h2>
+    <ul>
+    <li><strong>August 23rd to September 4th, 2015</strong>: <br>
+    Attended the <a href="http://www.iip.ist.i.kyoto-u.ac.jp/mlss15/doku.php">Machine Learning Summer School (MLSS) 2015</a> in Kyoto University. <br>
+    Poster presentation [<a href="misc/shibagaki_mlss15_poster.pdf">poster</a>]</li>
+    <li><strong>March 23rd, 2015</strong> : <br>
+    Graduated from Department of Computer Science, Nagoya Institute of Technology. <br>
+    Award : <a href="http://www.denei.jp/news/1427331600.html"><span style="font-family: 'Noto Sans Japanese'">電影会賞</span></a> </li>
+    </ul>
 
-	<h2>Contact</h2>
-	<ul>
-	<li>Atushi Shibagaki </li>
-	<li>Master's student</li>
-	<li>Takeuchi laboratory </li>
-	<li>Nagoya Institute of Technology </li>
-	<li>E-mail : shibagaki.a.mllab.nit[at]gmail.com</li>
-	</ul>
+    <h2>Contact</h2>
+    <ul>
+    <!-- <li>Atushi Shibagaki </li>
+    <li>Master's student</li>
+    <li>Takeuchi laboratory </li>
+    <li>Nagoya Institute of Technology </li> -->
+    <li>shibagaki.a.mllab.nit <span class="octicon octicon-mail"></span> gmail.com</li>
+    <li class="none"> <span class="octicon octicon-mark-github"></span> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://github.com/deou33"> <span class="octicon octicon-logo-github"></span></a></li>
+    </ul>
 
-	<div class="camera_wrap" id="slide">
-    <div data-src="photo/2015-07-19 20.09.45.jpg"></div>
-	</div>
+    <div class="camera_wrap" id="slide">
+      <div data-src="photo/0.jp2"></div>
+      <div data-src="photo/1.jp2"></div>
+      <div data-src="photo/2.jp2"></div>
+      <div data-src="photo/3.jp2"></div>
+      <div data-src="photo/4.jp2"></div>
+      <div data-src="photo/5.jp2"></div>
+      <div data-src="photo/6.jp2"></div>
+    </div>
+    </div>
   </div>
-</div>
 
-    <!-- footer -->
-    <footer>
-	<!-- -->
-    </footer>
+  <footer>
+      名古屋工業大学 (名工大) 柴垣篤志
+  </footer>
   </body>
 </html>

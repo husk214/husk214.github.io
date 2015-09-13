@@ -1,31 +1,40 @@
 @import url(pygments.css);
 @import url(reset.css);
 
-@media screen and (min-width: 641px){
+@media screen and (max-width: 768px){
 img{
 max-width: 100%;
 height: auto;
 width /***/:auto;　
 }
+#container{
+width:100%;
+}
 
 body {
-    width: 800px;
+    width: 600px;
 }
 
 html { /* This stuff is for the sticky footer. */
     min-height:100%;
     position:relative;
-    font-size: 1em;
+    font-size: 18px;
     -webkit-font-smoothing: antialiased;
 }
 
 body {
     background-color:#fafafa;
     font-family:'Open Sans';
-    margin-left: auto; /* For sticky footer. */
-    margin-right: auto;
+    margin: 20px auto 100px auto; /* For sticky footer. */
 }
 
+h2 {
+  border-left: 10px solid #8bb92d;
+  color: #333333;
+  padding-top: 2px;
+  padding-bottom: 0px;
+  padding-left: 10px;
+}
 
 /* Site header. */
 
@@ -133,7 +142,7 @@ a:hover { /* Hover style: transition to orange. Cool! */
     position: relative;
     left: 40px;
     padding-bottom: 20px;
-    margin-top:0px;
+    margin-top:-20px;
 }
 
 /* Make super and subscipts look reasonable. */
@@ -162,16 +171,11 @@ sub {
 /* Lists */
 
 .article * li {
-    line-height: 1.2em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    line-height: 1.1em;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
 }
 
-li.none {
-    text-indent: -1.5em;
-    padding-left: 1.5em;
-    list-style: none;
-}
 /* Paragraphs. */
 
 .article p {
@@ -186,18 +190,9 @@ li.none {
     font-size: 1.4em;
 }
 
-h1 span {
-    font-size: .6em;
-    font-family: 'Noto Sans Japanese', serif;
-}
-
 .article h2 {
+    padding-bottom: 0.9em;
     font-size: 1.2em;
-    border-left: 10px solid #8bb92d;
-    color: #333333;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    padding-left: 10px;
 }
 
 .article h3 {
@@ -264,4 +259,6 @@ footer {
     height: 30px;
     position: absolute;
 }
+
+
 }
