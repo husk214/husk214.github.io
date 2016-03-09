@@ -173,3 +173,7 @@ br.touch{display:none}
 .section-about .backnumber{width:100px}
 .issue1 .heading{font-size:300%}}@media (max-width: 767px)
 {body{font-size:90%}br.touch{display:inline}br.pc{display:none}small{font-size:10px}.lineup{display:none; color: #00FF00;}.hero-inner{background-size:1000px auto;padding-bottom:30px}.header h1{font-size:30px}.header h2{font-size:90%}.section{padding:2em 0}.section h2{font-size:200%}.heading-label{font-size:10px}.intro .intro-row{min-height:0}.intro .span7{display:none}.intro .screenshot{position:static;box-shadow:0 3px 10px rgba(0,0,0,0.2);margin-bottom:1em}.intro h2{text-align:center;font-size:260%}.sample{margin-top:2em}.guest-grid .span3{width:50% !important;float:left;margin-bottom:2em;height:150px}.guest-grid .span3.last{margin-bottom:2em}.guest-grid h3{letter-spacing:0}.profile-image{width:100px;height:100px}.spec .hyoshi{box-shadow:0 3px 10px rgba(0,0,0,0.2);max-width:200px}.spec .span4{text-align:center}.table{font-size:90%}.table th,.table td{padding:10px}.table th{min-width:60px}.share h2{font-size:150%}.issue1{background-size:cover;height:auto}.issue1 .heading{font-size:200%}.footer-box img{display:block;margin-bottom:10px}}@media (max-width: 480px){.hero-inner{background-size:600px auto;padding-bottom:30px}.header .label{letter-spacing:.2em;font-size:80%}.header h1{line-height:1.2}.header h2{font-size:90%;line-height:1.5}}
+@media (min-width: 480px){
+  .img{max-width: 100%; height: auto; width /***/:auto;padding-bottom:2.5em;}
+  #container{width:100%;padding-bottom:2em;}
+  }
