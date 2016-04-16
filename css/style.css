@@ -10,7 +10,7 @@ a:active,a:hover{outline:0}
 abbr[title]{border-bottom:1px dotted}
 b,strong{font-weight:bold}
 dfn{font-style:italic}
-h1{font-size:2em;margin:0.67em 0}
+h1{font-size:1.8em;margin:0.67em 0}
 mark{background:#ff0;color:#000}
 small{font-size:80%}
 sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
@@ -21,7 +21,7 @@ svg:not(:root){overflow:hidden}
 figure{margin:1em 40px}
 hr{-moz-box-sizing:content-box;box-sizing:content-box;height:0}
 pre{overflow:auto}
-code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}
+code,kbd,pre,samp{font-family:monospace, monospace;font-size:0.9em}
 button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
 button{overflow:visible}
 button,select{text-transform:none}
@@ -97,10 +97,10 @@ br.touch{display:none}
 .globalheader .logo img{width:100px;height:37px;vertical-align:middle;margin-right:1em}
 .globalheader .logo .logo-img{display:none}
 .globalheader .globalheader-nav{float:right}
-.header{text-align:center;padding:80px 0 2em}
+.header{text-align:center;padding:60px 0 1em}
 .header .label{letter-spacing:.4em;color:#fff100}
-.header h1{font-size:2.4em;margin:.2em 0;line-height:1}
-.header h2{font-size:110%;}
+.header h1{font-size:200%;margin:.2em 0;line-height:1}
+.header h2{font-size:130%;}
 .header h2 .small{font-style:italic;font-size:75%;letter-spacing:.1em}
 .header .header-btn-wrapper{margin:1em 0 0}
 .header .header-btn-wrapper .btn-large{font-size:100%}
@@ -146,7 +146,7 @@ br.touch{display:none}
 .section-about .backnumber{float:left;width:150px;margin:0 1em 1em 0}
 .issue1{background:#fdd000 url("../dist/images/issue1-header.jpg") no-repeat center bottom;height:600px;color:#000}
 .issue1 .hlabel{color:#fdd000;background-color:#000;line-height:1.1;padding:0 .1em}
-.issue1 .heading{font-size:400%;margin-bottom:.3em}
+.issue1 .heading{font-size:300%;margin-bottom:.3em}
 .issue1 h4{font-size:120%}
 .issue1 p{line-height:1.5}
 .issue1 .price{text-shadow:-1px -4px #fdd000, 1px -4px #fdd000, -2px -3px #fdd000, 2px -3px #fdd000, -3px -2px #fdd000, 3px -2px #fdd000, -4px -1px #fdd000, 4px -1px #fdd000, -4px  1px #fdd000, 4px  1px #fdd000, -3px  2px #fdd000, 3px  2px #fdd000, -2px  3px #fdd000, 2px  3px #fdd000, -1px  4px #fdd000, 1px  4px #fdd000}
@@ -163,13 +163,13 @@ br.touch{display:none}
 @media (min-width: 1240px)
 {.hero{
   background-size:3000px 550px}
-.intro h2{font-size:380%}.intro .intro-row{min-height:730px}
+.intro h2{font-size:300%}.intro .intro-row{min-height:730px}
 .intro .screenshot{right:520px;width:1000px}}@media (min-width: 768px) and (max-width: 1040px)
 {
-.header h2{font-size:100%}
-.intro h2{font-size:100%}
+.header h2{font-size:150%}
+.intro h2{font-size:150%}
 .intro .intro-row{min-height:0px;height:auto}
 .intro .screenshot{right:340px;width:600px}
 .section-about .backnumber{width:100px}
 .issue1 .heading{font-size:300%}}@media (max-width: 767px)
-{body{font-size:90%}br.touch{display:inline}br.pc{display:none}small{font-size:10px}.lineup{display:none; color: #00FF00;}.hero-inner{background-size:1000px auto;padding-bottom:30px}.header h1{font-size:30px}.header h2{font-size:90%}.section{padding:2em 0}.section h2{font-size:200%}.heading-label{font-size:10px}.intro .intro-row{min-height:0}.intro .span7{display:none}.intro .screenshot{position:static;box-shadow:0 3px 10px rgba(0,0,0,0.2);margin-bottom:1em}.intro h2{text-align:center;font-size:260%}.sample{margin-top:2em}.guest-grid .span3{width:50% !important;float:left;margin-bottom:2em;height:150px}.guest-grid .span3.last{margin-bottom:2em}.guest-grid h3{letter-spacing:0}.profile-image{width:100px;height:100px}.spec .hyoshi{box-shadow:0 3px 10px rgba(0,0,0,0.2);max-width:200px}.spec .span4{text-align:center}.table{font-size:90%}.table th,.table td{padding:10px}.table th{min-width:60px}.share h2{font-size:150%}.issue1{background-size:cover;height:auto}.issue1 .heading{font-size:200%}.footer-box img{display:block;margin-bottom:10px}}@media (max-width: 480px){.hero-inner{background-size:600px auto;padding-bottom:30px}.header .label{letter-spacing:.2em;font-size:80%}.header h1{line-height:1.2}.header h2{font-size:90%;line-height:1.5}}
+{body{font-size:90%}br.touch{display:inline}br.pc{display:none}small{font-size:10px}.lineup{display:none; color: #00FF00;}.hero-inner{background-size:1000px auto;padding-bottom:30px}.header h1{font-size:30px}.header h2{font-size:130%}.section{padding:2em 0}.section h2{font-size:200%}.heading-label{font-size:10px}.intro .intro-row{min-height:0}.intro .span7{display:none}.intro .screenshot{position:static;box-shadow:0 3px 10px rgba(0,0,0,0.2);margin-bottom:1em}.intro h2{text-align:center;font-size:260%}.sample{margin-top:2em}.guest-grid .span3{width:50% !important;float:left;margin-bottom:2em;height:150px}.guest-grid .span3.last{margin-bottom:2em}.guest-grid h3{letter-spacing:0}.profile-image{width:100px;height:100px}.spec .hyoshi{box-shadow:0 3px 10px rgba(0,0,0,0.2);max-width:200px}.spec .span4{text-align:center}.table{font-size:90%}.table th,.table td{padding:10px}.table th{min-width:60px}.share h2{font-size:150%}.issue1{background-size:cover;height:auto}.issue1 .heading{font-size:200%}.footer-box img{display:block;margin-bottom:10px}}@media (max-width: 480px){.hero-inner{background-size:600px auto;padding-bottom:30px}.header .label{letter-spacing:.2em;font-size:80%}.header h1{line-height:1.2}.header h2{font-size:90%;line-height:1.5}}
