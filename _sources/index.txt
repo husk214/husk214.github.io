@@ -6,9 +6,6 @@
 .. role:: underline
   :class: underline
 
-.. role:: mybtn
-  :class: mybtn
-
 .. role:: pubs
   :class: pubs
 
@@ -22,12 +19,14 @@ in `Takeuchi lab <http://www-als.ics.nitech.ac.jp>`_,
 
 .. raw:: html
 
+  <div class="contact">
   <span class="octicon octicon-mail"></span> <font color='#7ca428'>shibagaki.a.mllab.nit <span class="octicon octicon-mention"></span>
   gmail.com </font> <br>
   <span class="octicon octicon-mark-github"></span> <a href="https://github.com/husk214">GitHub</a>
+  </div>
 
 Publications
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 :pubs:`Preprint`
 
@@ -39,10 +38,10 @@ Publications
 
       (accepted to `ICML 2016@NYC <http://icml.cc/2016/>`_, **acceptance rate = 322/1327 = 24.3%**)
 
-      .. rst-class:: mybtn
+      .. rst-class:: mybtn2
 
         `ArXiv <http://arxiv.org/abs/1602.02485>`_
-      .. rst-class:: mybtn
+      .. rst-class:: mybtn2
 
         `code <https://github.com/husk214/s3fs>`_
 
@@ -59,13 +58,13 @@ Publications
       (`NIPS2015 <https://nips.cc/Conferences/2015>`_),pp.1666-1674, Montreal, Canada, December 2015
       **(acceptance rate = 403/1838 = 21.9 % )**
 
-      .. rst-class:: mybtn
+      .. rst-class:: mybtn2
 
         `paper <http://papers.nips.cc/paper/5817-regularization-path-of-cross-validation-error-lower-bounds>`_
-      .. rst-class:: mybtn
+      .. rst-class:: mybtn2
 
         `poster <misc/shibagaki_poster_nips15.pdf>`_
-      .. rst-class:: mybtn
+      .. rst-class:: mybtn2
 
         `ArXiv <http://arxiv.org/abs/1602.02485>`_
 
@@ -80,7 +79,7 @@ Publications
 
       信学技報, vol. 114, no. 502, `IBISML <http://ibisml.org/ibisml020>`_ 2014-96, pp. 79-86, 京都, 2015年3月.
 
-      .. rst-class:: mybtn
+      .. rst-class:: mybtn2
 
         `paper <http://www.ieice.org/ken/paper/20150306DBZ8/>`_
 
@@ -102,8 +101,8 @@ Activities
       Compete in `KDD CUP 2015 <http://kddcup2015.com>`_, Result: 70th in 821 teams
 
     - **23rd Mar (2015):**
-      Graduated from Department of Computer Science, Nagoya Institute of Technology
-      **, Award:** `電影会賞 <http://www.denei.jp/news/1427331600.html>`_
+      Graduated from Department of Computer Science, Nagoya Institute of Technology,
+      **Award:** `電影会賞 <http://www.denei.jp/news/1427331600.html>`_
 
     - **Mar (2015):**
       Participated in IBISML20 at Kyoto Univ.
@@ -111,12 +110,22 @@ Activities
 
 
 
-.. Contents:
+Memo
+^^^^^^
 
-.. .. toctree::
-..    :maxdepth: 1
+.. toctree::
+   :maxdepth: 1
 
-..    test
+   misc_memo
+   git_memo
+   tex_memo
+
+.. Memo
+.. -------
+
+.. * :doc:`misc_memo`
+.. * :doc:`git_memo`
+.. * :doc:`tex_memo`
 
 
 

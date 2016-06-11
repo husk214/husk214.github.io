@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>TeX &mdash; Atsushi Shibagaki 160611 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/octicons/octicons.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '160611',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="top" title="Atsushi Shibagaki 160611 documentation" href="index.html" />
+    <link rel="prev" title="git" href="git_memo.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          Atsushi Shibagaki</a>
+        <span class="navbar-text navbar-version pull-left"><b>160611</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="misc_memo.html">Misc</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="misc_memo.html#other">other</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc_memo.html#sublime-text">sublime text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc_memo.html#emacs">emacs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="git_memo.html">git</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="git_memo.html#github-pull-request">github pull request プルリクエスト</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_memo.html#stash">stash 一時退避</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_memo.html#submodule">submodule サブモジュール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_memo.html#branch">branch ブランチ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_memo.html#commit">commit コミット</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git_memo.html#add-ssh-key-at-github-github-ssh">add ssh key at github (github にssh で接続)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TeX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#document-template">document template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#beamer-template">beamer template</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">TeX</a><ul>
+<li><a class="reference internal" href="#document-template">document template</a></li>
+<li><a class="reference internal" href="#beamer-template">beamer template</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="git_memo.html" title="Previous Chapter: git"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; git</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="tex">
+<span id="tex"></span><h1>TeX<a class="headerlink" href="#tex" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="document-template">
+<span id="document-template"></span><h2>document template<a class="headerlink" href="#document-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>\<span class="n">documentclass</span><span class="p">[</span><span class="n">a4paper</span><span class="p">,</span><span class="mi">10</span><span class="n">pt</span><span class="p">]{</span><span class="n">ltjsarticle</span><span class="p">}</span>
+
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">hyperref</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">xltxtra</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">xunicode</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">fontspec</span><span class="p">}</span>
+<span class="o">%</span> \<span class="n">usepackage</span><span class="p">{</span><span class="n">luatexja</span><span class="o">-</span><span class="n">fontspec</span><span class="p">}</span>
+
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">amsmath</span><span class="p">,</span><span class="n">amssymb</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">amsthm</span><span class="p">}</span>
+<span class="o">%</span> \<span class="n">usepackage</span><span class="p">{</span><span class="n">algorithmic</span><span class="p">,</span><span class="n">algorithm</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">[</span><span class="n">ruled</span><span class="p">,</span><span class="n">vlined</span><span class="p">]{</span><span class="n">algorithm2e</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">graphicx</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">color</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">atbegshi</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">ulem</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">mathbbol</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">braket</span><span class="p">}</span>
+
+\<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mcr</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mycolor</span><span class="p">}</span>
+
+\<span class="n">makeatletter</span>
+\<span class="n">def</span>\<span class="nd">@maketitle</span><span class="p">{</span>
+\<span class="n">begin</span><span class="p">{</span><span class="n">center</span><span class="p">}</span>
+<span class="p">{</span>\<span class="n">LARGE</span> \<span class="nd">@title</span> \<span class="n">par</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">center</span><span class="p">}</span>
+\<span class="n">begin</span><span class="p">{</span><span class="n">flushright</span><span class="p">}</span>
+<span class="p">{</span>\<span class="n">large</span> \<span class="nd">@date</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">flushright</span><span class="p">}</span>
+\<span class="n">begin</span><span class="p">{</span><span class="n">flushright</span><span class="p">}</span>
+<span class="p">{</span>\<span class="n">large</span> \<span class="nd">@author</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">flushright</span><span class="p">}</span>
+\<span class="n">par</span>\<span class="n">vskip</span> <span class="mf">1.5</span><span class="n">em</span>
+<span class="p">}</span>
+\<span class="n">makeatother</span>
+\<span class="n">title</span><span class="p">{</span><span class="n">Material</span><span class="p">}</span>
+\<span class="n">date</span><span class="p">{</span>\<span class="n">today</span><span class="p">}</span>
+\<span class="n">author</span><span class="p">{</span><span class="n">Atsushi</span> <span class="n">Shibagaki</span><span class="p">}</span>
+
+\<span class="n">begin</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+\<span class="n">maketitle</span>
+
+\<span class="n">end</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="beamer-template">
+<span id="beamer-template"></span><h2>beamer template<a class="headerlink" href="#beamer-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span> \<span class="n">documentclass</span><span class="p">[</span><span class="mi">11</span><span class="n">pt</span><span class="p">,</span><span class="n">notheorems</span><span class="p">,</span><span class="n">pdflatex</span><span class="p">]{</span><span class="n">beamer</span><span class="p">}</span>
+\<span class="n">documentclass</span><span class="p">[</span><span class="mi">11</span><span class="n">pt</span><span class="p">,</span><span class="n">notheorems</span><span class="p">,</span><span class="n">lualatex</span><span class="p">]{</span><span class="n">beamer</span><span class="p">}</span>
+<span class="o">%</span> \<span class="n">usepackage</span><span class="p">{</span><span class="n">luatexja</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">hyperref</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">xltxtra</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">xunicode</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">fontspec</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">luatexja</span><span class="o">-</span><span class="n">fontspec</span><span class="p">}</span>
+
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">amsmath</span><span class="p">,</span><span class="n">amssymb</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">amsthm</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">algorithmic</span><span class="p">,</span><span class="n">algorithm</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">graphicx</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">color</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">atbegshi</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">ulem</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">mathbbol</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">braket</span><span class="p">}</span>
+
+\<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mcr</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mycolor</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mybeamer2</span><span class="p">}</span>
+
+<span class="o">%</span> \<span class="n">usefonttheme</span><span class="p">{</span><span class="n">professionalfonts</span><span class="p">}</span>
+
+\<span class="n">hypersetup</span><span class="p">{</span><span class="n">unicode</span><span class="o">=</span><span class="n">true</span><span class="p">}</span>
+\<span class="n">setmainfont</span><span class="p">[</span><span class="n">Ligatures</span><span class="o">=</span><span class="n">TeX</span><span class="p">]{</span><span class="n">Helvetica</span> <span class="n">neue</span><span class="p">}</span>
+\<span class="n">setsansfont</span><span class="p">[</span><span class="n">Ligatures</span><span class="o">=</span><span class="n">TeX</span><span class="p">]{</span><span class="n">Helvetica</span> <span class="n">neue</span><span class="p">}</span>
+
+\<span class="n">setmainjfont</span><span class="p">[</span><span class="n">BoldFont</span><span class="o">=</span><span class="n">IPAexGothic</span><span class="p">]{</span><span class="n">IPAexGothic</span><span class="p">}</span>
+\<span class="n">setsansjfont</span><span class="p">{</span><span class="n">IPAexGothic</span><span class="p">}</span>
+\<span class="n">newjfontfamily</span>\<span class="n">jisninety</span><span class="p">[</span><span class="n">CJKShape</span><span class="o">=</span><span class="n">JIS1990</span><span class="p">]{</span><span class="n">IPAexGothic</span><span class="p">}</span>
+
+<span class="o">%</span> \<span class="n">AtBeginSection</span><span class="p">[]</span>
+<span class="o">%</span> <span class="p">{</span>
+<span class="o">%</span>   \<span class="n">begin</span><span class="p">{</span><span class="n">frame</span><span class="p">}</span><span class="o">&lt;</span><span class="n">beamer</span><span class="o">&gt;</span>
+<span class="o">%</span>     \<span class="n">frametitle</span><span class="p">{</span><span class="n">Outline</span> <span class="k">for</span> <span class="n">section</span> \<span class="n">thesection</span><span class="p">}</span>
+<span class="o">%</span>     \<span class="n">tableofcontents</span><span class="p">[</span><span class="n">currentsection</span><span class="p">]</span>
+<span class="o">%</span>   \<span class="n">end</span><span class="p">{</span><span class="n">frame</span><span class="p">}</span>
+<span class="o">%</span> <span class="p">}</span>
+
+\<span class="n">title</span><span class="p">[</span><span class="n">tit</span><span class="p">]</span>
+      <span class="p">{</span><span class="n">Title</span><span class="p">}</span>
+\<span class="n">author</span><span class="p">[</span><span class="n">Shibagaki</span><span class="p">]{</span><span class="n">Atsushi</span> <span class="n">Shibagaki</span><span class="p">}</span>
+\<span class="n">institute</span><span class="p">[</span><span class="n">Nitech</span><span class="p">]{</span><span class="n">Nagoya</span> <span class="n">Institute</span> <span class="n">of</span> <span class="n">Technology</span><span class="p">}</span>
+\<span class="n">date</span><span class="p">{</span>\<span class="n">today</span><span class="p">}</span>
+\<span class="n">begin</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+
+\<span class="n">begin</span><span class="p">{</span><span class="n">frame</span><span class="p">}[</span><span class="n">plain</span><span class="p">]</span> \<span class="n">frametitle</span><span class="p">{}</span>
+\<span class="n">titlepage</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">frame</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2016, Atsushi Shibagaki.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
