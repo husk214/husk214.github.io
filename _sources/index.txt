@@ -26,7 +26,7 @@ in `Takeuchi lab <http://www-als.ics.nitech.ac.jp>`_,
   </div>
 
 Publications
-^^^^^^^^^^^^^^
+^^^^^^^^^^^^^
 
 :pubs:`Preprint`
 

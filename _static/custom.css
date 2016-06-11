@@ -26,6 +26,11 @@ h2 {
     padding-left: 1em;
 }
 
+.paperli a{
+    color: #555;
+}
+
+
 .paperli li{
   list-style-type: none;
   padding:0.2em 0.5em;
@@ -39,6 +44,10 @@ h2 {
 .paperli:hover li{
   background: #ebf5d6;
   border:1px solid #7ca428;
+}
+
+.paperli:hover li a{
+    color: #7ca428;
 }
 
 .actli{
