@@ -50,6 +50,7 @@ h2 {
     color: #7ca428;
 }
 
+
 .actli{
     padding-left: 1em;
 }
@@ -74,7 +75,7 @@ h2 {
 .mybtn2 a{color: #555}
 .mybtn2:hover {text-decoration:none;background-color:#fff; color:#7ca428; border:1px solid #7ca428;}
 .mybtn2:hover a:hover{text-decoration:none;color:#7ca428}
-
+.paperli:hover li mybtn2{border:1px solid #7ca428;}
 .mybtn:hover{text-decoration:none;background-color:#fff;color:#fff}
 /*.btn img{vertical-align:middle}*/
 /*.btn-primary{background-color:#7ca428;color:#fff;border:1px solid #7ca428}
