@@ -34,7 +34,9 @@ in `Takeuchi lab <http://www-als.ics.nitech.ac.jp>`_,
 Publications
 ^^^^^^^^^^^^^^
 
-:pubs:`Preprint`
+.. :pubs:`Preprint`
+
+:pubs:`International Conferences (refereed)`
 
 .. rst-class:: paperli
 
@@ -42,17 +44,18 @@ Publications
 
       *A. Shibagaki*, M. Karasuyama, K. Hatano and I. Takeuchi
 
-      (accepted to `ICML 2016@NYC <http://icml.cc/2016/>`_, **acceptance rate = 322/1327 = 24.3%**)
+      Proceedings of The 33rd International Conference on Machine Learning (`ICML2016 <http://icml.cc/2016/>`_), pp. 1577–1586, New York City, USA, June 2016
+      **(acceptance rate = 322/1327 = 24.3)%**
 
+      .. rst-class:: mybtn2
+
+        `paper <http://jmlr.org/proceedings/papers/v48/shibagaki16.html>`_
       .. rst-class:: mybtn2
 
         `ArXiv <http://arxiv.org/abs/1602.02485>`_
       .. rst-class:: mybtn2
 
         `code <https://github.com/husk214/s3fs>`_
-
-
-:pubs:`International Conferences (refereed)`
 
 .. rst-class:: paperli
 
