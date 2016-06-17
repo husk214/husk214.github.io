@@ -56,6 +56,12 @@ Publications
       .. rst-class:: mybtn2
 
         `code <https://github.com/husk214/s3fs>`_
+      .. rst-class:: mybtn2
+
+        `slide <misc/slide_icml2016.pdf>`_
+      .. rst-class:: mybtn2
+
+        `poster <misc/poster_icml2016.pdf>`_
 
 .. rst-class:: paperli
 
