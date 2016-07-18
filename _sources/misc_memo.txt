@@ -2,6 +2,7 @@
 
 ## other
 
+
 ### まとめてrename (zshのzmv)
 
 - `zmv 'hoge-(*).(*).(*).tar.gz' 'hoge-$1--$2--$3.tar.gz'`
@@ -23,13 +24,29 @@
   - .tar.gz         : `tar -zcvf fn.tar.gz target`
   - .tar.bz2        : `tar -jcvf fn.tar.bz2 target`
   - .gz             : `gzip target`
-  - .bz2            : `bzip2 target`
+  - .bz2            : `bzip2 target` ( -k: 圧縮及び展開する際，元ファイルを削除しない)
   - .lha .lzh       : `lha c fn.lzh target`
   - .zip            : `zip fn.zip target`
 
- #### bzip2
-  -k: 圧縮及び展開する際，元ファイルを削除しない
+### top
 
+#### option
+  - d 更新間隔(秒)
+  - c コマンドのフルパス
+  - u 指定したユーザーのプロセスのみ
+  - Shift {p, m, t} CPU, メモリ, 実行時間でソート
+  - k プロセスIDを指定してkill
+  - 1 コア毎に状態を表示
+
+#### status of process
+  - S means スリープ
+  - T means 停止中
+  - D means 割り込み不可(sleep)
+  - N means ナイス値がプラスの状態
+  - < means ナイス値がマイナスの状態
+  - R means 実行中
+  - Z means ゾンビ状態
+  - W means スワップアウト状態
 
 ### color
 `for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo`

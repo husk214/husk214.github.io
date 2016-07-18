@@ -91,6 +91,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">TeX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#algorithm2e">algorithm2e</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#document-template">document template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#beamer-template">beamer template</a></li>
 </ul>
@@ -109,6 +110,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">TeX</a><ul>
+<li><a class="reference internal" href="#algorithm2e">algorithm2e</a></li>
 <li><a class="reference internal" href="#document-template">document template</a></li>
 <li><a class="reference internal" href="#beamer-template">beamer template</a></li>
 </ul>
@@ -152,6 +154,37 @@
       
   <div class="section" id="tex">
 <span id="tex"></span><h1>TeX<a class="headerlink" href="#tex" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="algorithm2e">
+<span id="algorithm2e"></span><h2>algorithm2e<a class="headerlink" href="#algorithm2e" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>\begin{algorithm}
+\DontPrintSemicolon
+\SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+\SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\Input{$w_0 \in \dom P_{\lambda} , \alpha_0 \in \dom D_{\lambda} $}
+% \Output{$x$}
+\BlankLine
+\For{$t = 1,2,\ldots$ \KwTo converged}{
+  \If{Broadly working set algortm}{
+    $(w^{(t-1)}, \alpha^{(t-1)} ) \lA U^{(1)}(w^{(t-1)}, \alpha^{(t-1)}) $ \;
+  }
+  $(\cF^{(t)}, \cS^{(t)}) \lA (\cW_{\cF} (w^{(t-1)} ), \cW_{\cS} (\alpha^{(t-1)} ))$ \;
+  $(\hat{w}^{(0)}, \hat{\alpha}^{(0)} ) \leftarrow ({w}^{(t-1)} , {\alpha}^{(t-1)} )$\;
+  \For{$ u = 1,2, \ldots$ \KwTo until satisfy $C(\hat{w}^{(u)}, \hat{\alpha}^{(u)} ) $}{
+    $(\hat{w}^{(u)}, \hat{\alpha}^{(u)} ) \lA U^{(2)}(\hat{w}^{(u-1)}, \hat{\alpha}^{(u-1)}) $ \;
+  }
+  \uIf{Broadly working set algortm and $G_\lambda (\hat{w}^{(u)}, \hat{\alpha}^{(u)} ) &gt; G_\lambda ({w}^{(t-1)}, {\alpha}^{(t-1)} )$}{
+    $({w}^{(t)}, {\alpha}^{(t)} ) \lA ({w}^{(t-1)}, {\alpha}^{(t-1)} )$\;
+  }
+  \uElse{
+    $({w}^{(t)}, {\alpha}^{(t)} ) \lA (\hat{w}^{(u)}, \hat{\alpha}^{(u)} )$\;
+  }
+}
+\caption{Strictly and Broadly Working Set Algorithm (Primal-Dual)}\label{alg:ws}
+\end{algorithm}
+</pre></div>
+</div>
+</div>
 <div class="section" id="document-template">
 <span id="document-template"></span><h2>document template<a class="headerlink" href="#document-template" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>\<span class="n">documentclass</span><span class="p">[</span><span class="n">a4paper</span><span class="p">,</span><span class="mi">10</span><span class="n">pt</span><span class="p">]{</span><span class="n">ltjsarticle</span><span class="p">}</span>
@@ -159,7 +192,7 @@
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">hyperref</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">xltxtra</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">xunicode</span><span class="p">}</span>
-\<span class="n">usepackage</span><span class="p">{</span><span class="n">fontspec</span><span class="p">}</span>
+<span class="o">%</span> \<span class="n">usepackage</span><span class="p">{</span><span class="n">fontspec</span><span class="p">}</span>
 <span class="o">%</span> \<span class="n">usepackage</span><span class="p">{</span><span class="n">luatexja</span><span class="o">-</span><span class="n">fontspec</span><span class="p">}</span>
 
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">amsmath</span><span class="p">,</span><span class="n">amssymb</span><span class="p">}</span>
@@ -172,6 +205,8 @@
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">ulem</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">mathbbol</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">braket</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">subfig</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">[</span><span class="n">yyyymmdd</span><span class="p">]{</span><span class="n">datetime</span><span class="p">}</span>
 
 \<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mcr</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mycolor</span><span class="p">}</span>

@@ -12,7 +12,7 @@
 .. raw:: html
 
   <figure class="top_float">
-    <img src="_static/icon.jpg" class="img-thumbnail">
+    <img src="_static/logo.jpg" class="img-thumbnail">
   </figure>
 
 Atsushi Shibagaki (柴垣篤志)
@@ -79,6 +79,18 @@ Publications
 
 
 :pubs:`Domestic Conferences (not refereed)`
+
+.. rst-class:: paperli
+
+    - **スパースモデルのための特徴と標本の同時セーフスクリーニング**
+
+      *柴垣篤志*, 烏山昌幸, 畑埜晃平, 竹内一郎
+
+      信学技報, vol. 116, no. 121, `IBISML <http://ibisml.org/ibisml025>`_ 2016-4, pp. 201-208, 沖縄, 2016年7月.
+
+      .. rst-class:: mybtn2
+
+        `paper <http://www.ieice.org/ken/paper/20160706YbjI/>`_
 
 .. rst-class:: paperli
 
