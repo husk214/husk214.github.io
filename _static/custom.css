@@ -75,6 +75,11 @@ h2 {
 .mybtn2 a{color: #555}
 .mybtn2:hover {text-decoration:none;background-color:#fff; color:#7ca428; border:1px solid #7ca428;}
 .mybtn2:hover a:hover{text-decoration:none;color:#7ca428}
+.mybtn3{display:inline-block;text-align:center;padding:.3em 1em;cursor:pointer;line-height:1;font-size:100%;font-weight: bold; overflow:hidden;text-decoration:none;border:1px solid #555;color:#555;-webkit-transition:all .3s;transition:all .3s
+}
+.mybtn3 a{color: #555}
+.mybtn3:hover {text-decoration:none;background-color:#fff; color:#7ca428; border:1px solid #7ca428;}
+.mybtn3:hover a:hover{text-decoration:none;color:#7ca428}
 .paperli:hover li mybtn2{border:1px solid #7ca428;}
 .mybtn:hover{text-decoration:none;background-color:#fff;color:#fff}
 /*.btn img{vertical-align:middle}*/
@@ -90,3 +95,87 @@ h2 {
 .btn.btn-b{color:#fff;background-color:#008fde;border-color:transparent}
 .btn.btn-b:hover{background-color:#0075b5;color:#fff}
 .btn-inner{margin-bottom:1em}@media (max-width: 767px)*/
+
+.abst{
+  list-style-type: none;
+  padding:0.2em 0.5em;
+  border:1px solid #555;
+  border-top: none;
+  background:#fff;
+  margin:5px 20px 0px 20px;
+  /*border-radius:5px;*/
+  transform-origin:top left;
+}
+
+.menu {
+/*  height: 500px;
+  width: 500px;
+  margin: 100px auto;
+  padding: 50px;*/
+  list-style-type: none;
+  background: #fff;
+  margin:5px 0px 3px 0px;
+  transform-origin:top left;
+  display: block;
+}
+
+.papercard {
+  list-style-type: none;
+  padding:0.2em 0.5em;
+  border:1px solid #555;
+  background:#fff;
+  margin:10px 20px 15px 20px;
+  /*border-radius:5px;*/
+  transform-origin:top left;
+  display: block;
+  padding-bottom: 5px;
+}
+
+
+label {
+  list-style-type: none;
+  padding:0.2em 0.5em;
+  border:1px solid #555;
+  background:#fff;
+  margin:5px 20px 0px 20px;
+  /*border-radius:5px;*/
+  transform-origin:top left;
+  display: block;
+  padding-bottom: 5px;
+}
+
+label:hover {
+  background: #f7faeb;
+  border:1px solid #7ca428;
+  border-bottom: none;
+  display: block;
+}
+
+input[type="checkbox"].on-off{
+  display: none;
+  border-bottom: none;
+}
+
+.menu ul {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  margin: 0 0 0px;
+  padding: 0;
+  list-style: none;
+}
+
+.menu li {
+  padding: 1px;
+}
+
+input[type="checkbox"].on-off + ul{
+  display: none;
+}
+
+input[type="checkbox"].on-off:checked + ul{
+  border-bottom: none;
+  display: block;
+}
