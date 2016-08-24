@@ -30,12 +30,71 @@
 \end{algorithm}
 ```
 
-## document template
+## document (platex) template
+
+```
+\documentclass[a4paper,10pt,dvipdfmx]{jarticle}
+
+\setlength{\topmargin}{-2.0cm}
+\setlength{\oddsidemargin}{-1.0cm}
+\setlength{\evensidemargin}{-1.0cm}
+\setlength{\textwidth}{18cm}
+\setlength{\textheight}{25cm}
+
+\usepackage{amsmath,amssymb}
+\usepackage{amsthm}
+% \usepackage{algorithmic,algorithm}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{atbegshi}
+\usepackage{ulem}
+\usepackage{mathbbol}
+\usepackage{braket}
+\usepackage{subfig}
+\usepackage{natbib}
+\usepackage{nicefrac}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+\usepackage[yyyymmdd]{datetime}
+
+\usepackage{/Users/Shibagaki/GoogleDrive/Tex/mcr}
+\usepackage{/Users/Shibagaki/GoogleDrive/Tex/mycolor}
+% \usepackage{/Users/Shibagaki/GoogleDrive/Tex/thmE}
+
+\makeatletter
+\def\@maketitle{
+\begin{center}
+{\LARGE \@title \par}
+\end{center}
+\begin{flushright}
+{\large \@date}
+\end{flushright}
+\begin{flushright}
+{\large \@author}
+\end{flushright}
+\par\vskip 1.5em
+}
+\makeatother
+\title{Material}
+\date{\today}
+\author{Atsushi Shibagaki}
+
+\begin{document}
+\maketitle
+
+\bibliographystyle{/Users/Shibagaki/GoogleDrive/Tex/icml2016}
+\bibliography{/Users/Shibagaki/GoogleDrive/Tex/working}
+% \nocite{*}
+
+\end{document}
+```
+
+## document (lualatex) template
 
 ```
 \documentclass[a4paper,10pt]{ltjsarticle}
 
-\usepackage{hyperref}
 \usepackage{xltxtra}
 \usepackage{xunicode}
 % \usepackage{fontspec}
@@ -52,7 +111,11 @@
 \usepackage{mathbbol}
 \usepackage{braket}
 \usepackage{subfig}
+\usepackage{natbib}
+\usepackage{nicefrac}
 \usepackage[yyyymmdd]{datetime}
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
 
 \usepackage{/Users/Shibagaki/GoogleDrive/Tex/mcr}
 \usepackage{/Users/Shibagaki/GoogleDrive/Tex/mycolor}
@@ -77,6 +140,10 @@
 
 \begin{document}
 \maketitle
+
+\bibliographystyle{/Users/Shibagaki/GoogleDrive/Tex/icml2016}
+\bibliography{/Users/Shibagaki/GoogleDrive/Tex/working}
+% \nocite{*}
 
 \end{document}
 ```

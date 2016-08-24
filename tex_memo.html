@@ -92,7 +92,8 @@
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">TeX</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#algorithm2e">algorithm2e</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#document-template">document template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#document-platex-template">document (platex) template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#document-lualatex-template">document (lualatex) template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#beamer-template">beamer template</a></li>
 </ul>
 </li>
@@ -111,7 +112,8 @@
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">TeX</a><ul>
 <li><a class="reference internal" href="#algorithm2e">algorithm2e</a></li>
-<li><a class="reference internal" href="#document-template">document template</a></li>
+<li><a class="reference internal" href="#document-platex-template">document (platex) template</a></li>
+<li><a class="reference internal" href="#document-lualatex-template">document (lualatex) template</a></li>
 <li><a class="reference internal" href="#beamer-template">beamer template</a></li>
 </ul>
 </li>
@@ -185,11 +187,70 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="document-template">
-<span id="document-template"></span><h2>document template<a class="headerlink" href="#document-template" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="document-platex-template">
+<span id="document-platex-template"></span><h2>document (platex) template<a class="headerlink" href="#document-platex-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>\<span class="n">documentclass</span><span class="p">[</span><span class="n">a4paper</span><span class="p">,</span><span class="mi">10</span><span class="n">pt</span><span class="p">,</span><span class="n">dvipdfmx</span><span class="p">]{</span><span class="n">jarticle</span><span class="p">}</span>
+
+\<span class="n">setlength</span><span class="p">{</span>\<span class="n">topmargin</span><span class="p">}{</span><span class="o">-</span><span class="mf">2.0</span><span class="n">cm</span><span class="p">}</span>
+\<span class="n">setlength</span><span class="p">{</span>\<span class="n">oddsidemargin</span><span class="p">}{</span><span class="o">-</span><span class="mf">1.0</span><span class="n">cm</span><span class="p">}</span>
+\<span class="n">setlength</span><span class="p">{</span>\<span class="n">evensidemargin</span><span class="p">}{</span><span class="o">-</span><span class="mf">1.0</span><span class="n">cm</span><span class="p">}</span>
+\<span class="n">setlength</span><span class="p">{</span>\<span class="n">textwidth</span><span class="p">}{</span><span class="mi">18</span><span class="n">cm</span><span class="p">}</span>
+\<span class="n">setlength</span><span class="p">{</span>\<span class="n">textheight</span><span class="p">}{</span><span class="mi">25</span><span class="n">cm</span><span class="p">}</span>
+
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">amsmath</span><span class="p">,</span><span class="n">amssymb</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">amsthm</span><span class="p">}</span>
+<span class="o">%</span> \<span class="n">usepackage</span><span class="p">{</span><span class="n">algorithmic</span><span class="p">,</span><span class="n">algorithm</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">[</span><span class="n">ruled</span><span class="p">,</span><span class="n">vlined</span><span class="p">]{</span><span class="n">algorithm2e</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">graphicx</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">color</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">atbegshi</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">ulem</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">mathbbol</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">braket</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">subfig</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">natbib</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">nicefrac</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">[</span><span class="n">dvipdfmx</span><span class="p">]{</span><span class="n">hyperref</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">pxjahyper</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">[</span><span class="n">yyyymmdd</span><span class="p">]{</span><span class="n">datetime</span><span class="p">}</span>
+
+\<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mcr</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mycolor</span><span class="p">}</span>
+<span class="o">%</span> \<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">thmE</span><span class="p">}</span>
+
+\<span class="n">makeatletter</span>
+\<span class="n">def</span>\<span class="nd">@maketitle</span><span class="p">{</span>
+\<span class="n">begin</span><span class="p">{</span><span class="n">center</span><span class="p">}</span>
+<span class="p">{</span>\<span class="n">LARGE</span> \<span class="nd">@title</span> \<span class="n">par</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">center</span><span class="p">}</span>
+\<span class="n">begin</span><span class="p">{</span><span class="n">flushright</span><span class="p">}</span>
+<span class="p">{</span>\<span class="n">large</span> \<span class="nd">@date</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">flushright</span><span class="p">}</span>
+\<span class="n">begin</span><span class="p">{</span><span class="n">flushright</span><span class="p">}</span>
+<span class="p">{</span>\<span class="n">large</span> \<span class="nd">@author</span><span class="p">}</span>
+\<span class="n">end</span><span class="p">{</span><span class="n">flushright</span><span class="p">}</span>
+\<span class="n">par</span>\<span class="n">vskip</span> <span class="mf">1.5</span><span class="n">em</span>
+<span class="p">}</span>
+\<span class="n">makeatother</span>
+\<span class="n">title</span><span class="p">{</span><span class="n">Material</span><span class="p">}</span>
+\<span class="n">date</span><span class="p">{</span>\<span class="n">today</span><span class="p">}</span>
+\<span class="n">author</span><span class="p">{</span><span class="n">Atsushi</span> <span class="n">Shibagaki</span><span class="p">}</span>
+
+\<span class="n">begin</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+\<span class="n">maketitle</span>
+
+\<span class="n">bibliographystyle</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">icml2016</span><span class="p">}</span>
+\<span class="n">bibliography</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">working</span><span class="p">}</span>
+<span class="o">%</span> \<span class="n">nocite</span><span class="p">{</span><span class="o">*</span><span class="p">}</span>
+
+\<span class="n">end</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="document-lualatex-template">
+<span id="document-lualatex-template"></span><h2>document (lualatex) template<a class="headerlink" href="#document-lualatex-template" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>\<span class="n">documentclass</span><span class="p">[</span><span class="n">a4paper</span><span class="p">,</span><span class="mi">10</span><span class="n">pt</span><span class="p">]{</span><span class="n">ltjsarticle</span><span class="p">}</span>
 
-\<span class="n">usepackage</span><span class="p">{</span><span class="n">hyperref</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">xltxtra</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">xunicode</span><span class="p">}</span>
 <span class="o">%</span> \<span class="n">usepackage</span><span class="p">{</span><span class="n">fontspec</span><span class="p">}</span>
@@ -206,7 +267,11 @@
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">mathbbol</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">braket</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="n">subfig</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">natbib</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">nicefrac</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">[</span><span class="n">yyyymmdd</span><span class="p">]{</span><span class="n">datetime</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">[</span><span class="n">dvipdfmx</span><span class="p">]{</span><span class="n">hyperref</span><span class="p">}</span>
+\<span class="n">usepackage</span><span class="p">{</span><span class="n">pxjahyper</span><span class="p">}</span>
 
 \<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mcr</span><span class="p">}</span>
 \<span class="n">usepackage</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">mycolor</span><span class="p">}</span>
@@ -231,6 +296,10 @@
 
 \<span class="n">begin</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
 \<span class="n">maketitle</span>
+
+\<span class="n">bibliographystyle</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">icml2016</span><span class="p">}</span>
+\<span class="n">bibliography</span><span class="p">{</span><span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">Shibagaki</span><span class="o">/</span><span class="n">GoogleDrive</span><span class="o">/</span><span class="n">Tex</span><span class="o">/</span><span class="n">working</span><span class="p">}</span>
+<span class="o">%</span> \<span class="n">nocite</span><span class="p">{</span><span class="o">*</span><span class="p">}</span>
 
 \<span class="n">end</span><span class="p">{</span><span class="n">document</span><span class="p">}</span>
 </pre></div>
