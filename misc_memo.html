@@ -93,7 +93,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="tex_memo.html">TeX</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tex_memo.html#algorithm2e">algorithm2e</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tex_memo.html#document-template">document template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tex_memo.html#document-platex-template">document (platex) template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tex_memo.html#document-lualatex-template">document (lualatex) template</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tex_memo.html#beamer-template">beamer template</a></li>
 </ul>
 </li>
@@ -115,6 +116,8 @@
 <li><a class="reference internal" href="#rename-zshzmv">まとめてrename (zshのzmv)</a></li>
 <li><a class="reference internal" href="#">解凍コマンド</a></li>
 <li><a class="reference internal" href="#">圧縮コマンド</a></li>
+<li><a class="reference internal" href="#dmidecode">dmidecode</a></li>
+<li><a class="reference internal" href="#disown">disown</a></li>
 <li><a class="reference internal" href="#top">top</a><ul>
 <li><a class="reference internal" href="#option">option</a></li>
 <li><a class="reference internal" href="#status-of-process">status of process</a></li>
@@ -209,6 +212,20 @@
 <li>.lha .lzh       : <code class="docutils literal"><span class="pre">lha</span> <span class="pre">c</span> <span class="pre">fn.lzh</span> <span class="pre">target</span></code></li>
 <li>.zip            : <code class="docutils literal"><span class="pre">zip</span> <span class="pre">fn.zip</span> <span class="pre">target</span></code></li>
 </ul>
+</div>
+<div class="section" id="dmidecode">
+<span id="dmidecode"></span><h3>dmidecode<a class="headerlink" href="#dmidecode" title="Permalink to this headline">¶</a></h3>
+<p>ハードウエア情報取得</p>
+</div>
+<div class="section" id="disown">
+<span id="disown"></span><h3>disown<a class="headerlink" href="#disown" title="Permalink to this headline">¶</a></h3>
+<p>nohupし忘れ</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Ctrl+Zで中断</span>
+<span class="n">bg</span> <span class="mi">1</span>
+<span class="n">jobs</span> <span class="mi">1</span>
+<span class="n">disown</span> <span class="o">%</span><span class="mi">1</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="top">
 <span id="top"></span><h3>top<a class="headerlink" href="#top" title="Permalink to this headline">¶</a></h3>
