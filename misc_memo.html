@@ -114,6 +114,7 @@
 <li><a class="reference internal" href="#">Misc</a><ul>
 <li><a class="reference internal" href="#other">other</a><ul>
 <li><a class="reference internal" href="#rename-zshzmv">まとめてrename (zshのzmv)</a></li>
+<li><a class="reference internal" href="#rename">0埋め連番rename</a></li>
 <li><a class="reference internal" href="#">解凍コマンド</a></li>
 <li><a class="reference internal" href="#">圧縮コマンド</a></li>
 <li><a class="reference internal" href="#dmidecode">dmidecode</a></li>
@@ -189,6 +190,12 @@
 <li><code class="docutils literal"><span class="pre">zmv</span> <span class="pre">'hoge-(*).(*).(*).tar.gz'</span> <span class="pre">'hoge-$1--$2--$3.tar.gz'</span></code></li>
 <li><code class="docutils literal"><span class="pre">zmv</span> <span class="pre">-w</span> <span class="pre">'hoge-*.*.*.tar.gz'</span> <span class="pre">'hoge-$1--$2--$3.tar.gz'</span></code></li>
 <li><code class="docutils literal"><span class="pre">zmv</span> <span class="pre">-W</span> <span class="pre">'hoge-*.*.*.tar.gz'</span> <span class="pre">'hoge-*--*--*.tar.gz'</span></code></li>
+</ul>
+</div>
+<div class="section" id="rename">
+<span id="rename"></span><h3>0埋め連番rename<a class="headerlink" href="#rename" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">(n=1;</span> <span class="pre">zmv</span> <span class="pre">'*.jpg'</span> <span class="pre">'${(l:3::0:)$((n++))}.jpg')</span></code></li>
 </ul>
 </div>
 <div class="section" id="">
