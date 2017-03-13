@@ -11,6 +11,9 @@
 
 - `zmv -W 'hoge-*.*.*.tar.gz' 'hoge-*--*--*.tar.gz'`
 
+### 0埋め連番rename
+
+- `(n=1; zmv '*.jpg' '${(l:3::0:)$((n++))}.jpg')`
 
 ### 解凍コマンド
   - .tar.gz .tgz    : `tar -xzvf fn`
@@ -27,6 +30,20 @@
   - .bz2            : `bzip2 target` ( -k: 圧縮及び展開する際，元ファイルを削除しない)
   - .lha .lzh       : `lha c fn.lzh target`
   - .zip            : `zip fn.zip target`
+
+### dmidecode
+
+ハードウエア情報取得
+
+### disown
+
+nohupし忘れ
+```
+# Ctrl+Zで中断
+bg 1
+jobs 1
+disown %1
+```
 
 ### top
 
