@@ -125,7 +125,7 @@ Activities
     - **Nov (2016):**
       Poster presentation in `IBIS2016 <http://ibisml.org/ibis2016/poster1/>`_ @ Kyoto Univ.
 
-    - **Mar (2015):**
+    - **Jul (2016):**
       Oral presentation in `IBISML25 <http://ibisml.org/ibisml025>`_ @ Okinawa.
 
     - **Jun (2016):**
