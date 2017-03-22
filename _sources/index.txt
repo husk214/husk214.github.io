@@ -33,6 +33,30 @@ I found employment.
   <span class="octicon octicon-mark-github"></span> <a href="https://github.com/husk214">GitHub</a>
   </div>
 
+Preprint
+^^^^^^^^^^
+.. raw:: html
+
+    <div class="menu">
+        <label for="Panelp2">
+        <strong>Stochastic Primal Dual Coordinate Method with Non-Uniform Sampling Based on Optimality Violations</strong> <br>
+        <u><i>A. Shibagaki</i> and I. Takeuchi</u> <br>
+        <div class="mybtn3"><a href="https://arxiv.org/abs/1703.07056">arXiv:1703.07056</a></div>
+        </label>
+        <input type="checkbox" id="Panelp2" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract: </b>
+        We study primal-dual type stochastic optimization algorithms with non-uniform sampling. Our main theoretical contribution in this paper is to present a convergence analysis of Stochastic Primal Dual Coordinate (SPDC) Method with arbitrary sampling. Based on this theoretical framework, we propose Optimality Violation-based Sampling SPDC (ovsSPDC), a non-uniform sampling method based on Optimality Violation. We also propose two efficient heuristic variants of ovsSPDC called ovsSDPC+ and ovsSDPC++. Through intensive numerical experiments, we demonstrate that the proposed method and its variants are faster than other state-of-the-art primal-dual type stochastic optimization methods. </div> </ul> <br>
+        <label for="Panelp1">
+        <strong>Efficiently Bounding Optimal Solutions after Small Data Modification in Large-Scale Empirical Risk Minimization</strong> <br>
+        <u>H. Hanada, <i>A. Shibagaki</i>, J. Sakuma, and I. Takeuchi</u> <br>
+        <div class="mybtn3"><a href="http://arxiv.org/abs/1606.00136">arXiv:1606.00136</a></div>
+        </label>
+        <input type="checkbox" id="Panelp1" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract: </b>
+        We study large-scale classification problems in changing environments where a small part of the dataset is modified, and the effect of the data modification must be quickly incorporated into the classifier. When the entire dataset is large, even if the amount of the data modification is fairly small, the computational cost of re-training the classifier would be prohibitively large. In this paper, we propose a novel method for efficiently incorporating such a data modification effect into the classifier without actually re-training it. The proposed method provides bounds on the unknown optimal classifier with the cost only proportional to the size of the data modification. We demonstrate through numerical experiments that the proposed method provides sufficiently tight bounds with negligible computational costs, especially when a small part of the dataset is modified in a large-scale classification problem. </div> </ul> <br>
+    </div>
+
+
 Publications
 ^^^^^^^^^^^^^^
 
@@ -99,25 +123,13 @@ Publications
         <div class="mybtn3"><a href="http://www.ieice.org/ken/paper/20150306DBZ8/">paper</a></div>
     </div>
 
-Preprint
-^^^^^^^^^^
-.. raw:: html
-
-    <div class="menu">
-        <label for="Panel3">
-        <strong>Efficiently Bounding Optimal Solutions after Small Data Modification in Large-Scale Empirical Risk Minimization</strong> <br>
-        <u>H. Hanada, <i>A. Shibagaki</i>, J. Sakuma, and I. Takeuchi</u> <br>
-        <div class="mybtn3"><a href="http://arxiv.org/abs/1606.00136">arXiv:1606.00136</a></div>
-        </label>
-        <input type="checkbox" id="Panel3" class="on-off"/>
-        <ul> <div class="abst"> <b>Abstract: </b>
-        We study large-scale classification problems in changing environments where a small part of the dataset is modified, and the effect of the data modification must be quickly incorporated into the classifier. When the entire dataset is large, even if the amount of the data modification is fairly small, the computational cost of re-training the classifier would be prohibitively large. In this paper, we propose a novel method for efficiently incorporating such a data modification effect into the classifier without actually re-training it. The proposed method provides bounds on the unknown optimal classifier with the cost only proportional to the size of the data modification. We demonstrate through numerical experiments that the proposed method provides sufficiently tight bounds with negligible computational costs, especially when a small part of the dataset is modified in a large-scale classification problem. </div> </ul> <br>
-    </div>
-
 
 Activities
 ^^^^^^^^^^^^^
 .. rst-class:: actli
+
+    - **Mar (2017):**
+      Got master's degree form Nagoya Institute of Technology (Department of Scientific and Engineering Simulation)
 
     - **Dec (2016):**
       Poster presentation in `情報系 WINTER FESTA Episode2 <http://bigdata.nii.ac.jp/johokei-winterfesta2/program>`_ @ Tokyo
@@ -167,6 +179,5 @@ Memo
 .. * :doc:`git_memo`
 .. * :doc:`tex_memo`
 
-..     - **Mar (2017):**
-..      Got master's degree form Nagoya Institute of Technology (Department of Scientific and Engineering Simulation)
+
 
