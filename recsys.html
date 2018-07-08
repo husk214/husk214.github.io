@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Search &mdash; Atsushi Shibagaki 170323 documentation</title>
+    <title>Learning to Rank (ランク学習) &mdash; Atsushi Shibagaki 170323 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -26,19 +26,14 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/searchtools.js"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
     <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="top" title="Atsushi Shibagaki 170323 documentation" href="index.html" />
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
-  
+    <link rel="next" title="Algorithm" href="recsys/algorithm.html" />
+    <link rel="prev" title="Atsushi Shibagaki (柴垣篤志)" href="index.html" />
 <link rel="stylesheet" href="_static/custom.css" type="text/css" />
 
 <script>
@@ -50,7 +45,6 @@
   ga('create', 'UA-74773673-1', 'auto');
   ga('send', 'pageview');
 </script>
-
 
   </head>
   <body role="document">
@@ -81,8 +75,8 @@
      href="index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"><ul>
-<li class="toctree-l1"><a class="reference internal" href="recsys.html">Learning to Rank (ランク学習)</a><ul>
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Learning to Rank (ランク学習)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="recsys/algorithm.html">Algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="recsys/metric.html">Metric</a></li>
 </ul>
@@ -112,13 +106,24 @@
      href="#">Page <b class="caret"></b></a>
   <ul class="dropdown-menu localtoc"
       role="menu"
-      aria-labelledby="dLabelLocalToc"></ul>
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Learning to Rank (ランク学習)</a></li>
+</ul>
+</ul>
 </li>
               
             
             
               
                 
+  <li>
+    <a href="index.html" title="Previous Chapter: Atsushi Shibagaki (柴垣篤志)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Atsushi Shiba...</span>
+    </a>
+  </li>
+  <li>
+    <a href="recsys/algorithm.html" title="Next Chapter: Algorithm"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Algorithm &raquo;</span>
+    </a>
+  </li>
               
             
             
@@ -128,6 +133,13 @@
 
           
             
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
           
         </div>
     </div>
@@ -137,35 +149,34 @@
   <div class="row">
     <div class="col-md-12 content">
       
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script type="text/javascript">$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    From here you can search these documents. Enter your search
-    words into the box below and click "search". Note that the search
-    function will automatically search for all of the words. Pages
-    containing fewer words won't appear in the result list.
-  </p>
+  <div class="section" id="learning-to-rank">
+<h1>Learning to Rank (ランク学習)<a class="headerlink" href="#learning-to-rank" title="Permalink to this headline">¶</a></h1>
+<p><strong>Learning to Rank (ランク学習)とは</strong></p>
+<ul class="simple">
+<li>クエリ <span class="math">\(q_i\)</span> に対する関連文書の特徴量のリストを <span class="math">\(X_i = [x_i^{(1)}, \ldots, x_i^{(n_i)}]\)</span> , それらに対する (教師となる) 関連度のリストを <span class="math">\(Y_i = [y_i^{(1)}, \ldots, y_i^{(n_i)}]\)</span> とする</li>
+<li><span class="math">\(\{X_i, Y_i\}_{i=1}^{n}\)</span> を教師データにして、 関連文書の特徴量を入力にその文書の関連度の予測値を出力する関数を学習することをランク学習という</li>
+</ul>
+<p><strong>目次</strong></p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="recsys/algorithm.html">Algorithm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="recsys/algorithm.html#pointwise-approch">Pointwise Approch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recsys/algorithm.html#pairwise-approch">Pairwise Approch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recsys/algorithm.html#listwise-approch">Listwise Approch</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recsys/metric.html">Metric</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="recsys/metric.html#notation">Notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="recsys/metric.html#ndcg-k">nDCG&#64;k</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="recsys/metric.html#catboostdcg">CatBoostのDCGの計算方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 
-  
-  <form class="form-inline" action="" method="get">
-    <div class="form-group">
-      <input type="text" class="form-control" name="q" value="" />
-    </div>
-    <input type="submit" class="btn btn-default" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>  
-  
-  
-  
-  <div id="search-results">
-  
-  </div>
 
     </div>
       
