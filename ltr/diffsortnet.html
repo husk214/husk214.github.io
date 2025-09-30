@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Petersen ICLR’22 Monotonic Differentiable Sorting Networks" href="monodiffsort.html" />
+    <link rel="prev" title="Blondel ICML’20 Fast Differentiable Sorting and Ranking" href="fastsort.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">前置き</a></li>
+<li><a class="reference internal" href="#differentiable-sorting-networks">Differentiable Sorting Networks</a><ul>
+<li><a class="reference internal" href="#activation-replacement-trick">Activation Replacement Trick</a></li>
+<li><a class="reference internal" href="#differentiable-permutation-matrices">Differentiable Permutation Matrices</a></li>
+<li><a class="reference internal" href="#pytorch">著者によるpytorch実装</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="fastsort.html" title="Previous Chapter: Blondel ICML’20 Fast Differentiable Sorting and Ranking"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Blondel ICML’...</span>
+    </a>
+  </li>
+  <li>
+    <a href="monodiffsort.html" title="Next Chapter: Petersen ICLR’22 Monotonic Differentiable Sorting Networks"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Petersen ICLR... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">前置き</a></li>
+<li><a class="reference internal" href="#differentiable-sorting-networks">Differentiable Sorting Networks</a><ul>
+<li><a class="reference internal" href="#activation-replacement-trick">Activation Replacement Trick</a></li>
+<li><a class="reference internal" href="#differentiable-permutation-matrices">Differentiable Permutation Matrices</a></li>
+<li><a class="reference internal" href="#pytorch">著者によるpytorch実装</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="fastsort.html" title="Previous Chapter: Blondel ICML’20 Fast Differentiable Sorting and Ranking"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Blondel ICML’...</span>
+    </a>
+  </li>
+  <li>
+    <a href="monodiffsort.html" title="Next Chapter: Petersen ICLR’22 Monotonic Differentiable Sorting Networks"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Petersen ICLR... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/ltr/diffsortnet.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="petersen-icml-21-differentiable-sorting-networks-for-scalable-sorting-and-ranking-supervision">
+<h1>Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision<a class="headerlink" href="#petersen-icml-21-differentiable-sorting-networks-for-scalable-sorting-and-ranking-supervision" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://arxiv.org/abs/2105.04019">https://arxiv.org/abs/2105.04019</a></p>
+<p>著者</p>
+<ul class="simple">
+<li><p>Felix Petersen (University of Konstanz)</p></li>
+<li><p>Christian Borgelt (University of Salzburg)</p></li>
+<li><p>Hilde Kuehne (University of Frankfurt, MIT-IBM Watson AI)</p></li>
+<li><p>Oliver Deussen (University of Konstanz)</p></li>
+</ul>
+<section id="id1">
+<h2>概要<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>sorting networkはワイヤーとコンパレーターで構成され(どの要素とどの要素の大小比較をしてswapするかを指定する)、それどおりに実行するとsortされる。</p></li>
+<li><p>コンパレーターはmin, maxなので微分できないが、それをsigmoidを使って代替することで微分可能にする。</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>前置き<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>sorting network</strong></p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Sorting_network">https://en.wikipedia.org/wiki/Sorting_network</a></p>
+<a class="reference internal image-reference" href="../_images/ltr_sortnet_wiki2.png"><img alt="../_images/ltr_sortnet_wiki2.png" class="align-center" src="../_images/ltr_sortnet_wiki2.png" style="width: 188.5px; height: 215.5px;" />
+</a>
+<ul class="simple">
+<li><p>横の棒がワイヤーで左から右に値を伝搬する</p></li>
+<li><p>●と縦の棒がコンパレーターで繋がれたところに流れてきた値を比較して、上の値&gt;=下の値ならそのまま、そうでなければスワップする</p>
+<ul>
+<li><p>つまり 上の値を <span class="math notranslate nohighlight">\(x\)</span> , 下の値を <span class="math notranslate nohighlight">\(y\)</span> としてコンパレーター通した上と下の値はそれぞれ <span class="math notranslate nohighlight">\(\min(x, y), \max(x, y)\)</span> になる</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/ltr_sortnet_wiki1.png"><img alt="../_images/ltr_sortnet_wiki1.png" class="align-center" src="../_images/ltr_sortnet_wiki1.png" style="width: 688.8px; height: 196.79999999999998px;" />
+</a>
+<ul class="simple">
+<li><p>この論文で出てくる odd-even sort, bitonic sort は深さが <span class="math notranslate nohighlight">\(\mathcal{O}(\log^2 n)\)</span> なのでサイズは <span class="math notranslate nohighlight">\(\mathcal{O}(n \log^2 n)\)</span></p>
+<ul>
+<li><p>GPUとかで並列実行できれば早い</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Batcher_odd%E2%80%93even_mergesort">https://en.wikipedia.org/wiki/Batcher_odd%E2%80%93even_mergesort</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bitonic_sorter">https://en.wikipedia.org/wiki/Bitonic_sorter</a></p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/ltr_sortnet_wiki3.png"><img alt="../_images/ltr_sortnet_wiki3.png" src="../_images/ltr_sortnet_wiki3.png" style="width: 45%;" />
+</a>
+<a class="reference internal image-reference" href="../_images/ltr_sortnet_wiki4.png"><img alt="../_images/ltr_sortnet_wiki4.png" src="../_images/ltr_sortnet_wiki4.png" style="width: 45%;" />
+</a>
+<ul class="simple">
+<li><p>AKS sortは深さが <span class="math notranslate nohighlight">\(\mathcal{O}(\log n)\)</span> だが、定数部分が大きくて使い物にならないらしい</p></li>
+</ul>
+</section>
+<section id="differentiable-sorting-networks">
+<span id="labeldiffsortnet"></span><h2>Differentiable Sorting Networks<a class="headerlink" href="#differentiable-sorting-networks" title="Link to this heading">¶</a></h2>
+<p>minとmaxを以下のように緩和する</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  \text{softmin}(a, b) &amp;:=  a f(b-a) + b (a-b) \\
+ \text{softmax}(a, b) &amp;:=  a f(a-b) + b (b-a)
+\end{align}</div><p>この論文では <span class="math notranslate nohighlight">\(f\)</span> はsigmoid関数 ( <span class="math notranslate nohighlight">\(f(x) = 1 / (1+\exp(-sx))\)</span> ) としている。</p>
+<p><span class="math notranslate nohighlight">\(s\)</span> は steepness hyperparameterで <span class="math notranslate nohighlight">\(s\rightarrow \infty\)</span> にするとmin, maxになる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sofmin</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sofmax</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f_sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mf">10.0</span>
+    <span class="k">return</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">s</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.111</span><span class="p">,</span> <span class="mf">1.112</span><span class="p">),]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;(a, b) = (</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span>
+        <span class="s2">&quot;softmin(a, b) =&quot;</span><span class="p">,</span> <span class="n">sofmin</span><span class="p">(</span><span class="n">f_sigmoid</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span>
+        <span class="s2">&quot;, softmax(a, b) =&quot;</span><span class="p">,</span> <span class="n">sofmax</span><span class="p">(</span><span class="n">f_sigmoid</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(a, b) = (1, 2)
+softmin(a, b) = 1.0000453978687025 , softmax(a, b) = 1.9999546021312977
+(a, b) = (1.111, 1.112)
+softmin(a, b) = 1.1114975000208331 , softmax(a, b) = 1.111502499979167
+</pre></div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="activation-replacement-trick">
+<h3>Activation Replacement Trick<a class="headerlink" href="#activation-replacement-trick" title="Link to this heading">¶</a></h3>
+<p>2つの問題があるので、値をいじる。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|a-b|\)</span> が0に近いと勾配が大きくなりすぎて、大きく動きすぎてしまう。</p></li>
+<li><p>逆に <span class="math notranslate nohighlight">\(|a-b|\)</span> が大きすぎると勾配が消失する。</p></li>
+</ul>
+<p>なので、<span class="math notranslate nohighlight">\(\varphi(x) = x / (|x|^\lambda + \epsilon), ~~ (\lambda \in [0, 1])\)</span> を <span class="math notranslate nohighlight">\(f\)</span> の前に挟んで、 正の値は+1, 負の値は-1に近づけるようにする</p>
+<a class="reference internal image-reference" href="../_images/ltr_diffsort_fig3.png"><img alt="../_images/ltr_diffsort_fig3.png" class="align-center" src="../_images/ltr_diffsort_fig3.png" style="width: 322.8px; height: 233.39999999999998px;" />
+</a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="differentiable-permutation-matrices">
+<h3>Differentiable Permutation Matrices<a class="headerlink" href="#differentiable-permutation-matrices" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>各レイヤーのpermutation matrixは、まず単位行列で初期化し、指定要素の値を次のようにする</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  P_{l, ii} = P_{l, jj} &amp;=  f(\varphi(a_j - a_i)) \\
+  P_{l, ij} = P_{l, ji} &amp;=  1 - f(\varphi(a_j - a_i))
+\end{align}</div><ul class="simple">
+<li><p>relaxed permutation matrixは以下のようになる</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[P = P_n \cdot \ldots \cdot P_2 \cdot P_1\]</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>sorting networkのwikipediaにある4入力のnetworkで確認してみる。</p>
+<a class="reference internal image-reference" href="../_images/ltr_sortnet_wiki5.png"><img alt="../_images/ltr_sortnet_wiki5.png" class="align-center" src="../_images/ltr_sortnet_wiki5.png" style="width: 423.59999999999997px; height: 301.8px;" />
+</a>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mf">10.0</span>
+    <span class="k">return</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.</span> <span class="o">+</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">s</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_pm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ij_list</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">ij_list</span><span class="p">:</span>
+        <span class="n">alpha_ij</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha_ij</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">alpha_ij</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">alpha_ij</span>
+        <span class="n">P</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">alpha_ij</span>
+    <span class="k">return</span> <span class="n">P</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mprint</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># layer1 </span>
+<span class="n">P1</span> <span class="o">=</span> <span class="n">get_pm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ij_list</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">P1</span>
+<span class="n">sx</span> <span class="o">=</span> <span class="n">P</span> <span class="o">@</span> <span class="n">x</span>
+<span class="n">mprint</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">P</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([3.0000, 1.0000, 4.0000, 2.0000])
+tensor([[9.9995e-01, 0.0000e+00, 4.5419e-05, 0.0000e+00],
+        [0.0000e+00, 4.5398e-05, 0.0000e+00, 9.9995e-01],
+        [4.5419e-05, 0.0000e+00, 9.9995e-01, 0.0000e+00],
+        [0.0000e+00, 9.9995e-01, 0.0000e+00, 4.5398e-05]])
+tensor(4.)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># layer2</span>
+<span class="n">P2</span> <span class="o">=</span> <span class="n">get_pm</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span> <span class="n">ij_list</span><span class="o">=</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">P2</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">P1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
+<span class="n">sx</span> <span class="o">=</span> <span class="n">P</span> <span class="o">@</span> <span class="n">x</span>
+<span class="n">mprint</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">P</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([1.0000, 3.0000, 2.0000, 4.0000])
+tensor([[2.0611e-09, 4.5398e-05, 9.3615e-14, 9.9995e-01],
+        [9.9995e-01, 9.3572e-14, 4.5419e-05, 2.0611e-09],
+        [9.3615e-14, 9.9995e-01, 2.0611e-09, 4.5398e-05],
+        [4.5419e-05, 2.0611e-09, 9.9995e-01, 9.3572e-14]])
+tensor(4.)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># layer3</span>
+<span class="n">P3</span> <span class="o">=</span> <span class="n">get_pm</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span> <span class="n">ij_list</span><span class="o">=</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">P3</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">P2</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">P1</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+<span class="n">sx</span> <span class="o">=</span> <span class="n">P</span> <span class="o">@</span> <span class="n">x</span>
+<span class="n">mprint</span><span class="p">(</span><span class="n">sx</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">P</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tensor([1.0000, 2.0000, 3.0000, 4.0000])
+tensor([[2.0611e-09, 4.5398e-05, 9.3615e-14, 9.9995e-01],
+        [4.5355e-05, 9.9991e-01, 4.1210e-09, 4.5396e-05],
+        [9.9991e-01, 4.5355e-05, 4.5417e-05, 4.1201e-09],
+        [4.5419e-05, 2.0611e-09, 9.9995e-01, 9.3572e-14]])
+tensor(4.)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section>
+<section id="pytorch">
+<h3>著者によるpytorch実装<a class="headerlink" href="#pytorch" title="Link to this heading">¶</a></h3>
+<p><a class="reference external" href="https://github.com/Felix-Petersen/diffsort">https://github.com/Felix-Petersen/diffsort</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://github.com/Felix-Petersen/diffsort</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">odd_even_network</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">layers</span> <span class="o">=</span> <span class="n">n</span>
+
+    <span class="n">network</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">shifted</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">even</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">layers</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">even</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">shifted</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span>
+
+        <span class="n">split_a</span><span class="p">,</span> <span class="n">split_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+        <span class="n">combine_min</span><span class="p">,</span> <span class="n">combine_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># for i in range(n // 2 if not (even and shifted) else n // 2 - 1):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">shifted</span><span class="p">),</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">split_a</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="n">split_b</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="n">combine_min</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">count</span><span class="p">],</span> <span class="n">combine_max</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">even</span> <span class="ow">and</span> <span class="n">shifted</span><span class="p">:</span>
+            <span class="c1"># Make sure that the corner values stay where they are/were:</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+            <span class="n">split_a</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="n">split_b</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="n">combine_min</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">count</span><span class="p">],</span> <span class="n">combine_max</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">split_a</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="n">split_b</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="n">combine_min</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">count</span><span class="p">],</span> <span class="n">combine_max</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">even</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">shifted</span><span class="p">:</span>
+                <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="n">split_a</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="n">split_b</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="n">combine_min</span><span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">count</span><span class="p">],</span> <span class="n">combine_max</span><span class="p">[</span><span class="n">b</span><span class="p">,</span> <span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">assert</span> <span class="n">count</span> <span class="o">==</span> <span class="n">k</span>
+
+        <span class="n">network</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">split_a</span><span class="p">,</span> <span class="n">split_b</span><span class="p">,</span> <span class="n">combine_min</span><span class="p">,</span> <span class="n">combine_max</span><span class="p">))</span>
+        <span class="n">shifted</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">shifted</span>
+
+    <span class="k">return</span> <span class="n">network</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_sorting_network</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">device</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">matrix_to_torch</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[[</span><span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span> <span class="k">for</span> <span class="n">matrix</span> <span class="ow">in</span> <span class="n">matrix_set</span><span class="p">]</span> <span class="k">for</span> <span class="n">matrix_set</span> <span class="ow">in</span> <span class="n">m</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">type</span> <span class="o">==</span> <span class="s1">&#39;odd_even&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">matrix_to_torch</span><span class="p">(</span><span class="n">odd_even_network</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Sorting network `</span><span class="si">{}</span><span class="s1">` unknown.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">type</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SORTING_NETWORK_TYPE</span> <span class="o">=</span> <span class="n">List</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">s_best</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span> <span class="o">+</span> <span class="mf">.5</span> <span class="o">+</span> \
+        <span class="p">((</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.25</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">()</span> <span class="o">-</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">)</span><span class="o">.</span><span class="n">float</span><span class="p">())</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.25</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span><span class="o">+</span><span class="mf">1e-10</span><span class="p">))</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">NormalCDF</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">Function</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backward</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">sigma</span><span class="p">))</span>
+        <span class="k">return</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">erf</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">grad_y</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">saved_tensors</span>
+        <span class="k">return</span> <span class="n">grad_y</span> <span class="o">*</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">)),</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">execute_sort</span><span class="p">(</span>
+        <span class="n">sorting_network</span><span class="p">,</span>
+        <span class="n">vectors</span><span class="p">,</span>
+        <span class="n">steepness</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span>
+        <span class="n">art_lambda</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+        <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;cauchy&#39;</span>
+<span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">vectors</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">vectors</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">split_a</span><span class="p">,</span> <span class="n">split_b</span><span class="p">,</span> <span class="n">combine_min</span><span class="p">,</span> <span class="n">combine_max</span> <span class="ow">in</span> <span class="n">sorting_network</span><span class="p">:</span>
+        <span class="n">split_a</span> <span class="o">=</span> <span class="n">split_a</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">split_b</span> <span class="o">=</span> <span class="n">split_b</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">combine_min</span> <span class="o">=</span> <span class="n">combine_min</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">combine_max</span> <span class="o">=</span> <span class="n">combine_max</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">x</span> <span class="o">@</span> <span class="n">split_a</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x</span> <span class="o">@</span> <span class="n">split_b</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="c1"># float conversion necessary as PyTorch doesn&#39;t support Half for sigmoid as of 25. August 2021</span>
+        <span class="n">new_type</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">float32</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="n">torch</span><span class="o">.</span><span class="n">float16</span> <span class="k">else</span> <span class="n">x</span><span class="o">.</span><span class="n">dtype</span>
+
+        <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;logistic&#39;</span><span class="p">:</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">((</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">new_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">steepness</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;logistic_phi&#39;</span><span class="p">:</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">((</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">new_type</span><span class="p">)</span> <span class="o">*</span> <span class="n">steepness</span> <span class="o">/</span> <span class="p">((</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">new_type</span><span class="p">)</span><span class="o">.</span><span class="n">abs</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1.e-10</span><span class="p">)</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">art_lambda</span><span class="p">))</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;gaussian&#39;</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">new_type</span><span class="p">)</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="n">NormalCDF</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">steepness</span><span class="p">)</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;reciprocal&#39;</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">steepness</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">new_type</span><span class="p">)</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">v</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="n">v</span><span class="o">.</span><span class="n">abs</span><span class="p">())</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;cauchy&#39;</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">steepness</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">new_type</span><span class="p">)</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">atan</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="mf">.5</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;optimal&#39;</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">steepness</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">new_type</span><span class="p">)</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="n">s_best</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">type</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;softmax method `</span><span class="si">{}</span><span class="s1">` unknown&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">distribution</span><span class="p">))</span>
+
+        <span class="n">aX</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">split_a</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">bX</span> <span class="o">=</span> <span class="n">X</span> <span class="o">@</span> <span class="n">split_b</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">w_min</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">aX</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">bX</span>
+        <span class="n">w_max</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">aX</span> <span class="o">+</span> <span class="n">alpha</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">bX</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="p">(</span><span class="n">w_max</span> <span class="o">@</span> <span class="n">combine_max</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="p">(</span><span class="n">w_min</span> <span class="o">@</span> <span class="n">combine_min</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">@</span> <span class="n">combine_min</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">@</span> <span class="n">combine_max</span><span class="o">.</span><span class="n">T</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">X</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span>
+        <span class="n">sorting_network</span><span class="p">:</span> <span class="n">SORTING_NETWORK_TYPE</span><span class="p">,</span>
+        <span class="n">vectors</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span>
+        <span class="n">steepness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span>
+        <span class="n">art_lambda</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span>
+        <span class="n">distribution</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;cauchy&#39;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="n">execute_sort</span><span class="p">(</span>
+        <span class="n">sorting_network</span><span class="o">=</span><span class="n">sorting_network</span><span class="p">,</span>
+        <span class="n">vectors</span><span class="o">=</span><span class="n">vectors</span><span class="p">,</span>
+        <span class="n">steepness</span><span class="o">=</span><span class="n">steepness</span><span class="p">,</span>
+        <span class="n">art_lambda</span><span class="o">=</span><span class="n">art_lambda</span><span class="p">,</span>
+        <span class="n">distribution</span><span class="o">=</span><span class="n">distribution</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,],</span>
+    <span class="p">[</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">9.2</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,]</span>
+<span class="p">])</span>
+<span class="n">sn</span> <span class="o">=</span> <span class="n">get_sorting_network</span><span class="p">(</span><span class="s1">&#39;odd_even&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">distribution</span><span class="p">):</span>
+    <span class="n">sx</span><span class="p">,</span> <span class="n">pm</span> <span class="o">=</span> <span class="n">execute_sort</span><span class="p">(</span><span class="n">sn</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="n">distribution</span><span class="p">)</span>
+    <span class="n">b_hat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">sr</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">pm</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sort(x) =&quot;</span><span class="p">,</span> <span class="n">sx</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rank(x) =&quot;</span><span class="p">,</span> <span class="n">sr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;logistic&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = tensor([[6.5000, 0.4000, 1.5000, 3.8000],
+        [3.5000, 9.2000, 2.4000, 0.8000]])
+sort(x) = tensor([[0.4000, 1.5000, 3.8000, 6.5000],
+        [0.8000, 2.4000, 3.5000, 9.2000]])
+rank(x) = tensor([[4.0000, 1.0000, 2.0000, 3.0000],
+        [3.0000, 4.0000, 2.0000, 1.0000]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;logistic_phi&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = tensor([[6.5000, 0.4000, 1.5000, 3.8000],
+        [3.5000, 9.2000, 2.4000, 0.8000]])
+sort(x) = tensor([[0.4000, 1.5000, 3.8000, 6.5000],
+        [0.8000, 2.4000, 3.5000, 9.2000]])
+rank(x) = tensor([[4.0000, 1.0000, 2.0000, 3.0000],
+        [3.0000, 4.0000, 2.0000, 1.0000]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;cauchy&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = tensor([[6.5000, 0.4000, 1.5000, 3.8000],
+        [3.5000, 9.2000, 2.4000, 0.8000]])
+sort(x) = tensor([[0.4636, 1.5637, 3.7682, 6.4045],
+        [0.8954, 2.4318, 3.4683, 9.1045]])
+rank(x) = tensor([[3.9596, 1.0438, 2.0123, 2.9842],
+        [2.9534, 3.9736, 2.0182, 1.0548]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tensorflow Serving" href="tensorflow_serving.html" />
+    <link rel="prev" title="Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking" href="user_centric_ranking.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../other.html">Other</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a><ul>
+<li><a class="reference internal" href="#abstract">ABSTRACT</a></li>
+<li><a class="reference internal" href="#introduction">INTRODUCTION</a></li>
+<li><a class="reference internal" href="#related-work">RELATED WORK</a><ul>
+<li><a class="reference internal" href="#open-domain-plm-pre-trained-language-models">Open Domain PLM (pre-trained language models)</a></li>
+<li><a class="reference internal" href="#domain-adaption-plms">Domain Adaption PLMs</a></li>
+<li><a class="reference internal" href="#query-search">Query Search</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quert">QUERT (提案法)</a><ul>
+<li><a class="reference internal" href="#geography-aware-mask-prediction-geo-mp">Geography-aware Mask Prediction (Geo-MP)</a></li>
+<li><a class="reference internal" href="#geohash-code-prediction-geo-cp">Geohash Code Prediction (Geo-CP)</a></li>
+<li><a class="reference internal" href="#user-click-behavior-learning-ucbl">User Click Behavior Learning (UCBL)</a></li>
+<li><a class="reference internal" href="#phrase-and-token-order-prediction-ptop">Phrase and Token Order Prediction (PTOP)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments-offline-results">EXPERIMENTS (Offline Results)</a><ul>
+<li><a class="reference internal" href="#supervised-results">Supervised results</a></li>
+<li><a class="reference internal" href="#unsupervised-results">Unsupervised results</a></li>
+<li><a class="reference internal" href="#ablation-studies">Ablation Studies</a></li>
+<li><a class="reference internal" href="#few-shot-learning">Few-shot Learning</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments-task-study">EXPERIMENTS (Task Study)</a><ul>
+<li><a class="reference internal" href="#task-1-geo-mp">TASK 1: Geo-MP</a></li>
+<li><a class="reference internal" href="#task-2-geo-cp">TASK 2: Geo-CP</a></li>
+<li><a class="reference internal" href="#task-3-ucbl">TASK 3: UCBL</a></li>
+<li><a class="reference internal" href="#task-4-ptop">TASK 4: PTOP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments-online-application">EXPERIMENTS (Online Application)</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="user_centric_ranking.html" title="Previous Chapter: Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Zhao (KDD’23)...</span>
+    </a>
+  </li>
+  <li>
+    <a href="tensorflow_serving.html" title="Next Chapter: Tensorflow Serving"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Tensorflow Serving &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a><ul>
+<li><a class="reference internal" href="#abstract">ABSTRACT</a></li>
+<li><a class="reference internal" href="#introduction">INTRODUCTION</a></li>
+<li><a class="reference internal" href="#related-work">RELATED WORK</a><ul>
+<li><a class="reference internal" href="#open-domain-plm-pre-trained-language-models">Open Domain PLM (pre-trained language models)</a></li>
+<li><a class="reference internal" href="#domain-adaption-plms">Domain Adaption PLMs</a></li>
+<li><a class="reference internal" href="#query-search">Query Search</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quert">QUERT (提案法)</a><ul>
+<li><a class="reference internal" href="#geography-aware-mask-prediction-geo-mp">Geography-aware Mask Prediction (Geo-MP)</a></li>
+<li><a class="reference internal" href="#geohash-code-prediction-geo-cp">Geohash Code Prediction (Geo-CP)</a></li>
+<li><a class="reference internal" href="#user-click-behavior-learning-ucbl">User Click Behavior Learning (UCBL)</a></li>
+<li><a class="reference internal" href="#phrase-and-token-order-prediction-ptop">Phrase and Token Order Prediction (PTOP)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments-offline-results">EXPERIMENTS (Offline Results)</a><ul>
+<li><a class="reference internal" href="#supervised-results">Supervised results</a></li>
+<li><a class="reference internal" href="#unsupervised-results">Unsupervised results</a></li>
+<li><a class="reference internal" href="#ablation-studies">Ablation Studies</a></li>
+<li><a class="reference internal" href="#few-shot-learning">Few-shot Learning</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments-task-study">EXPERIMENTS (Task Study)</a><ul>
+<li><a class="reference internal" href="#task-1-geo-mp">TASK 1: Geo-MP</a></li>
+<li><a class="reference internal" href="#task-2-geo-cp">TASK 2: Geo-CP</a></li>
+<li><a class="reference internal" href="#task-3-ucbl">TASK 3: UCBL</a></li>
+<li><a class="reference internal" href="#task-4-ptop">TASK 4: PTOP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments-online-application">EXPERIMENTS (Online Application)</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="user_centric_ranking.html" title="Previous Chapter: Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Zhao (KDD’23)...</span>
+    </a>
+  </li>
+  <li>
+    <a href="tensorflow_serving.html" title="Next Chapter: Tensorflow Serving"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Tensorflow Serving &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/other/quert.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="xie-kdd-23-quert-continual-pre-training-of-language-model-for-query-understanding-in-travel-domain-search">
+<h1>Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search<a class="headerlink" href="#xie-kdd-23-quert-continual-pre-training-of-language-model-for-query-understanding-in-travel-domain-search" title="Link to this heading">¶</a></h1>
+<p>著者</p>
+<ul class="simple">
+<li><p>Jian Xie (Fudan University)</p></li>
+<li><p>Yidan Liang (Alibaba)</p></li>
+<li><p>Jingping Liu (East China University of Science and Technology)</p></li>
+<li><p>Yanghua Xiao (Fudan University)</p></li>
+<li><p>Baohua Wu (Alibaba)</p></li>
+<li><p>Shenghua Ni (Alibaba)</p></li>
+</ul>
+<section id="abstract">
+<h2>ABSTRACT<a class="headerlink" href="#abstract" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>宿泊予約サイトの検索等(POI検索、クエリrewrite等)につかうモデルのための事前学習方法を提案</p></li>
+<li><p>(感想)</p>
+<ul>
+<li><p>宿泊特化というわけではないので、ローカル検索ならなんでも使えそう</p></li>
+<li><p>クリックデータを使っていて果たしてこれは事前学習と言えるのかみたいなことは思った</p></li>
+<li><p>けどDownstreamタスクとは違うからOKか、でもそうすると境界線は難しいなと思ったし、すくなくともBERTと比較するのはフェアではないと思った</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>INTRODUCTION<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>一般的に使用されている事前学習済みモデルは、特定のドメインに直接使うとしばしば性能劣化する</p></li>
+<li><p>事前学習段階のコーパスとターゲットタスクのデータとのミスマッチが原因</p>
+<ul>
+<li><p>この問題に対処するため、先行研究では、バイオ医学のためのBioBERT [13]、金融のためのFinBERT [1]、数学の問題理解のためのCOMUS [8]などのように、ドメインコーパスを使用してドメイン固有のモデルを継続的に事前学習することが提案されている</p></li>
+</ul>
+</li>
+<li><p>本研究では宿泊特化の言語モデルの事前学習方法を提案する (宿泊特化のNER[3]や検索ランキング[29]はあった)</p>
+<ul>
+<li><p>宿泊領域の検索クエリは特徴が3つあって、すべてのトークンを平等に扱う古典的なMLMは向いていない</p></li>
+<li><p>特徴1: 検索クエリに地域が含まれる (例: 「package tour Hangzhou(中国の市)」)</p></li>
+<li><p>特徴2: 検索クエリは異なるが、それらで同じアイテムがクリックされる</p></li>
+<li><p>特徴3: フレーズの順番やトークンの順番が入れ替わっても意図は変わらない (例: 「package tour | Hangzhou」、「Hangzhou | package tour」(フレーズ入れ替え)、「tour package | Hangzhou」(トークン入れ替え(タイポ)))</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="related-work">
+<h2>RELATED WORK<a class="headerlink" href="#related-work" title="Link to this heading">¶</a></h2>
+<section id="open-domain-plm-pre-trained-language-models">
+<h3>Open Domain PLM (pre-trained language models)<a class="headerlink" href="#open-domain-plm-pre-trained-language-models" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Transfomer</p></li>
+<li><p>BERT</p></li>
+<li><p>SpanBERT[11] : NSPをやらずに、Spanという区切りを作ってSpanの両端のベクトルからスパン内のtokenを予測する</p></li>
+</ul>
+</section>
+<section id="domain-adaption-plms">
+<h3>Domain Adaption PLMs<a class="headerlink" href="#domain-adaption-plms" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>FinBERT [1] : 金融テキストの大規模コーパスを用いて金融センチメント分類の精度を向上させた</p></li>
+<li><p>BERTweet [22] : Tweeter用bert</p></li>
+<li><p>COVID-Twitter-BERT [21] : covid関連のタスクでsota</p></li>
+</ul>
+</section>
+<section id="query-search">
+<h3>Query Search<a class="headerlink" href="#query-search" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>クエリ検索のために、PROP [19]とB-PROP [20]は、クエリと文書をモデル化する事前学習段階で代表語予測タスクを導入</p></li>
+<li><p>さらに、言語モデルに地理情報を組み込むことで、モデルを地理に敏感にすることができる</p>
+<ul>
+<li><p>例えば、Baidu MapsのERNIE-GeoL[10]</p></li>
+<li><p>ERNIE-GeoLは、全単語マスクとジオコーディング予測タスクで事前学習された言語モデルであり、地理的タスクのパフォーマンスを向上させる</p></li>
+</ul>
+</li>
+<li><p>Point of Interest（POI）検索では、POI分布をシミュレートするグラフ埋め込みを学習するGeo-BERT[16]があるを</p>
+<ul>
+<li><p>しかし、あらかじめ定義された単一の目的のために学習されるため検索ドメイン内の他のタスクに一般化することができないらしい (そこで、モデルの一般性を向上させるために、宿泊領域の検索に共通する特徴に基づいたカスタムタスクを提案する)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="quert">
+<h2>QUERT (提案法)<a class="headerlink" href="#quert" title="Link to this heading">¶</a></h2>
+<p>4つのタスクを提案し、それらの和を最適化して学習する (てっきり各損失にハイパラ係数かけると思ったら、コード見る感じハイパラ係数はなくてただ足しているだけ)</p>
+<a class="reference internal image-reference" href="../_images/quert_fig2.png"><img alt="../_images/quert_fig2.png" class="align-center" src="../_images/quert_fig2.png" style="width: 847.2px; height: 422.40000000000003px;" />
+</a>
+<section id="geography-aware-mask-prediction-geo-mp">
+<h3>Geography-aware Mask Prediction (Geo-MP)<a class="headerlink" href="#geography-aware-mask-prediction-geo-mp" title="Link to this heading">¶</a></h3>
+<p>目的、モチベ</p>
+<ul class="simple">
+<li><p>地理情報を認識できるようにすることを目的としている</p></li>
+<li><p>なぜなら、旅行ドメインの検索において、クエリのほとんどが地理情報を含んでいることが観察されるから</p>
+<ul>
+<li><p>Fliggyアプリ(アリババが運営するオンライン旅行サービス)から1,000のクエリをランダムサンプリングし、内製の辞書によって地理情報を含んでいるか判定したところ、65%のクエリで含んでいた</p></li>
+</ul>
+</li>
+</ul>
+<p>手法</p>
+<ul class="simple">
+<li><p>クエリとそのクエリでクリックされたアイテム(のタイトル)を特殊トークン[SEP]で連結する</p>
+<ul>
+<li><p>クエリは短いので事前学習には向かず、モデルの表現能力を弱めるリスクを高めるらしい (4.2.1に詳細)</p></li>
+<li><p>クリックされたアイテムはクエリとマッチしていて、クエリの情報を補足するのに適している</p></li>
+</ul>
+</li>
+<li><p>そこに含まれる地理フレーズを特定する (Alibaba製AliNLPを使ってNERを行い特定するらしい)</p></li>
+<li><p>そして3つのマスク戦略を適用して、MLMする</p>
+<ul>
+<li><p>クエリとアイテムの両方に含まれる地理フレーズに対して、マスク確率を50%に設定 (両方マスクしてしまうのと過剰のなので一方がマスクされたらもう一方はマスクしない)</p></li>
+<li><p>どちらか一方のみに現れる地理フレーズには30%のマスク確率を割り当てる</p></li>
+<li><p>残りのトークンについては、BERTと同様、15%をマスクする</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="geohash-code-prediction-geo-cp">
+<h3>Geohash Code Prediction (Geo-CP)<a class="headerlink" href="#geohash-code-prediction-geo-cp" title="Link to this heading">¶</a></h3>
+<p>目的、モチベ</p>
+<ul class="simple">
+<li><p>Geo-MPに加えて地理情報を理解するためにGeo-CPを導入する</p></li>
+<li><p>例えば、POI検索ランキングにおいて地理の理解は必要である</p>
+<ul>
+<li><p>クエリが「Hangzhou tour」の場合、 Hangzhouにある有名なPOIであるWest-Lakeは想起されるべきである</p></li>
+<li><p>しかし古典的なMLMでは意味レベルで地理を理解することができるが、地理的階層関係や距離関係を取られることができない</p></li>
+</ul>
+</li>
+</ul>
+<p>手法</p>
+<p>ざっくりいうと、入力にある地域をジオハッシュ化して各Bitを当てる分類問題にする感じ</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/quert_ex1.png"><img alt="Alternate Text" src="../_images/quert_ex1.png" style="width: 665.4px; height: 383.4px;" />
+</a>
+<figcaption>
+<p><span class="caption-text">出典: What is Geohashing? <a class="reference external" href="https://www.pubnub.com/guides/what-is-geohashing/">https://www.pubnub.com/guides/what-is-geohashing/</a></span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>(例えば緯度経度=(57.64911,10.40744)ならu4pruydqqvj (11ビット))</p>
+<ul class="simple">
+<li><p>アイテム中のすべての地理フレーズの緯度と経度を特定からジオハッシュコードを得る(アイテムは業者から入稿されるので信頼度が高いため、アイテム内の地理のみを考慮する)</p></li>
+<li><p>以下の処理を行い、ひとつのジオハッシュコードを作る</p>
+<ul>
+<li><p>地理フレーズが1つの場合: そのまま用いる</p></li>
+<li><p>地理フレーズが1つもない場合: Nビットすべてを特殊トークン*で埋める</p></li>
+<li><p>地理フレーズが複数ある場合: 先頭のビットから見ていき共通しているビットはそれらをそのまま用いる、残りは”*”で埋める</p></li>
+</ul>
+</li>
+<li><p>各ビットごとに、そのビットを当てる分類問題を解く (コード見た感じ、Bertのpooling output(CLSではなく)をLinear層(各ビットごとに用意)に入れてcross entropy lossを最適化)</p></li>
+</ul>
+</section>
+<section id="user-click-behavior-learning-ucbl">
+<h3>User Click Behavior Learning (UCBL)<a class="headerlink" href="#user-click-behavior-learning-ucbl" title="Link to this heading">¶</a></h3>
+<p>目的、モチベ</p>
+<ul class="simple">
+<li><p>「package tour Hangzho」と「one-day tour of West Lake」というクエリは関連しており、どちらも西湖と霊隠寺の訪問を含む杭州のツアーというアイテムに関連しているが、文字面的に似ているわけではない</p></li>
+<li><p>従来のMLMでは、この暗黙の関連性を捉えることができない</p></li>
+<li><p>それを解決したい</p></li>
+</ul>
+<p>手法</p>
+<ul class="simple">
+<li><p>query <span class="math notranslate nohighlight">\(q_i\)</span> とそのクエリでクリックされたアイテム <span class="math notranslate nohighlight">\(c_i\)</span> , <span class="math notranslate nohighlight">\(c_i\)</span> がクリックされているtop Kのクエリ群 <span class="math notranslate nohighlight">\(G\)</span> が与えられる</p></li>
+<li><p><span class="math notranslate nohighlight">\(G\)</span> からクエリをランダムに一つ選んで <span class="math notranslate nohighlight">\(q^{\text{pos}}_i\)</span> とし、<span class="math notranslate nohighlight">\(q_i, q^{\text{pos}}_i\)</span> をpositive pairとしてcontrastive learningする</p></li>
+<li><p>negative pairを同じbatch内のペア (in-batch negative)</p></li>
+</ul>
+</section>
+<section id="phrase-and-token-order-prediction-ptop">
+<h3>Phrase and Token Order Prediction (PTOP)<a class="headerlink" href="#phrase-and-token-order-prediction-ptop" title="Link to this heading">¶</a></h3>
+<p>目的、モチベ</p>
+<ul class="simple">
+<li><p>以下のようなケースでクエリは揺れるが意図は変わらないので、揺れたクエリでも表現が近くなるように学習したい</p>
+<ul>
+<li><p>ユーザーはフレーズ順序を入れ替えて検索してくる: 「package tour | Hangzhou」と「Hangzhou | package tour」</p></li>
+<li><p>ユーザーはトークン順序を入れ替えて検索してくる: 「tour package | Hangzhou」　(ランダムに選んだ検索結果が悪かったケース5000件のうち、5.3%がトークン並び替えによるものだったとのこと)</p></li>
+</ul>
+</li>
+</ul>
+<p>手法 (phrase order prediction)</p>
+<ul class="simple">
+<li><p>元のクエリが　「package tour | Hangzhou」としたとき、フレーズ順序をtokenごとにつけて (1, 1, 2)と定義する (どのようにフレーズ分割するかは記述がなかった)</p></li>
+<li><p>フレーズをランダムシャッフルしたときの結果が「Hangzhou | package tour」とするとこれのフレーズ順序は (2, 1, 1) になる</p></li>
+<li><p>そして、「Hangzhou | package tour」から(2, 1, 1)を当てる問題を解く (分類問題)</p></li>
+</ul>
+<p>手法 (token order prediction)</p>
+<ul class="simple">
+<li><p>元のクエリが　「package tour | Hangzhou」としたとき、トークン順序をtokenごとにつけて (1, 2, 1)と定義する (フレーズが変わるとリセットされて1に戻る)</p></li>
+<li><p>トークンをランダムシャッフルしたときの結果が「Hangzhou | tour package」とするとこれのフレーズ順序は (1, 2, 1) になる</p></li>
+<li><p>そして、「Hangzhou | tour package」から(1,2,1)を当てる問題を解く (分類問題)</p></li>
+</ul>
+</section>
+</section>
+<section id="experiments-offline-results">
+<h2>EXPERIMENTS (Offline Results)<a class="headerlink" href="#experiments-offline-results" title="Link to this heading">¶</a></h2>
+<p>Downstream Task</p>
+<ul class="simple">
+<li><p>QR: Query Rewriting (クエリ訂正)</p></li>
+<li><p>QPR: Query-POI Retrieval (POIレコメンド)</p></li>
+<li><p>QIC: Query Intention Classification (クエリ意図を当てる分類問題 (意図は20種類のカテゴリ))</p></li>
+<li><p>QDM: Query Destination Matching (クエリと候補都市群が与えられ、その都市がクエリの目的地であるかどうかを判定)</p></li>
+<li><p>QED: Query Error Detection (タイポやトークン順序の誤りがあるトークンの判定)</p></li>
+</ul>
+<p>データ</p>
+<ul class="simple">
+<li><p>Fliggyの実際のデータを使う</p></li>
+</ul>
+<p>各タスクのデータサイズと評価指標</p>
+<a class="reference internal image-reference" href="../_images/quert_tab1.png"><img alt="../_images/quert_tab1.png" class="align-center" src="../_images/quert_tab1.png" style="width: 554.4px; height: 236.0px;" />
+</a>
+<p>比較手法</p>
+<ul class="simple">
+<li><p>BERT[5]: Googleがリリースした中国語版のやつ</p></li>
+<li><p>RoBERTa[17]: 中国語版 RoBERTa-wwm [4]</p></li>
+<li><p>ERNIE[24]: TransformerベースのPLMでトークン・レベルのマスキングに加えて、エンティティ・レベルとフレーズ・レベルのマスキング戦略を導入。</p></li>
+<li><p>StructBERT[27]: BERTの亜種。単語構造を理解するタスクを追加し、モデルに正しい順序を再構築させるとのこと</p></li>
+<li><p>Mengzi[32]: BERTの亜種。軽量でながら強力。Mengziは、複数の中国語NLPタスクで卓越した性能。</p></li>
+</ul>
+<section id="supervised-results">
+<h3>Supervised results<a class="headerlink" href="#supervised-results" title="Link to this heading">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/quert_tab2.png"><img alt="../_images/quert_tab2.png" class="align-center" src="../_images/quert_tab2.png" style="width: 820.1999999999999px; height: 311.4px;" />
+</a>
+<ul class="simple">
+<li><p>提案法(QUERT)がSOTAとのこと</p>
+<ul>
+<li><p>BERTと比較して平均2.02%向上</p></li>
+<li><p>QIC(クエリ意図分類)で顕著な性能向上</p></li>
+</ul>
+</li>
+<li><p>BERTq はクエリコーパスからのみ学習したらしく(具体的な記述なし)、素のBERTよりも性能が悪い→クエリのみコーパスでは表現学習がうまく行かず、テキスト理解能力が弱まった、と主張</p></li>
+<li><p>BERTq+cだとBERTより改善しており、クリックされたアイテムがクエリ理解を深めるのに適しているという著者らの推測を妥当なものであることの裏付けとなっている、と主張</p></li>
+</ul>
+</section>
+<section id="unsupervised-results">
+<h3>Unsupervised results<a class="headerlink" href="#unsupervised-results" title="Link to this heading">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/quert_tab3.png"><img alt="../_images/quert_tab3.png" class="align-center" src="../_images/quert_tab3.png" style="width: 539.2px; height: 258.40000000000003px;" />
+</a>
+<ul class="simple">
+<li><p>圧倒的に勝てる (そりゃそうでしょう)</p></li>
+</ul>
+</section>
+<section id="ablation-studies">
+<h3>Ablation Studies<a class="headerlink" href="#ablation-studies" title="Link to this heading">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/quert_tab4.png"><img alt="../_images/quert_tab4.png" class="align-center" src="../_images/quert_tab4.png" style="width: 793.8px; height: 185.4px;" />
+</a>
+<ul class="simple">
+<li><p>どのタスクを抜いても性能低下</p></li>
+<li><p>Geo-MPを抜くとすべてのタスクで性能低下</p></li>
+<li><p>UCBLは文レベルのタスク（QICとQDM）で需要な役割を果たしている</p></li>
+<li><p>PTOPを抜くとQEDのF1スコア（86.99%）が元の BERT（88.35%）よりも低くなっている</p>
+<ul>
+<li><p>PTOP以外のタスクによって論理的バイアスが生まれてしまったのを是正していると主張</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="few-shot-learning">
+<h3>Few-shot Learning<a class="headerlink" href="#few-shot-learning" title="Link to this heading">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/quert_fig3.png"><img alt="../_images/quert_fig3.png" class="align-center" src="../_images/quert_fig3.png" style="width: 542.4px; height: 294.40000000000003px;" />
+</a>
+<ul class="simple">
+<li><p>Downstream Taskの教師データ数がすくないと顕著に差がでる (もっと教師データ数あればBERTと差が出ないのではと思った)</p></li>
+</ul>
+</section>
+</section>
+<section id="experiments-task-study">
+<h2>EXPERIMENTS (Task Study)<a class="headerlink" href="#experiments-task-study" title="Link to this heading">¶</a></h2>
+<section id="task-1-geo-mp">
+<h3>TASK 1: Geo-MP<a class="headerlink" href="#task-1-geo-mp" title="Link to this heading">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/quert_tab6.png"><img alt="../_images/quert_tab6.png" class="align-center" src="../_images/quert_tab6.png" style="width: 557.6px; height: 252.0px;" />
+</a>
+<ul class="simple">
+<li><p>地理フレーズをマスクして、マスクしたところを当てた結果</p></li>
+<li><p>BERTはぜんぜん当てられないが、+Geo-MPは当たられるか、正解に近いものを出している</p></li>
+</ul>
+</section>
+<section id="task-2-geo-cp">
+<h3>TASK 2: Geo-CP<a class="headerlink" href="#task-2-geo-cp" title="Link to this heading">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/quert_fig4.png"><img alt="../_images/quert_fig4.png" class="align-center" src="../_images/quert_fig4.png" style="width: 547.2px; height: 384.8px;" />
+</a>
+<ul class="simple">
+<li><p>10のメージャー都市からそれぞれ500の人気POIを選択肢し、embedding化しt-SNEで可視化したもの</p></li>
+<li><p>BERTはぜんぜんまとまりがないが、+Geo-CPはきれいに分けられている</p></li>
+</ul>
+</section>
+<section id="task-3-ucbl">
+<h3>TASK 3: UCBL<a class="headerlink" href="#task-3-ucbl" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q_i, q^{\text{pos}}_i\)</span> のcos類似度を取ったところ (ランダム500ペア)、BERTは0.7758, BERT+UCBLは0.8278</p></li>
+</ul>
+</section>
+<section id="task-4-ptop">
+<h3>TASK 4: PTOP<a class="headerlink" href="#task-4-ptop" title="Link to this heading">¶</a></h3>
+<a class="reference internal image-reference" href="../_images/quert_tab7.png"><img alt="../_images/quert_tab7.png" class="align-center" src="../_images/quert_tab7.png" style="width: 534.4px; height: 221.60000000000002px;" />
+</a>
+<ul class="simple">
+<li><p>トークンの順序が入れ替わっているかどうかを判定した結果</p></li>
+</ul>
+</section>
+</section>
+<section id="experiments-online-application">
+<h2>EXPERIMENTS (Online Application)<a class="headerlink" href="#experiments-online-application" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Fliggy APPでABテストした</p>
+<ul>
+<li><p>解析されていないクエリ（例えば、誤入力クエリや初見クエリ）が与えられた場合、それをエンコーダしてその埋め込み得て、それとデータベース内の他の解析済みクエリの埋め込みとの間のcos類似度を計算</p></li>
+<li><p>類似度の高い上位20のクエリを類似クエリとして選択し、これらの類似クエリに対応する検索結果を得る</p></li>
+<li><p>その検索結果を解析されていないクエリに対するレコメンドとする</p></li>
+</ul>
+</li>
+<li><p>10%バケット2つ用意 (ユーザー単位で分割)</p>
+<ul>
+<li><p>一方のバケットにはエンコーダーとしてBERTを使用、もう一方にはQUERTを仕様</p></li>
+</ul>
+</li>
+<li><p>指標は以下の２つでどちらも向上</p>
+<ul>
+<li><p>Unique-CTR (たぶんユーザー単位のCTR) : 0.89%増加</p></li>
+<li><p>Page-CTR (たぶんページビューあたりのCTR) : 1.03%増加</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/quert_fig6.png"><img alt="../_images/quert_fig6.png" class="align-center" src="../_images/quert_fig6.png" style="width: 560.0px; height: 500.8px;" />
+</a>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

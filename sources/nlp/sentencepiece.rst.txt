@@ -1,0 +1,2 @@
+Movshovitz ICCV'17 No fuss distance metric learning using proxies
+===================================================================

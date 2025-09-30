@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Other" href="../other.html" />
+    <link rel="prev" title="Representation Learning" href="../representation.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../representation.html">Representation Learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#contrastive-learning">Contrastive learning</a></li>
+<li><a class="reference internal" href="#alignmentuniformity">AlignmentとUniformityへの分解</a></li>
+<li><a class="reference internal" href="#id1">実験</a></li>
+<li><a class="reference internal" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../representation.html" title="Previous Chapter: Representation Learning"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Representatio...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../other.html" title="Next Chapter: Other"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Other &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#contrastive-learning">Contrastive learning</a></li>
+<li><a class="reference internal" href="#alignmentuniformity">AlignmentとUniformityへの分解</a></li>
+<li><a class="reference internal" href="#id1">実験</a></li>
+<li><a class="reference internal" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="../representation.html" title="Previous Chapter: Representation Learning"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Representatio...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../other.html" title="Next Chapter: Other"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Other &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/representation/understaing_crl.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="wang-icml-20-understanding-contrastive-representation-learning-through-alignment-and-uniformity-on-the-hypersphere">
+<h1>Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere<a class="headerlink" href="#wang-icml-20-understanding-contrastive-representation-learning-through-alignment-and-uniformity-on-the-hypersphere" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://arxiv.org/pdf/2005.10242.pdf">https://arxiv.org/pdf/2005.10242.pdf</a></p>
+<p>著者</p>
+<ul class="simple">
+<li><p>Tongzhou Wang (MIT)</p></li>
+<li><p>Phillip Isola (MIT)</p></li>
+</ul>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Contrastive representation learning に関連する以下の2つの重要な特性を明らかにする</p>
+<ol class="arabic simple">
+<li><p>Alignment: positive pairのどうしの近さ</p></li>
+<li><p>Uniformity: 超球面上に均一に分布している</p></li>
+</ol>
+</li>
+<li><p>漸近的にcontrastive lossがこれらの特性を最適化することを証明し、下流タスクによい影響を与えることを分析する</p></li>
+<li><p>2つの特性を定量化するための最適化可能なメトリックを導入し、それが下流タスクの性能との間に強い一致があることを実験的に示す</p></li>
+<li><p>それらを直接最適化することで、下流タスクにおいてContrastive learningと同等かそれ以上の性能を持つ表現が得られる。</p></li>
+</ul>
+</section>
+<section id="contrastive-learning">
+<h2>Contrastive learning<a class="headerlink" href="#contrastive-learning" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>positive pairどうしを近づけ、negative pairどうしは遠ざけるようにencoderを学習する手法</p></li>
+<li><p>この論文ではunsupervisedの設定なので、画像データはpositive pairをその画像をaugmentationして作成することを想定 (negativeは違う画像)</p></li>
+</ul>
+<p>contrastive lossは以下で定義される</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  L_{\text{contrastive}} (f; \tau, M)  &amp;:=
+  \mathop{\mathbb{E}}_{\substack{
+    (x,y) \sim p_{\text{pos}} \\
+    \{x_i^-\}_{i=1}^M \overset{\text{iid}}{\sim} p_{\text{data}}
+  }}
+  \left[
+  - \log \cfrac{e^{f(x)^\top f(y)}/ \tau}{e^{f(x)^\top f(y)}/ \tau + \sum_i e^{f(x_i^-)^\top f(y)}/ \tau }
+  \right]
+\end{align}</div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f\)</span> : encoder, <span class="math notranslate nohighlight">\(p_{\text{data}}\)</span> : data distribution, <span class="math notranslate nohighlight">\(p_{\text{pos}}\)</span> : positive pair of data distribution, <span class="math notranslate nohighlight">\(\tau\)</span> : 温度, <span class="math notranslate nohighlight">\(M\)</span> : 負例の数</p></li>
+<li><p>この論文では、L2ノルムを1に正規化するので <span class="math notranslate nohighlight">\(f(x)^\top f(y)\)</span> はコサイン類似度</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_{\text{contrastive}}\)</span> を最小化するには、期待値の中のところを大きくする必要があって、positive pair <span class="math notranslate nohighlight">\((x,y)\)</span> を類似度を大きく、negative pair <span class="math notranslate nohighlight">\((x_i^-, y)\)</span> の類似度を小さくする (つまり、contrastive learningの思想)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+- \log \cfrac{e^{f(x)^\top f(y)}/ \tau}{e^{f(x)^\top f(y)}/ \tau + \sum_i e^{f(x_i^-)^\top f(y)}/ \tau }
+= \log (1 + \cfrac{\sum_i e^{f(x_i^-)^\top f(y)}/ \tau}{e^{f(x)^\top f(y) / \tau }})
+\end{align}</div><a class="reference internal image-reference" href="../_images/plot_contrastive_loss.png"><img alt="../_images/plot_contrastive_loss.png" class="align-center" src="../_images/plot_contrastive_loss.png" style="width: 242.89999999999998px; height: 144.2px;" />
+</a>
+<ul class="simple">
+<li><p>(なんでこの形になるのかは知らないです)</p></li>
+</ul>
+<p><strong>InfoMax principle</strong></p>
+<p>representation learningは相互情報量最大化するぞという意気込みで、なんとかタイトな相互情報量の下限を構築するという研究が多く行われてきたが、
+タイトな下限を最適化すると逆に下流タスクの精度が下がるという現状が発見されている。
+(参考: 相互情報量最大化による表現学習 <a class="reference external" href="https://deeplearning.jp/%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F%E6%9C%80%E5%A4%A7%E5%8C%96%E3%81%AB%E3%82%88%E3%82%8B%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92/">https://deeplearning.jp/%E7%9B%B8%E4%BA%92%E6%83%85%E5%A0%B1%E9%87%8F%E6%9C%80%E5%A4%A7%E5%8C%96%E3%81%AB%E3%82%88%E3%82%8B%E8%A1%A8%E7%8F%BE%E5%AD%A6%E7%BF%92/</a>)</p>
+<p>なので、バウンドの話はおいておいて、contrastive lossの最適化している振る舞いを直接的に分析していく。</p>
+</section>
+<section id="alignmentuniformity">
+<h2>AlignmentとUniformityへの分解<a class="headerlink" href="#alignmentuniformity" title="Link to this heading">¶</a></h2>
+<p>先述したとおり、positive pairどうしを近づけ、negative pairどうしは遠ざけるようにするので、次の2つのプロパティを持っているべき</p>
+<ul class="simple">
+<li><p>Alignment: positive pairを近くのfeatureにマッピング (本質的でない不要なノイズ要因に対して不変である必要がある)</p></li>
+<li><p>Uniformity: feature vectorは単位超球面上にほぼ均一に分布して、データ情報を可能な限り保持する必要がある (エントロピーが高いということ?)</p>
+<ul>
+<li><p>「negative pairは遠ざける」と「均一に分布する」にはギャップがあると思った。 均一に分布してもnegative pairが遠ざかっていとは限らないし、逆もそう。</p></li>
+<li><p>最初から、「negative pairは遠ざける」→「均一に分布する」とは言っていないので、そういうことなのかも</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>実験による実証</strong></p>
+<p>contrastive lossで学習したfeature vectorがどうなっているか見てみる</p>
+<ul class="simple">
+<li><p>CIFAR-10、m=2、AlexNetで学習</p></li>
+<li><p>supervised predictive learning (encoder + linear classifierを同時に学習(分類問題))と unspervised contrastive learningで比べる</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/und_crl_fig3.png"><img alt="../_images/und_crl_fig3.png" class="align-center" src="../_images/und_crl_fig3.png" style="width: 666.0px; height: 429.3px;" />
+</a>
+<ul class="simple">
+<li><p>Alignment : positive pair (ここでは同じクラスのサンプルのペア?) の距離のヒストグラム。平均がunspervised contrastive learningのほうが左にある</p></li>
+<li><p>Uniformity : feature vectorのベクトルをKDEしてプロット。 unspervised contrastive learningのほうが均一に分布している。</p></li>
+</ul>
+<p><strong>Quantifying</strong></p>
+<p>さらなる分析には、alighmentとuniformityを定量化する方法が必要なので、それ(loss)を提案する。(?)</p>
+<p>alignment lossは単純にL2距離で定義する</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+L_{\text{align}}(f; \alpha) :=
+  \mathop{\mathbb{E}}_{(x,y) \sim p_{\text{pos}}}
+[\| f(x) - f(y) \|^\alpha_2 ], ~~~ \alpha &gt; 0
+\end{align}</div><p>uniformity lossは、Gaussian potential kernel (RBF kernel) を使って、表現する</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+L_{\text{uniform}}(f; t) :=
+  \mathop{\mathbb{E}}_{x,y \overset{\text{iid}}{\sim} p_{\text{data}}}
+  \left[ e^{-t \| f(x) - f(y) \|_2^2 } \right]
+, ~~~ t &gt; 0
+\end{align}</div><p>ペアワイズ ガウスポテンシャルの平均は、単位超球面上の一様分布とうまく結びついている (らしい)</p>
+<p><strong>Limiting Behavior of Contrastive Learning</strong></p>
+<p>Mを <span class="math notranslate nohighlight">\(\infty\)</span> に飛ばしたときにcontrastive lossがどうなるか観察する</p>
+<p>Theorem 1.</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  \lim_{M \rightarrow \infty} L_{\text{contrastive}} (f; \tau, M) - \log M  =
+  - \cfrac{1}{\tau}
+  \mathop{\mathbb{E}}_{
+    (x,y) \sim p_{\text{pos}}
+  }
+  \left[ f(x)^\top f(y) \right]
+  + \mathop{\mathbb{E}}_{
+    x \sim p_{\text{data}}
+  }
+  \left[ \log
+  \mathop{\mathbb{E}}_{
+    x^- \sim p_{\text{data}}
+  }
+    \left[ e^{f(x^-)^\top f(x) / \tau} \right]
+  \right]
+\end{align}</div><p>となって、以下が得られる</p>
+<ol class="arabic simple">
+<li><p>第一項が最小値 <span class="math notranslate nohighlight">\(\Leftrightarrow f\)</span>  は perfectly aligned</p></li>
+<li><p>perfectl uniform encodersが存在するなら、それは第二項の最小値</p></li>
+<li><p>極限からの絶対偏差は <span class="math notranslate nohighlight">\(\mathcal{O}(M^{-1/2})\)</span> で減衰する</p></li>
+</ol>
+<p>(定義)</p>
+<ul class="simple">
+<li><p>Perfect Alignmentの定義: <span class="math notranslate nohighlight">\((x,y) \sim p_{\text{pos}}\)</span> で <span class="math notranslate nohighlight">\(f(x)=f(y)\)</span> がほとんど成り立つとき、 <span class="math notranslate nohighlight">\(f\)</span> はperfectly aligned</p></li>
+<li><p>Perfect Uniformityの定義: <span class="math notranslate nohighlight">\(x \sim  p_{\text{data}}\)</span> で <span class="math notranslate nohighlight">\(f(x)\)</span> の分布が単位超球面上のuniform distributionのとき、<span class="math notranslate nohighlight">\(f\)</span> はperfectly uniform</p></li>
+</ul>
+<p>第一項が <span class="math notranslate nohighlight">\(L_{\text{align}}\)</span> , 第二項が <span class="math notranslate nohighlight">\(L_{\text{uniform}}\)</span> に対応していると言っている</p>
+<ul class="simple">
+<li><p>:math:alpha= 2のときに、 <span class="math notranslate nohighlight">\(L_{\text{align}}\)</span> は定数とスケーリングを無視したら一致</p></li>
+<li><p>第二項のminimizerは <span class="math notranslate nohighlight">\(L_{\text{uniform}}\)</span> のminimizer</p></li>
+<li><p>(第一項を <span class="math notranslate nohighlight">\(L_{\text{align}}\)</span>, 第二項を <span class="math notranslate nohighlight">\(L_{\text{uniform}}\)</span> としなかったのはなぜ?)</p></li>
+</ul>
+<p>M=1でも弱いことは言える</p>
+<p>Theorem 2 (Single negative sample). perfectly alignedでuniformなencoderが存在するなら、それは <span class="math notranslate nohighlight">\(L_{\text{contrastive}}\)</span> を最小化する。</p>
+</section>
+<section id="id1">
+<h2>実験<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>画像分類 (STL-10,  NYU-DEPTH-v2, ImageNet)、テキスト分類(BookCorpus)で実験</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(L_{\text{align}}, L_{\text{uniform}}\)</span> の実装</p>
+<a class="reference internal image-reference" href="../_images/und_crl_fig6.png"><img alt="../_images/und_crl_fig6.png" class="align-center" src="../_images/und_crl_fig6.png" style="width: 373.6px; height: 270.40000000000003px;" />
+</a>
+<a class="reference internal image-reference" href="../_images/und_crl_fig5.png"><img alt="../_images/und_crl_fig5.png" class="align-center" src="../_images/und_crl_fig5.png" style="width: 770.0px; height: 319.6px;" />
+</a>
+<ul class="simple">
+<li><p>y軸が <span class="math notranslate nohighlight">\(L_{\text{align}}\)</span> の値、 x軸が <span class="math notranslate nohighlight">\(L_{\text{uniform}}\)</span> の値、色が下流タスクの精度 (青ほど精度が良い)</p></li>
+<li><p>+が <span class="math notranslate nohighlight">\(L_{\text{contrastive}}\)</span> , ●が <span class="math notranslate nohighlight">\(L_{\text{align}}, L_{\text{uniform}}\)</span> , ▲がそれら3つを学習したもの</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_{\text{align}}, L_{\text{uniform}}\)</span> の両方が低い(左下にある)とき、下流タスクの精度が良い (片方だけ低いときは精度が悪い)</p>
+<ul>
+<li><p>→ AlingmentとUniformityに分解するのは有効そう</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/und_crl_tab1.png"><img alt="../_images/und_crl_tab1.png" class="align-center" src="../_images/und_crl_tab1.png" style="width: 761.6px; height: 175.60000000000002px;" />
+</a>
+<a class="reference internal image-reference" href="../_images/und_crl_tab2.png"><img alt="../_images/und_crl_tab2.png" class="align-center" src="../_images/und_crl_tab2.png" style="width: 753.6px; height: 177.20000000000002px;" />
+</a>
+<a class="reference internal image-reference" href="../_images/und_crl_tab3.png"><img alt="../_images/und_crl_tab3.png" class="align-center" src="../_images/und_crl_tab3.png" style="width: 772.0px; height: 204.0px;" />
+</a>
+<a class="reference internal image-reference" href="../_images/und_crl_tab4.png"><img alt="../_images/und_crl_tab4.png" class="align-center" src="../_images/und_crl_tab4.png" style="width: 773.0px; height: 242.0px;" />
+</a>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_{\text{align}}, L_{\text{uniform}}\)</span> を直接最適化したほうが精度がよいか同等</p>
+<ul>
+<li><p>BookCorpusはだいぶ精度落ちてそうだけど・・・</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/und_crl_fig8.png"><img alt="../_images/und_crl_fig8.png" class="align-center" src="../_images/und_crl_fig8.png" style="width: 758.4000000000001px; height: 285.2px;" />
+</a>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_{\text{contrastive}}\)</span> で学習したencoderを <span class="math notranslate nohighlight">\(L_{\text{align}}\)</span> だけで(左)、 :math:L_{text{uniform}}` だけ(真ん中), <span class="math notranslate nohighlight">\(L_{\text{align}}, L_{\text{uniform}}\)</span> を同時に (右) fine tuneしたもの</p>
+<ul>
+<li><p>どっちも同時に最適化したものだけで精度が上がる</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="discussion">
+<h2>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>なぜL2正則化をかけることが良い結果につながるかはまだ明確にわかっていない</p>
+<ul>
+<li><p>L2正則化をかけないで、成功しているモデルはいくつもある (ノルムの大きさが意味をもつ等)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

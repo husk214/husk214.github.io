@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning" href="optimizer_benchmark.html" />
+    <link rel="prev" title="Other" href="../other.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../other.html">Other</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a><ul>
+<li><a class="reference internal" href="#sentencepiece">SentencePiece概要</a></li>
+<li><a class="reference internal" href="#subword">Subword</a></li>
+<li><a class="reference internal" href="#subword-algorithm">Subword Algorithm</a><ul>
+<li><a class="reference internal" href="#byte-pair-encoding-bpe-sennrich16">Byte-Pair Encoding (BPE) <span>[Sennrich16]</span></a></li>
+<li><a class="reference internal" href="#unigram-model-kudo18">Unigram model <span>[Kudo18]</span></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../other.html" title="Previous Chapter: Other"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Other</span>
+    </a>
+  </li>
+  <li>
+    <a href="optimizer_benchmark.html" title="Next Chapter: Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Teja ICML’20 ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a><ul>
+<li><a class="reference internal" href="#sentencepiece">SentencePiece概要</a></li>
+<li><a class="reference internal" href="#subword">Subword</a></li>
+<li><a class="reference internal" href="#subword-algorithm">Subword Algorithm</a><ul>
+<li><a class="reference internal" href="#byte-pair-encoding-bpe-sennrich16">Byte-Pair Encoding (BPE) <span>[Sennrich16]</span></a></li>
+<li><a class="reference internal" href="#unigram-model-kudo18">Unigram model <span>[Kudo18]</span></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">参考文献</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="../other.html" title="Previous Chapter: Other"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Other</span>
+    </a>
+  </li>
+  <li>
+    <a href="optimizer_benchmark.html" title="Next Chapter: Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Teja ICML’20 ... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/other/sentencepiece.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="kudo-emnlp-18-sentencepiece-a-simple-and-language-independent-subword-tokenizer-and-detokenizer-for-neural-text-processing">
+<h1>Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing<a class="headerlink" href="#kudo-emnlp-18-sentencepiece-a-simple-and-language-independent-subword-tokenizer-and-detokenizer-for-neural-text-processing" title="Link to this heading">¶</a></h1>
+<p>著者</p>
+<ul class="simple">
+<li><p>Taku Kudo (Google)</p></li>
+<li><p>John Richardson (Google)</p></li>
+</ul>
+<section id="sentencepiece">
+<h2>SentencePiece概要<a class="headerlink" href="#sentencepiece" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Pre-segmentationされていない文章に Subword Algorithm を実行できるライブラリ</p>
+<ul>
+<li><p>Subword Algorithm: BPE or Unigram model</p></li>
+<li><p>C++実装, python wrapperあり, tensorflow-textにも統合されている</p></li>
+</ul>
+</li>
+<li><p>EMNLPの論文自体はライブラリの実装の話がメインで、アルゴリズムの話はされていない</p></li>
+<li><p>著者によるQiita <a class="reference external" href="https://qiita.com/taku910/items/7e52f1e58d0ea6e7859c">https://qiita.com/taku910/items/7e52f1e58d0ea6e7859c</a></p></li>
+</ul>
+</section>
+<section id="subword">
+<h2>Subword<a class="headerlink" href="#subword" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>高頻度語はそのまま分割、低頻度語は文字や部分文字列に分割するような感じ</p>
+<ul>
+<li><p>例えば、「annoyingly」が低頻度語なので、「annoying」と「ly」に分割する感じ</p></li>
+</ul>
+</li>
+<li><p>モチベーション: 単語による分割では、分割数多すぎてつらい</p>
+<ul>
+<li><p>NMT(機械翻訳)では、語彙数が多いとRNNを用いたテキスト生成の計算コストが高く、高頻度語のみに限定すると低頻度が捨てられてしまう</p></li>
+</ul>
+</li>
+<li><p>最近のTransformerを使った事前学習済みモデルは、Subwordアルゴリズムによってtokenizeされている</p>
+<ul>
+<li><p>BERTでよく見る語彙数は32,000とか (少なぎでは? と思っていたけどSubwordはこんなもんらしい)</p></li>
+<li><p>HuggingFaceの <a class="reference external" href="https://huggingface.co/transformers/tokenizer_summary.html">Summary of the tokenizers</a> にその辺書いてあるが</p>
+<ul>
+<li><p>ALBERT, XLNet, Marian, T5ではSentencePiece(Unigram)を使っている</p></li>
+<li><p>BERT, DistilBERT, Electraで使われているは WordPiece (BPEと似たような感じ)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="subword-algorithm">
+<h2>Subword Algorithm<a class="headerlink" href="#subword-algorithm" title="Link to this heading">¶</a></h2>
+<section id="byte-pair-encoding-bpe-sennrich16">
+<h3>Byte-Pair Encoding (BPE) <a class="reference internal" href="#sennrich16" id="id1"><span>[Sennrich16]</span></a><a class="headerlink" href="#byte-pair-encoding-bpe-sennrich16" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>unigramとは逆で、文字集合から始まって、greedyにsubwordを追加していく感じ</p></li>
+<li><p><a class="reference external" href="https://www.slideshare.net/ssuserd79a5c1/2019bpe">https://www.slideshare.net/ssuserd79a5c1/2019bpe</a> がわかりやすい</p></li>
+</ul>
+</section>
+<section id="unigram-model-kudo18">
+<h3>Unigram model <a class="reference internal" href="#kudo18" id="id2"><span>[Kudo18]</span></a><a class="headerlink" href="#unigram-model-kudo18" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>概要: 十分に大きい語彙からスタートして、ULMの尤度の減少が最小となるように語彙を除去していく感じ</p></li>
+<li><p>モチベーション:</p>
+<ul>
+<li><p>BPE, WordPieceは決定的なアルゴリズムで、複数の分割を出力するのは困難で、確率的に扱えないのでn-bestな出力もできない</p></li>
+<li><p>言語モデルに基づいていない</p></li>
+</ul>
+</li>
+</ul>
+<p>Unigram model: 文章Xの任意の分割 <span class="math notranslate nohighlight">\(\mathbb{x} := \{x_1, \ldots, x_M\}\)</span> の分割確率 <span class="math notranslate nohighlight">\(P(\mathbb{x})\)</span> を各サブワードの生起確率 <span class="math notranslate nohighlight">\(p(x_i)\)</span> の積 で表す (eq. <a class="reference internal" href="#equation-unigram">(1)</a> )</p>
+<div class="math notranslate nohighlight" id="equation-unigram">
+<span class="eqno">(1)<a class="headerlink" href="#equation-unigram" title="Link to this equation">¶</a></span>\[P(\mathbb{x}) =  \prod_{i=1}^M p(x_i), ~~ \forall i ~~ x_i \in \mathcal{V}, ~~ \sum_{x \in \mathcal{V}} p(x) = 1\]</div>
+<p><strong>Training Algorithm</strong></p>
+<ul class="simple">
+<li><p>Input: training corpus (<span class="math notranslate nohighlight">\(D: = \{X^{(s)}\}_{s=1}^{|D|}\)</span>), 語彙数</p>
+<ul>
+<li><p>S(X): 文章Xの全分割候補集合 (語彙集合は与えられる)</p></li>
+</ul>
+</li>
+<li><p>十分に大きなサイズの語彙集合 <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> を作る</p>
+<ul>
+<li><p>例えば、全文字集合 + Suffix array algorithmでtraining corpusの上位100万語の高頻度部分文字列を列挙する</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{V}\)</span> が設定された語彙数になるまで、以下を繰り返す</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(p(x_i)\)</span> をそれを隠れ変数とする尤度L (eq <a class="reference internal" href="#equation-likelihood">(2)</a> ) をEMアルゴリズムによって最大化することで推定する</p>
+<ul>
+<li><p>The most probable segmentaion <span class="math notranslate nohighlight">\(\mathbb{x}^* = \arg \max_{\mathbb{x} \in S(X)} P(\mathbb{x})\)</span> は Viterbiアルゴリズムによって計算可能</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(x_i \in \mathcal{V}\)</span> に対して <span class="math notranslate nohighlight">\(x_i\)</span> を削除したときの尤度Lの損失(貢献度)を計算</p></li>
+<li><p>貢献度の小さい <span class="math notranslate nohighlight">\(\eta\)</span> % (e.g., 20%) の語彙を <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> から削除 (ただし、1文字が1語彙となるものは残す)</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-likelihood">
+<span class="eqno">(2)<a class="headerlink" href="#equation-likelihood" title="Link to this equation">¶</a></span>\[L = \sum_{s=1}^{|D|} \log P(X^{(s)}) = \sum_{s=1}^{|D|} \log \left( \sum_{\mathbb{x} \in S(X^{(s)})} P(\mathbb{x}) \right)\]</div>
+</section>
+</section>
+<section id="id3">
+<h2>参考文献<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<div role="list" class="citation-list">
+<div class="citation" id="sennrich16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Sennrich16</a><span class="fn-bracket">]</span></span>
+<p>Rico Sennrich, Barry Haddow, Alexandra Birch. Neural Machine Translation of Rare Words with Subword Units. In ACL 2016.</p>
+</div>
+<div class="citation" id="kudo18" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">Kudo18</a><span class="fn-bracket">]</span></span>
+<p>Taku Kudo. Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates. In ACL 2018.</p>
+</div>
+</div>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

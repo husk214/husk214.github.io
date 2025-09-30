@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning) &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?" href="how_avoid.html" />
+    <link rel="prev" title="Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)" href="byol.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#algorithm">Algorithm</a></li>
+<li><a class="reference internal" href="#empirical-study">Empirical Study</a></li>
+<li><a class="reference internal" href="#hypothesis">Hypothesis</a><ul>
+<li><a class="reference internal" href="#proof-of-concept">Proof of concept</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methodology-comparisons">Methodology Comparisons</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="byol.html" title="Previous Chapter: Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Grill NIPS’20...</span>
+    </a>
+  </li>
+  <li>
+    <a href="how_avoid.html" title="Next Chapter: Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Does ICLR’22 ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#algorithm">Algorithm</a></li>
+<li><a class="reference internal" href="#empirical-study">Empirical Study</a></li>
+<li><a class="reference internal" href="#hypothesis">Hypothesis</a><ul>
+<li><a class="reference internal" href="#proof-of-concept">Proof of concept</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#methodology-comparisons">Methodology Comparisons</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="byol.html" title="Previous Chapter: Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Grill NIPS’20...</span>
+    </a>
+  </li>
+  <li>
+    <a href="how_avoid.html" title="Next Chapter: Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Does ICLR’22 ... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/ssl/simsiam.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="chen-cvpr-21-simsiam-exploring-simple-siamese-representation-learning">
+<h1>Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)<a class="headerlink" href="#chen-cvpr-21-simsiam-exploring-simple-siamese-representation-learning" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>著者: Xinlei Chen, Kaiming He (Facebook AI Research (FAIR))</p></li>
+<li><p>CVPR’21 Best Paper Honorable Mentions <a class="reference external" href="https://arxiv.org/pdf/2011.10566.pdf">https://arxiv.org/pdf/2011.10566.pdf</a></p></li>
+</ul>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>BYOLをシンプルにした</p>
+<ul>
+<li><p>negative pair 使わない (BYOLと同じ)</p></li>
+<li><p>momentum update 不要  (target networkを使わない)</p></li>
+<li><p>batch size小さくてもOK</p></li>
+</ul>
+</li>
+</ul>
+<p>Linear Evaluation</p>
+<a class="reference internal image-reference" href="../_images/simsiam_tab4.png"><img alt="../_images/simsiam_tab4.png" class="align-center" src="../_images/simsiam_tab4.png" style="width: 701.4px; height: 143.4px;" />
+</a>
+<ul class="simple">
+<li><p>100epoch以降は、BYOLには負けるが SimCLRとかには勝っている</p></li>
+</ul>
+<p>transfer learning タスクでは強い</p>
+<a class="reference internal image-reference" href="../_images/simsiam_tab5.png"><img alt="../_images/simsiam_tab5.png" class="align-center" src="../_images/simsiam_tab5.png" style="width: 699.6px; height: 235.79999999999998px;" />
+</a>
+</section>
+<section id="algorithm">
+<h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">¶</a></h2>
+<p>準備</p>
+<ul class="simple">
+<li><p>encoder (backbone + MLP) <span class="math notranslate nohighlight">\(f\)</span> と predictor (MLP) <span class="math notranslate nohighlight">\(h\)</span> を用意</p></li>
+</ul>
+<p>以下繰り返し</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_1 = \text{aug}(x), x_2 = \text{aug}(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(h(x_1))\)</span> と <span class="math notranslate nohighlight">\(\text{sg}(f(x_2))\)</span> の距離を最小化　(sgは stop gradient)</p>
+<ul>
+<li><p>厳密には入力を入れ替えた <span class="math notranslate nohighlight">\(f(h(x_2))\)</span> と <span class="math notranslate nohighlight">\(sg(f(x_1))\)</span> の距離も最小化</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/simsiam_fig1.png"><img alt="../_images/simsiam_fig1.png" class="align-center" src="../_images/simsiam_fig1.png" style="width: 496.8px; height: 396.8px;" />
+</a>
+</section>
+<section id="empirical-study">
+<h2>Empirical Study<a class="headerlink" href="#empirical-study" title="Link to this heading">¶</a></h2>
+<p>(BYOLと同様negative pairを使っていないので、崩壊するように思えるが崩壊しない)</p>
+<p>Fig2. Stop gradient しないと崩壊する</p>
+<ul class="simple">
+<li><p>ロスはゼロになるが、出力の各次元の分散は0になり精度は上がらない</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/simsiam_fig2.png"><img alt="../_images/simsiam_fig2.png" class="align-center" src="../_images/simsiam_fig2.png" style="width: 698.4px; height: 184.79999999999998px;" />
+</a>
+<p>Tab1. predictor (MLP) がないと崩壊する</p>
+<a class="reference internal image-reference" href="../_images/simsiam_tab1.png"><img alt="../_images/simsiam_tab1.png" class="align-center" src="../_images/simsiam_tab1.png" style="width: 445.8px; height: 165.0px;" />
+</a>
+<p>Tab2. batch size大きくしても精度上がらない</p>
+<a class="reference internal image-reference" href="../_images/simsiam_tab2.png"><img alt="../_images/simsiam_tab2.png" class="align-center" src="../_images/simsiam_tab2.png" style="width: 470.0px; height: 115.0px;" />
+</a>
+<p>Tab3. MLPにBatch Normalization いれないと精度が大きくさがる (一番うしろにBN入れると安定しない)</p>
+<ul class="simple">
+<li><p>BYOLでも同じような結果になるらしい</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/simsiam_tab3.png"><img alt="../_images/simsiam_tab3.png" class="align-center" src="../_images/simsiam_tab3.png" style="width: 463.0px; height: 185.0px;" />
+</a>
+</section>
+<section id="hypothesis">
+<h2>Hypothesis<a class="headerlink" href="#hypothesis" title="Link to this heading">¶</a></h2>
+<p>(なぜ崩壊しないかの仮説ではない、SimSiamがどういう学習をしているのかの仮説)</p>
+<p>以下のロス関数を考える</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  \mathcal{L}(\theta, \eta) = \mathbb{E}_{x, \mathcal{T}} \left[  \| \mathcal{F}_\theta(\mathcal{T}(x)) - \eta_x \|_2^2 \right]
+\end{align}</div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{F}\)</span> : ネットワーク (それのパラメータを <span class="math notranslate nohighlight">\(\theta\)</span> とする)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta\)</span> : another set of variables (<span class="math notranslate nohighlight">\(\eta\)</span> のサイズは画像の数に比例する, <span class="math notranslate nohighlight">\(\eta\)</span> はネットワークの出力である必要はない)</p></li>
+</ul>
+<p>そして、<span class="math notranslate nohighlight">\(\mathcal{L}(\theta, \eta)\)</span> を <span class="math notranslate nohighlight">\(\theta, \eta\)</span> に関して最小化することを考える. 交互最適化で最適化することを考える</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  \theta^t &amp;\leftarrow \arg \min_{\theta} \mathcal{L}(\theta, \eta^{t-1}) \\
+  \eta^t &amp;\leftarrow \arg \min_{\eta} \mathcal{L}(\theta^t, \eta)
+\end{align}</div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\theta\)</span> に関してはSGDで解けばいい.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta\)</span> に関する最適化は 各々の <span class="math notranslate nohighlight">\(\eta_x\)</span> について独立に解ける.　それでMSEなので、簡単に以下のように解ける.</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-eq9">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq9" title="Link to this equation">¶</a></span>\[\eta^t_x \leftarrow \mathbb{E}_{\mathcal{T}} [\mathcal{F}_{\theta^t}(\mathcal{T}(x))]\]</div>
+<p>SimSiamは (predictorを考えないと) この交互最適化の近似だとみなせる</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#equation-eq9">(1)</a> は <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathcal{T}}\)</span> を 一回のaugmentation <span class="math notranslate nohighlight">\(\mathcal{T'}\)</span> によって近似すると以下になる</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-eq10">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq10" title="Link to this equation">¶</a></span>\[\eta^t_x \leftarrow \mathcal{F}_{\theta^t}(\mathcal{T'}(x))\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\eta\)</span> についての最適化問題に <a class="reference internal" href="#equation-eq10">(2)</a> を代入すると、以下になって predictorを考えないと SimSiamの更新式みたいになる</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-eq11">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq11" title="Link to this equation">¶</a></span>\[\theta^{t+1} \leftarrow \arg \min_{\theta} \mathbb{E}_{x, \mathcal{T}} \left[  \| \mathcal{F}_\theta(\mathcal{T}(x)) - \mathcal{F}_{\theta^t}(\mathcal{T'}(x)) \|_2^2 \right]\]</div>
+<p>Predictor <span class="math notranslate nohighlight">\(h\)</span> のことを考える</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(h\)</span>　は定義より, <span class="math notranslate nohighlight">\(\mathbb{E}_{z}[\|h(z_1) - z_2\|_2^2]\)</span> を最小化することが期待される (???)</p></li>
+<li><p>この最適解は <span class="math notranslate nohighlight">\(h(z_1) = \mathbb{E}_z[z_2] = \mathbb{E}_{\mathcal{T}}[f(\mathcal{T}(x))]\)</span> を満たして、 <a class="reference internal" href="#equation-eq10">(2)</a> で <a class="reference internal" href="#equation-eq9">(1)</a> を近似したときのギャップを埋めてくれる (???)</p></li>
+</ul>
+<p>わからないポイント: SimSiamは　<span class="math notranslate nohighlight">\(h\)</span> と <span class="math notranslate nohighlight">\(f\)</span> を一緒に最適化されるので、そうはならんのでは?</p>
+<section id="proof-of-concept">
+<h3>Proof of concept<a class="headerlink" href="#proof-of-concept" title="Link to this heading">¶</a></h3>
+<p>実験的に証明すると言っている</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#equation-eq10">(2)</a> のように更新するのではなく、moving-averageする (momentum update)</p>
+<ul>
+<li><p>つまり、 <span class="math notranslate nohighlight">\(\eta_x^t \leftarrow m \eta_x^{t-1} + (1-m) \mathcal{F_{\theta^t}}(\mathcal{T}'(x))\)</span></p></li>
+</ul>
+</li>
+<li><p>こうすることによって、55%の精度が出せる</p></li>
+<li><p>表1(a)に示したように、predictorもmomving-averageもしないと崩壊する</p></li>
+<li><p>「この実験によって、predictor が <span class="math notranslate nohighlight">\(\mathbb{E}_{\mathcal{T}}[\cdot]\)</span> を関連していることが裏付けられた」と主張している</p></li>
+</ul>
+</section>
+</section>
+<section id="methodology-comparisons">
+<h2>Methodology Comparisons<a class="headerlink" href="#methodology-comparisons" title="Link to this heading">¶</a></h2>
+<p>Q: PredictorやStop gradientをSimCLRに導入するとどうなるのか?</p>
+<p>A: 精度は上がらない</p>
+<a class="reference internal image-reference" href="../_images/simsiam_simclr.png"><img alt="../_images/simsiam_simclr.png" class="align-center" src="../_images/simsiam_simclr.png" style="width: 583.2px; height: 84.0px;" />
+</a>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

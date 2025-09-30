@@ -1,41 +1,27 @@
 <!DOCTYPE html>
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Metric &mdash; Atsushi Shibagaki 170323 documentation</title>
-    
-    <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/octicons/octicons.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '170323',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
-    <link rel="top" title="Atsushi Shibagaki 170323 documentation" href="../index.html" />
-    <link rel="up" title="Learning to Rank (ランク学習)" href="../recsys.html" />
-    <link rel="next" title="Misc" href="../misc_memo.html" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metric &#8212; papers  documentation</title>
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../static/bootstrap-sphinx.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../static/js/jquery-1.11.0.min.js"></script>
+    <script src="../static/js/jquery-fix.js"></script>
+    <script src="../static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Algorithm" href="algorithm.html" />
-<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+<link rel="stylesheet" href="static/custom.css" type="text/css" />
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -47,8 +33,7 @@
   ga('send', 'pageview');
 </script>
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -60,8 +45,8 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="../index.html">
-          Atsushi Shibagaki</a>
-        <span class="navbar-text navbar-version pull-left"><b>170323</b></span>
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -77,22 +62,23 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../recsys.html">Learning to Rank (ランク学習)</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../work.html">Work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../work/hotel_spot_search.html">ホテルスポット検索</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning.html#papers">Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning.html#id1">Metric Learningとは</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other.html#papers">Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other.html#memo">Memo</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../recsys.html">Learning to Rank</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="algorithm.html">Algorithm</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Metric</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../misc_memo.html">Misc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../misc_memo.html#other">other</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../misc_memo.html#sublime-text">sublime text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../misc_memo.html#emacs">emacs</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../tex_memo.html">TeX</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../tex_memo.html#algorithm2e">algorithm2e</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tex_memo.html#document-platex-template">document (platex) template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tex_memo.html#document-lualatex-template">document (lualatex) template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tex_memo.html#beamer-template">beamer template</a></li>
 </ul>
 </li>
 </ul>
@@ -128,10 +114,6 @@
     <a href="algorithm.html" title="Previous Chapter: Algorithm"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Algorithm</span>
     </a>
   </li>
-  <li>
-    <a href="../misc_memo.html" title="Next Chapter: Misc"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Misc &raquo;</span>
-    </a>
-  </li>
               
             
             
@@ -155,63 +137,92 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Metric</a><ul>
+<li><a class="reference internal" href="#notation">Notation</a></li>
+<li><a class="reference internal" href="#ndcg-k">nDCG&#64;k</a><ul>
+<li><a class="reference internal" href="#catboostdcg">CatBoostのDCGの計算方法</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="algorithm.html" title="Previous Chapter: Algorithm"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Algorithm</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../sources/recsys/metric.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="metric">
 <h1>Metric<a class="headerlink" href="#metric" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="notation">
 <h2>Notation<a class="headerlink" href="#notation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><span class="math">\(r \in \mathbb{R}^n\)</span> : (アルゴリズムの予測値によってソートした)関連度のリスト</li>
+<li><p><span class="math notranslate nohighlight">\(r \in \mathbb{R}^n\)</span> : (アルゴリズムの予測値によってソートした)関連度のリスト</p></li>
 </ul>
 </div>
 <div class="section" id="ndcg-k">
 <h2>nDCG&#64;k<a class="headerlink" href="#ndcg-k" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>いくつかの定義が存在している</li>
-<li>関連度のリストに対して計算される</li>
-<li>nDCGは、normalized Discounted Cumulative Gainの略でDCGを正規化したもの</li>
-<li>nDCG := DCG / IdealDCG<ul>
-<li>DCG := アルゴリズムの予測値によってソートした関連度リストを下位になればなるほど割引して足し上げた値</li>
-<li>IdealDCG := 関連度自身でソートしたリストのDCG</li>
+<li><p>いくつかの定義が存在している</p></li>
+<li><p>関連度のリストに対して計算される</p></li>
+<li><p>nDCGは、normalized Discounted Cumulative Gainの略でDCGを正規化したもの</p></li>
+<li><p>nDCG := DCG / IdealDCG</p>
+<ul>
+<li><p>DCG := アルゴリズムの予測値によってソートした関連度リストを下位になればなるほど割引して足し上げた値</p></li>
+<li><p>IdealDCG := 関連度自身でソートしたリストのDCG</p></li>
 </ul>
 </li>
 </ul>
+<div class="math notranslate nohighlight">
 \begin{align}
   \label{eq:ndcg1}
-  \text{DCG@}k &:= \sum_{i=1}^{k} \frac{r_i}{\log_2 (i+1)} \\
+  \text{DCG&#64;}k &amp;:= \sum_{i=1}^{k} \frac{r_i}{\log_2 (i+1)} \\
   \label{eq:ndcg2}
-  \text{DCG@}k &:= \sum_{i=1}^{k} \frac{2^{r_i} - 1}{\log_2 (i+1)}
-\end{align}<ul class="simple">
-<li>本来のnDCGは <a class="reference internal" href="#kalervo" id="id1">[Kalervo]</a> によって(1)と似た, (3)のように導入されたが、logの底が2の場合rank = 1と同様に rank=2も割引されないため、明示的にそのように意図しないのであれば(1)の定義を用いることが自然に思える</li>
+  \text{DCG&#64;}k &amp;:= \sum_{i=1}^{k} \frac{2^{r_i} - 1}{\log_2 (i+1)}
+\end{align}</div><ul class="simple">
+<li><p>本来のnDCGは <a class="reference internal" href="#kalervo" id="id1"><span>[Kalervo]</span></a> によって(1)と似た, (3)のように導入されたが、logの底が2の場合rank = 1と同様に rank=2も割引されないため、明示的にそのように意図しないのであれば(1)の定義を用いることが自然に思える</p></li>
 </ul>
+<div class="math notranslate nohighlight">
 \begin{align}
-  \text{DCG@}k := r_1 + \sum_{i=2}^{k} \frac{r_i}{\log_2 i}
-\end{align}<ul class="simple">
-<li>式(2) は <a class="reference internal" href="#burges" id="id2">[Burges]</a> によって導入され, 見ての通り 2の関連度乗を足しているので (1)よりも, より関連度の高いものを当てることに重きをおいており、xgboost, LightGBMも採用している</li>
+  \text{DCG&#64;}k := r_1 + \sum_{i=2}^{k} \frac{r_i}{\log_2 i}
+\end{align}</div><ul class="simple">
+<li><p>式(2) は <a class="reference internal" href="#burges" id="id2"><span>[Burges]</span></a> によって導入され, 見ての通り 2の関連度乗を足しているので (1)よりも, より関連度の高いものを当てることに重きをおいており、xgboost, LightGBMも採用している</p></li>
 </ul>
 <div class="section" id="catboostdcg">
 <h3>CatBoostのDCGの計算方法<a class="headerlink" href="#catboostdcg" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>CatBoostは式(1)のDCGの定義を採用しているが、DCG := 0.5 (OptimisticDCG + PessimisticDCG) と計算している<ul>
-<li>OptimisticDCG := アルゴリズムの予測値でソートするとき、同じ予測値なら関連度が高い方を上位とした関連度リストを入力としたDCG</li>
-<li>PessimisticDCG := アルゴリズムの予測値でソートするとき、同じ予測値なら関連度が低い方を上位とした関連度リストを入力としたDCG</li>
+<li><p>CatBoostは式(1)のDCGの定義を採用しているが、DCG := 0.5 (OptimisticDCG + PessimisticDCG) と計算している</p>
+<ul>
+<li><p>OptimisticDCG := アルゴリズムの予測値でソートするとき、同じ予測値なら関連度が高い方を上位とした関連度リストを入力としたDCG</p></li>
+<li><p>PessimisticDCG := アルゴリズムの予測値でソートするとき、同じ予測値なら関連度が低い方を上位とした関連度リストを入力としたDCG</p></li>
 </ul>
 </li>
-<li>このように計算したほうが、よさげに見える</li>
+<li><p>このように計算したほうが、よさげに見える</p></li>
 </ul>
-<table class="docutils citation" frame="void" id="kalervo" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[Kalervo]</a></td><td>Järvelin, Kalervo, and Jaana Kekäläinen. &#8220;Cumulated gain-based evaluation of IR techniques.&#8221; ACM Transactions on Information Systems (TOIS) 20.4 (2002): 422-446.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="burges" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[Burges]</a></td><td>Burges, Chris, et al. &#8220;Learning to rank using gradient descent.&#8221; Proceedings of the 22nd international conference on Machine learning. ACM, 2005.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="kalervo"><span class="brackets"><a class="fn-backref" href="#id1">Kalervo</a></span></dt>
+<dd><p>Järvelin, Kalervo, and Jaana Kekäläinen. “Cumulated gain-based evaluation of IR techniques.” ACM Transactions on Information Systems (TOIS) 20.4 (2002): 422-446.</p>
+</dd>
+<dt class="label" id="burges"><span class="brackets"><a class="fn-backref" href="#id2">Burges</a></span></dt>
+<dd><p>Burges, Chris, et al. “Learning to rank using gradient descent.” Proceedings of the 22nd international conference on Machine learning. ACM, 2005.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
@@ -228,8 +239,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2016-present, Atsushi Shibagaki.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+        &copy; Copyright 2021, ashibaga.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.1.<br/>
     </p>
   </div>
 </footer>

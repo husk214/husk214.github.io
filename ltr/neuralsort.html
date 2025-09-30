@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport" href="otsort.html" />
+    <link rel="prev" title="Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models" href="mixture_transformation.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">前置き</a></li>
+<li><a class="reference internal" href="#neuralsort">提案法: NeuralSort</a></li>
+<li><a class="reference internal" href="#stochastic-optimization-over-permutations">Stochastic Optimization over Permutations</a></li>
+<li><a class="reference internal" href="#proof-of-corollary-3">Proof of Corollary 3</a></li>
+<li><a class="reference internal" href="#softmax">softmaxの変形の証明</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="mixture_transformation.html" title="Previous Chapter: Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Zhuang SIGIR’...</span>
+    </a>
+  </li>
+  <li>
+    <a href="otsort.html" title="Next Chapter: Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Cuturi NeurIP... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">前置き</a></li>
+<li><a class="reference internal" href="#neuralsort">提案法: NeuralSort</a></li>
+<li><a class="reference internal" href="#stochastic-optimization-over-permutations">Stochastic Optimization over Permutations</a></li>
+<li><a class="reference internal" href="#proof-of-corollary-3">Proof of Corollary 3</a></li>
+<li><a class="reference internal" href="#softmax">softmaxの変形の証明</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="mixture_transformation.html" title="Previous Chapter: Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Zhuang SIGIR’...</span>
+    </a>
+  </li>
+  <li>
+    <a href="otsort.html" title="Next Chapter: Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Cuturi NeurIP... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/ltr/neuralsort.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="grover-iclr-19-stochastic-optimization-of-sorting-networks-via-continuous-relaxations">
+<h1>Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations<a class="headerlink" href="#grover-iclr-19-stochastic-optimization-of-sorting-networks-via-continuous-relaxations" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://openreview.net/forum?id=H1eSS3CcKX">https://openreview.net/forum?id=H1eSS3CcKX</a></p>
+<p>著者</p>
+<ul class="simple">
+<li><p>Aditya Grover (Computer Science Department Stanford University)</p></li>
+<li><p>Eric Wang (Computer Science Department Stanford University)</p></li>
+<li><p>Aaron Zweig (Computer Science Department Stanford University)</p></li>
+<li><p>Stefano Ermon (Computer Science Department Stanford University)</p></li>
+</ul>
+<section id="id1">
+<h2>概要<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>sortをargmaxを用いて記述 → argmaxをsoftmaxで代替して微分可能にする</p></li>
+<li><p>順列の確率がPlackett-Luce分布に従うとした設定のversionも提案</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>前置き<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p><strong>Permutation matrixの定義</strong></p>
+<p>まずPermutation matrixを導入します。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{z} = [z_1, \ldots, z_n]^\top\)</span> を長さnのユニークインデックス <span class="math notranslate nohighlight">\(\{1, 2, \ldots, n\}\)</span> のリストとする (zの取りうる集合を <span class="math notranslate nohighlight">\(\mathcal{Z}_n\)</span> とする)</p></li>
+<li><p>そして　<span class="math notranslate nohighlight">\(\mathbf{z}\)</span> のpermutation matrix <span class="math notranslate nohighlight">\(P_{\mathbf{z}} \in \{0, 1\}^{n \times n}\)</span> を以下のように定義する  (<span class="math notranslate nohighlight">\({P_{\mathbf{z}} [i, j]}\)</span> は <span class="math notranslate nohighlight">\((i, j)成分\)</span> )</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  P_{\mathbf{z}}[i, j] := \left\{
+  \begin{array}{ll}
+  1 &amp; j = z_i \\
+  0 &amp; \text{otherwise}.
+  \end{array}
+  \right.
+\end{align}</div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>具体例</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{z} = [1, 3, 4, 2]^\top\)</span> とすると <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> のPermutation Maxtrixは以下になる。</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+P_{\mathbf{z}} =
+\begin{pmatrix}
+    1 &amp; 0 &amp; 0 &amp; 0 \\
+    0 &amp; 0 &amp; 1 &amp; 0 \\
+    0 &amp; 0 &amp; 0 &amp; 1 \\
+    0 &amp; 1 &amp; 0 &amp; 0
+\end{pmatrix}
+\end{align}</div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>sort関数の定義</strong></p>
+<p>そして、<span class="math notranslate nohighlight">\(\mathbf{s} = [s_1, \ldots, s_n]^\top\)</span> を長さ <span class="math notranslate nohighlight">\(n\)</span> の実数のベクトル、 <span class="math notranslate nohighlight">\([i]\)</span> を <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> の中で <span class="math notranslate nohighlight">\(i\)</span> 番目に大きい値のindexとして、 sort関数 <span class="math notranslate nohighlight">\(\mathbb{R}^n \to \mathcal{Z}_n\)</span> を次のように定義します。</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  \text{sort}(\mathbf{s}) := [[1], [2], \ldots, [n]]
+\end{align}</div><p>そうすると ベクトル <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> を(降順に)ソートしたベクトルは <span class="math notranslate nohighlight">\(P_{\text{sort}(\mathbf{s})} \mathbf{s}\)</span> と書けるようになる。</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>具体例</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{s} = [9, 1, 5, 3]^\top\)</span> とすると</p></li>
+<li><p>1番大きい9のindexは1, 2番目に大きい5のindexは3、・・・なので <span class="math notranslate nohighlight">\(\text{sort}(\mathbf{s}) = [1, 3, 4, 2]^\top\)</span> になる</p></li>
+<li><p>そして、<span class="math notranslate nohighlight">\(\text{sort}(\mathbf{s})\)</span> のPermutation matrixは定義より以下となる</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+P_{\text{sort}(\mathbf{s})} =
+\begin{pmatrix}
+    1 &amp; 0 &amp; 0 &amp; 0 \\
+    0 &amp; 0 &amp; 1 &amp; 0 \\
+    0 &amp; 0 &amp; 0 &amp; 1 \\
+    0 &amp; 1 &amp; 0 &amp; 0
+\end{pmatrix}
+\end{align}</div><ul class="simple">
+<li><p>そして <span class="math notranslate nohighlight">\(P_{\text{sort}(\mathbf{s})} \mathbf{s} = [9, 5, 3, 1]\)</span> となるので、ちゃんとソートされている。</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Corollary 3 (sortを数学的に記述する)</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{s}\)</span> の要素間の差の行列を <span class="math notranslate nohighlight">\(A_{\mathbf{s}}\)</span> とする (つまり <span class="math notranslate nohighlight">\(A_{\mathbf{s}}[i,j] := |s_i - s_j |\)</span>)</p></li>
+<li><p>すると、<span class="math notranslate nohighlight">\(\text{sort}(\mathbf{s})\)</span> のPermutation matrix <span class="math notranslate nohighlight">\(P_{\text{sort}(\mathbf{s})}\)</span> は以下になる</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-ns4">
+<span class="eqno">(1)<a class="headerlink" href="#equation-ns4" title="Link to this equation">¶</a></span>\[\begin{split}\begin{align}
+  P_{\text{sort}(\mathbf{s})} [i, j] = \left\{
+  \begin{array}{ll}
+  1 &amp; j = \arg \max [(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} ]\\
+  0 &amp; \text{otherwise}.
+  \end{array}
+  \right.
+\end{align}\end{split}\]</div>
+<ul class="simple">
+<li><p>(<span class="math notranslate nohighlight">\(\mathbb{1}\)</span> は要素がすべて1のcolumn vector)</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>証明: <a class="reference internal" href="#labelproofcoro3"><span class="std std-ref">Proof of Corollary 3</span></a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>具体例</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{s} = [9, 1, 5, 3]^\top\)</span> とすると <span class="math notranslate nohighlight">\(A_{\mathbf{s}}\)</span> は以下になる</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+A_{\mathbf{s}} =
+\begin{pmatrix}
+    0 &amp; 8 &amp; 4 &amp; 6 \\
+    8 &amp; 0 &amp; 4 &amp; 2 \\
+    4 &amp; 4 &amp; 0 &amp; 2 \\
+    6 &amp; 2 &amp; 2 &amp; 0
+\end{pmatrix}
+\end{align}</div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(i = 1\)</span> のとき、以下なので <span class="math notranslate nohighlight">\(\arg \max [(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} ] = \arg \max[9, -11, 5, -1] = 1\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} = 3s -  A_{\mathbf{s}} \mathbb{1} = [27, 3, 15, 9] - [18, 14, 10, 10] = [9, -11, 5, -1]\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(i = 2\)</span> のとき、以下なので <span class="math notranslate nohighlight">\(\arg \max [(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} ] =\arg \max [-9, -13, -5, -9] = 3\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} = s -  A_{\mathbf{s}} \mathbb{1} = [9, 1, 5, 3] - [18, 14, 10, 10] = [-9, -13, -5, -9]\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(i = 3\)</span> のとき、以下なので <span class="math notranslate nohighlight">\(\arg \max [(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} ] = \arg \max  [-27, -15, -15, -13] = 4\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} = -s -  A_{\mathbf{s}} \mathbb{1} = [-9, -1, -5, -3] - [18, 14, 10, 10] = [-27, -15, -15, -13]\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(i = 4\)</span> のとき、以下なので <span class="math notranslate nohighlight">\(\arg \max [(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} ] = \arg \max [-45, -17, -25, -19] = 2\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} = -3s -  A_{\mathbf{s}} \mathbb{1} = [-27, -3, -15, -9] - [18, 14, 10, 10] = [-45, -17, -25, -19]\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{sort}(\mathbf{s}) = [1, 3, 4, 2]^\top\)</span> なのであっている。</p></li>
+</ul>
+</section>
+<section id="neuralsort">
+<h2>提案法: NeuralSort<a class="headerlink" href="#neuralsort" title="Link to this heading">¶</a></h2>
+<p>モチベーション</p>
+<p>次のようなsortを含む目的関数をgradient-based methodで最適化することが目標 (<span class="math notranslate nohighlight">\(\theta\)</span> がモデルパラメータで <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> が <span class="math notranslate nohighlight">\(\theta\)</span> に依存)</p>
+<div class="math notranslate nohighlight">
+\[L(\theta, \mathbf{s}) = f(P_{\mathbf{z}}; \theta), ~~~ \text{where} ~~ \mathbf{z} = \text{sort}(\mathbf{s}).\]</div>
+<p>提案法</p>
+<p>argmaxは微分できないので、softmaxで置換して、sortのPermutation matrixを以下のようにrelaxationする。 (<span class="math notranslate nohighlight">\(\tau\)</span> は温度パラメータ)</p>
+<div class="math notranslate nohighlight" id="equation-ns5">
+<span class="eqno">(2)<a class="headerlink" href="#equation-ns5" title="Link to this equation">¶</a></span>\[\hat{P}_{\text{sort}(\mathbf{s})} [i, :] (\tau) = \text{softmax} [ ((n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1}) / \tau ]\]</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>tensorflowで実装すると次のような感じ(batch版)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">neural_sort</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">tau</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">es</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+    <span class="n">A</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">es</span><span class="p">,</span> <span class="n">perm</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">es</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">A1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">pi</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">],</span> <span class="n">es</span><span class="p">)</span> <span class="o">-</span> <span class="n">A1</span>
+    <span class="n">pm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="n">tau</span><span class="p">)</span>
+
+    <span class="n">sort_s</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matvec</span><span class="p">(</span><span class="n">pm</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+
+    <span class="n">b_hat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:],</span> <span class="n">m</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">rank_s</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">pm</span><span class="p">,</span> <span class="n">b_hat</span><span class="p">)[</span><span class="o">...</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">sort_s</span><span class="p">,</span> <span class="n">rank_s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([[</span><span class="mi">9</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,],</span> <span class="p">[</span><span class="o">-</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.8</span><span class="p">,]])</span>
+<span class="n">ss</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">neural_sort</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sort(s) =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">ss</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rank(s) =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sr</span><span class="o">.</span><span class="n">numpy</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s =
+ [[ 9.   1.   5.   3. ]
+ [-6.5  0.4  1.5  3.8]]
+sort(s) =
+ [[ 9.         5.         3.         1.       ]
+ [ 3.8        1.4999816  0.4000184 -6.5      ]]
+rank(s) =
+ [[1.        3.        4.        2.       ]
+ [4.        2.9999833 2.0000167 1.       ]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Theorem 4</strong></p>
+<ul class="simple">
+<li><p>Limiting behavior: <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> の各要素が <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> のルベーグ測度に対して絶対連続な分布から独立に引かれていると仮定すると、以下が成り立つ</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-ns6">
+<span class="eqno">(3)<a class="headerlink" href="#equation-ns6" title="Link to this equation">¶</a></span>\[\lim_{\tau \rightarrow 0^+} \hat{P}_{\text{sort}(\mathbf{s})} [i, :] (\tau) = {P}_{\text{sort}(\mathbf{s})} [i, :] ~~~ \forall i \in \{1,2,\ldots, n\}.\]</div>
+<ul class="simple">
+<li><p>Unimodality: <span class="math notranslate nohighlight">\(\forall \tau &gt; 0\)</span> において <span class="math notranslate nohighlight">\(\hat{P}_{\text{sort}(\mathbf{s})}\)</span> は unimodal row stochastic matrixである。さらに、 <span class="math notranslate nohighlight">\(\hat{P}_{\text{sort}(\mathbf{s})}\)</span> の各行にargmaxを取ったベクトルは <span class="math notranslate nohighlight">\(\text{sort}(\mathbf{s})\)</span> に一致する。</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Limiting behaviorについて</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{hardmax}(\mathbf{s})\)</span> を <span class="math notranslate nohighlight">\(i := \arg \max(\mathbf{s})\)</span>  としてindex iだけが1で他のindexが0のベクトルを返す関数だとする</p></li>
+<li><p><span class="math notranslate nohighlight">\({P}_{\text{sort}(\mathbf{s})} [i, :] = \text{hardmax}((n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1})\)</span> とかける</p></li>
+<li><p>で <span class="math notranslate nohighlight">\(\text{hardmax}(\mathbf{s}) = \arg \max_{\mathbf{x} \in \Delta^n } \langle \mathbf{x},\mathbf{s} \rangle\)</span> とも書ける</p></li>
+<li><p>一方softmaxは次のように書ける (ラグランジュの未定乗数法を使った <a class="reference internal" href="#labelproofsoftmax"><span class="std std-ref">softmaxの変形の証明</span></a>)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\text{softmax}(\mathbf{s}/\tau) = \arg \max_{\mathbf{x} \in \Delta^n } \left[\langle \mathbf{x},\mathbf{s} \rangle - \tau \sum_{i=1}^n x_i \log x_i \right]\]</div>
+<ul class="simple">
+<li><p>なので <span class="math notranslate nohighlight">\(\lim_{\tau \rightarrow 0^+} \text{softmax}(\mathbf{s}/\tau) = \arg \max_{\mathbf{x} \in \Delta^n } \langle \mathbf{x},\mathbf{s} \rangle = \text{hardmax}(\mathbf{s})\)</span> なので</p></li>
+<li><p><span class="math notranslate nohighlight">\(\lim_{\tau \rightarrow 0^+} \hat{P}_{\text{sort}(\mathbf{s})} [i, :] (\tau) = {P}_{\text{sort}(\mathbf{s})} [i, :] ~~~ \forall i \in \{1,2,\ldots, n\}\)</span></p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Unimodalityについて</strong></p>
+<p>まず定義します。</p>
+<p>Definition 1 (Unimodal Row Stochastic Matrices): 以下の3つを満たす行列のこと</p>
+<ol class="arabic simple">
+<li><p>Non-negativity: <span class="math notranslate nohighlight">\(U[i,j] \geq 0 ~~~ \forall i, j \in \{1,2,\ldots, n\}.\)</span></p></li>
+<li><p>Row Affinity: <span class="math notranslate nohighlight">\(\sum_{j=1}^n U[i,j] = 1 ~~~ \forall i, j \in \{1,2,\ldots, n\}.\)</span></p></li>
+<li><p>Argmax Permutation: <span class="math notranslate nohighlight">\(u_i = \arg \max_j U[i, j]\)</span> とすると <span class="math notranslate nohighlight">\(\mathbf{u} \in \mathcal{Z}_n\)</span> であること (つまり <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> がvalid permutationであること)</p></li>
+</ol>
+<p>証明</p>
+<ul class="simple">
+<li><p>Non-negativity, Row Affinity はsoftmaxの定義より成り立つ。</p></li>
+<li><p>Argmax Permutationは以下がなりたち、 <span class="math notranslate nohighlight">\(\mathbf{u} = \text{sort}(\mathbf{s})\)</span> なので成り立つ。</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  u_i &amp;= \arg \max [\text{softmax} ((n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1}) ] \\
+  &amp;= \arg \max [ ((n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1})  ] ~~~~ (\text{softmaxのmonotonicityより}) \\
+  &amp;= [i] ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ (\text{Corollary3より})
+\end{align}</div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Unimodalityがあるとなにが嬉しいのか?</p>
+<ul class="simple">
+<li><p>特に論文中に説明はなかったが、<span class="math notranslate nohighlight">\(P_{\text{sort}(\mathbf{s})}\)</span> が持っている性質なので <span class="math notranslate nohighlight">\(\hat{P}_{\text{sort}(\mathbf{s})}\)</span> も同じ性質を持っているからいいよねって感じだと思いました</p></li>
+</ul>
+<p>(疑問)</p>
+<ul class="simple">
+<li><p>実践的にはsoftmaxよりsoftargmaxのほうがいいんじゃないかと思ったが、どうなのだろうか</p></li>
+<li><p>DCGに適用した場合、ApproxNDCG (<a class="reference internal" href="dasalc.html#labelapproxndcg"><span class="std std-ref">Approx NDCGについて詳しく</span></a>) と結果的にはあんまりかわらないんじゃないかという気がしてきた</p></li>
+</ul>
+</section>
+<section id="stochastic-optimization-over-permutations">
+<h2>Stochastic Optimization over Permutations<a class="headerlink" href="#stochastic-optimization-over-permutations" title="Link to this heading">¶</a></h2>
+<p>今までは</p>
+<div class="math notranslate nohighlight">
+\[L(\theta, \mathbf{s}) = f(P_{\mathbf{z}}; \theta)\]</div>
+<p>今度は以下を考える　(<span class="math notranslate nohighlight">\(q(\cdot)\)</span> は <span class="math notranslate nohighlight">\(\mathcal{Z}_n\)</span> の要素上の分布)</p>
+<div class="math notranslate nohighlight" id="equation-ns-eq7">
+<span class="eqno">(4)<a class="headerlink" href="#equation-ns-eq7" title="Link to this equation">¶</a></span>\[L(\theta, \mathbf{s}) = \mathop{\mathbb{E}}_{q(z|s)} [f(P_{\mathbf{z}}; \theta)]\]</div>
+<a class="reference internal image-reference" href="../_images/ltr_ns_fig3.png"><img alt="../_images/ltr_ns_fig3.png" class="align-center" src="../_images/ltr_ns_fig3.png" style="width: 520.8px; height: 234.0px;" />
+</a>
+<ul class="simple">
+<li><p>MCMCで <span class="math notranslate nohighlight">\(\theta\)</span> に関する勾配の不偏推定量は得られるが、sampling distributionが <span class="math notranslate nohighlight">\(\mathbf{s}\)</span> に依存するため、<span class="math notranslate nohighlight">\(\mathbf{s}\)</span> に関する勾配の推定量は直接求められない。</p></li>
+<li><p>REINFORCE gradient estimator (Glynn, 1990; Williams, 1992; Fu, 2006) は <span class="math notranslate nohighlight">\(\nabla_s q(\mathbf{z}|\mathbf{s}) = q(\mathbf{z}|\mathbf{s}) \nabla_s \log q(\mathbf{z}|\mathbf{s})\)</span> を使って、 MC gradient estimationは</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\nabla_s L(\theta, \mathbf{s}) = \mathop{\mathbb{E}}_{q(z|s)} [f(P_{\mathbf{z}}; \theta) \nabla_s \log q(\mathbf{z}|\mathbf{s})] + \mathop{\mathbb{E}}_{q(z|s)} [\nabla_s f(P_{\mathbf{z}}; \theta)]\]</div>
+<ul class="simple">
+<li><p>だが、REINFORCE gradient estimator は High Varianceに苦しんでいる (Schulman et al., 2015; Glasserman, 2013).</p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>reparameterization trickを使うと、 <span class="math notranslate nohighlight">\(\mathbf{g}\)</span> をgumbel noiseとして 式 <a class="reference internal" href="#equation-ns-eq7">(4)</a> は以下になる</p>
+<div class="math notranslate nohighlight">
+\[L(\theta, \mathbf{s}) = \mathop{\mathbb{E}}_{\mathbf{g}} [f(P_{\text{sort}(\log \mathbf{s} + \mathbf{g})}; \theta)]\]</div>
+<p>となり、argmaxをsoftmaxで置換して緩和したsortにして、微分したものは</p>
+<div class="math notranslate nohighlight">
+\[\nabla_s \hat{L} (\theta, \mathbf{s}) = \mathop{\mathbb{E}}_{\mathbf{g}} [ \nabla_s f(\hat{P}_{\text{sort}(\log \mathbf{s} + \mathbf{g})}; \theta)]\]</div>
+<p>これは、期待値がsに依存しない分布に関するものであるため、モンテカルロ法で効率的に推定できる。</p>
+<p>(実験をみると Stochasticにしても性能が上がるわけではない)</p>
+</section>
+<section id="proof-of-corollary-3">
+<span id="labelproofcoro3"></span><h2>Proof of Corollary 3<a class="headerlink" href="#proof-of-corollary-3" title="Link to this heading">¶</a></h2>
+<p>まず Lemma 2 [Lemma 1 in Ogryczak &amp; Tamir (2003)]</p>
+<div class="math notranslate nohighlight" id="equation-ns3">
+<span class="eqno">(5)<a class="headerlink" href="#equation-ns3" title="Link to this equation">¶</a></span>\[\sum_{i}^k s_{[i]} = \min_{\lambda \in \{ s_1, \ldots, s_n \}} \lambda k + \sum_{i=1}^n \max(s_i - \lambda, 0).\]</div>
+<p>(書きかけ)</p>
+</section>
+<section id="softmax">
+<span id="labelproofsoftmax"></span><h2>softmaxの変形の証明<a class="headerlink" href="#softmax" title="Link to this heading">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\text{softmax}(\mathbf{s}/\tau) = \arg \max_{\mathbf{x} \in \Delta^n } \left[\langle \mathbf{x},\mathbf{s} \rangle - \tau \sum_{i=1}^n x_i \log x_i \right]\]</div>
+<p>ラグランジュの未定乗数法を使うと、ラグランジュ関数は</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}(\mathbf{x}, \mu, \mathbf{\lambda}) = \langle \mathbf{x},\mathbf{s} \rangle - \tau \sum_{i=1}^n x_i \log x_i + \mu \left(\sum_{i=1}^n x_i - 1 \right) - \sum_{i=1}^n \lambda_i x_i.\]</div>
+<p>(第三項は足して1の制約から、第四項はすべての要素が非負の制約から)</p>
+<p>スレーター制約を満たすのでKKT条件が最適性の必要十分条件になって、KKT条件は以下。</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  \cfrac{\partial \mathcal{L}}{\partial x_i} &amp;= s_i - \tau \log x_i - \tau + \mu - \lambda_i = 0, ~~~ \forall i \\
+  \mu \left( \sum_{i} x_i -1 \right) &amp;= 0, \\
+  \lambda_i x_i &amp;= 0, \\
+  x_i &amp;\ge 0,
+\end{align}</div><p>1つ目の条件から</p>
+<div class="math notranslate nohighlight" id="equation-pf-s1">
+<span class="eqno">(6)<a class="headerlink" href="#equation-pf-s1" title="Link to this equation">¶</a></span>\[x_i = \exp \left(\frac{s_i - \tau + \mu - \lambda_i }{\tau} \right)\]</div>
+<p>となるので <span class="math notranslate nohighlight">\(x_i &gt; 0\)</span> になり、また <span class="math notranslate nohighlight">\(\lambda_i x_i = 0\)</span> なので <span class="math notranslate nohighlight">\(\lambda_i = 0\)</span> になる。</p>
+<p>2つ目の条件と式 <a class="reference internal" href="#equation-pf-s1">(6)</a> から</p>
+<div class="math notranslate nohighlight" id="equation-pf-s2">
+<span class="eqno">(7)<a class="headerlink" href="#equation-pf-s2" title="Link to this equation">¶</a></span>\[\begin{split}\begin{aligned}
+  &amp; \sum_{i} x_i  = 1
+  \Leftrightarrow  \sum_{i} \exp \left(\frac{s_i - \tau + \mu }{\tau} \right) = 1 \notag \\
+  \Leftrightarrow  &amp; \sum_{i} \exp \left(\frac{s_i}{\tau} \right) \exp(-1)  \exp \left(\frac{ \mu }{\tau} \right) = 1
+  \Leftrightarrow  \exp \left(\frac{ \mu }{\tau} \right) = \cfrac{e}{\sum_{i} \exp \left(\frac{s_i}{\tau} \right)}
+\end{aligned}\end{split}\]</div>
+<p>また、式 <a class="reference internal" href="#equation-pf-s1">(6)</a> から</p>
+<div class="math notranslate nohighlight" id="equation-pf-s3">
+<span class="eqno">(8)<a class="headerlink" href="#equation-pf-s3" title="Link to this equation">¶</a></span>\[x_i = \exp \left(\frac{s_i}{\tau} \right) \exp(-1) \exp\left(\frac{\mu}{\tau} \right)
+\Leftrightarrow x_i e \exp \left(- \frac{s_i}{\tau} \right)  = \exp\left(\frac{\mu}{\tau} \right)\]</div>
+<p><a class="reference internal" href="#equation-pf-s2">(7)</a> と <a class="reference internal" href="#equation-pf-s3">(8)</a> から</p>
+<div class="math notranslate nohighlight">
+\[x_i e \exp \left(- \frac{s_i}{\tau} \right) = \cfrac{e}{\sum_{i} \exp \left(\frac{s_i}{\tau} \right)}
+\Leftrightarrow x_i  = \cfrac{\exp \left(\frac{s_i}{\tau} \right)}{\sum_{i} \exp \left(\frac{s_i}{\tau} \right)}\]</div>
+<p>よって、以下になる。</p>
+<div class="math notranslate nohighlight">
+\[\arg \max_{\mathbf{x} \in \Delta^n } \left[\langle \mathbf{x},\mathbf{s} \rangle - \tau \sum_{i=1}^n x_i \log x_i \right] =  \cfrac{\exp \left(\frac{\mathbf{s}}{\tau} \right)}{\sum_{i} \exp \left(\frac{\mathbf{s}}{\tau} \right)} = \text{softmax}(\mathbf{s}/\tau)\]</div>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples? &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Representation Learning" href="../representation.html" />
+    <link rel="prev" title="Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)" href="simsiam.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#predictoreoa">predictorはEOA近似のギャップを埋めているのか?</a></li>
+<li><a class="reference internal" href="#asymmetric-interpretation-of-predictor-with-stop-gradient-in-simsiam">Asymmetric interpretation of predictor with stop gradient in SimSiam</a></li>
+<li><a class="reference internal" href="#vector-decomposition-for-understanding-collapse">Vector decomposition for understanding collapse</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="simsiam.html" title="Previous Chapter: Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Chen CVPR’21 ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../representation.html" title="Next Chapter: Representation Learning"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Representatio... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#predictoreoa">predictorはEOA近似のギャップを埋めているのか?</a></li>
+<li><a class="reference internal" href="#asymmetric-interpretation-of-predictor-with-stop-gradient-in-simsiam">Asymmetric interpretation of predictor with stop gradient in SimSiam</a></li>
+<li><a class="reference internal" href="#vector-decomposition-for-understanding-collapse">Vector decomposition for understanding collapse</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="simsiam.html" title="Previous Chapter: Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Chen CVPR’21 ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../representation.html" title="Next Chapter: Representation Learning"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Representatio... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/ssl/how_avoid.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="does-iclr-22-how-does-simsiam-avoid-collapse-without-negative-samples">
+<h1>Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?<a class="headerlink" href="#does-iclr-22-how-does-simsiam-avoid-collapse-without-negative-samples" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>How Does SimSiam Avoid Collapse Without Negative Samples? A Unified Understanding with Self-supervised Contrastive Learning</p></li>
+<li><p>著者: Chaoning Zhang*, Kang Zhang*, Chenshuang Zhang, Trung X. Pham, Chang D. Yoo,  In So Kweon (KAIST)</p></li>
+<li><p><a class="reference external" href="https://openreview.net/forum?id=bwq6O4Cwdl">https://openreview.net/forum?id=bwq6O4Cwdl</a> <a class="reference external" href="https://arxiv.org/pdf/2203.16262.pdf">https://arxiv.org/pdf/2203.16262.pdf</a></p></li>
+</ul>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>SimSiamがなぜnegative sampleを用いず学習の崩壊を防げているのかの理由はまだ十分に解明されていない</p></li>
+<li><p>まずSimSiamにおける説明的主張を再検討して、それに反論する</p></li>
+<li><p>そして、表現ベクトルを中心成分と残差成分と分解して、predictorを外したシンメトリックなSimSiamは崩壊を防ぐことができず、アシンメトリックにするとextra gradientが出てきて、その中心ベクトルは de-centering効果によって、残差ベクトルはdimensional de-correlation によって崩壊を防ぐ (???)</p></li>
+</ul>
+<p>??? という感じですが、とりあえず先に進んでいきます。</p>
+</section>
+<section id="predictoreoa">
+<h2>predictorはEOA近似のギャップを埋めているのか?<a class="headerlink" href="#predictoreoa" title="Link to this heading">¶</a></h2>
+<p>(SimSiam論文の仮説への反論)</p>
+<p>EOAって? Expectation over augmentations のこと  (<span class="math notranslate nohighlight">\(\mathbb{E}_{\mathcal{T}}[\cdot]\)</span> )</p>
+<a class="reference internal image-reference" href="../_images/how_fig1.png"><img alt="../_images/how_fig1.png" class="align-center" src="../_images/how_fig1.png" style="width: 717.6px; height: 252.8px;" />
+</a>
+<ul class="simple">
+<li><p>図1(a)のようにSimSiamのpredictorはstop gradientしない方のencoder側にある</p></li>
+<li><p>SimSiam論文のProof of concept(5.2節) でやったmoving-averageは図1(b)のようになる</p></li>
+<li><p>predictorをEOAと解釈するのは図1(a)というより図1(c)になる。</p></li>
+<li><p>なので、SimSiamのpredictorをEOAとみなすのは無理がある</p></li>
+</ul>
+<p>SimSiam論文では、「<span class="math notranslate nohighlight">\(\mathbb{E}_{\mathcal{T}}[\cdot]\)</span> を計算するのは非現実的だが、<span class="math notranslate nohighlight">\(\mathcal{T}\)</span> が複数のepoch間で暗黙的に分散しているならpredictorが期待値を予測することは可能かも」と言っているが、
+本論文は十分に大きい数 <span class="math notranslate nohighlight">\(\mathcal{T}\)</span> からサンプリングして、最新のモデルを通したものの平均をとったほうがより有効でしょうと言っている。</p>
+<p>しかし、そうしてしまうとTable 1に示すとおりモデルは崩壊してしまう。 (やっぱりpredictorをEOAとみなすのは無理がある)</p>
+<a class="reference internal image-reference" href="../_images/how_tab1.png"><img alt="../_images/how_tab1.png" class="align-center" src="../_images/how_tab1.png" style="width: 583.2px; height: 140.0px;" />
+</a>
+</section>
+<section id="asymmetric-interpretation-of-predictor-with-stop-gradient-in-simsiam">
+<h2>Asymmetric interpretation of predictor with stop gradient in SimSiam<a class="headerlink" href="#asymmetric-interpretation-of-predictor-with-stop-gradient-in-simsiam" title="Link to this heading">¶</a></h2>
+<p>話は変わって、どういう構造なら崩壊して、どういう構造なら崩壊しないのか　という話になる
+(なぜ崩壊しないのか？の答えではない)</p>
+<a class="reference internal image-reference" href="../_images/how_fig2.png"><img alt="../_images/how_fig2.png" class="align-center" src="../_images/how_fig2.png" style="width: 715.2px; height: 273.6px;" />
+</a>
+<ul class="simple">
+<li><p>図2(a) Naive SimSiam: SimSiamからpredictorを除いたものは崩壊する　(Table 2)</p></li>
+<li><p>図2(b) Symmetric Predictor : stop gradientする方にpredictorをつけたものも崩壊する　(Table 2)</p>
+<ul>
+<li><p>図2(b)は結局図2(a)の <span class="math notranslate nohighlight">\(f(x)\)</span> を <span class="math notranslate nohighlight">\(h(f(x))\)</span> とみなすだけなので、崩壊する</p></li>
+</ul>
+</li>
+<li><p>図2(c) Inverse Predictor : 図2(b)のstop gradientする方にpredictorの逆関数をつけると崩壊しない　(Figure 3)</p></li>
+</ul>
+<p><a class="reference internal" href="../_images/how_tab2.png"><img alt="pic1" src="../_images/how_tab2.png" style="width: 45%;" /></a> 　 <a class="reference internal" href="../_images/how_fig3.png"><img alt="pic2" src="../_images/how_fig3.png" style="width: 45%;" /></a></p>
+<p>Inverse predictorなんて用意できるのか?</p>
+<ul class="simple">
+<li><p>Inverse predictor <span class="math notranslate nohighlight">\(h^{-1}\)</span> も同時に <span class="math notranslate nohighlight">\(P, Z\)</span> の距離を近づけるように学習する</p>
+<ul>
+<li><p>図3が示すように <span class="math notranslate nohighlight">\(h^{-1}\)</span> は学習可能である</p></li>
+<li><p><span class="math notranslate nohighlight">\(h^{-1}\)</span> は理論的にrandom augmentation <span class="math notranslate nohighlight">\(\mathcal{T}'\)</span> を restore　できないので SimSiamにおけるpredictorはEOAではないさらなる証拠だと主張している (よくわからない)</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/how_alg5.png"><img alt="../_images/how_alg5.png" class="align-center" src="../_images/how_alg5.png" style="width: 576.8000000000001px; height: 373.6px;" />
+</a>
+</section>
+<section id="vector-decomposition-for-understanding-collapse">
+<h2>Vector decomposition for understanding collapse<a class="headerlink" href="#vector-decomposition-for-understanding-collapse" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z\)</span> : representation vector  (<span class="math notranslate nohighlight">\(z=f(x)\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z\)</span> : zを正規化したもの (<span class="math notranslate nohighlight">\(Z=z/\|z\|\)</span>)</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-how1">
+<span class="eqno">(1)<a class="headerlink" href="#equation-how1" title="Link to this equation">¶</a></span>\[\mathcal{L}_{MSE} = (Z_a - Z_b)^2 / 2 = -Z_a \cdot Z_b = L_{cosine}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P\)</span> : normalized output of predictor ( <span class="math notranslate nohighlight">\(P = p / \|p\|\)</span> )</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-how2">
+<span class="eqno">(2)<a class="headerlink" href="#equation-how2" title="Link to this equation">¶</a></span>\[\mathcal{L}_{SimSiam} = - (P_a \cdot sg(Z_b) + P_b \cdot sg(Z_a))\]</div>
+<p><span class="math notranslate nohighlight">\(Z\)</span> を <span class="math notranslate nohighlight">\(Z = o + r\)</span> と2つのベクトルに分ける</p>
+<ul class="simple">
+<li><p>center vector <span class="math notranslate nohighlight">\(o\)</span> : Zの期待値 (<span class="math notranslate nohighlight">\(o_z  = \mathbb{E}[Z]\)</span> )だが、minibatch内の標本平均で近似する <span class="math notranslate nohighlight">\(o_z = \frac{1}{M}\sum_{m=1}^M Z_m\)</span></p></li>
+<li><p>residual vector <span class="math notranslate nohighlight">\(r\)</span> : Zの残差成分 (<span class="math notranslate nohighlight">\(r = Z - o_z\)</span>)</p></li>
+<li><p>ration of o <span class="math notranslate nohighlight">\(m_o := \| o \| / \|z\|\)</span></p></li>
+<li><p>ration of r <span class="math notranslate nohighlight">\(m_r := \|r\| / \|z\|\)</span></p></li>
+</ul>
+<p>崩壊が起こると、<span class="math notranslate nohighlight">\(Z\)</span> は center vector <span class="math notranslate nohighlight">\(o\)</span> に近くなり、<span class="math notranslate nohighlight">\(m_o\)</span> は1に近くなり、<span class="math notranslate nohighlight">\(m_r\)</span> は0
+に近くなる。 なので、 <span class="math notranslate nohighlight">\(m_o \gg m_r\)</span> となるとき、崩壊していると解釈する。</p>
+<p><strong>推測1</strong> <span class="math notranslate nohighlight">\(Z_a = o_z + r_a\)</span> とすると、<span class="math notranslate nohighlight">\(o_z\)</span> の勾配成分は <span class="math notranslate nohighlight">\(m_o\)</span> を増加させ、<span class="math notranslate nohighlight">\(r_a\)</span> の勾配成分は逆に <span class="math notranslate nohighlight">\(m_r\)</span> を増加させる。</p>
+<p>推測1を検証するために、dummy gradient term <span class="math notranslate nohighlight">\(Z_a\)</span> に立ち返る。 <span class="math notranslate nohighlight">\(-Z_a \cdot sg(o_z)\)</span> と <span class="math notranslate nohighlight">\(-Z_a \cdot sg(r_a)\)</span>  2種類のロスをデザインして、それぞれ、<span class="math notranslate nohighlight">\(o\)</span> と <span class="math notranslate nohighlight">\(r_a\)</span> のgradient componetの影響を調べたのが図4.</p>
+<a class="reference internal image-reference" href="../_images/how_fig4.png"><img alt="../_images/how_fig4.png" class="align-center" src="../_images/how_fig4.png" style="width: 409.5px; height: 300.29999999999995px;" />
+</a>
+<p>gradient component <span class="math notranslate nohighlight">\(o_z\)</span>　は <span class="math notranslate nohighlight">\(m_o\)</span> を増加させ、gradient component <span class="math notranslate nohighlight">\(r_a\)</span> は <span class="math notranslate nohighlight">\(m_r\)</span> を増加させることがわかる。</p>
+<p><strong>Extra gradient component for alleviating collapse</strong></p>
+<p>ロス関数の negative gradient</p>
+<div class="math notranslate nohighlight" id="equation-how3">
+<span class="eqno">(3)<a class="headerlink" href="#equation-how3" title="Link to this equation">¶</a></span>\[- \frac{\partial \mathcal{L}_{MSE}}{\partial Z_a} = Z_b - Z_a \Leftrightarrow -\frac{\partial \mathcal{L}_{cosine}}{\partial Z_a} = Z_b\]</div>
+<p>, where the gradient component <span class="math notranslate nohighlight">\(Z_a\)</span> is a dummy term because the loss <span class="math notranslate nohighlight">\(- Z_a \cdot Z_a = -1\)</span> is a constant having zero gradient on the encoder <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>式 <a class="reference internal" href="#equation-how3">(3)</a> はtwo equivalent formsとして解釈でき <span class="math notranslate nohighlight">\(Z_b - Z_a\)</span> を選ぶと (???)、
+<span class="math notranslate nohighlight">\(Z_b - Z_a = (o_z + r_b) - (o_z + r_a) = r_b - r_a\)</span> になる。
+<span class="math notranslate nohighlight">\(r_b\)</span> は <span class="math notranslate nohighlight">\(r_a\)</span> と同じpositive sampleから来ているので、<span class="math notranslate nohighlight">\(r_b\)</span> も同じく <span class="math notranslate nohighlight">\(m_r\)</span> を増加させることが期待されるが、その効果は <span class="math notranslate nohighlight">\(r_a\)</span> より小さいので (???)、崩壊の原因になる.</p>
+<p>よくわかんないポイント</p>
+<ul class="simple">
+<li><p>その効果は <span class="math notranslate nohighlight">\(r_a\)</span> より小さいのはなぜ ( <span class="math notranslate nohighlight">\(r_b - r_a\)</span> が小さくなるならわからんでもない )</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z_b - Z_a\)</span> ではなく、<span class="math notranslate nohighlight">\(Z_b\)</span> を選ぶと <span class="math notranslate nohighlight">\(o_z + r_b\)</span> だけど</p></li>
+<li><p>そもそも <span class="math notranslate nohighlight">\(Z_a\)</span> で微分したものを見て何になるのか (微分したものを見るというのは感覚的にわかるが、なんで <span class="math notranslate nohighlight">\(Z_a\)</span> で微分したものでよいのかの議論がほしい)</p></li>
+</ul>
+<p>図2(a)のnegative gradient on <span class="math notranslate nohighlight">\(Z_a\)</span> は <span class="math notranslate nohighlight">\(Z_b\)</span>, 図2(b)のnegative gradient on <span class="math notranslate nohighlight">\(P_a\)</span> は <span class="math notranslate nohighlight">\(P_b\)</span> となる。 <span class="math notranslate nohighlight">\(Z_b, P_b\)</span> を Basic Gradientとする. 上記の解釈から Basic Gradient では崩壊を防ぐことができないので、対称性を壊すために余分な成分を導入する必要がある。その余分な成分を Extra Gradient と呼び、<span class="math notranslate nohighlight">\(G_e\)</span> と表記する.</p>
+<p>例えば図2(a)に negative sample を導入することで、negative sampleによる余分な成分( <span class="math notranslate nohighlight">\(G_e\)</span> )があるので崩壊しない。同様にSimSiamの <span class="math notranslate nohighlight">\(P_a\)</span> についての負の勾配 <span class="math notranslate nohighlight">\(Z_b\)</span> を basic gradient <span class="math notranslate nohighlight">\(P_b + G_e\)</span> と導出することも可能である ( <span class="math notranslate nohighlight">\(G_e = Z_b - P_b\)</span> )。　???</p>
+<p>( どういうことなのか??? 言葉遊びしてるだけに見える。)</p>
+<p><strong>どの成分が崩壊を防いでいるのか?</strong></p>
+<p><span class="math notranslate nohighlight">\(G_e\)</span> を <span class="math notranslate nohighlight">\(Z_a\)</span> と同じように center vectorと residual vectorに分解する ( <span class="math notranslate nohighlight">\(G_e = o_e + r_e\)</span> )
+<span class="math notranslate nohighlight">\(G_e, o_e, r_e\)</span> どの成分が崩壊を防いでるのか、triplet loss <span class="math notranslate nohighlight">\(\mathcal{L}_{tri} = - Z_a \cdot sg(Z_b - Z_n)\)</span> , ( <span class="math notranslate nohighlight">\(Z_n\)</span> はnegative sampleの表現ベクトル ) で実験してみる。<span class="math notranslate nohighlight">\(Z_a\)</span> についてのnegative gradientは <span class="math notranslate nohighlight">\(Z_b - Z_n\)</span> で <span class="math notranslate nohighlight">\(Z_b\)</span> が basic gradientなので、 <span class="math notranslate nohighlight">\(G_e = - Z_n\)</span> となる。</p>
+<p>表3に <span class="math notranslate nohighlight">\(Ge\)</span> の代わりに <span class="math notranslate nohighlight">\(o_e, r_e\)</span> を入れてみたときの学習結果を示す。
+<span class="math notranslate nohighlight">\(o_e\)</span> が崩壊を防いでいるのがわかり、<span class="math notranslate nohighlight">\(r_e\)</span> だけでは崩壊して、 <span class="math notranslate nohighlight">\(r_e\)</span> を保持している <span class="math notranslate nohighlight">\(G_e\)</span> だと精度が低下する。 negative sampleはランダムに選ばれるため、 <span class="math notranslate nohighlight">\(r_e\)</span> は最適化においてランダムノイズのように振る舞い、性能を低下させる (???? そうなの???)</p>
+<a class="reference internal image-reference" href="../_images/how_tab3.png"><img alt="../_images/how_tab3.png" class="align-center" src="../_images/how_tab3.png" style="width: 710.4000000000001px; height: 148.8px;" />
+</a>
+<p>SimSiamの <span class="math notranslate nohighlight">\(P_a\)</span> における負の勾配は以下</p>
+<div class="math notranslate nohighlight">
+\[-\frac{\partial \mathcal{L}_{SimSiam}}{\partial P_a} = Z_b = P_b + (Z_b - P_b) = P_b + G_e\]</div>
+<p>triplet lossでやったような実験をすると、表4になる</p>
+<a class="reference internal image-reference" href="../_images/how_tab4.png"><img alt="../_images/how_tab4.png" class="align-center" src="../_images/how_tab4.png" style="width: 316.0px; height: 180.8px;" />
+</a>
+<p>予想どおり <span class="math notranslate nohighlight">\(G_e\)</span> を取り除くと崩壊して、<span class="math notranslate nohighlight">\(o_e, r_e\)</span> の両成分を残すと最高の性能を発揮する (そうなの???)
+興味深いことに <span class="math notranslate nohighlight">\(o_e, r_e\)</span> のどちらかを残せば崩壊しない。 推論1にもどついて、 <span class="math notranslate nohighlight">\(o_e\)</span> がどのような影響を与えるのか分析する。</p>
+<p><strong>SimSiamで o_e がどのように崩壊を防いでいるのか</strong></p>
+<p><span class="math notranslate nohighlight">\(G_e = Z_b - P_b\)</span> なので、<span class="math notranslate nohighlight">\(o_e = o_z - o_p\)</span> である。 推論1によると( <span class="math notranslate nohighlight">\(P_a\)</span> についてみているので)　負の <span class="math notranslate nohighlight">\(o_p\)</span> は崩壊を防ぐので <span class="math notranslate nohighlight">\(o_e\)</span> は崩壊を防ぐ.</p>
+<p><span class="math notranslate nohighlight">\(o_p\)</span> がどれくらい <span class="math notranslate nohighlight">\(o_e\)</span> に影響しているかをみるために、
+図5に、スカラー <span class="math notranslate nohighlight">\(\eta_p\)</span> を動かしたときの <span class="math notranslate nohighlight">\(o_e - \eta_p o_p\)</span> と <span class="math notranslate nohighlight">\(o_p\)</span> のコサイン類似度を示す。
+<span class="math notranslate nohighlight">\(\eta_p\)</span> が <span class="math notranslate nohighlight">\(-0.5\)</span> くらいのとき、コサイン類似度が0になるので、<span class="math notranslate nohighlight">\(o_e \approx -0.5 o_p\)</span> になる.</p>
+<p>(直角になってもコサイン類似度0じゃないのか?と思ったけど、 <span class="math notranslate nohighlight">\(\eta_p\)</span> はスカラーなので、直角になることはないから コサイン類似度が0ということは、 <span class="math notranslate nohighlight">\(o_e - \eta_p o_p\)</span> が0になるしかにということ?)</p>
+<p>というわけで、 <span class="math notranslate nohighlight">\(o_e\)</span> がSimSiamが崩壊するのを防ぐ</p>
+<a class="reference internal image-reference" href="../_images/how_fig5.png"><img alt="../_images/how_fig5.png" class="align-center" src="../_images/how_fig5.png" style="width: 615.2px; height: 240.8px;" />
+</a>
+<p>triplet lossの実験では <span class="math notranslate nohighlight">\(r_e\)</span> を維持すると精度下がったが、SimSiamでは <span class="math notranslate nohighlight">\(r_e\)</span> だけでも崩壊を防いで <span class="math notranslate nohighlight">\(G_e\)</span> と同等の性能を達成している。これは次で説明する dimensional de-correlation の観点から説明できる。</p>
+<p><strong>推論2</strong> dimensional de-correlation が <span class="math notranslate nohighlight">\(m_r\)</span> を増加させると考える。動機は単純で、次元の相関が最小になるのは、1つの次元だけが個々のクラスに対して非常に高い値を持ち、異なるクラスに対して次元が変化する場合であるから．</p>
+<p>上記の推測を検証するため、SimSiamの損失 <a class="reference internal" href="#equation-how2">(2)</a> で訓練し、式 <a class="reference internal" href="#equation-how1">(1)</a> の損失で意図的に <span class="math notranslate nohighlight">\(m_r\)</span> を0に近づけて数エポック訓練する。次に、付録A.6で詳述する相関正則化項のみを用いて損失を学習させる。図5(b)の結果から、この正則化項が非常に速い速度で <span class="math notranslate nohighlight">\(m_r\)</span> を増加させていることがわかる。</p>
+<a class="reference internal image-reference" href="../_images/how_alg6.png"><img alt="../_images/how_alg6.png" class="align-center" src="../_images/how_alg6.png" style="width: 752.8000000000001px; height: 208.8px;" />
+</a>
+<p><span class="math notranslate nohighlight">\(h\)</span> が <span class="math notranslate nohighlight">\(o_e\)</span> の影響を排除するためにFC層を一つしか持たないと仮定すると、FCの重みはエンコーダ出力の異なる次元間の相関を学習することが期待される。本質的に、 <span class="math notranslate nohighlight">\(h\)</span> は <span class="math notranslate nohighlight">\(h(Z_a)\)</span> と <span class="math notranslate nohighlight">\(I(Z_b)\)</span> の間のコサイン類似度を最小化するように学習される（Iは同一性写像)。したがって、相関を学習する <span class="math notranslate nohighlight">\(h\)</span> は <span class="math notranslate nohighlight">\(I\)</span> に近づくように最適化され、これは概念的には <span class="math notranslate nohighlight">\(Z\)</span> に対して脱相関を目標に最適化することと等しい。表4に示すように、SimSiamでは <span class="math notranslate nohighlight">\(r_e\)</span> のみでも崩壊を防ぐことができ、 <span class="math notranslate nohighlight">\(r_e\)</span> には脱中心化の効果がないため、脱相関効果に起因するものであると考えられる。図6からは最初の数エポックを除き、SimSiamは共分散を減少させている。</p>
+<p>(何言ってるかわからない・・・)</p>
+<a class="reference internal image-reference" href="../_images/how_fig6.png"><img alt="../_images/how_fig6.png" class="align-center" src="../_images/how_fig6.png" style="width: 1032.8px; height: 243.20000000000002px;" />
+</a>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

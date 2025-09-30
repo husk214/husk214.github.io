@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tensorflow Serving &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援" href="search_engine_qu.html" />
+    <link rel="prev" title="Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search" href="quert.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../other.html">Other</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Tensorflow Serving</a><ul>
+<li><a class="reference internal" href="#tensorflow-serving-tfs">Tensorflow Serving (TFS)のすごいと思う所</a><ul>
+<li><a class="reference internal" href="#id1">はやい &amp; 沢山食える</a></li>
+<li><a class="reference internal" href="#id2">前後処理をモデルに組み込み可能</a></li>
+<li><a class="reference internal" href="#warmup">モデルのWarmup</a></li>
+<li><a class="reference internal" href="#id3">モデル自動読み込み</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="quert.html" title="Previous Chapter: Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Xie (KDD’23) ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="search_engine_qu.html" title="Next Chapter: 検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">検索システム 実務者のため... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Tensorflow Serving</a><ul>
+<li><a class="reference internal" href="#tensorflow-serving-tfs">Tensorflow Serving (TFS)のすごいと思う所</a><ul>
+<li><a class="reference internal" href="#id1">はやい &amp; 沢山食える</a></li>
+<li><a class="reference internal" href="#id2">前後処理をモデルに組み込み可能</a></li>
+<li><a class="reference internal" href="#warmup">モデルのWarmup</a></li>
+<li><a class="reference internal" href="#id3">モデル自動読み込み</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="quert.html" title="Previous Chapter: Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Xie (KDD’23) ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="search_engine_qu.html" title="Next Chapter: 検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">検索システム 実務者のため... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/other/tensorflow_serving.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="tensorflow-serving">
+<h1>Tensorflow Serving<a class="headerlink" href="#tensorflow-serving" title="Link to this heading">¶</a></h1>
+<section id="tensorflow-serving-tfs">
+<h2>Tensorflow Serving (TFS)のすごいと思う所<a class="headerlink" href="#tensorflow-serving-tfs" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>はやい &amp; 沢山食える</p>
+<ul>
+<li><p>軽いモデルなら数millisecで返ってくる</p></li>
+</ul>
+</li>
+<li><p>前後処理をモデルに組み込み可能</p>
+<ul>
+<li><p>前処理、後処理をモデルに追加することでTFSにやってもらい、前段処理のためのgateway server的なものを省略できるケースがある</p></li>
+<li><p>前処理の例: 文字列を正規化→tokenize→token ID列に変換</p></li>
+<li><p>後処理の例: 分類モデルだとして、最大の確率になるクラスの名前を返す</p></li>
+</ul>
+</li>
+<li><p>モデルのWarmup</p>
+<ul>
+<li><p>モデルの初回実行は時間がかかるが、warmup fileを作成しておけば起動時/読み込み時にwarmupしてくれる</p></li>
+</ul>
+</li>
+<li><p>モデル自動読み込み</p>
+<ul>
+<li><p>新しいversionのモデルを置いたら、自動で読み込んでくれる</p></li>
+</ul>
+</li>
+</ul>
+<section id="id1">
+<h3>はやい &amp; 沢山食える<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>例えば、以下のLSTM+Transfomerみたいなモデル(embedding_dim=256, n_layer=1) だと入力が検索クエリだったら</p>
+<ul>
+<li><p>レイテンシー: 平均 3ms, 99%tile 5ms</p></li>
+<li><p>1vCPU, 1G Memで150QPS食える</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">AttentionLstms</span><span class="p">(</span><span class="n">vocab_size</span><span class="o">=</span><span class="mi">30000</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">n_layer</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AttentionLstms</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="n">n_layer</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sqrt_embedding_dim</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">mask_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enc_layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">AttentionLstmEncoderLayer</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">)</span>  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_layer</span><span class="p">)])</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sqrt_embedding_dim</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">enc_layers</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AttentionLstmEncoderLayer</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="n">bidirectional_lstm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">bidirectional_lstm</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+            <span class="n">embedding_dim</span> <span class="o">*=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mha</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layernorm1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LayerNormalization</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layernorm2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LayerNormalization</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span> <span class="o">=</span> <span class="n">point_wise_feed_forward_network</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">embedding_dim</span><span class="p">)</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">attn_output</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mha</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">out1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layernorm1</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">attn_output</span><span class="p">)</span>
+        <span class="n">ffn_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span><span class="p">(</span><span class="n">out1</span><span class="p">)</span>
+        <span class="n">out2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layernorm2</span><span class="p">(</span><span class="n">out1</span> <span class="o">+</span> <span class="n">ffn_output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out2</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>前後処理をモデルに組み込み可能<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>例えば、名前と住所の文字列を辞書的に渡して、分散ベクトル返してもらう例 (tf &amp; tf-text==2.3.0)</p>
+<ul>
+<li><p>行っている前処理</p>
+<ul>
+<li><p>NGワード処理等の前処理</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/tensorflow/text#normalization">tensorflow-text</a> にもいろいろNLPの前処理が実装されている (NFKC正規化とかいろいろ)</p></li>
+</ul>
+</li>
+<li><p>SentencePiece ( <a class="reference internal" href="sentencepiece.html"><span class="doc">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</span></a> ) によってtokenizeして、token id列化 (よくわからないが、2.3.0以上でないとsave時にエラーで落ちる)</p></li>
+<li><p>nameとaddressを連結</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>こんな感じで叩ける</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">curl</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;instances&quot;: [{&quot;name&quot;: &quot;品川プリンスホテル&quot;, &quot;address&quot;: &quot;東京都港区高輪4-10-30&quot;}]}&#39;</span> <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> <span class="p">[</span><span class="n">TFSのURL</span><span class="p">]</span>
+<span class="p">{</span>
+  <span class="s2">&quot;predictions&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="o">-</span><span class="mf">0.00571914762</span><span class="p">,</span> <span class="mf">0.097049661</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0528469719</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0421413593</span><span class="p">,</span> <span class="o">...</span><span class="p">]]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>上の処理をするモデルをTFSがservingできる形式(SavedModel)で保存するpythonコード</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">AttentionLstms</span><span class="p">(</span><span class="n">vocab_size</span><span class="o">=</span><span class="mi">30000</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">n_layer</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_weights</span><span class="p">(</span><span class="s2">&quot;学習済みのモデルをsave_weightsしたファイルパス&quot;</span><span class="p">)</span>
+<span class="n">spm_model_path</span> <span class="o">=</span> <span class="s2">&quot;sentencepieceの学習済みモデルのファイルパス&quot;</span>
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">TextVectorizationEncoder</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">spm_model_path</span><span class="p">,</span> <span class="n">max_sequence_length</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">x_n</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="s2">&quot;品川プリンスホテル&quot;</span><span class="p">])</span>
+<span class="n">x_a</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">([</span><span class="s2">&quot;東京都港区高輪4-10-30&quot;</span><span class="p">])</span>
+<span class="n">x_s</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">x_n</span><span class="p">,</span> <span class="n">x_a</span><span class="p">)</span>
+<span class="n">outputs_spot</span> <span class="o">=</span> <span class="n">encoder</span><span class="p">(</span><span class="n">x_s</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outputs_spot</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">出力:</span>
+<span class="sd">tf.Tensor(</span>
+<span class="sd">[-0.00571914762, 0.097049661, -0.0528469719, -0.0421413593,</span>
+<span class="sd"> -0.0743320137], shape=(10,), dtype=float32)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="nd">@tf</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="n">input_signature</span><span class="o">=</span><span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">TensorSpec</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">TensorSpec</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;address&quot;</span><span class="p">)])</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">predict_fn_spot</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">encdoer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;vector&quot;</span><span class="p">:</span> <span class="n">output</span><span class="p">}</span>
+
+<span class="n">signatures_spot</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;serving_default&#39;</span><span class="p">:</span> <span class="n">predict_fn_spot</span><span class="o">.</span><span class="n">get_concrete_function</span><span class="p">()}</span>
+<span class="c1"># tfsでservingできる形式で保存する</span>
+<span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model_spot</span><span class="p">,</span> <span class="s2">&quot;SavedModelの保存先ファイルパス&quot;</span><span class="p">,</span> <span class="n">signatures_spot</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Normalizer</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="c1"># lower変換, NGワード除去等の正規化をする</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ng_words</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Normalizer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">ng_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">ng_words</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ng_word_regexp</span> <span class="o">=</span> <span class="s2">&quot;|&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ng_words</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zenkaku_space</span> <span class="o">=</span> <span class="s2">&quot;　&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">all_space_regexp</span> <span class="o">=</span> <span class="s2">&quot; +&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">regex_replace</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">zenkaku_space</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">regex_replace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_space_regexp</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf_text</span><span class="o">.</span><span class="n">normalize_utf8</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">regex_replace</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ng_word_regexp</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TextVectorizationEncoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="c1"># nameとaddressを入力に、前処理した後モデルにいれて、分散ベクトルを返す</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">tokenizer_path</span><span class="p">,</span> <span class="n">max_sequence_length</span><span class="p">,</span> <span class="n">ng_words</span><span class="o">=</span><span class="p">[],</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_sequence_length</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="n">max_sequence_length</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">(</span><span class="n">ng_words</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tf_text</span><span class="o">.</span><span class="n">SentencepieceTokenizer</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="n">tokenizer_path</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sep_id</span> <span class="o">=</span> <span class="mi">4</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">len_address_token</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">left_pad_2d_ragged</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rt</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; https://github.com/tensorflow/tensorflow/issues/34793</span>
+<span class="sd">        RaggedTensor.to_list()がgraph modelで使えないので、pad_sequences(RaggedTensor.to_list())を使う選択肢は今のところ無い</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rt</span> <span class="o">=</span> <span class="n">rt</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">max_sequence_length</span><span class="p">]</span>  <span class="c1"># Truncate rows to have at most `width` items</span>
+        <span class="n">pad_row_lengths</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_sequence_length</span> <span class="o">-</span> <span class="n">rt</span><span class="o">.</span><span class="n">row_lengths</span><span class="p">())</span>
+        <span class="n">pad_values</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">max_sequence_length</span> <span class="o">*</span> <span class="n">rt</span><span class="o">.</span><span class="n">nrows</span><span class="p">()</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">rt</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">int64</span><span class="p">)],</span> <span class="n">rt</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="n">padding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">RaggedTensor</span><span class="o">.</span><span class="n">from_row_lengths</span><span class="p">(</span><span class="n">pad_values</span><span class="p">,</span> <span class="n">pad_row_lengths</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">padding</span><span class="p">,</span> <span class="n">rt</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">()</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">address</span><span class="p">):</span>
+      <span class="n">x_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+      <span class="n">x_a</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span><span class="p">(</span><span class="n">address</span><span class="p">))</span>
+      <span class="n">sep</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">RaggedTensor</span><span class="o">.</span><span class="n">from_tensor</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">fill</span><span class="p">((</span><span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">sep_id</span><span class="p">))</span>
+      <span class="n">x</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">x_a</span><span class="p">[:,</span> <span class="p">:</span><span class="bp">self</span><span class="o">.</span><span class="n">len_address_token</span><span class="p">],</span> <span class="n">sep</span><span class="p">,</span> <span class="n">x_n</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">left_pad_2d_ragged</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="warmup">
+<h3>モデルのWarmup<a class="headerlink" href="#warmup" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.tensorflow.org/tfx/serving/saved_model_warmup">https://www.tensorflow.org/tfx/serving/saved_model_warmup</a> に書いてある</p>
+<ul>
+<li><p>TensorFlowランタイムの一部のコンポーネントはlazy initilizedされる</p></li>
+<li><p>-&gt; モデルがロードされた後の最初のリクエストのレイテンシは桁違いに高い</p></li>
+<li><p>-&gt; SavedModelと一緒にリクエストのサンプルを提供することで、モデルのロード時にサブシステムとコンポーネントの初期化をトリガーできる</p></li>
+</ul>
+</li>
+<li><p>TFSの起動オプションに –enable_model_warmup=true を渡す必要がある</p></li>
+</ul>
+<p>前処理のところの例ででてきたモデルのWarmupクリエスとファイルを作成するコード</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">TFRecordWriter</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SavedModelの保存先ファイルパス/assets.extra/tf_serving_warmup_requests&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">writer</span><span class="p">:</span>
+    <span class="n">predict_request</span> <span class="o">=</span> <span class="n">predict_pb2</span><span class="o">.</span><span class="n">PredictRequest</span><span class="p">()</span>
+    <span class="n">predict_request</span><span class="o">.</span><span class="n">model_spec</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;spot_v1&#39;</span>
+    <span class="n">predict_request</span><span class="o">.</span><span class="n">model_spec</span><span class="o">.</span><span class="n">signature_name</span> <span class="o">=</span> <span class="s1">&#39;serving_default&#39;</span>
+    <span class="n">predict_request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">tensor_util</span><span class="o">.</span><span class="n">make_tensor_proto</span><span class="p">([</span><span class="s2">&quot;品川プリンスホテル&quot;</span><span class="p">],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">))</span>
+    <span class="n">predict_request</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;address&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">CopyFrom</span><span class="p">(</span><span class="n">tensor_util</span><span class="o">.</span><span class="n">make_tensor_proto</span><span class="p">([</span><span class="s2">&quot;東京都港区高輪四丁目10番30号&quot;</span><span class="p">],</span> <span class="n">tf</span><span class="o">.</span><span class="n">string</span><span class="p">))</span>
+    <span class="n">log</span> <span class="o">=</span> <span class="n">prediction_log_pb2</span><span class="o">.</span><span class="n">PredictionLog</span><span class="p">(</span><span class="n">predict_log</span><span class="o">=</span><span class="n">prediction_log_pb2</span><span class="o">.</span><span class="n">PredictLog</span><span class="p">(</span><span class="n">request</span><span class="o">=</span><span class="n">predict_request</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NUM_RECORDS</span><span class="p">):</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">log</span><span class="o">.</span><span class="n">SerializeToString</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>TFSがwarmupしてくれているログ</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dev</span><span class="o">-</span><span class="n">query</span><span class="o">-</span><span class="n">inference</span><span class="o">-</span><span class="n">f56ddb897</span><span class="o">-</span><span class="mi">7</span><span class="n">gcrn</span> <span class="n">inference</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">14</span> <span class="mi">10</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mf">16.896762</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow_serving</span><span class="o">/</span><span class="n">servables</span><span class="o">/</span><span class="n">tensorflow</span><span class="o">/</span><span class="n">saved_model_warmup_util</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">118</span><span class="p">]</span> <span class="n">Finished</span> <span class="n">reading</span> <span class="n">warmup</span> <span class="n">data</span> <span class="k">for</span> <span class="n">model</span><span class="o">.</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">warmup</span> <span class="n">records</span> <span class="n">read</span><span class="p">:</span> <span class="mf">100.</span> <span class="n">Elapsed</span> <span class="n">time</span> <span class="p">(</span><span class="n">microseconds</span><span class="p">):</span> <span class="mf">10247322.</span>
+<span class="n">dev</span><span class="o">-</span><span class="n">query</span><span class="o">-</span><span class="n">inference</span><span class="o">-</span><span class="n">f56ddb897</span><span class="o">-</span><span class="mi">7</span><span class="n">gcrn</span> <span class="n">inference</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">14</span> <span class="mi">10</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mf">17.867244</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow_serving</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">loader_harness</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">87</span><span class="p">]</span> <span class="n">Successfully</span> <span class="n">loaded</span> <span class="n">servable</span> <span class="n">version</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">query</span> <span class="n">version</span><span class="p">:</span> <span class="mi">6</span><span class="p">}</span>
+<span class="n">dev</span><span class="o">-</span><span class="n">query</span><span class="o">-</span><span class="n">inference</span><span class="o">-</span><span class="n">f56ddb897</span><span class="o">-</span><span class="mi">7</span><span class="n">gcrn</span> <span class="n">inference</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">14</span> <span class="mi">10</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mf">17.867321</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow_serving</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">loader_harness</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">138</span><span class="p">]</span> <span class="n">Quiescing</span> <span class="n">servable</span> <span class="n">version</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">query</span> <span class="n">version</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">dev</span><span class="o">-</span><span class="n">query</span><span class="o">-</span><span class="n">inference</span><span class="o">-</span><span class="n">f56ddb897</span><span class="o">-</span><span class="mi">7</span><span class="n">gcrn</span> <span class="n">inference</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">14</span> <span class="mi">10</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mf">17.867332</span><span class="p">:</span> <span class="n">I</span> <span class="n">tensorflow_serving</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">loader_harness</span><span class="o">.</span><span class="n">cc</span><span class="p">:</span><span class="mi">145</span><span class="p">]</span> <span class="n">Done</span> <span class="n">quiescing</span> <span class="n">servable</span> <span class="n">version</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">query</span> <span class="n">version</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>モデル自動読み込み<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>新しいversionのモデルをs3におくと、新しいモデル読み込んでくれる (固定もできる)</p>
+<ul>
+<li><p>デフォルトの設定だと、s3にリスト参照リクエストを結構送ってしまうので、–file_system_poll_wait_seconds=300とかに設定しておくとよい</p></li>
+</ul>
+</li>
+<li><p>新しいversionのモデルを読み込んだら、古いモデルのメモリは開放されるようだった</p>
+<ul>
+<li><p>TFSが確保しているメモリは開放されないが、何回でも新しいモデル読み込めそうだった</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search" href="quert.html" />
+    <link rel="prev" title="Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning" href="optimizer_benchmark.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../other.html">Other</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a><ul>
+<li><a class="reference internal" href="#introduction">INTRODUCTION</a></li>
+<li><a class="reference internal" href="#ranking-formulations">RANKING FORMULATIONS</a><ul>
+<li><a class="reference internal" href="#item-centric-ranking-icr">Item-Centric Ranking (ICR)</a></li>
+<li><a class="reference internal" href="#user-centric-ranking-ucr">User-Centric Ranking (UCR)</a></li>
+<li><a class="reference internal" href="#hybrid-models">Hybrid Models</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#implementation">IMPLEMENTATION</a><ul>
+<li><a class="reference internal" href="#user-centric-ranking">User-Centric Ranking</a></li>
+<li><a class="reference internal" href="#parameter-hashing">Parameter Hashing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments">EXPERIMENTS</a><ul>
+<li><a class="reference internal" href="#on-public-data">On Public Data</a></li>
+<li><a class="reference internal" href="#on-real-world-production-data">On Real-World Production Data</a></li>
+<li><a class="reference internal" href="#online-results">Online Results</a></li>
+<li><a class="reference internal" href="#open-questions-and-discussions">Open Questions and Discussions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="optimizer_benchmark.html" title="Previous Chapter: Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Teja ICML’20 ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="quert.html" title="Next Chapter: Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Xie (KDD’23) ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a><ul>
+<li><a class="reference internal" href="#introduction">INTRODUCTION</a></li>
+<li><a class="reference internal" href="#ranking-formulations">RANKING FORMULATIONS</a><ul>
+<li><a class="reference internal" href="#item-centric-ranking-icr">Item-Centric Ranking (ICR)</a></li>
+<li><a class="reference internal" href="#user-centric-ranking-ucr">User-Centric Ranking (UCR)</a></li>
+<li><a class="reference internal" href="#hybrid-models">Hybrid Models</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#implementation">IMPLEMENTATION</a><ul>
+<li><a class="reference internal" href="#user-centric-ranking">User-Centric Ranking</a></li>
+<li><a class="reference internal" href="#parameter-hashing">Parameter Hashing</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments">EXPERIMENTS</a><ul>
+<li><a class="reference internal" href="#on-public-data">On Public Data</a></li>
+<li><a class="reference internal" href="#on-real-world-production-data">On Real-World Production Data</a></li>
+<li><a class="reference internal" href="#online-results">Online Results</a></li>
+<li><a class="reference internal" href="#open-questions-and-discussions">Open Questions and Discussions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="optimizer_benchmark.html" title="Previous Chapter: Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Teja ICML’20 ...</span>
+    </a>
+  </li>
+  <li>
+    <a href="quert.html" title="Next Chapter: Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Xie (KDD’23) ... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/other/user_centric_ranking.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="zhao-kdd-23-breaking-the-curse-of-quality-saturation-with-user-centric-ranking">
+<h1>Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking<a class="headerlink" href="#zhao-kdd-23-breaking-the-curse-of-quality-saturation-with-user-centric-ranking" title="Link to this heading">¶</a></h1>
+<p>著者</p>
+<ul class="simple">
+<li><p>Zhuokai Zhao (University of Chicago)</p></li>
+<li><p>Yu Shi (Meta)</p></li>
+<li><p>Yang Yang (Meta)</p></li>
+<li><p>Wenjie Hu (Meta)</p></li>
+<li><p>Wenyu Wang (Meta)</p></li>
+<li><p>Haotian Zhang (Meta)</p></li>
+<li><p>Chihuang Liu (Meta)</p></li>
+<li><p>Shuang Yang (Meta)</p></li>
+</ul>
+<section id="introduction">
+<h2>INTRODUCTION<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>スケーリングはDLの主要テーマの一つであり、以下の分野で目を見張るようなブレークスルーをもたらした</p>
+<ul>
+<li><p>CV[ViT, GITを引用]</p>
+<ul>
+<li><p>例えば、ImageNetにおいて、ViTはResNet-152と比較して、画像分類エラー率を半分以下に減少させた</p></li>
+</ul>
+</li>
+<li><p>NLP[GPT-3, PaLM, Bertを引用]</p></li>
+<li><p>multi-modality modeling[CLIP, DALL-E, CoCa]</p></li>
+</ul>
+</li>
+<li><p>しかし、スケーリングの成功は、ランキング（検索、広告、推薦システムなど）ではまだ起こっていない</p>
+<ul>
+<li><p>AI業界で最もインセンティブが高いアプリケーションであることを考えると、これは驚くべきことであり、また不思議なことでもある</p></li>
+<li><p>豊富なデータ量（Google広告、Facebookニュースフィード）があっても、ランキングモデルは通常数日から数週間のログデータしか利用せず、訓練データ量、モデルサイズを増やしても、品質の向上しない (quality saturation problem)</p></li>
+</ul>
+</li>
+<li><p>我々はこの問題を調査し、根本的な原因の1つが定式化にある可能性があることを発見した</p>
+<ul>
+<li><p>NLPになぞらえれば、現在のランキングの定式化は、「アイテム」を「トークン」、「ユーザー」を「ドキュメント」と見なすことで、dyadic responses（例えば広告のクリック）を予測するもので、Item-Centric Rankingと呼ばれる(?)</p></li>
+<li><p>データ量が増加するにつれて、モデルサイズや学習すべきパラメータ数は直線的に増加するため、これは実際には不合理な定式化である (学習データの期間を増やすことで、item数が増加してembedding layerのパラメータが増えるということ)</p></li>
+<li><p>その解決策として、「ユーザー」を「トークン」、「アイテム」を「ドキュメント」と見なす、User-Centric Rankingの定式化を導入する</p></li>
+<li><p>この定式化には多くの利点があり、かなり大きなデータセットで訓練してもQuality Saturation(精度が上がらない問題)が少ないことを示す (示せてないと思う)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="ranking-formulations">
+<h2>RANKING FORMULATIONS<a class="headerlink" href="#ranking-formulations" title="Link to this heading">¶</a></h2>
+<p>ランキングでは、dyadic responsesのモデル化に関心がある</p>
+<ul class="simple">
+<li><p>ある時間における任意のユーザとアイテムに対して、ラベル(広告のウリックやアカウントのフォロー等)を予測することが目的</p></li>
+<li><p>興味深い点は、NLPは「ドキュメント」と「トークン」の間の二項相互作用(dyadic interactions)として考えることができるため、ランキングには NLP と多くの類似点がある (?)</p></li>
+<li><p>実際、多くのランキング手法は NLP の進歩に影響を受けている [GRU4Sec, BERT4Rec, Deep Interest Network]</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/ucr_fig1.png"><img alt="../_images/ucr_fig1.png" class="align-center" src="../_images/ucr_fig1.png" style="width: 736.1999999999999px; height: 397.2px;" />
+</a>
+<section id="item-centric-ranking-icr">
+<h3>Item-Centric Ranking (ICR)<a class="headerlink" href="#item-centric-ranking-icr" title="Link to this heading">¶</a></h3>
+<p>NLPに類似した重要なアイデアは、アイテムをトークンとして、ユーザーをドキュメントとして考えること</p>
+<ul class="simple">
+<li><p>つまり、各ユーザーは、エンゲージメントの時間に従って時系列に、エンゲージしたアイテムのリストによってモデル化される</p>
+<ul>
+<li><p>itemが学習されるembedding, ユーザーはitem embeddingを集約して表現する</p></li>
+<li><p>複数のタイプのエンゲージメントが関与している場合（例えば、ビデオ推薦では、クリック、ビデオ完了、いいね、フォローなど）、エンゲージメントのタイプごとに1つずつ、複数のチャネルに編成することができる。</p></li>
+</ul>
+</li>
+</ul>
+<p>なぜランキングモデル(ICR)はすぐに飽和してしまうのか?</p>
+<ul class="simple">
+<li><p>NLPモデルには多くの類似点があるのに、なぜそうならないのだろうか?</p></li>
+<li><p>この2つの設定を注意深く比較すると、重要な違いがあることに気づく</p></li>
+<li><p>NLPでは、語彙サイズは固定されていることが多いが、ICRは違う</p>
+<ul>
+<li><p>アイテムの在庫は非常に動的で</p></li>
+<li><p>新しいアイテムが絶えず作成され (Facebook/Instagramでは毎日何千万もの投稿/動画が作成される)</p></li>
+<li><p>アイテムは時間に敏感で刹那的</p></li>
+</ul>
+</li>
+<li><p>アイテムのインベントリは時間の経過とともに線形に成長するので、パラメータの数は(アイテムごとの埋め込みを使用するため)時間経過で増大する</p></li>
+<li><p>学習データを増やしても (使う日数を増やす)、モデルサイズが線形成長するため、パラメータあたりのデータ密度は上がらない</p></li>
+</ul>
+</section>
+<section id="user-centric-ranking-ucr">
+<h3>User-Centric Ranking (UCR)<a class="headerlink" href="#user-centric-ranking-ucr" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>UCRは「ユーザー」を「トークン」、「アイテム」を「文書」と見立て、ユーザーを学習するembedding parameter、アイテムはそれを集約によって表現する</p></li>
+<li><p>成熟したランキングシステムでは、ユーザー集合は比較的一貫したまま</p></li>
+<li><p>そのため、学習データを増やしてもパラメータごとのデータ密度が一貫して増加する</p></li>
+<li><p>ICRでは、アイテムは刹那的であるため、その埋め込みも刹那的である（つまり、アイテムの埋め込みは、そのアイテムがシステムを抜けると、すぐに無関係になり、役に立たなくなる</p></li>
+<li><p>UCRでは、ユーザがシステムとインタラクションし続ける限り、全てのユーザに関する知識を継続的に蓄積し改善されていく</p></li>
+</ul>
+</section>
+<section id="hybrid-models">
+<h3>Hybrid Models<a class="headerlink" href="#hybrid-models" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>ハイブリッド定式化も可能であり、どっちもやるだけ</p></li>
+<li><p>図1(a)をハイブリット化したものが、図1(b)</p></li>
+<li><p>ICRを同じ「パラメータ爆発」問題を持つ</p></li>
+</ul>
+</section>
+</section>
+<section id="implementation">
+<h2>IMPLEMENTATION<a class="headerlink" href="#implementation" title="Link to this heading">¶</a></h2>
+<section id="user-centric-ranking">
+<h3>User-Centric Ranking<a class="headerlink" href="#user-centric-ranking" title="Link to this heading">¶</a></h3>
+<p>UCRを実装するための課題の一つは、分布の歪みを扱うこと</p>
+<ul class="simple">
+<li><p>ICRでは1人のユーザーが関与できるアイテムの数は均等に分布する傾向がある（例えば、毎日の関与は数個から数百個の範囲)</p></li>
+<li><p>UCRでは分布はより不規則</p>
+<ul>
+<li><p>あるアイテムは何百万人ものユーザーと接触があるが、他のアイテムは数人しかない、みたいな</p></li>
+</ul>
+</li>
+<li><p>学習/推論中に、接触したユーザーのリスト全体をメモリに収めることはもはや不可能</p></li>
+<li><p>それに対処するために、3つの異なるアプローチを検討する:</p>
+<ul>
+<li><p>Samling: 一様にダウンサンプリングするだけ (UC-Samplingと呼ぶ)</p></li>
+<li><p>Aggregation: ユーザーを(Louvainアルゴリズムで) クラスタリングし、user-idの代わりにcluster-idを使用する。 (UC-Clusteringと呼ぶ)</p></li>
+<li><p>Retrieval: エンゲージメント履歴のインデックスを事前に作成し、検索（例えば、最大内積検索）を使用して、最も関連性の高いユーザーのサブセットを特定し、その上でAttention Poolingを適用する。(計算コストが重いので実験しない、のちの研究に任せるらしい)</p></li>
+</ul>
+</li>
+<li><p>実験で用いたデータは大半のアイテムのエンゲージメント・ユーザーは1024を下回っている</p></li>
+</ul>
+</section>
+<section id="parameter-hashing">
+<h3>Parameter Hashing<a class="headerlink" href="#parameter-hashing" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>各IDに対して1つずつ埋め込みベクトルを学習することを考えると、メモリに乗らない</p></li>
+<li><p>この問題に対処する一つの一般的なアプローチは、特徴ハッシュを実装すること</p>
+<ul>
+<li><p>これらのIDのために一定のハッシュ空間を保持し、それぞれの特徴的な「ハッシュ化されたID」に対して一つの埋め込みベクトルを割り当てる</p></li>
+<li><p>ハッシュの衝突があるということは、特定のランダムなIDに同じ埋め込みベクトルを共有することになり、理想的ではない</p></li>
+<li><p>しかし、衝突率が妥当なレベルであればドロップアウトに似た一種の正則化効果を与えるため、必ずしも悪いことではない</p></li>
+<li><p>ICRでは時間経過とともに衝突率が上がっていくが、UCRは一定 (この論文の設定では)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="experiments">
+<h2>EXPERIMENTS<a class="headerlink" href="#experiments" title="Link to this heading">¶</a></h2>
+<section id="on-public-data">
+<h3>On Public Data<a class="headerlink" href="#on-public-data" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>本論文の目標は、アイテムの増大によって引き起こされる Quality SaturationがUCRによって解消されるのを検証すること</p></li>
+<li><p>そのためには、データセットは大規模で、実世界のシステムと同様に動的に在庫アイテムが変動する必要がある</p></li>
+<li><p>残念ながら、公開されているデータはこの要件を満さない</p></li>
+<li><p>この問題はランキングの分野ではさらに深刻で、公開されたデータは規模が小さすぎるだけでなく、実世界のシステムが持つ多くの重要な特徴を欠いている</p></li>
+<li><p>そのようなデータセットで得られた知見を実世界に一般化する際の信頼性が低くなっている</p></li>
+<li><p>しかしながら、再現性のためにある公開データセットで検証</p></li>
+</ul>
+<p><strong>Data</strong></p>
+<ul class="simple">
+<li><p>MovieLens-20M は推薦システムでよく使われる</p></li>
+<li><p>27,278本の映画に対して、138,493人のユーザーの2,000万件の評価が含まれている</p></li>
+<li><p>Deep interest network (DIN)論文と同様に、4つ星以上の評価はポジティブ、それ以外はネガティブとして扱う</p></li>
+<li><p>ICRでは、各ユーザーについて直近N(=512)個ポジティブに評価された映画を使う</p></li>
+<li><p>UCTRでは、各映画に対して、評価したM(=512)ユーザを使う</p></li>
+<li><p>ICRとUCRの差を比較するので、ジャンルなどの他のカテゴリー的特徴は使わない</p></li>
+</ul>
+<p><strong>Results</strong></p>
+<a class="reference internal image-reference" href="../_images/ucr_tab1.png"><img alt="../_images/ucr_tab1.png" class="align-center" src="../_images/ucr_tab1.png" style="width: 474.40000000000003px; height: 120.0px;" />
+</a>
+<ul class="simple">
+<li><p>UCRはICRと比べて優れていて、Hybridは多くのシグナルを使用するため最高のパフォーマンスを発揮している</p></li>
+<li><p>MovieLens は静的なデータセットで、実世界のシステムのような動的な変動がないため、パラメータの爆発を見ることができない</p></li>
+</ul>
+</section>
+<section id="on-real-world-production-data">
+<h3>On Real-World Production Data<a class="headerlink" href="#on-real-world-production-data" title="Link to this heading">¶</a></h3>
+<p><strong>Data</strong></p>
+<ul class="simple">
+<li><p>現実世界の短編動画推薦システムのログをサンプリングして作成 (Lab data)</p></li>
+<li><p>60日間（2022年7月下旬から10月上旬まで）の約2,400万人のユーザーとそのエンゲージメント活動が含まれている</p></li>
+<li><p>合計約280億のexample（エンゲージメント活動）が含まれている</p>
+<ul>
+<li><p>エンゲージメントは、1種類のネガティブなものと5種類のポジティブなもの</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Parameter Growth</strong></p>
+<a class="reference internal image-reference" href="../_images/ucr_fig2.png"><img alt="../_images/ucr_fig2.png" class="align-center" src="../_images/ucr_fig2.png" style="width: 499.20000000000005px; height: 380.8px;" />
+</a>
+<ul class="simple">
+<li><p>図2: ICRとUCRモデルの時間経過に対してのモデルサイズの成長をプロット</p></li>
+<li><p>最初の数日間は、ICRモデルのパラメータが少ないが、新しいアイテムが出現するにつれて毎日パラメータが増加する</p></li>
+<li><p>そのため、ICRのモデルサイズは時間とともにほぼ直線的に成長</p></li>
+<li><p>対照的に、UCRのモデルサイズは時間の経過とともに比較的安定</p></li>
+<li><p>60日経過した時点で、ICRモデルのサイズはUCRモデルの21倍</p>
+<ul>
+<li><p>平均して各IDエンベッディングがICRで受け取る学習データは、UCRと比較して21倍少ない</p></li>
+<li><p>ハッシュを使う場合、衝突率が21倍</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>ICR vs. UCR</strong></p>
+<a class="reference internal image-reference" href="../_images/ucr_fig3.png"><img alt="../_images/ucr_fig3.png" class="align-center" src="../_images/ucr_fig3.png" style="width: 485.6px; height: 405.6px;" />
+</a>
+<ul class="simple">
+<li><p>6つのエンゲージメントがあるが、特定の1つを使って実験する (そのサンプルが1つ選んだエンゲージメントであるかどうかの分類問題?)</p></li>
+<li><p>図3: 最初の1日目のIC-Sampling Sum PoolingのNCE(Normalzied Cross Entropy)を1を基準としたRelative NCEをプロット</p></li>
+<li><p>UC-SamplingはIC-Samplingと比べて性能がよく、その差は1日目から10日目まで急速に拡大</p></li>
+<li><p>しかし、それ以降、差は日数の経過で拡大せず平行線を辿っている</p></li>
+<li><p>UCRはアクティブなユーザーに対してはより秀でているが、あまりアクティブでないユーザーに対しては不十分であるためだと考えている</p></li>
+</ul>
+<p><strong>Segment Analysis</strong></p>
+<a class="reference internal image-reference" href="../_images/ucr_fig6.png"><img alt="../_images/ucr_fig6.png" class="align-center" src="../_images/ucr_fig6.png" style="width: 488.0px; height: 340.8px;" />
+</a>
+<ul class="simple">
+<li><p>ユーザーをアクティブ度に基づいて、5つのバケットにセグメント化</p></li>
+<li><p>図6(a)では、各ユーザセグメントについて、UC-SamplingとICR-SamplingのNCEの差をプロット</p></li>
+<li><p>全体としてUCRの方がICRよりも性能が良いが、その差は主にアクティブなユーザーから得られている</p></li>
+<li><p>Hybridはどっちも使えるので最良の結果になる (主張したいこととずれるのでは・・・)</p></li>
+</ul>
+<p><strong>Sampling vs. Clustering</strong></p>
+<a class="reference internal image-reference" href="../_images/ucr_fig4.png"><img alt="../_images/ucr_fig4.png" class="align-center" src="../_images/ucr_fig4.png" style="width: 482.40000000000003px; height: 365.6px;" />
+</a>
+<ul class="simple">
+<li><p>AggregationはSamplingのほうが良かった</p></li>
+<li><p>ただ、クラスタリングはアルゴリズムによって変わるのでより優れたアルゴリズムがあった場合、また結果が変わってくる可能性がある</p></li>
+</ul>
+<p><strong>Hybrid Method</strong></p>
+<a class="reference internal image-reference" href="../_images/ucr_fig5.png"><img alt="../_images/ucr_fig5.png" class="align-center" src="../_images/ucr_fig5.png" style="width: 476.8px; height: 364.8px;" />
+</a>
+<ul class="simple">
+<li><p>HybridをUCRは同じような性能だが、わずかに良い</p></li>
+<li><p>HybridがUCRとICRの両方を含んでいることを考慮すると、結果は予想通り(UCRとICRの両方の利点を持つはず）であり、また意外でもある（ICRと同じパラメータ爆発問題がある）</p>
+<ul>
+<li><p>(どっちやねん)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Multi-Task Evaluation</strong></p>
+<a class="reference internal image-reference" href="../_images/ucr_tab2.png"><img alt="../_images/ucr_tab2.png" class="align-center" src="../_images/ucr_tab2.png" style="width: 730.1999999999999px; height: 196.2px;" />
+</a>
+<ul class="simple">
+<li><p>これまでの評価では、特定の１つのエンゲージメントを使っていたが、ここでは6つのタスク全てについてモデルを共同で訓練する</p></li>
+<li><p>UCRがICRより良くて、HybridはUCRと大差はないが最良</p></li>
+</ul>
+<p><strong>Ablation Study</strong></p>
+<p>(ハイパラをいじっているだけでAblation Studyって感じはしないが)</p>
+<p>異なる設定がモデルの性能にどのような影響を与えるかを調べた (学習データ量には30日間を使用)</p>
+<ul class="simple">
+<li><p>Hash size</p>
+<ul>
+<li><p>ハッシュサイズをデフォルト値の2000万から変化させて、モデルの性能にどのような影響を与えるかを調べた</p></li>
+<li><p>全体として、ハッシュサイズを大きくすることが、より良いモデル性能につながる</p></li>
+<li><p>この傾向はUCRにおいてより顕著である (token数がICRより少なくて衝突率がより改善する)</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/ucr_tab3.png"><img alt="../_images/ucr_tab3.png" class="align-center" src="../_images/ucr_tab3.png" style="width: 474.40000000000003px; height: 235.20000000000002px;" />
+</a>
+<ul class="simple">
+<li><p>Embedding Dimensionality</p>
+<ul>
+<li><p>デフォルトの埋め込み次元は192で、96から384の間で調整する</p></li>
+<li><p>IC-Samplingは最大の次元を使用すると性能が悪化するが、UC-Samplingは改善する</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/ucr_tab4.png"><img alt="../_images/ucr_tab4.png" class="align-center" src="../_images/ucr_tab4.png" style="width: 479.20000000000005px; height: 199.20000000000002px;" />
+</a>
+</section>
+<section id="online-results">
+<h3>Online Results<a class="headerlink" href="#online-results" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>full-scale production dataにおいてアーキテクチャを変更することなく、数日間のトレーニングデータを用いてUCRモデルを学習したところ、本番のICRモデルと比較してNCEで最大0.6%の向上が観察された</p></li>
+<li><p>本番システムでのABテストを実現するために、多くのインフラ最適化を行った</p>
+<ul>
+<li><p>バッチ計算の最適化</p></li>
+<li><p>FP16を使用して品質を大幅に低下させることなく、スループットとレイテンシーをを向上させることができ、サービングに必要なGPU数を半分に削減</p></li>
+</ul>
+</li>
+<li><p>ABテストでは、特に主要なビジネスメトリクスの1つである動画視聴時間を3.24%改善</p></li>
+<li><p>学習データを増やすことは現在検討中</p></li>
+</ul>
+</section>
+<section id="open-questions-and-discussions">
+<h3>Open Questions and Discussions<a class="headerlink" href="#open-questions-and-discussions" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>ランキングにおけるQuality Saturationの緩和に取り組むことを動機としているが、これは部分的にしか検証されていない</p></li>
+<li><p>しかし、それ以降、差は日数の経過で拡大せず平行線を辿っている</p></li>
+<li><p>これは驚くべきことである</p></li>
+</ul>
+<p>この食い違いを理解するために、いくつかの仮説を立てた</p>
+<ul class="simple">
+<li><p>Lab dataのサンプリングが良くなかった。full-scale production dataではうまくいくはず</p>
+<ul>
+<li><p>(ちょっとよくわからない)</p></li>
+</ul>
+</li>
+<li><p>ランキングはCVとNLPとは違って動的</p>
+<ul>
+<li><p>CVやNLPはモデル化しようとする概念は静的で真のモデルがあり、目標はそのモデルに近づくこと</p></li>
+<li><p>しかし、ランキングでは根本的に異なる</p></li>
+<li><p>非常にダイナミックな双方向のシステムと反実仮想な性質のために、大幅かつ頻繁なドリフトが発生する分布ドリフトによって、真実のモデルは存在しない</p></li>
+<li><p>あるいは、最適なモデルは静的なものではなく、移動する目標であるとも言える</p></li>
+</ul>
+</li>
+<li><p>モデルのアーキテクチャの表現力が低い</p>
+<ul>
+<li><p>NLPやCVで使われているよりも大幅にパラメータ数が少ない</p></li>
+<li><p>より表現力の高いモデルであれは、改善するのでは</p></li>
+</ul>
+</li>
+</ul>
+<p>これらの検討は今後の研究に委ねたい</p>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

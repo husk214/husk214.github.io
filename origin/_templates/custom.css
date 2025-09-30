@@ -1,0 +1,120 @@
+ .top_float{
+  margin: 0;
+  float:right;
+}
+
+@import "octicons/octicons.css";
+
+.pubs{
+  font-size:120%;
+  /*color:#7ca428;*/
+  /*border-bottom:1px solid #505050;*/
+}
+
+.paperli{
+    padding-left: 1em;
+}
+
+.paperli li{
+  list-style-type: none;
+  padding:0.2em 0.5em;
+  border:1px solid #7ca428;
+  background:#fff;
+  margin:5px 0;
+  border-radius:5px;
+  transform-origin:top left;
+}
+
+.paperli:hover li{
+  background: #ebf5d6
+}
+
+.actli{
+    padding-left: 1em;
+}
+
+.actli li{
+  list-style-type: none;
+  padding:0.2em 0.5em;
+  border-bottom:1px solid #505050;
+  background:#fff;
+  margin:5px 0;
+  transform-origin:top left;
+}
+
+
+.underline {
+  text-decoration: underline;
+}
+
+.mybtn{display:inline-block;text-align:center;padding:.3em 1em;cursor:pointer;line-height:1;font-size:100%;font-weight: bold; -moz-border-radius:0.3em;-webkit-border-radius:0.3em;border-radius:0.3em;overflow:hidden;text-decoration:none;border:1px solid #7ca428;color:#7ca428;-webkit-transition:all .3s;transition:all .3s}
+.mybtn:hover{text-decoration:none;background-color:#fff;color:#fff}
+.mybtn:focus{text-decoration:none;background-color:#fff;color:#fff}
+/*.btn img{vertical-align:middle}*/
+/*.btn-primary{background-color:#7ca428;color:#fff;border:1px solid #7ca428}
+.btn-primary:hover{background-color:#ccbd9f;color:#fff !important;border-color:#ccbd9f}
+.btn-wh{background-color:transparent;color:#fff;border:1px solid #fff}
+.btn-wh:hover{background-color:#fff;color:#7ca428}
+.btn-large{padding:.4em 1em;font-size:90%;border-width:3px;font-weight:bold;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;-moz-border-radius:0.3em;-webkit-border-radius:0.3em;border-radius:0.3em}
+.btn.btn-tw{color:#fff;background-color:#55acee;border-color:transparent}
+.btn.btn-tw:hover{background-color:#309aea;color:#fff}
+.btn.btn-fb{color:#fff;background-color:#3b5998;border-color:transparent}
+.btn.btn-fb:hover{background-color:#30487b;color:#fff}
+.btn.btn-b{color:#fff;background-color:#008fde;border-color:transparent}
+.btn.btn-b:hover{background-color:#0075b5;color:#fff}
+.btn-inner{margin-bottom:1em}@media (max-width: 767px)*/
+
+
+.menu {
+  height: 500px;
+  width: 500px;
+  margin: 100px auto;
+  padding: 50px;
+  background: #fff;
+}
+
+label {
+  background: #333;
+  color: #fff;
+  padding: 10px;
+  display: block;
+  margin: 0;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+label:hover {
+  background: #555;
+}
+
+input[type="checkbox"].on-off{
+  display: none;
+}
+
+.menu ul {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.menu li {
+  padding: 5px;
+}
+
+input[type="checkbox"].on-off + ul{
+  display: none;
+}
+
+input[type="checkbox"].on-off:checked + ul{
+  display: block;
+}
+
+blockquote {
+    font-size:50%;  /* 元のサイズの90%に設定 */
+    /* 必要に応じて他のスタイルも調整可能 */
+}

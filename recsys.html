@@ -1,40 +1,28 @@
 <!DOCTYPE html>
 
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Learning to Rank (ランク学習) &mdash; Atsushi Shibagaki 170323 documentation</title>
-    
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/octicons/octicons.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
-    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '170323',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
-    <link rel="top" title="Atsushi Shibagaki 170323 documentation" href="index.html" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning to Rank &#8212; papers  documentation</title>
+    <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="static/bootstrap-sphinx.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+    <script src="static/jquery.js"></script>
+    <script src="static/underscore.js"></script>
+    <script src="static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="static/js/jquery-1.11.0.min.js"></script>
+    <script src="static/js/jquery-fix.js"></script>
+    <script src="static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Algorithm" href="recsys/algorithm.html" />
-    <link rel="prev" title="Atsushi Shibagaki (柴垣篤志)" href="index.html" />
-<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+    <link rel="prev" title="Tensorflow Serving" href="other/tensorflow_serving.html" />
+<link rel="stylesheet" href="static/custom.css" type="text/css" />
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -46,8 +34,7 @@
   ga('send', 'pageview');
 </script>
 
-  </head>
-  <body role="document">
+  </head><body>
 
   <div id="navbar" class="navbar navbar-default navbar-fixed-top">
     <div class="container">
@@ -59,8 +46,8 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="index.html">
-          Atsushi Shibagaki</a>
-        <span class="navbar-text navbar-version pull-left"><b>170323</b></span>
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -76,22 +63,23 @@
   <ul class="dropdown-menu globaltoc"
       role="menu"
       aria-labelledby="dLabelGlobalToc"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Learning to Rank (ランク学習)</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="work.html">Work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="work/hotel_spot_search.html">ホテルスポット検索</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning.html#papers">Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning.html#id1">Metric Learningとは</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="other.html#papers">Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html#memo">Memo</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Learning to Rank</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="recsys/algorithm.html">Algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="recsys/metric.html">Metric</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="misc_memo.html">Misc</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="misc_memo.html#other">other</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc_memo.html#sublime-text">sublime text</a></li>
-<li class="toctree-l2"><a class="reference internal" href="misc_memo.html#emacs">emacs</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="tex_memo.html">TeX</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tex_memo.html#algorithm2e">algorithm2e</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tex_memo.html#document-platex-template">document (platex) template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tex_memo.html#document-lualatex-template">document (lualatex) template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tex_memo.html#beamer-template">beamer template</a></li>
 </ul>
 </li>
 </ul>
@@ -107,7 +95,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Learning to Rank (ランク学習)</a></li>
+<li><a class="reference internal" href="#">Learning to Rank</a></li>
 </ul>
 </ul>
 </li>
@@ -117,7 +105,7 @@
               
                 
   <li>
-    <a href="index.html" title="Previous Chapter: Atsushi Shibagaki (柴垣篤志)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Atsushi Shiba...</span>
+    <a href="other/tensorflow_serving.html" title="Previous Chapter: Tensorflow Serving"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tensorflow Serving</span>
     </a>
   </li>
   <li>
@@ -147,14 +135,40 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 content">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Learning to Rank</a></li>
+</ul>
+
+  <li>
+    <a href="other/tensorflow_serving.html" title="Previous Chapter: Tensorflow Serving"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Tensorflow Serving</span>
+    </a>
+  </li>
+  <li>
+    <a href="recsys/algorithm.html" title="Next Chapter: Algorithm"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Algorithm &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="sources/recsys.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
       
   <div class="section" id="learning-to-rank">
-<h1>Learning to Rank (ランク学習)<a class="headerlink" href="#learning-to-rank" title="Permalink to this headline">¶</a></h1>
+<h1>Learning to Rank<a class="headerlink" href="#learning-to-rank" title="Permalink to this headline">¶</a></h1>
 <p><strong>Learning to Rank (ランク学習)とは</strong></p>
 <ul class="simple">
-<li>クエリ <span class="math">\(q_i\)</span> に対する関連文書の特徴量のリストを <span class="math">\(X_i = [x_i^{(1)}, \ldots, x_i^{(n_i)}]\)</span> , それらに対する (教師となる) 関連度のリストを <span class="math">\(Y_i = [y_i^{(1)}, \ldots, y_i^{(n_i)}]\)</span> とする</li>
-<li><span class="math">\(\{X_i, Y_i\}_{i=1}^{n}\)</span> を教師データにして、 関連文書の特徴量を入力にその文書の関連度の予測値を出力する関数を学習することをランク学習という</li>
+<li><p>クエリ <span class="math notranslate nohighlight">\(q_i\)</span> に対する関連文書の特徴量のリストを <span class="math notranslate nohighlight">\(X_i = [x_i^{(1)}, \ldots, x_i^{(n_i)}]\)</span> , それらに対する (教師となる) 関連度のリストを <span class="math notranslate nohighlight">\(Y_i = [y_i^{(1)}, \ldots, y_i^{(n_i)}]\)</span> とする</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{X_i, Y_i\}_{i=1}^{n}\)</span> を教師データにして、 関連文書の特徴量を入力にその文書の関連度の予測値を出力する関数を学習することをランク学習という</p></li>
 </ul>
 <p><strong>目次</strong></p>
 <div class="toctree-wrapper compound">
@@ -189,8 +203,8 @@
       
     </p>
     <p>
-        &copy; Copyright 2016-present, Atsushi Shibagaki.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.<br/>
+        &copy; Copyright 2021, ashibaga.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.4.1.<br/>
     </p>
   </div>
 </footer>

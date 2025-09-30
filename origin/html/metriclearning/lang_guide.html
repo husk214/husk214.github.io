@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Learning from Noisy Labels" href="../noisylabel.html" />
+    <link rel="prev" title="Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)" href="clip.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#id1">提案手法</a><ul>
+<li><a class="reference internal" href="#language-guidance-with-expert-class-names-elg">Language Guidance with Expert Class Names (ELG)</a></li>
+<li><a class="reference internal" href="#language-guidance-without-extra-supervision-plg">Language Guidance without extra supervision (PLG)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">実験</a><ul>
+<li><a class="reference internal" href="#id3">提案手法の効果</a></li>
+<li><a class="reference internal" href="#elgplg">ELGとPLG</a></li>
+<li><a class="reference internal" href="#id4">言語モデル</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="clip.html" title="Previous Chapter: Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Radford ICML’...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../noisylabel.html" title="Next Chapter: Learning from Noisy Labels"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Learning from... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#id1">提案手法</a><ul>
+<li><a class="reference internal" href="#language-guidance-with-expert-class-names-elg">Language Guidance with Expert Class Names (ELG)</a></li>
+<li><a class="reference internal" href="#language-guidance-without-extra-supervision-plg">Language Guidance without extra supervision (PLG)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id2">実験</a><ul>
+<li><a class="reference internal" href="#id3">提案手法の効果</a></li>
+<li><a class="reference internal" href="#elgplg">ELGとPLG</a></li>
+<li><a class="reference internal" href="#id4">言語モデル</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="clip.html" title="Previous Chapter: Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Radford ICML’...</span>
+    </a>
+  </li>
+  <li>
+    <a href="../noisylabel.html" title="Next Chapter: Learning from Noisy Labels"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Learning from... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/metriclearning/lang_guide.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="roth-cvpr-22-integrating-language-guidance-into-vision-based-deep-metric-learning">
+<h1>Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning<a class="headerlink" href="#roth-cvpr-22-integrating-language-guidance-into-vision-based-deep-metric-learning" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>著者 : Karsten Roth (1), Oriol Vinyals (2), Zeynep Akata (1,3)</p>
+<ul>
+<li><p>1: University of Tubingen, 2: DeepMind, 3: MPI for Intelligent Systems</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2203.08543">https://arxiv.org/pdf/2203.08543</a></p></li>
+</ul>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">¶</a></h2>
+<p>(NotebookLMさんに要約してもらいました)</p>
+<ul class="simple">
+<li><p>この論文では、視覚的類似学習モデルの汎化能力を向上させるために、言語ガイダンスという新しいアプローチを提案しています。</p></li>
+<li><p>DML（Deep Metric Learning）は、意味的な類似性を埋め込み空間距離として符号化するメトリック空間を学習することを提案しています。</p></li>
+<li><p>しかし、従来のDML手法の多くは、クラスラベルのみに基づいてランキングタスクを定義しており、クラス間の高レベルの意味関係を考慮に入れていません。</p></li>
+<li><p>この問題に対処するために、この論文では、事前トレーニング済みの大規模言語モデルを活用してクラスラベルにタスクに依存しない文脈を与え、DMLモデルがより意味的に一貫性のある視覚的表現空間を学習できるようにすることを提案しています。</p></li>
+<li><p>具体的には、2つの言語ガイダンスの方法が提案されています。</p>
+<ul>
+<li><p>専門家言語ガイダンス（ELG）: 専門家が作成したクラスラベル名を利用して、事前トレーニング済みの言語モデルを用いて言語埋め込みとそれぞれの言語的類似性を計算します。そして、これらの言語的類似性を蒸留によって用いることで、標準的なDML手法によって学習された視覚的埋め込み関係を再配置及び修正します。</p></li>
+<li><p>疑似ラベル言語ガイダンス（PLG）: 専門家によるラベル付けを必要とせず、DMLパイプラインで広く使用されているImageNet事前トレーニングを活用します。 事前トレーニング済みのバックボーンと分類器ヘッドを用いて、各サンプルに対してImageNetのすべてのクラスに対応するソフトマックス出力を生成し、クラスごとに平均化した後、上位k個のImageNet疑似クラス名をそのクラスの表現として選択します。 これらの疑似ラベルを事前トレーニング済みの言語モデルに再埋め込みすることで、より粗いながらも広く適用可能な疑似ラベルの類似性のコレクションにアクセスでき、それを言語ガイダンスに利用できます。</p></li>
+</ul>
+</li>
+<li><p>広範な実験とアブレーションにより、提案されたアプローチの妥当性が裏付けられ、追加の視覚的な意味的改良のために事前トレーニング済みの言語モデルを使用した場合に、DMLモデルの汎化性能が大幅に向上することが示されています。</p></li>
+<li><p>その結果、トレーニング時間にほとんどオーバーヘッドをかけることなく、すべての標準的なベンチマークにおいて競争力のある最先端の性能を達成することができました。</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>提案手法<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>手続き的にはシンプルで普通のDMLの損失に画像の方の類似度行列と画像のテキストを言語モデルに通して出ていたベクトル同士の類似度行列のKL距離を加えるだけ。</p></li>
+<li><p>提案法は2種類ある、画像のテキストをどうやって用意するかの違い。</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/lang_fig2.png"><img alt="../_images/lang_fig2.png" class="align-center" src="../_images/lang_fig2.png" style="width: 916.0px; height: 485.6px;" />
+</a>
+<section id="language-guidance-with-expert-class-names-elg">
+<h3>Language Guidance with Expert Class Names (ELG)<a class="headerlink" href="#language-guidance-with-expert-class-names-elg" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>画像のクラス名が使える状況を考える</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  \mathcal{L}_{ELG} &amp;= \mathcal{L}_{DML} + \omega \cdot \mathcal{L}_{match}, ~~~ (\omega \text{は係数})
+\end{align}</div><p><span class="math notranslate nohighlight">\(\mathcal{L}_{DML}\)</span> が普通のDMLのロスで <span class="math notranslate nohighlight">\(\mathcal{L}_{match}\)</span> が画像の方の類似度行列と画像のテキストを言語モデルに通して出ていたベクトル同士の類似度行列のKL距離</p>
+<div class="math notranslate nohighlight">
+\begin{align}
+  \mathcal{L}_{match} (S^{img}, S^{lang}) &amp;= \cfrac{1}{|B|} \sum_{i}^{|B|} \sigma(S^{img, X}_i) \cdot \log \left( \cfrac{\sigma(S^{img, X}_i)}{\sigma(S^{lang}_i + \gamma_{lang}) } \right)
+\end{align}</div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma\)</span> はsoftmaxで、 <span class="math notranslate nohighlight">\(\gamma_{lang}\)</span> は計算を安定化させるためのもの的ななにか</p></li>
+<li><p><span class="math notranslate nohighlight">\(S^{lang}_i\)</span> は 「a photo of <span class="math notranslate nohighlight">\(y_i\)</span> 」 (<span class="math notranslate nohighlight">\(y_i\)</span> は画像のクラス名) をという文字列を言語モデル(BERTやRoBERTa)に入れてベクトル化してミニバッチ内の組み合わせで類似度を計算した類似度行列</p></li>
+<li><p><span class="math notranslate nohighlight">\(S^{img, X}_{i,j} = \mathbb{I}_{y_i = y_j} [1 + \gamma_{lang}] + \mathbb{I}_{y_i \neq y_j}[S^{img}_{i, j}]\)</span> で (<span class="math notranslate nohighlight">\(y_i = y_j\)</span> のときは1, <span class="math notranslate nohighlight">\(y_i \neq y_j\)</span> のときは画像の類似度行列としたもの )</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(y_i = y_j\)</span> のときは langのほうは常に1だが、imgのほうは(まったく同じ画像でなければ)1より小さい. そのため蒸留中にクラス内の分解能を失わないためにこのような処理をしているとのこと。</p>
+<ul>
+<li><p>(同クラスのときは無理にlangのほうに合わせにいかないほうがいいってことだと思うが、これがクリティカルなのかどうかは気になる)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>言語側はパラメータ更新しない</p></li>
+</ul>
+</section>
+<section id="language-guidance-without-extra-supervision-plg">
+<h3>Language Guidance without extra supervision (PLG)<a class="headerlink" href="#language-guidance-without-extra-supervision-plg" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>pretrainされた画像モデルのアウトプットを使って画像分類してクラス名をを用意する。</p></li>
+<li><p>教師ラベルを言語モデルに入れたembeddingを、ImageNetで学習したモデルの分類結果TopKのクラス名を言語モデルに入れたembedingの平均で大体する。</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  \mathcal{L}_{PLG} &amp;= \mathcal{L}_{DML} + \omega \cdot \mathcal{L}^k_{pseudomatch}, ~~~ (\omega \text{は係数}) \\
+  \mathcal{L}^k_{psedumatch} &amp;= \mathcal{L}_{match} \left( S^{img}, \frac{1}{k} \sum_{j}^{k} S^{pseudolang, j} \right)
+\end{align}</div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\{ S^{pseudolang, j} \}_{j \in [k]}\)</span> はImageNetで学習したモデルの分類結果TopKのクラス名を言語モデルに入れたembeding</p></li>
+</ul>
+</section>
+</section>
+<section id="id2">
+<h2>実験<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>モデル</p>
+<ul class="simple">
+<li><p>画像側のpretrained modelはいろいろなモデルを試して実験する</p></li>
+<li><p>言語側のモデルもいろいろ試すが、基本的にはCLIPの言語側のtransformerを使う</p></li>
+</ul>
+<p>実験手順　(Metric Learning論文あるあるのやつ)</p>
+<ul class="simple">
+<li><p>学習: クラスラベルがついたデータセットをtrain, testに分割(testにあるクラスはtrainは含まれない)し、trainで学習</p></li>
+<li><p>評価:</p>
+<ul>
+<li><p>testデータでクエリ画像を選ぶ</p></li>
+<li><p>残りの画像に対して類似度を計算して検索</p></li>
+<li><p>同じクラスの画像がTop (k)にあるか (Recall&#64;1, mAP &#64; 100)</p></li>
+</ul>
+</li>
+</ul>
+<p>評価指標</p>
+<ul class="simple">
+<li><p>Recall&#64;1: Top 1に同じクラスの画像を持ってこれている率 (これをP&#64;1と言っている論文もあるが)</p></li>
+<li><p>mAP &#64;100: Top 100に同じクラスの画像を持ってこれている数 / 100の平均をクラスごとに平均をとる</p></li>
+<li><p>NMI (Normalized Mutual Information): クラスタリングの性能を測る指標 (どれだけうまく埋め込めているか)</p>
+<ul>
+<li><p>具体的な計算手順: <a class="reference external" href="https://course.ccs.neu.edu/cs6140sp15/7_locality_cluster/Assignment-6/NMI.pdf">https://course.ccs.neu.edu/cs6140sp15/7_locality_cluster/Assignment-6/NMI.pdf</a></p></li>
+</ul>
+</li>
+</ul>
+<p>データセット (Metric Learning論文あるあるのやつ)</p>
+<ul class="simple">
+<li><p>CUB200-2011 (Wah, Catherine, et al. “The caltech-ucsd birds-200-2011 dataset.” (2011).)</p>
+<ul>
+<li><p>200種類の鳥の画像 (11,788枚)</p></li>
+<li><p>今回使われていないが、クラス名だけではなく部位のバウンディングボックスや位置などもアノテーションされている</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/cub200_fig1.png"><img alt="../_images/cub200_fig1.png" class="align-center" src="../_images/cub200_fig1.png" style="width: 541.6px; height: 384.8px;" />
+</a>
+<ul class="simple">
+<li><p>CARS196 (Krause, Jonathan, et al. “3d object representations for fine-grained categorization.” 2013.)</p>
+<ul>
+<li><p>196種類の車の画像 (16,815枚)</p></li>
+<li><p><a class="reference external" href="https://www.tensorflow.org/datasets/catalog/cars196">https://www.tensorflow.org/datasets/catalog/cars196</a></p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/cars196_fig1.png"><img alt="../_images/cars196_fig1.png" class="align-center" src="../_images/cars196_fig1.png" style="width: 436.8px; height: 405.6px;" />
+</a>
+<ul class="simple">
+<li><p>SOP (Stanford Online　Products) (Oh Song, Hyun, et al. “Deep metric learning via lifted structured feature embedding.” 2016.)</p>
+<ul>
+<li><p>22,634クラスの商品画像 (120,053枚)</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/sop_fig1.png"><img alt="../_images/sop_fig1.png" class="align-center" src="../_images/sop_fig1.png" style="width: 764.8000000000001px; height: 615.2px;" />
+</a>
+<section id="id3">
+<h3>提案手法の効果<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>損失、画像側のモデルを変えて性能を見ている</p></li>
+<li><p>CUB200, CARS196では精度上がっているが、SOPではほとんど効果がない</p>
+<ul>
+<li><p>SOPはクラス数が多い、それに加えてクラス毎のサンプル数が少ない。</p></li>
+<li><p>さらに12個のスーパークラスは名前がついているが、普通のクラスはexpertによるアノテーションがない。</p></li>
+<li><p>そういう状況なので言語を使うというのがうまくいかなかったとのこと。</p></li>
+</ul>
+</li>
+<li><p>CUB200, CARS196は <span class="math notranslate nohighlight">\(omega \in [1, 10]\)</span> で上手くいとのこと</p></li>
+<li><p>だが、SOPは <span class="math notranslate nohighlight">\(omega \in [0.1, 1]\)</span> とのことなのでうまく効いていないことがわかる</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/lang_tab1.png"><img alt="../_images/lang_tab1.png" class="align-center" src="../_images/lang_tab1.png" style="width: 737.0px; height: 515.0px;" />
+</a>
+</section>
+<section id="elgplg">
+<h3>ELGとPLG<a class="headerlink" href="#elgplg" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>どっちもあんまり変わらない</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/lang_tab2.png"><img alt="../_images/lang_tab2.png" class="align-center" src="../_images/lang_tab2.png" style="width: 351.0px; height: 343.0px;" />
+</a>
+</section>
+<section id="id4">
+<h3>言語モデル<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>CLIPでなくてもうまくいく</p></li>
+<li><p>なんならFastText等のword embeddingでも結構上がる</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/lang_tab3.png"><img alt="../_images/lang_tab3.png" class="align-center" src="../_images/lang_tab3.png" style="width: 351.0px; height: 366.0px;" />
+</a>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

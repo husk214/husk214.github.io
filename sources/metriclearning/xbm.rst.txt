@@ -1,0 +1,8 @@
+Wang CVPR'20 Cross-Batch Memory for Embedding Learning
+===================================================================
+
+著者
+
+- Kevin Musgrave (Cornell Tech)
+- Serge Belongie (Cornell Tech)
+- Ser-Nam Lim (Facebook AI)

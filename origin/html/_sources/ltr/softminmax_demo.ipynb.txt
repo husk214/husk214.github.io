@@ -1,0 +1,80 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "dbca09d8-79c5-4160-a4a8-16dd4d448908",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import math\n",
+    "\n",
+    "def sofmin(f, a, b):\n",
+    "    return a * f(b-a) + b * f(a-b)\n",
+    "\n",
+    "def sofmax(f, a, b):\n",
+    "    return a * f(a-b) + b * f(b-a)\n",
+    "\n",
+    "def f_sigmoid(x):\n",
+    "    s = 10.0\n",
+    "    return 1. / (1. + math.exp(-s*x))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "9fe64f12-b84a-4631-84bc-8d153407a820",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "(a, b) = (1, 2)\n",
+      "softmin(a, b) = 1.0000453978687025 , softmax(a, b) = 1.9999546021312977\n",
+      "(a, b) = (1.111, 1.112)\n",
+      "softmin(a, b) = 1.1114975000208331 , softmax(a, b) = 1.111502499979167\n"
+     ]
+    }
+   ],
+   "source": [
+    "a, b = 1, 2\n",
+    "for a, b in [(1,2), (1.111, 1.112),]:\n",
+    "    print(f\"(a, b) = ({a}, {b})\")\n",
+    "    print(\n",
+    "        \"softmin(a, b) =\", sofmin(f_sigmoid, a, b),\n",
+    "        \", softmax(a, b) =\", sofmax(f_sigmoid, a, b),\n",
+    "    )"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "1ea3b869-33dc-4446-9d8a-c1d0f653dcff",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.11.6"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

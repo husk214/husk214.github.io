@@ -1,0 +1,4195 @@
+
+==================================
+SIGIR'19 ABSTRACT
+==================================
+
+
+.. raw:: html
+
+    <div class="menu">
+        Session details: Session 1A: Learning to Rank 1
+
+        <label for="Panel1">
+        <strong> A General Framework for Counterfactual Learning-to-Rank </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Aman+Agarwal">Aman Agarwal</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kenta+Takatsu">Kenta Takatsu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ivan+Zaitsev">Ivan Zaitsev</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Thorsten+Joachims">Thorsten Joachims</a> (1) </u>  <br>
+        1:  Cornell University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331202">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A General Framework for Counterfactual Learning-to-Rank">Google Scholar</a></div>
+        (1)
+        <br>
+        <b>概要:　</b> 暗黙的フィードバック（例えばクリック、滞在時間）は、Learning-to-Rankのための魅力的なトレーニングデータの源ですが、そのまま使用すると、表示バイアスによって学習結果が歪むことになります。しかし、線形ランキング関数の平均ランクを最適化する特殊なケースにおいて、最近開発されたSVM-PropRank手法は、事後的推論技術を使用して表示バイアスの歪み効果を証明可能に克服できることを示しました。本論文では、この特殊なケースを超えて、広範な加法ランキング指標（例えば割引累積利得（DCG））および広範なモデル（例えばディープネットワーク）のためのバイアスのないトレーニングを可能にする、一般的かつ理論的に厳密な枠組みを提供します。具体的には、傾向スコアで重み付けされたランクベースのメトリクスの緩和を導出し、サブディファレンシャブルであり、勾配ベースの最適化に適しています。この一般的なアプローチの有効性を示すために、2つの新しい学習方法を実例として示します。一つは、新しいタイプのバイアスのないSVMで、DCGを最適化するSVM PropDCGと呼ばれ、この最適化問題が凸凹プログラム（CCP）を通じて解決できることを示します。もう一つは、ランキング関数が任意のディープネットワークであるDeep PropDCGです。理論的裏付けに加え、実証的にもSVM PropDCGが既存の線形ランキング手法をDCGの観点から大幅に上回ることを発見しました。さらに、Deep PropDCGを通じた非線形ランキング関数のトレーニング能力により、パフォーマンスがさらに向上します。
+        </label>
+        <input type="checkbox" id="Panel1" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Implicit feedback (e.g., click, dwell time) is an attractive source of training data for Learning-to-Rank, but its naive use leads to learning results that are distorted by presentation bias. For the special case of optimizing average rank for linear ranking functions, however, the recently developed SVM-PropRank method has shown that counterfactual inference techniques can be used to provably overcome the distorting effect of presentation bias. Going beyond this special case, this paper provides a general and theoretically rigorous framework for counterfactual learning-to-rank that enables unbiased training for a broad class of additive ranking metrics (e.g., Discounted Cumulative Gain (DCG)) as well as a broad class of models (e.g., deep networks). Specifically, we derive a relaxation for propensity-weighted rank-based metrics which is subdifferentiable and thus suitable for gradient-based optimization. We demonstrate the effectiveness of this general approach by instantiating two new learning methods. One is a new type of unbiased SVM that optimizes DCG - called SVM PropDCG - and we show how the resulting optimization problem can be solved via the Convex Concave Procedure (CCP). The other is Deep PropDCG, where the ranking function can be an arbitrary deep network. In addition to the theoretical support, we empirically find that SVM PropDCG significantly outperforms existing linear rankers in terms of DCG. Moreover, the ability to train non-linear ranking functions via Deep PropDCG further improves performance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel2">
+        <strong> To Model or to Intervene: A Comparison of Counterfactual and Online Learning to Rank from User Interactions </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rolf+Jagerman">Rolf Jagerman</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Harrie+Oosterhuis">Harrie Oosterhuis</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maarten+de+Rijke">Maarten de Rijke</a> (1) </u>  <br>
+        1:  University of Amsterdam <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331269">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=To Model or to Intervene: A Comparison of Counterfactual and Online Learning to Rank from User Interactions">Google Scholar</a></div>
+        (2)
+        <br>
+        <b>概要:　</b> ユーザーのインタラクションからランキング学習（Learning to Rank: LTR）を行うことは、ユーザーフィードバックに多くのバイアスやノイズが含まれているため、困難です。現在、LTRの分野でバイアスに対処するための2つの方法論が主流となっています。歴史的なデータを学習し、バイアスに対処するためのユーザーモデルを構築する「反実仮想法」と、バイアスに対処するために介入を行うが、明示的なユーザーモデルを使用しない「オンライン法」です。実務者にとって、これらの方法論のいずれを選択するかは、エンドユーザーへの直接の影響のため非常に重要です。しかし、バイアスのないLTRにおいてこれらの2つのアプローチを直接比較した研究はこれまで行われていませんでした。本研究では、異なる実験条件下で反実仮想法とオンライン法の両方のベンチマーキングを初めて提供します。我々の結果は、方法論の選択が重要であり、選択バイアスの存在、位置バイアスの程度、インタラクションノイズの量によって異なることを示しています。バイアスやノイズが少ない環境では、反実仮想法が最も高いランキングパフォーマンスを達成できる可能性がありますが、他の状況ではその最適化がユーザーエクスペリエンスに悪影響を及ぼすこともあります。一方、オンライン法はバイアスやノイズに対して非常に堅牢ですが、表示されるランキングの制御が必要です。我々の発見は、LTRにおけるモデルベースと介入ベースの手法の影響についての既存の期待を確認しつつ、相反することもあり、実務者がこれら2つの方法論のどちらを選択すべきかについての情報に基づく決定を可能にします。
+        </label>
+        <input type="checkbox" id="Panel2" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Learning to Rank (LTR) from user interactions is challenging as user feedback often contains high levels of bias and noise. At the moment, two methodologies for dealing with bias prevail in the field of LTR: counterfactual methods that learn from historical data and model user behavior to deal with biases; and online methods that perform interventions to deal with bias but use no explicit user models. For practitioners the decision between either methodology is very important because of its direct impact on end users. Nevertheless, there has never been a direct comparison between these two approaches to unbiased LTR. In this study we provide the first benchmarking of both counterfactual and online LTR methods under different experimental conditions. Our results show that the choice between the methodologies is consequential and depends on the presence of selection bias, and the degree of position bias and interaction noise. In settings with little bias or noise counterfactual methods can obtain the highest ranking performance; however, in other circumstances their optimization can be detrimental to the user experience. Conversely, online methods are very robust to bias and noise but require control over the displayed rankings. Our findings confirm and contradict existing expectations on the impact of model-based and intervention-based methods in LTR, and allow practitioners to make an informed decision between the two methodologies.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel3">
+        <strong> Domain Adaptation for Enterprise Email Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Brandon+Tran">Brandon Tran</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maryam+Karimzadehgan">Maryam Karimzadehgan</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rama+Kumar+Pasumarthi">Rama Kumar Pasumarthi</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michael+Bendersky">Michael Bendersky</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Donald+Metzler">Donald Metzler</a> (2) </u>  <br>
+        1:  Massachusetts Institute of Technology, 2:  Google LLC <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331204">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Domain Adaptation for Enterprise Email Search">Google Scholar</a></div>
+        (3)
+        <br>
+        <b>概要:　</b> 企業のメール検索設定において、同じ検索エンジンが技術、教育、製造などさまざまな業界の複数の企業に対応することがよくあります。しかし、各企業において異なるコーパスや情報ニーズが存在するため、同じグローバルランキングモデルを使用すると検索品質が最適でない場合があります。他方、各企業ごとに個別のランキングモデルをトレーニングすることは、小規模な組織ではデータが限られているため、実現困難な場合があります。このデータの課題に対処するために、本論文ではグローバルモデルを各企業に適応させるドメイン適応アプローチを提案します。特に、最大平均差（Maximum Mean Discrepancy、MMD）アプローチを情報検索に応用する新しい手法を提案し、グローバルデータ分布と個別企業のデータ分布間のギャップを埋めることを試みます。本研究では、大規模メール検索エンジンを用いた包括的な実験を行い、MMDアプローチが検索品質を一貫して向上させることを示します。これは、グローバルランキングモデルおよび対抗学習法を含む複数の競争力あるドメイン適応ベースラインと比較しても有効であることが確認されました。
+        </label>
+        <input type="checkbox" id="Panel3" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In the enterprise email search setting, the same search engine often powers multiple enterprises from various industries: technology, education, manufacturing, etc. However, using the same global ranking model across different enterprises may result in suboptimal search quality, due to the corpora differences and distinct information needs. On the other hand, training an individual ranking model for each enterprise may be infeasible, especially for smaller institutions with limited data. To address this data challenge, in this paper we propose a domain adaptation approach that fine-tunes the global model to each individual enterprise. In particular, we propose a novel application of the Maximum Mean Discrepancy (MMD) approach to information retrieval, which attempts to bridge the gap between the global data distribution and the data distribution for a given individual enterprise. We conduct a comprehensive set of experiments on a large-scale email search engine, and demonstrate that the MMD approach consistently improves the search quality for multiple individual domains, both in comparison to the global ranking model, as well as several competitive domain adaptation baselines including adversarial learning methods.
+        </div> </ul> <br>
+
+
+        Session details: Session 1B: Health and Social Media
+
+        <label for="Panel5">
+        <strong> Health Cards for Consumer Health Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimmy+Jimmy">Jimmy Jimmy</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Guido+Zuccon">Guido Zuccon</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Bevan+Koopman">Bevan Koopman</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gianluca+Demartini">Gianluca Demartini</a> (2) </u>  <br>
+        1:  University of Queensland & University of Surabaya, 2:  University of Queensland, 3:  CSIRO <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331194">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Health Cards for Consumer Health Search">Google Scholar</a></div>
+        (5)
+        <br>
+        <b>概要:　</b> 本論文では、消費者がオンラインで健康アドバイスを探す際に使用する「ヘルスカード」の影響を調査します。ヘルスカードは、特定の健康関連の検索クエリに対して検索結果と一緒に表示される、健康概念の簡潔な提示です。これにより、一般の人々が健康情報を理解しやすくなる可能性があります。しかし、オンラインで健康アドバイスを検索する際にヘルスカードが実際にどれほど有効であるか、またその有効性が特定の健康検索意図に限定されるのかについては、ほとんど証拠がありません。ヘルスカードが消費者の健康検索（CHS）に与える影響を理解するために、我々はラボ実験を行い、結果スニペットのみの検索インターフェースと、結果スニペットに加えてヘルスカードを含む検索インターフェースの2つのバリアントを使用して、ユーザーがCHSタスクを完了する様子を観察しました。我々の研究は以下の貢献を行います：（1）ヘルスカードがユーザーに利益をもたらすタイミングと方法を明らかにし、（2）ユーザーがタスクを完了するのに役立つヘルスカードの特徴を特定します。これは、消費者が健康検索を行う際にヘルスカードの有効性を徹底的に調査する初めての研究です。
+        </label>
+        <input type="checkbox" id="Panel5" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This paper investigates the impact of health cards in consumer health search (CHS) - people seeking health advice online. Health cards are a concise presentations of a health concept shown along side search results to specific health queries; they have the potential to convey health information in easily digestible form for the general public. However, little evidence exists on how effective health cards actually are for users when searching health advice online, and whether their effectiveness is limited to specific health search intents. To understand the impact of health cards on CHS, we conducted a laboratory study to observe users completing CHS tasks using two search interface variants: one just with result snippets and one containing both result snippets and health cards. Our study makes the following contributions: (1) it reveals how and when health cards are beneficial to users in completing consumer health search tasks, and (2) it identifies the features of health cards that helped users in completing their tasks. This is the first study that thoroughly investigates the effectiveness of health cards in supporting consumer health search.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel6">
+        <strong> Hate Speech Detection is Not as Easy as You May Think: A Closer Look at Model Validation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Aymé+Arango">Aymé Arango</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jorge+Pérez">Jorge Pérez</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Barbara+Poblete">Barbara Poblete</a> (1) </u>  <br>
+        1:  University of Chile <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331262">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Hate Speech Detection is Not as Easy as You May Think: A Closer Look at Model Validation">Google Scholar</a></div>
+        (6)
+        <br>
+        <b>概要:　</b> ヘイトスピーチは、オンライン・ソーシャル・コミュニティの動態と有用性に深刻な影響を及ぼす重要な問題です。大規模なソーシャルプラットフォームは、ヘイトフルなコンテンツを自動的に検出・分類するために重要なリソースを投入していますが、あまり成功していません。一方で、最先端のシステムが報告している結果は、特定のデータセット内では、教師ありアプローチがほぼ完璧なパフォーマンスを達成することを示しています。本研究では、既存の文献と実際のアプリケーションの間に見られるこの矛盾を分析します。先行研究で使用された実験方法と他のデータセットへの一般化可能性を詳細に調査しました。私たちの調査結果は、方法論的な問題や重要なデータセットバイアスを明らかにしました。その結果、現在の最先端技術のパフォーマンス主張は大幅に過大評価されていることが判明しました。見つかった問題の多くは、データの過適合やサンプリングの問題に関連しています。現在の研究に対する影響を議論し、現在の最先端手法のより正確な状態を示すために実験を再実施しました。
+        </label>
+        <input type="checkbox" id="Panel6" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Hate speech is an important problem that is seriously affecting the dynamics and usefulness of online social communities. Large scale social platforms are currently investing important resources into automatically detecting and classifying hateful content, without much success. On the other hand, the results reported by state-of-the-art systems indicate that supervised approaches achieve almost perfect performance but only within specific datasets. In this work, we analyze this apparent contradiction between existing literature and actual applications. We study closely the experimental methodology used in prior work and their generalizability to other datasets. Our findings evidence methodological issues, as well as an important dataset bias. As a consequence, performance claims of the current state-of-the-art have become significantly overestimated. The problems that we have found are mostly related to data overfitting and sampling issues. We discuss the implications for current research and re-conduct experiments to give a more accurate picture of the current state-of-the art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel7">
+        <strong> Harvesting Drug Effectiveness from Social Media </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zi+Chai">Zi Chai</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaojun+Wan">Xiaojun Wan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhao+Zhang">Zhao Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minjie+Li">Minjie Li</a> (1) </u>  <br>
+        1:  Peking University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331263">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Harvesting Drug Effectiveness from Social Media">Google Scholar</a></div>
+        (7)
+        <br>
+        <b>概要:　</b> 薬の有効性は、病気を治療するための薬の能力を表し、薬の安全性にとって非常に重要です。この情報を得るためには、多くの現実世界の患者指向の結果が必要です。しかし、現在の監視システムはそれらの一部しか捕捉できず、報告されたデータの処理には時間の遅延があります。一方で、ソーシャルメディアはリアルタイムで多くの患者指向のユーザーメッセージを提供するため、これらのデータから薬の有効性を自動的に抽出することは非常に価値があります。この目的のために、薬の使用を説明する25,000ツイートを含むデータセットを構築し、化学物質と疾病間の関係抽出（RE）を行うことで薬の有効性を収集します。過去のREに関する多くの研究は、言及ペアを独立して扱っており、これは我々の課題には適していません。なぜなら、言及ペア間の相互作用が広範に存在するからです。本論文では、複数種類のエッジで接続されたノードとして言及ペアを考慮するモデルを提案します。時間を超えたグラフベースの情報伝達を利用することで、すべての言及ペアを同時に扱い、それらの相互作用を捕捉します。さらに、一般的なREタスクにおける大きな課題である複数インスタンス学習を行うための新しいアイデアを使用しています。広範な実験結果から、我々のモデルが従来の研究よりも大幅に優れていることが示されました。
+        </label>
+        <input type="checkbox" id="Panel7" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Drug effectiveness describes the capacity of a drug to cure a disease, which is of great importance for drug safety. To get this information, a number of real-world patient-oriented outcomes are required. However, current surveillance systems can only capture a small portion of them, and there is a time lag in processing the reported data. Since social media provides quantities of patient-oriented user posts in real-time, it is of great value to automatically extract drug effectiveness from these data. To this end, we build a dataset containing 25K tweets describing drug use, and further harvest drug effectiveness by performing Relation Extraction (RE) between chemicals and diseases. Most prior works about RE deal with mention pairs independently, which is not suitable for our task since interactions across mention pairs are widespread. In this paper, we propose a model regarding mention pairs as nodes connected by multiple types of edges. With the help of graph-based information transfers over time, it deals with all mention pairs simultaneously to capture their interactions. Besides, a novel idea is used to perform multiple instance learning, a big challenge in general RE tasks. Extensive experimental results show that our model outperforms previous work by a substantial margin.
+        </div> </ul> <br>
+
+
+        Session details: Session 1C: Search Intents
+
+        <label for="Panel9">
+        <strong> Generic Intent Representation in Web Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongfei+Zhang">Hongfei Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xia+Song">Xia Song</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chenyan+Xiong">Chenyan Xiong</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Corby+Rosset">Corby Rosset</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Paul+N.+Bennett">Paul N. Bennett</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nick+Craswell">Nick Craswell</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Saurabh+Tiwary">Saurabh Tiwary</a> (1) </u>  <br>
+        1:  Microsoft Corporation <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331198">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Generic Intent Representation in Web Search">Google Scholar</a></div>
+        (9)
+        <br>
+        <b>概要:　</b> 本論文では、検索におけるユーザーの意図を分散表現空間に学習するGEneric iNtent Encoder（GEN Encoder）を提案します。Bingの検索ログから得られる大規模なユーザクリックをユーザの意図の弱い監視として活用し、GEN Encoderはエンドツーエンドで共通のクリックを持つクエリを類似した埋め込みにマッピングし、その後複数のパラフレーズタスクで微調整を行います。クエリの意図類似性のモデリングという内在的評価タスクにおける実験結果は、GEN Encoderが従来の表現方法よりも堅牢かつ有意な優位性を持つことを示します。アブレーション研究は、ユーザの暗黙的なフィードバックから学習することの重要な役割と、表現の一般性におけるマルチタスク学習の貢献を明らかにします。さらに、GEN Encoderが希少な検索トラフィックのスパーシティを軽減し、効率的な近似最近傍検索を用いて同じ検索意図を持つ以前のクエリを効果的に特定することで、未見クエリの半数を削減することを示します。最後に、GENエンコーディング間の距離が検索セッションにおける特定の情報検索行動を反映していることを示します。
+        </label>
+        <input type="checkbox" id="Panel9" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This paper presents GEneric iNtent Encoder (GEN Encoder) which learns a distributed representation space for user intent in search. Leveraging large scale user clicks from Bing search logs as weak supervision of user intent, GEN Encoder learns to map queries with shared clicks into similar embeddings end-to-end and then fine-tunes on multiple paraphrase tasks. Experimental results on an intrinsic evaluation task - query intent similarity modeling - demonstrate GEN Encoder's robust and significant advantages over previous representation methods. Ablation studies reveal the crucial role of learning from implicit user feedback in representing user intent and the contributions of multi-task learning in representation generality. We also demonstrate that GEN Encoder alleviates the sparsity of tail search traffic and cuts down half of the unseen queries by using an efficient approximate nearest neighbor search to effectively identify previous queries with the same search intent. Finally, we demonstrate distances between GEN encodings reflect certain information seeking behaviors in search sessions.
+        </div> </ul> <br>
+
+
+        Session details: Session 2A: Question Answering
+
+        <label for="Panel11">
+        <strong> Quantifying and Alleviating the Language Prior Problem in Visual Question Answering </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yangyang+Guo">Yangyang Guo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhiyong+Cheng">Zhiyong Cheng</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Liqiang+Nie">Liqiang Nie</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yibing+Liu">Yibing Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yinglong+Wang">Yinglong Wang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mohan+Kankanhalli">Mohan Kankanhalli</a> (3) </u>  <br>
+        1:  Shandong University, 2:  Qilu University of Technology (Shandong Academy of Sciences), 3:  National University of Singapore <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331186">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Quantifying and Alleviating the Language Prior Problem in Visual Question Answering">Google Scholar</a></div>
+        (11)
+        <br>
+        <b>概要:　</b> コンピュータービジョン、自然言語処理、情報検索技術の進展に伴い、画像やビデオについての質問に答えることを目的とした視覚的質問応答（VQA）は、過去数年間で多くの関心を集めています。これまでにある程度の進歩が達成されましたが、いくつかの研究は現在のVQAモデルが言語的先入観の問題に強く影響されていることを指摘しています。これは、モデルが画像や質問を理解する代わりに、質問のキーワード（例：「いくつ」）とその回答（例：「2」）の共起パターンに基づいて答える傾向があることを意味します。既存の方法は、バイアスのかかったデータセットをバランスさせるか、モデルが画像をよりよく理解するように強制することでこの問題を解決しようとしています。しかし、最初の解決策についてはわずかな効果しか見られず、第二の解決策については性能の劣化が観察されています。さらに、言語的先入観の影響の程度を定量的に測定するための測定手段が欠如していることも重要な課題です。この問題は関連技術の進展を大きく妨げています。本論文では、二つの視点からこれらの問題を解決するための貢献を行います。まず、VQAモデルの言語的先入観の影響を定量的に測定するためのメトリックを設計しました。提案されたメトリックは実証研究で効果が確認されています。次に、言語的先入観の問題を緩和し、基幹モデルの性能を向上させるためにスコア正則化モジュールと呼ばれる正則化手法を提案します。提案されたスコア正則化モジュールは、ペアワイズ学習戦略を採用しており、バイアスのかかったトレーニングセットで観察された質問と回答のパターンに基づくのではなく、画像の推論に基づいて質問に答えるようにVQAモデルを促します。このスコア正則化モジュールは、さまざまなVQAモデルに柔軟に統合することができます。私たちは、VQA 1.0とVQA 2.0という二つの人気のあるVQAデータセットで広範な実験を行い、三つの最先端VQAモデルにスコア正則化モジュールを統合しました。実験結果は、スコア正則化モジュールがこれらのVQAモデルの言語的先入観問題を効果的に軽減し、質問回答の精度を一貫して向上させることを示しています。
+        </label>
+        <input type="checkbox" id="Panel11" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Benefiting from the advancement of computer vision, natural language processing and information retrieval techniques, visual question answering (VQA), which aims to answer questions about an image or a video, has received lots of attentions over the past few years. Although some progress has been achieved so far, several studies have pointed out that current VQA models are heavily affected by the language prior problem, which means they tend to answer questions based on the co-occurrence patterns of question keywords (e.g., how many) and answers (e.g., 2) instead of understanding images and questions. Existing methods attempt to solve this problem by either balancing the biased datasets or forcing models to better understand images. However, only marginal effects and even performance deterioration are observed for the first and second solution, respectively. In addition, another important issue is the lack of measurement to quantitatively measure the extent of the language prior effect, which severely hinders the advancement of related techniques. In this paper, we make contributions to solve the above problems from two perspectives. Firstly, we design a metric to quantitatively measure the language prior effect of VQA models. The proposed metric has been demonstrated to be effective in our empirical studies. Secondly, we propose a regularization method (i.e., score regularization module) to enhance current VQA models by alleviating the language prior problem as well as boosting the backbone model performance. The proposed score regularization module adopts a pair-wise learning strategy, which makes the VQA models answer the question based on the reasoning of the image (upon this question) instead of basing on question-answer patterns observed in the biased training set. The score regularization module is flexible to be integrated into various VQA models. We conducted extensive experiments over two popular VQA datasets (i.e., VQA 1.0 and VQA 2.0) and integrated the score regularization module into three state-of-the-art VQA models. Experimental results show that the score regularization module can not only effectively reduce the language prior problem of these VQA models but also consistently improve their question answering accuracy.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel12">
+        <strong> Document Gated Reader for Open-Domain Question Answering </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Bingning+Wang">Bingning Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ting+Yao">Ting Yao</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qi+Zhang">Qi Zhang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jingfang+Xu">Jingfang Xu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhixing+Tian">Zhixing Tian</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kang+Liu">Kang Liu</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Zhao">Jun Zhao</a> (4) </u>  <br>
+        1:  Sogou Inc. & Chinese Academy of Sciences, 2:  Sogou Inc., 3:  Chinese Academy of Sciences, 4:  Chinese Academy of Sciences <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331190">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Document Gated Reader for Open-Domain Question Answering">Google Scholar</a></div>
+        (12)
+        <br>
+        <b>概要:　</b> オープンドメイン質問応答は、多様な情報資源を活用してあらゆる種類の質問に答えることを目的としています。近年、大規模データセットの開発と様々な深層ニューラルネットワークモデルの進展により、最新のオープンドメイン質問応答システムではまず遠隔監督付きデータセットを知識資源として利用し、その後深層学習に基づく機械読解技術を適用して正しい答えを生成することで、従来の特徴ベースのパイプライン手法と比較して目覚ましい成果を上げています。しかし、これらの深層学習ベースの手法は、遠隔監督データの品質が低いことや、複数の文書間での回答スコアが非正規化されるという問題に直面しています。さらに、従来のオープンドメイン質問応答システムとは異なり、各文書を独立して処理するため、文脈内の貴重な情報を見逃す可能性があります。本論文では、複数の文書から正しい答えを生成するための文書ゲーテッドリーダーを提案します。我々は、質問と文書の関連性を判断する文書レベルのゲート操作を提案し、それを回答生成プロセスに組み込み、グローバルな正規化目標で最適化しました。また、高品質な訓練データを取得するためのブートストラッピングベースのデータ生成スキームも開発しました。いくつかの質問応答データセットにおける実験結果は、提案手法の優位性を示しています。
+        </label>
+        <input type="checkbox" id="Panel12" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Open-domain question answering focuses on using diverse information resources to answer any types of question. Recent years, with the development of large-scale data set and various deep neural networks models, some recent advances in open domain question answering system first utilize the distantly supervised dataset as the knowledge resource, then apply deep learning based machine comprehension techniques to generate the right answers, which achieves impressive results compared with traditional feature-based pipeline methods. However, these deep learning based methods suffer from the inferior quality of the distantly supervised data, and the answer score is un-normalized among multiple documents. Furthermore, unlike previous open-domain question answering system, they process each document independently which may ignore the valuable information in the context. In this paper, we propose a document gated reader to generate the right answer from multiple documents. We propose a document-level gate operation to determine the question-document relevance and embed it into the answer generation process, and optimize it with the global normalization objective. We also develop a bootstrapping based data generation scheme to obtain high-quality training data. Experimental results on several question answering datasets show the advantage of the proposed methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel13">
+        <strong> Adaptive Multi-Attention Network Incorporating Answer Information for Duplicate Question Detection </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Di+Liang">Di Liang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fubao+Zhang">Fubao Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weidong+Zhang">Weidong Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qi+Zhang">Qi Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jinlan+Fu">Jinlan Fu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minlong+Peng">Minlong Peng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tao+Gui">Tao Gui</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xuanjing+Huang">Xuanjing Huang</a> (1) </u>  <br>
+        1:  Fudan University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331228">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Adaptive Multi-Attention Network Incorporating Answer Information for Duplicate Question Detection">Google Scholar</a></div>
+        (13)
+        <br>
+        <b>概要:　</b> 多様な背景を持つ人々が情報と知識を共有できるプラットフォームを提供するコミュニティベースの質疑応答 (CQA) は、ますます人気が高まっています。サイトデータの累積に伴い、CQA サイトで重複質問を検出する方法がかなり注目されています。既存の方法は通常、質問のみを使用してこのタスクを完了します。しかし、ペアになった回答も貴重な情報を提供する可能性があります。本論文では、このタスクを実行するために「回答情報を強化した適応型マルチアテンションネットワーク (AMAN)」を提案します。AMANは、ペアになった回答の意味情報を最大限に活用しつつ、回答を追加することによって引き起こされるノイズ問題を軽減します。提案した方法を評価するために、CQADupStack セットとペアになった回答を拡張した Quora 質問ペアデータセットを使用します。実験結果は、提案モデルが上記の2つのデータセットで最先端の性能を達成できることを示しています。
+        </label>
+        <input type="checkbox" id="Panel13" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Community-based question answering (CQA), which provides a platform for people with diverse backgrounds to share information and knowledge, has become increasingly popular. With the accumulation of site data, methods to detect duplicate questions in CQA sites have attracted considerable attention. Existing methods typically use only questions to complete the task. However, the paired answers may also provide valuable information. In this paper, we propose an answer information- enhanced adaptive multi-attention network (AMAN) to perform this task. AMAN takes full advantage of the semantic information in the paired answers while alleviating the noise problem caused by adding the answers. To evaluate the proposed method, we use a CQADupStack set and the Quora question-pair dataset expanded with paired answers. Experimental results demonstrate that the proposed model can achieve state-of-the-art performance on the above two data sets.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel14">
+        <strong> Answering Complex Questions by Joining Multi-Document Evidence with Quasi Knowledge Graphs </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaolu+Lu">Xiaolu Lu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Soumajit+Pramanik">Soumajit Pramanik</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rishiraj+Saha+Roy">Rishiraj Saha Roy</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Abdalghani+Abujabal">Abdalghani Abujabal</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yafang+Wang">Yafang Wang</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gerhard+Weikum">Gerhard Weikum</a> (2) </u>  <br>
+        1:  RMIT University, 2:  Max Planck Institute for Informatics, 3:  Amazon Alexa, 4:  Ant Financial Services Group <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331252">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Answering Complex Questions by Joining Multi-Document Evidence with Quasi Knowledge Graphs">Google Scholar</a></div>
+        (14)
+        <br>
+        <b>概要:　</b> 複数の実体や関係を含む質問に直接回答することは、テキストベースのQA（質問応答）において課題となっています。この問題は、複数の文書から証拠を結合してのみ答えが見つかる場合に特に顕著です。キュレーションされた知識グラフ（KGs）は、良い回答を提供する可能性がありますが、その本質的な不完全性や潜在的な陳腐化によって制約されることがあります。本論文では、テキストソースからオンザフライで複雑な質問に回答できる手法「QUEST」を提案します。この手法は、異なる文書の部分的な結果を結合して類似性ジョインを計算することで実現されます。QUESTは完全に教師なしであり、トレーニングデータのボトルネックを回避し、急速に進化するアドホックなトピックやユーザー質問の形式に対応することができます。QUESTは、動的に取得された実体名や関係フレーズからなるノイズの多い準知識グラフを構築し、ノードとエッジの重み付けを行います。このグラフにタイプや意味的な整合性を追加し、グループ・シュタイナーツリーのアルゴリズムによって最適な回答を計算します。われわれは複雑な質問のベンチマークでQUESTを評価し、最新のベースラインを大幅に上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel14" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Direct answering of questions that involve multiple entities and relations is a challenge for text-based QA. This problem is most pronounced when answers can be found only by joining evidence from multiple documents. Curated knowledge graphs (KGs) may yield good answers, but are limited by their inherent incompleteness and potential staleness. This paper presents QUEST, a method that can answer complex questions directly from textual sources on-the-fly, by computing similarity joins over partial results from different documents. Our method is completely unsupervised, avoiding training-data bottlenecks and being able to cope with rapidly evolving ad hoc topics and formulation style in user questions. QUEST builds a noisy quasi KG with node and edge weights, consisting of dynamically retrieved entity names and relational phrases. It augments this graph with types and semantic alignments, and computes the best answers by an algorithm for Group Steiner Trees. We evaluate QUEST on benchmarks of complex questions, and show that it substantially outperforms state-of-the-art baselines.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel15">
+        <strong> Controlling Risk of Web Question Answering </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lixin+Su">Lixin Su</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiafeng+Guo">Jiafeng Guo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yixin+Fan">Yixin Fan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yanyan+Lan">Yanyan Lan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xueqi+Cheng">Xueqi Cheng</a> (2) </u>  <br>
+        1:  Institute of Computing Technology, 2:  Institute of Computing Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331261">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Controlling Risk of Web Question Answering">Google Scholar</a></div>
+        (15)
+        <br>
+        <b>概要:　</b> ウェブ質問応答 (QA) は現代の検索システムに不可欠な要素となりつつあり、ユーザーの情報ニーズに直接答えることにより、検索体験を大幅に向上させることができます。これは、検索クエリに関連する回答を抽出するために、取得された文章に対して機械読解 (MRC) モデルを適用することで達成されます。ディープラーニング技術の発展により、最新のディープメソッドによって最先端のMRC性能が達成されています。しかし、既存のMRC研究では予測不確実性の問題、つまりMRCモデルの予測が間違っている可能性についてほとんど言及されておらず、実際のウェブQAアプリケーションで予測が制御不能なリスクを引き起こすことがあります。本研究ではまず、ウェブQAのリスクについて詳細に調査します。その後、プローブアイデアを使用して不確実性推定を行う認定モデルと選択的出力のための決定モデルからなる新しいリスク制御フレームワークを紹介します。評価のために、リスク対応のウェブQAの評価には、従来のMRCにおけるEMおよびF1ではなく、リスク関連の指標を導入します。実世界のウェブQAデータセットおよび学術的なMRCベンチマークコレクションにおける実証結果は、我々のアプローチの有効性を示しています。
+        </label>
+        <input type="checkbox" id="Panel15" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Web question answering (QA) has become an dispensable component in modern search systems, which can significantly improve users' search experience by providing a direct answer to users' information need. This could be achieved by applying machine reading comprehension (MRC) models over the retrieved passages to extract answers with respect to the search query. With the development of deep learning techniques, state-of-the-art MRC performances have been achieved by recent deep methods. However, existing studies on MRC seldom address the predictive uncertainty issue, i.e., how likely the prediction of an MRC model is wrong, leading to uncontrollable risks in real-world Web QA applications. In this work, we first conduct an in-depth investigation over the risk of Web QA. We then introduce a novel risk control framework, which consists of a qualify model for uncertainty estimation using the probe idea, and a decision model for selectively output. For evaluation, we introduce risk-related metrics, rather than the traditional EM and F1 in MRC, for the evaluation of risk-aware Web QA. The empirical results over both the real-world Web QA dataset and the academic MRC benchmark collection demonstrate the effectiveness of our approach.
+        </div> </ul> <br>
+
+
+        Session details: Session 2B: Collaborative Filtering
+
+        <label for="Panel17">
+        <strong> Relational Collaborative Filtering: Modeling Multiple Item Relations for Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xin+Xin">Xin Xin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiangnan+He">Xiangnan He</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongfeng+Zhang">Yongfeng Zhang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongdong+Zhang">Yongdong Zhang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Joemon+Jose">Joemon Jose</a> (1) </u>  <br>
+        1:  University of Glasgow, 2:  University of Science and Technology of China, 3:  Rutgers University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331188">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Relational Collaborative Filtering: Modeling Multiple Item Relations for Recommendation">Google Scholar</a></div>
+        (17)
+        <br>
+        <b>概要:　</b> 既存のアイテムベースの協調フィルタリング（ICF）手法は、ユーザーの評価や購入といった、相互作用によって証明されるアイテムの類似性（協調的類似性）のみを活用しています。しかし、現実世界のシナリオには、同じ監督が手掛けた映画や、相互に補完する製品など、アイテム間には複数の関係が存在します。ユーザーの視点からの共同作用パターンを示す協調的類似性とは異なり、これらの関係は、メタデータや機能性など、異なる視点からアイテムについて細かい知識を明らかにします。しかし、複数のアイテム関係をどのように組み込むかは、推奨システムの研究において十分には探求されていません。本研究では、レコメンダシステムにおいて複数のアイテム関係を活用するための「関係性協調フィルタリング（Relational Collaborative Filtering, RCF）」を提案します。我々は、関係の種類（例：共有された監督）と関係の値（例：スティーブン・スピルバーグ）がユーザーの好みを推測する際に重要であることを見出しました。この目的のため、ユーザーの好みをモデル化するための2レベルの階層型注意メカニズムを開発しました – 第1レベルの注意メカニズムは、どのタイプの関係がより重要かを識別し、第2レベルの注意メカニズムは特定の関係値を考慮して履歴アイテムの貢献度を推定します。また、アイテムの埋め込みがアイテム間の関係構造を反映するように、アイテム関係を保存するタスクを策定し、ユーザーの好みのモデリングと共同で訓練します。2つの実データセットにおける実証結果により、RCFの高いパフォーマンスが示されました。さらに、RCFが複数のアイテム関係をモデル化することによって得られる説明の利点を示す定性的な分析も行いました。
+        </label>
+        <input type="checkbox" id="Panel17" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Existing item-based collaborative filtering (ICF) methods leverage only the relation of collaborative similarity - i.e., the item similarity evidenced by user interactions like ratings and purchases. Nevertheless, there exist multiple relations between items in real-world scenarios, e.g., two movies share the same director, two products complement with each other, etc. Distinct from the collaborative similarity that implies co-interact patterns from the user's perspective, these relations reveal fine-grained knowledge on items from different perspectives of meta-data, functionality, etc. However, how to incorporate multiple item relations is less explored in recommendation research. In this work, we propose Relational Collaborative Filtering (RCF) to exploit multiple item relations in recommender systems. We find that both the relation type (e.g., shared director) and the relation value (e.g., Steven Spielberg) are crucial in inferring user preference. To this end, we develop a two-level hierarchical attention mechanism to model user preference - the first-level attention discriminates which types of relations are more important, and the second-level attention considers the specific relation values to estimate the contribution of a historical item. To make the item embeddings be reflective of the relational structure between items, we further formulate a task to preserve the item relations, and jointly train it with user preference modeling. Empirical results on two real datasets demonstrate the strong performance of RCF1. Furthermore, we also conduct qualitative analyses to show the benefits of explanations brought by RCF's modeling of multiple item relations.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel18">
+        <strong> Noise Contrastive Estimation for One-Class Collaborative Filtering </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ga+Wu">Ga Wu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maksims+Volkovs">Maksims Volkovs</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chee+Loong+Soon">Chee Loong Soon</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Scott+Sanner">Scott Sanner</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Himanshu+Rai">Himanshu Rai</a> (2) </u>  <br>
+        1:  University of Toronto, 2:  Layer6 AI <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331201">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Noise Contrastive Estimation for One-Class Collaborative Filtering">Google Scholar</a></div>
+        (18)
+        <br>
+        <b>概要:　</b> 従来の高いスケーラビリティを持つワンクラス協調フィルタリング（OC-CF）手法、例えばProjected Linear Recommendation（PLRec）は、ランダム化SVDを用いてアイテムを潜在空間に埋め込み、その後各ユーザーごとに線形回帰法でパーソナライズされた推薦モデルを学習すると提唱されてきました。しかし、単純なSVD埋め込み手法は、多くの場合人気バイアスが強く、これによりあまり人気のないアイテムを正確に埋め込むことが困難になります。この問題は、OC-CF設定におけるインプリシットフィードバック行列の極端なスパース性によりさらに悪化します。この欠点に対処するために、ノイズコントラスト推定（NCE）からの洞察を利用し、閉形式で効率的に計算可能な「人気緩和」埋め込みを導出します。我々は、NCEアイテム埋め込みとPLRecからのパーソナライズされたユーザーモデルを組み合わせることで、人気バイアスを適切に考慮した優れた推薦結果が得られることを示します。推薦アイテムの人気分布に関するさらなる分析により、NCE-PLRecは人気スペクトラム全体に均等に推薦を分布させる一方で、他の手法は特定の人気サブレンジに偏りがあることが明らかになりました。経験的に、NCE-PLRecはOC-CFの既存の最先端手法に対してオーダーオブマグニチュード速いランタイムで非常に競争力のある性能を発揮します。
+        </label>
+        <input type="checkbox" id="Panel18" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Previous highly scalable One-Class Collaborative Filtering (OC-CF) methods such as Projected Linear Recommendation (PLRec) have advocated using fast randomized SVD to embed items into a latent space, followed by linear regression methods to learn personalized recommendation models per user. However, naive SVD embedding methods often exhibit a strong popularity bias that prevents them from accurately embedding less popular items, which is exacerbated by the extreme sparsity of implicit feedback matrices in the OC-CF setting. To address this deficiency, we leverage insights from Noise Contrastive Estimation (NCE) to derive a closed-form, efficiently computable "depopularized" embedding. We show that NCE item embeddings combined with a personalized user model from PLRec produces superior recommendations that adequately account for popularity bias. Further analysis of the popularity distribution of recommended items demonstrates that NCE-PLRec uniformly distributes recommendations over the popularity spectrum while other methods exhibit distinct biases towards specific popularity subranges. Empirically, NCE-PLRec produces highly competitive performance with run-times an order of magnitude faster than existing state-of-the-art approaches for OC-CF.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel19">
+        <strong> Compositional Coding for Collaborative Filtering </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chenghao+Liu">Chenghao Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tao+Lu">Tao Lu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xin+Wang">Xin Wang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhiyong+Cheng">Zhiyong Cheng</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jianling+Sun">Jianling Sun</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Steven+C.H.+Hoi">Steven C.H. Hoi</a> (5) </u>  <br>
+        1:  Singapore Management University and Zhejiang University, 2:  Zhejiang University & Alibaba-Zhejiang University Joint Institute of Frontier Technologies, 3:  Tsinghua University, 4:  Shandong Computer Science Center (National Supercomputer Center in Jinan) and Qilu University of Technology (Shandong Academy of Sciences), 5:  Singapore Management University and Salesforce Research Asia <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331206">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Compositional Coding for Collaborative Filtering">Google Scholar</a></div>
+        (19)
+        <br>
+        <b>概要:　</b> オンライン推薦システムにおいて効率性は重要であり、特に何千万ものユーザーやアイテムを扱う必要があるシステムにおいてその必要性が高いです。協調フィルタリング（CF）のためにユーザーとアイテムを二進ベクトルで表現することは、ハミング空間での高速なユーザー・アイテム親和性の計算を可能にするため、近年では二進ハッシング技術をCF手法に利用する研究が活発になっています。しかし、二進コードを用いたCFは、各ビットの表現力が限られているため、低精度に悩まされ、データの複雑な構造をモデル化する上で支障をきたします。本研究では、ユーザー・アイテムを表現する際に、実数値ベクトルの精度と二進コードの効率性の両方を活用することで、モデル性能を損なうことなく効率性を向上させることを試みます。具体的には、協調フィルタリングのための合成コーディング（CCCF）フレームワークを提案し、これは最先端の二進化CFアプローチよりも優れた推薦効率を得るだけでなく、実数値CF手法よりも高い精度を達成します。特に、CCCFはユーザーやアイテムを一組の二進ベクトルと、それに関連付けられたスパースな実数値重みベクトルを用いて革新的に表現します。重みベクトルの各値は、対応する二進ベクトルがユーザーやアイテムにとってどれだけ重要かをエンコードします。連続的な重みベクトルは二進コードの表現力を大いに高め、そのスパース性が処理速度を保証します。さらに、処理速度をさらに加速させるために整数重み近似スキームも提案します。CCCFフレームワークに基づき、そのパラメータを学習するための効率的な離散最適化アルゴリズムを設計しました。三つの実世界データセットを用いた大規模な実験により、我々の方法は最先端の二進化CF手法（さらには実数値CF手法よりも）を大差で上回る推薦精度と効率を達成することが示されました。我々のプロジェクトをhttps://github.com/3140102441/CCCF に公開しています。
+        </label>
+        <input type="checkbox" id="Panel19" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Efficiency is crucial to the online recommender systems, especially for the ones which needs to deal with tens of millions of users and items. Because representing users and items as binary vectors for Collaborative Filtering (CF) can achieve fast user-item affinity computation in the Hamming space, in recent years, we have witnessed an emerging research effort in exploiting binary hashing techniques for CF methods. However, CF with binary codes naturally suffers from low accuracy due to limited representation capability in each bit, which impedes it from modeling complex structure of the data. In this work, we attempt to improve the efficiency without hurting the model performance by utilizing both the accuracy of real-valued vectors and the efficiency of binary codes to represent users/items. In particular, we propose the Compositional Coding for Collaborative Filtering (CCCF) framework, which not only gains better recommendation efficiency than the state-of-the-art binarized CF approaches but also achieves even higher accuracy than the real-valued CF method. Specifically, CCCF innovatively represents each user/item with a set of binary vectors, which are associated with a sparse real-value weight vector. Each value of the weight vector encodes the importance of the corresponding binary vector to the user/item. The continuous weight vectors greatly enhances the representation capability of binary codes, and its sparsity guarantees the processing speed. Furthermore, an integer weight approximation scheme is proposed to further accelerate the speed. Based on the CCCF framework, we design an efficient discrete optimization algorithm to learn its parameters. Extensive experiments on three real-world datasets show that our method outperforms the state-of-the-art binarized CF methods (even achieves better performance than the real-valued CF method) by a large margin in terms of both recommendation accuracy and efficiency. We publish our project at https://github.com/3140102441/CCCF.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel20">
+        <strong> Unified Collaborative Filtering over Graph Embeddings </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pengfei+Wang">Pengfei Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hanxiong+Chen">Hanxiong Chen</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yadong+Zhu">Yadong Zhu</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Huawei+Shen">Huawei Shen</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongfeng+Zhang">Yongfeng Zhang</a> (5) </u>  <br>
+        1:  Beijing University of Posts and Telecommunications, 2:  Rutgers University, 3:  Mobvista, 4:  Chinese Academy of Sciences, 5:  Rutgers University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331224">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Unified Collaborative Filtering over Graph Embeddings">Google Scholar</a></div>
+        (20)
+        <br>
+        <b>概要:　</b> 群衆の知恵から学ぶ協調フィルタリング（Collaborative Filtering: CF）は、推薦システム研究において最も重要なアプローチの一つとなっており、さまざまなCFモデルが異なるシナリオに応じて設計され、適用されてきました。しかし、特定の推薦タスクに最適なCFモデルを選択することは依然として難題です。本論文では、この問題を解決するためにグラフ埋め込み（Graph Embeddings）に基づく統一協調フィルタリング枠組み（Unified Collaborative Filtering framework; UGrec）を提案します。具体的には、UGrecはグラフネットワーク内でユーザーとアイテムの相互作用をモデル化し、逐次推薦経路を基本単位としてユーザーとアイテム間の関連性を捉えるように設計されています。数学的には、多くの代表的な推薦アプローチやその変種がグラフ内の推薦経路としてマッピングできることを示します。さらに、設計された注意機構（attention mechanism）を推薦経路に適用することで、UGrecは各逐次推薦経路の重要性を自動的に判断し、モデル選択を行うことができます。最新の方法と比較して、我々の方法は推薦品質において大幅な改善を示しています。また、本研究はグラフ埋め込みと推薦アルゴリズムの関係についてより深い理解をもたらします。
+        </label>
+        <input type="checkbox" id="Panel20" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Collaborative Filtering (CF) by learning from the wisdom of crowds has become one of the most important approaches to recommender systems research, and various CF models have been designed and applied to different scenarios. However, a challenging task is how to select the most appropriate CF model for a specific recommendation task. In this paper, we propose a Unified Collaborative Filtering framework based on Graph Embeddings (UGrec for short) to solve the problem. Specifically, UGrec models user and item interactions within a graph network, and sequential recommendation path is designed as a basic unit to capture the correlations between users and items. Mathematically, we show that many representative recommendation approaches and their variants can be mapped as a recommendation path in the graph. In addition, by applying a carefully designed attention mechanism on the recommendation paths, UGrec can determine the significance of each sequential recommendation path so as to conduct automatic model selection. Compared with state-of-the-art methods, our method shows significant improvements for recommendation quality. This work also leads to a deeper understanding of the connection between graph embeddings and recommendation algorithms.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel21">
+        <strong> Neural Graph Collaborative Filtering </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiang+Wang">Xiang Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiangnan+He">Xiangnan He</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Meng+Wang">Meng Wang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fuli+Feng">Fuli Feng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tat-Seng+Chua">Tat-Seng Chua</a> (1) </u>  <br>
+        1:  National University of Singapore, 2:  University of Science and Technology of China, 3:  Hefei University of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331267">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Neural Graph Collaborative Filtering">Google Scholar</a></div>
+        (21)
+        <br>
+        <b>概要:　</b> ユーザーとアイテムのベクトル表現（エンベディング）の学習は、現代のレコメンダーシステムの中心的な要素です。初期の行列因子分解から最近登場した深層学習ベースの手法に至るまで、既存の取り組みでは一般的に、ユーザー（またはアイテム）を識別するIDや属性などの既存の特徴からエンベディングを取得します。しかし、これらの方法には固有の欠点があり、ユーザーとアイテムの相互作用に潜在する協調シグナルがエンベディングプロセスに組み込まれていないという点が挙げられます。そのため、得られるエンベディングは協調フィルタリング効果を十分に捉えられない可能性があります。本研究では、ユーザーとアイテムの相互作用、特に二部グラフ構造をエンベディングプロセスに統合することを提案します。我々はユーザー・アイテムのグラフ構造を利用してエンベディングを伝播させる新しい推奨フレームワーク「Neural Graph Collaborative Filtering (NGCF)」を開発しました。これにより、ユーザー・アイテムグラフにおける高次の接続性を表現豊かにモデリングし、協調シグナルを明示的にエンベディングプロセスに注入することができます。我々は三つの公開ベンチマークで広範な実験を行い、HOP-RecやCollaborative Memory Networkなどの最新モデルに対して大幅な改善を実証しました。さらに、詳細な分析により、より良いユーザーとアイテムの表現を学習するためにエンベディングの伝播が重要であることを確認し、NGCFの合理性と有効性を裏付けました。コードはhttps://github.com/xiangwang1223/neural_graph_collaborative_filteringで入手可能です。
+        </label>
+        <input type="checkbox" id="Panel21" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Learning vector representations (aka. embeddings) of users and items lies at the core of modern recommender systems. Ranging from early matrix factorization to recently emerged deep learning based methods, existing efforts typically obtain a user's (or an item's) embedding by mapping from pre-existing features that describe the user (or the item), such as ID and attributes. We argue that an inherent drawback of such methods is that, the collaborative signal, which is latent in user-item interactions, is not encoded in the embedding process. As such, the resultant embeddings may not be sufficient to capture the collaborative filtering effect. In this work, we propose to integrate the user-item interactions - more specifically the bipartite graph structure - into the embedding process. We develop a new recommendation framework Neural Graph Collaborative Filtering (NGCF), which exploits the user-item graph structure by propagating embeddings on it. This leads to the expressive modeling of high-order connectivity in user-item graph, effectively injecting the collaborative signal into the embedding process in an explicit manner. We conduct extensive experiments on three public benchmarks, demonstrating significant improvements over several state-of-the-art models like HOP-Rec [39] and Collaborative Memory Network [5]. Further analysis verifies the importance of embedding propagation for learning better user and item representations, justifying the rationality and effectiveness of NGCF. Codes are available at https://github.com/xiangwang1223/neural_graph_collaborative_filtering.
+        </div> </ul> <br>
+
+
+        Session details: Session 2C: Knowledge and Entities
+
+        <label for="Panel23">
+        <strong> Knowledge Tracing with Sequential Key-Value Memory Networks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ghodai+Abdelrahman">Ghodai Abdelrahman</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qing+Wang">Qing Wang</a> (1) </u>  <br>
+        1:  Australian National University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331195">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Knowledge Tracing with Sequential Key-Value Memory Networks">Google Scholar</a></div>
+        (23)
+        <br>
+        <b>概要:　</b> 機械は人間の知識を人間のように追跡できるのでしょうか？知識追跡（Knowledge Tracing、KT）は、巨大なオンラインコース（MOOCs）、知的チュータリングシステム、教育ゲーム、学習管理システムなど、教育分野の幅広いアプリケーションにおいて基本的なタスクです。KTは、学習活動との相互作用を通じて、学生の知識状態と異なる学習概念との関係性を動的にモデル化します。近年、KT問題に取り組むために、深層学習モデルを使用する試みがいくつか行われています。これらの深層学習モデルは有望な結果を示しているものの、特定の知識状態の概念が学生によってどのように習得されるかを深く追跡する能力に欠ける、または、演習シーケンス内の長期的な依存関係を捉えることができないという限界があります。本論文では、知識追跡のための新しい深層学習モデル、すなわちSequential Key-Value Memory Networks（SKVMN）を提案し、これらの限界に対処します。このモデルは、学生の学習をモデル化するために既存の深層学習KTモデルのリカレントモデリング能力とメモリ容量の強みを統一しています。我々は、5つのベンチマークデータセットで提案されたモデルを広範に評価しました。実験結果は、(1)SKVMNがすべてのデータセットで最先端のKTモデルを上回る性能を示すこと、(2)SKVMNは潜在概念と質問との相関関係をよりよく発見できること、(3)SKVMNは学生の知識状態の動的な変化を追跡し、演習シーケンスにおける順序依存を活用して予測精度を向上させることを示しています。
+        </label>
+        <input type="checkbox" id="Panel23" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Can machines trace human knowledge like humans? Knowledge tracing (KT) is a fundamental task in a wide range of applications in education, such as massive open online courses (MOOCs), intelligent tutoring systems, educational games, and learning management systems. It models dynamics in a student's knowledge states in relation to different learning concepts through their interactions with learning activities. Recently, several attempts have been made to use deep learning models for tackling the KT problem. Although these deep learning models have shown promising results, they have limitations: either lack the ability to go deeper to trace how specific concepts in a knowledge state are mastered by a student, or fail to capture long-term dependencies in an exercise sequence. In this paper, we address these limitations by proposing a novel deep learning model for knowledge tracing, namely Sequential Key-Value Memory Networks (SKVMN). This model unifies the strengths of recurrent modelling capacity and memory capacity of the existing deep learning KT models for modelling student learning. We have extensively evaluated our proposed model on five benchmark datasets. The experimental results show that (1) SKVMN outperforms the state-of-the-art KT models on all datasets, (2) SKVMN can better discover the correlation between latent concepts and questions, and (3) SKVMN can trace the knowledge state of students dynamics, and a leverage sequential dependencies in an exercise sequence for improved predication accuracy.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel24">
+        <strong> Personal Knowledge Base Construction from Text-based Lifelogs </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=An-Zi+Yen">An-Zi Yen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hen-Hsen+Huang">Hen-Hsen Huang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hsin-Hsi+Chen">Hsin-Hsi Chen</a> (3) </u>  <br>
+        1:  National Taiwan University, 2:  National Chengchi University & MOST Joint Research Center for AI Technology and All Vista Healthcare, 3:  National Taiwan University & MOST Joint Research Center for AI Technology and All Vista Healthcare <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331209">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Personal Knowledge Base Construction from Text-based Lifelogs">Google Scholar</a></div>
+        (24)
+        <br>
+        <b>概要:　</b> これまでのライフロギングの研究は、ウェアラブルセンサーを通じて画像、音声、動画データから生活イベントを抽出することに焦点を当ててきました。しかし、日常生活を記録するために追加のカメラを装着する一方で、人々はソーシャルメディアプラットフォームに生活をログとして残すことに慣れています。本稿では、Twitterで共有されるテキストデータから生活イベントを抽出し、個々のパーソナルナレッジベースを構築することを目指します。解決すべき課題としては、(1)全てのテキスト記述が生活イベントに関連しているわけではないこと、(2)テキスト記述内の生活イベントは明示的または暗示的に表現されること、(3)暗示的なイベントの述語がしばしば欠落していること、(4)自然言語の述語とナレッジベースの関係の対応が曖昧である場合があることが挙げられます。これらの課題に対して、ツイートから生活イベントを検出し、主語、述語、目的語、時間表現を含むイベント要素を抽出するための共同学習アプローチが提案されています。最後に、抽出された情報はナレッジベースの事実として変換されます。評価は18人のTwitterユーザーから収集したライフログを用いて行われました。実験結果は、提案システムが生活イベント抽出において効果的であり、構築されたパーソナルナレッジベースが記憶を呼び起こすアプリケーションに役立つことを示しています。
+        </label>
+        <input type="checkbox" id="Panel24" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Previous work on lifelogging focuses on life event extraction from image, audio, and video data via wearable sensors. In contrast to wearing an extra camera to record daily life, people are used to log their life on social media platforms. In this paper, we aim to extract life events from textual data shared on Twitter and construct personal knowledge bases of individuals. The issues to be tackled include (1) not all text descriptions are related to life events, (2) life events in a text description can be expressed explicitly or implicitly, (3) the predicates in the implicit events are often absent, and (4) the mapping from natural language predicates to knowledge base relations may be ambiguous. A joint learning approach is proposed to detect life events in tweets and extract event components including subjects, predicates, objects, and time expressions. Finally, the extracted information is transformed to knowledge base facts. The evaluation is performed on a collection of lifelogs from 18 Twitter users. Experimental results show our proposed system is effective in life event extraction, and the constructed personal knowledge bases are expected to be useful to memory recall applications.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel25">
+        <strong> Identifying Entity Properties from Text with Zero-shot Learning </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wiradee+Imrattanatrai">Wiradee Imrattanatrai</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Makoto+P.+Kato">Makoto P. Kato</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Masatoshi+Yoshikawa">Masatoshi Yoshikawa</a> (1) </u>  <br>
+        1:  Kyoto University, 2:  University of Tsukuba <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331220">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Identifying Entity Properties from Text with Zero-shot Learning">Google Scholar</a></div>
+        (25)
+        <br>
+        <b>概要:　</b> 我々はテキストからエンティティのプロパティを特定する方法を提案します。エンティティのプロパティを特定することは、文の分類として捉えられる関係抽出タスクに類似しています。通常、このタスクはそれぞれのプロパティに対応するトレーニング文を自動的に準備することによって、遠隔監督学習により達成されます。しかし、すべてのプロパティに対してトレーニング文を準備することは現実的ではありません。したがって、このタスクに対してゼロショット学習問題を説明し、すべてのプロパティに対するトレーニング文を含む完全なトレーニングセットに依存しないニューラル・ネットワークベースのモデルを提案します。この達成のために、異なるコンポーネントの知識グラフ構造を使用した知識グラフ埋め込みから得られるプロパティの埋め込みを活用します。プロパティの埋め込みはモデルと組み合わせられ、利用可能なトレーニング文がないプロパティの特定を可能にします。新たに構築したデータセットと既存のデータセットを使用した実験により、我々のモデルはトレーニング文がないプロパティに対してベースラインの結果を上回るパフォーマンスを達成し、一部のプロパティではトレーニング文がある場合と同等の結果を示しました。
+        </label>
+        <input type="checkbox" id="Panel25" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We propose a method for identifying a set of entity properties from text. Identifying entity properties is similar to a relation extraction task that can be cast as a classification of sentences. Normally, this task can be achieved by distant supervised learning by automatically preparing training sentences for each property; however, it is impractical to prepare training sentences for every property. Therefore, we describe a zero-shot learning problem for this task and propose a neural network-based model that does not rely on a complete training set comprising training sentences for every property. To achieve this, we utilize embeddings of properties obtained from a knowledge graph embedding using different components of a knowledge graph structure. The embeddings of properties are combined with the model to enable identification of properties with no available training sentences. By using our newly constructed dataset as well as an existing dataset, experiments revealed that our model achieved a better performance for properties with no training sentences, relative to baseline results, even comparable to that achieved for properties with training sentences.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel26">
+        <strong> One-Class Order Embedding for Dependency Relation Prediction </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Meng-Fen+Chiang">Meng-Fen Chiang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ee-Peng+Lim">Ee-Peng Lim</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wang-Chien+Lee">Wang-Chien Lee</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xavier+Jayaraj+Siddarth+Ashok">Xavier Jayaraj Siddarth Ashok</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Philips+Kokoh+Prasetyo">Philips Kokoh Prasetyo</a> (1) </u>  <br>
+        1:  Singapore Management University, 2:  Pennsylvania State University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331249">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=One-Class Order Embedding for Dependency Relation Prediction">Google Scholar</a></div>
+        (26)
+        <br>
+        <b>概要:　</b> エンティティ間の依存関係とこれらの関係によって形成される階層を、エンティティをある順序埋め込み空間にマッピングすることで学習することは、知識ベースの補完や前提関係の予測など、いくつかの重要なアプリケーションを効果的に可能にします。しかし、観察データに部分的な順序や欠落している関係が存在するため、良好な順序埋め込みを学習することは非常に困難です。さらに、ほとんどのアプリケーションシナリオでは、非自明な負の依存関係のインスタンスを提供しないのが現状です。したがって、我々はデータ内の豊富なセマンティックおよび階層構造情報を活用して依存関係の予測を行うフレームワークを提案します。特に、グラフ固有の中心性プロパティに基づいたいくつかのネガティブサンプリング戦略を提案し、適切なネガティブサンプルで正の依存関係を補完することで、効果的な順序埋め込みを学習します。この研究は、欠落した依存関係を自動的に復元するニーズに対応するだけでなく、コースの前提条件関係を含むコース依存階層、組織内の職業階層、および論文引用階層など、いくつかの実世界のデータセットを使用してエンティティ間の依存関係を解明します。合成および実世界のデータセットを用いて広範な実験を行い、予測精度を実証すると共に、学習された順序埋め込みを用いて洞察を得ます。
+        </label>
+        <input type="checkbox" id="Panel26" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Learning the dependency relations among entities and the hierarchy formed by these relations by mapping entities into some order embedding space can effectively enable several important applications, including knowledge base completion and prerequisite relations prediction. Nevertheless, it is very challenging to learn a good order embedding due to the existence of partial ordering and missing relations in the observed data. Moreover, most application scenarios do not provide non-trivial negative dependency relation instances. We therefore propose a framework that performs dependency relation prediction by exploring both rich semantic and hierarchical structure information in the data. In particular, we propose several negative sampling strategies based on graph-specific centrality properties, which supplement the positive dependency relations with appropriate negative samples to effectively learn order embeddings. This research not only addresses the needs of automatically recovering missing dependency relations, but also unravels dependencies among entities using several real-world datasets, such as course dependency hierarchy involving course prerequisite relations, job hierarchy in organizations, and paper citation hierarchy. Extensive experiments are conducted on both synthetic and real-world datasets to demonstrate the prediction accuracy as well as to gain insights using the learned order embedding.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel27">
+        <strong> ENT Rank: Retrieving Entities for Topical Information Needs through Entity-Neighbor-Text Relations </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Laura+Dietz">Laura Dietz</a> (1) </u>  <br>
+        1:  University of New Hampshire <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331257">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=ENT Rank: Retrieving Entities for Topical Information Needs through Entity-Neighbor-Text Relations">Google Scholar</a></div>
+        (27)
+        <br>
+        <b>概要:　</b> これまでの研究は、テキスト検索においてエンティティに関する情報の利用が有用であることを示してきました。本研究では逆の方向性、すなわち、エンティティ検索においてテキスト情報を活用する手法について探求します。我々は、エンティティ-隣接エンティティ-テキスト（ENT）関係の関連性をモデル化し、エンティティランキングモデルの学習を行います。本研究では、「ジカ熱」のような特定の情報要求に応じて複数の関連するエンティティを検索するタスクに焦点を当てます。ENT Rankモデルは、ウィキペディアのような半構造化知識資源を利用してエンティティ検索を行うよう設計されています。ENT Rankモデルは、以下を組み合わせて利用します：(1) エンティティ関連性の確立された特徴、(2) 隣接エンティティ（共同言及またはページ内言及）からの情報、(3) BM25やRM3などの従来の検索モデルを通じて得られたテキストコンテキストの関連性スコア。
+        </label>
+        <input type="checkbox" id="Panel27" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Related work has demonstrated the helpfulness of utilizing information about entities in text retrieval; here we explore the converse: Utilizing information about text in entity retrieval. We model the relevance of Entity-Neighbor-Text (ENT) relations to derive a learning-to-rank-entities model. We focus on the task of retrieving (multiple) relevant entities in response to a topical information need such as "Zika fever". The ENT Rank model is designed to exploit semi-structured knowledge resources such as Wikipedia for entity retrieval. The ENT Rank model combines (1) established features of entity-relevance, with (2) information from neighboring entities (co-mentioned or mentioned-on-page) through (3) relevance scores of textual contexts through traditional retrieval models such as BM25 and RM3.
+        </div> </ul> <br>
+
+
+        Session details: Session 3A: Recommendations 1
+
+        <label for="Panel29">
+        <strong> An Efficient Adaptive Transfer Neural Network for Social-aware Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chong+Chen">Chong Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min+Zhang">Min Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chenyang+Wang">Chenyang Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weizhi+Ma">Weizhi Ma</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minming+Li">Minming Li</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yiqun+Liu">Yiqun Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shaoping+Ma">Shaoping Ma</a> (1) </u>  <br>
+        1:  Tsinghua University, 2:  City University of Hong Kong <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331192">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=An Efficient Adaptive Transfer Neural Network for Social-aware Recommendation">Google Scholar</a></div>
+        (29)
+        <br>
+        <b>概要:　</b> 過去の多くの研究は、他のドメインからの情報を活用して推奨システムの性能を向上させようと試みています。最近では、ソーシャル情報が推奨結果を改善するのに効果的であることが示されており、転移学習フレームワークを用いることで、ユーザーの嗜好をアイテムドメインとソーシャルドメインの両方から学習することができます。しかし、既存の方法では2つの重要な問題が十分に考慮されていません。1) 通常、ユーザーの共通の嗜好をアイテムドメインとソーシャルドメイン間で共有するために静的な転移スキームが採用されていますが、現実の生活では共有の度合いや情報の豊かさがユーザーごとに異なるため、この方法は堅牢ではありません。したがって、非個別化された転移スキームは不十分であり、成功しない可能性があります。2) ほとんどの従来のニューラルネットワークを利用した推奨方法は計算効率を高めるためにトレーニングで負のサンプリングに依存しており、サンプリング戦略に非常に敏感であるため、実際のアプリケーションで最適な結果を得るのが困難です。これらの問題に対処するために、効率的な適応型転移ニューラルネットワーク（Efficient Adaptive Transfer Neural Network、EATNN）を提案します。注意メカニズムを導入することで、提案モデルは各ユーザーに対して個別化された転移スキームを自動的に割り当てます。さらに、負のサンプリングを行わずに全トレーニングセットから学習する効率的な最適化方法を考案し、これをマルチタスク学習に対応させました。3つの実世界の公開データセットを用いた広範な実験により、EATNN方法がTop-K推奨タスクにおいて、特にアイテムの相互作用が少ないコールドスタートユーザーに対して一貫して最先端の方法を上回る性能を示すことが確認されました。特筆すべきは、EATNNがトレーニング効率で顕著な利点を示し、実際のEコマースシナリオでの適用がより現実的になることです。コードは(https://github.com/chenchongthu/EATNN)で公開されています。
+        </label>
+        <input type="checkbox" id="Panel29" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Many previous studies attempt to utilize information from other domains to achieve better performance of recommendation. Recently, social information has been shown effective in improving recommendation results with transfer learning frameworks, and the transfer part helps to learn users' preferences from both item domain and social domain. However, two vital issues have not been well-considered in existing methods: 1) Usually, a static transfer scheme is adopted to share a user's common preference between item and social domains, which is not robust in real life where the degrees of sharing and information richness are varied for different users. Hence a non-personalized transfer scheme may be insufficient and unsuccessful. 2) Most previous neural recommendation methods rely on negative sampling in training to increase computational efficiency, which makes them highly sensitive to sampling strategies and hence difficult to achieve optimal results in practical applications. To address the above problems, we propose an Efficient Adaptive Transfer Neural Network (EATNN). By introducing attention mechanisms, the proposed model automatically assign a personalized transfer scheme for each user. Moreover, we devise an efficient optimization method to learn from the whole training set without negative sampling, and further extend it to support multi-task learning. Extensive experiments on three real-world public datasets indicate that our EATNN method consistently outperforms the state-of-the-art methods on Top-K recommendation task, especially for cold-start users who have few item interactions. Remarkably, EATNN shows significant advantages in training efficiency, which makes it more practical to be applied in real E-commerce scenarios. The code is available at (https://github.com/chenchongthu/EATNN).
+        </div> </ul> <br>
+
+
+
+        <label for="Panel30">
+        <strong> A Neural Influence Diffusion Model for Social Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Le+Wu">Le Wu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Peijie+Sun">Peijie Sun</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yanjie+Fu">Yanjie Fu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Richang+Hong">Richang Hong</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiting+Wang">Xiting Wang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Meng+Wang">Meng Wang</a> (1) </u>  <br>
+        1:  Hefei University of Technology, 2:  Missouri University of Science and Technology, 3:  Microsoft Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331214">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Neural Influence Diffusion Model for Social Recommendation">Google Scholar</a></div>
+        (30)
+        <br>
+        <b>概要:　</b> ユーザーおよびアイテムの埋め込み（embedding）の正確な学習は、成功したレコメンダーシステムを構築するための鍵です。従来、協調フィルタリング（Collaborative Filtering, CF）はユーザーとアイテムの相互作用履歴から埋め込みを学習する方法を提供してきました。しかし、ユーザーデータの疎さによりパフォーマンスが制限されていました。オンラインソーシャルネットワークの出現に伴い、ソーシャルレコメンダーシステムが提案され、各ユーザーのローカルな近隣者の好みを利用してデータの疎さを緩和し、より良いユーザー埋め込みモデルの構築を目指しています。我々は、ソーシャルプラットフォームの各ユーザーについて、潜在的な埋め込みは信頼されたユーザーによって影響され、これらの信頼されたユーザーもまた自身のソーシャルなつながりによって影響されると主張します。ソーシャルな影響がソーシャルネットワーク内で再帰的に伝播・拡散するにつれて、各ユーザーの興味は再帰的なプロセスで変化します。にもかかわらず、現在のソーシャル推薦モデルは、各ユーザーのローカルな近隣者を利用する静的モデルを開発するに留まり、グローバルなソーシャルネットワーク内の再帰的拡散をシミュレーションせず、最適な推薦パフォーマンスに至っていません。本論文では、ユーザーが再帰的ソーシャル拡散プロセスによってどのように影響されるかをシミュレートする深層影響伝播モデルを提案します。各ユーザーに対する拡散プロセスは、関連する特徴を融合した初期の埋め込みと、潜在的な行動の好みを捉える自由なユーザー潜在ベクトルから始まります。我々の提案するモデルのキーとなるアイデアは、ソーシャル拡散プロセスが進行するにつれて、ユーザーの潜在的な埋め込みがどのように進化するかをモデル化する層ごとの影響伝播構造を設計することです。また、我々の提案するモデルが一般化されており、ユーザー（アイテム）の属性やソーシャルネットワーク構造が利用できない場合にも適用可能であることを示します。最後に、2つの実世界データセットにおける広範な実験結果から、提案モデルの有効性が明らかになり、2つのデータセットのトップ10推薦において、最良のベースラインを13%以上上回るパフォーマンス向上が示されました。
+        </label>
+        <input type="checkbox" id="Panel30" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Precise user and item embedding learning is the key to building a successful recommender system. Traditionally, Collaborative Filtering (CF) provides a way to learn user and item embeddings from the user-item interaction history. However, the performance is limited due to the sparseness of user behavior data. With the emergence of online social networks, social recommender systems have been proposed to utilize each user's local neighbors' preferences to alleviate the data sparsity for better user embedding modeling. We argue that, for each user of a social platform, her potential embedding is influenced by her trusted users, with these trusted users are influenced by the trusted users' social connections. As social influence recursively propagates and diffuses in the social network, each user's interests change in the recursive process. Nevertheless, the current social recommendation models simply developed static models by leveraging the local neighbors of each user without simulating the recursive diffusion in the global social network, leading to suboptimal recommendation performance. In this paper, we propose a deep influence propagation model to stimulate how users are influenced by the recursive social diffusion process for social recommendation. For each user, the diffusion process starts with an initial embedding that fuses the related features and a free user latent vector that captures the latent behavior preference. The key idea of our proposed model is that we design a layer-wise influence propagation structure to model how users' latent embeddings evolve as the social diffusion process continues. We further show that our proposed model is general and could be applied when the user~(item) attributes or the social network structure is not available. Finally, extensive experimental results on two real-world datasets clearly show the effectiveness of our proposed model, with more than 13% performance improvements over the best baselines for top-10 recommendation on the two datasets.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel31">
+        <strong> Adversarial Mahalanobis Distance-based Attentive Song Recommender for Automatic Playlist Continuation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Thanh+Tran">Thanh Tran</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Renee+Sweeney">Renee Sweeney</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kyumin+Lee">Kyumin Lee</a> (1) </u>  <br>
+        1:  Worcester Polytechnic Institute <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331234">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Adversarial Mahalanobis Distance-based Attentive Song Recommender for Automatic Playlist Continuation">Google Scholar</a></div>
+        (31)
+        <br>
+        <b>概要:　</b> 本論文では、ユーザー、プレイリスト、曲の間の複雑な相互作用を、相互作用データのみを用いてモデル化することで、自動プレイリスト継続（APC）の問題を解決することを目指します。従来の方法は主にドット積に依存して類似性を考慮しており、これはドット積がメトリック学習ではなく、重要な不等性の特性を伝えないため、理想的ではありません。この観察に基づき、我々はマハラノビス距離を利用した3つの新しい深層学習手法を提案します。最初の手法では、ユーザー-プレイリスト-曲の相互作用を使用し、ターゲットユーザーとターゲット曲のマハラノビス距離スコア、およびターゲットプレイリストとターゲット曲の距離スコアを組み合わせて、ユーザーの嗜好とプレイリストのテーマの両方を考慮します。第二の手法では、ターゲット曲とターゲットプレイリスト内の各既存曲との間のマハラノビス距離スコアを考慮することで曲と曲の類似性を測定します。各距離スコアの貢献度は、我々が提案するメモリメトリックベースのアテンションメカニズムによって評価されます。第三の手法では、前述の2つのモデルを統合し、パフォーマンスをさらに向上させます。さらに、我々は提案した3つの手法の堅牢性と予測能力を向上させるために、Adversarial Personalized Ranking（APR）を採用し、カスタマイズしました。広範な実験を通じて、我々の提案モデルが二つの大規模な実世界のデータセットにおいて、8つの最先端モデルを凌駕することを示します。
+        </label>
+        <input type="checkbox" id="Panel31" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In this paper, we aim to solve the automatic playlist continuation (APC) problem by modeling complex interactions among users, playlists, and songs using only their interaction data. Prior methods mainly rely on dot product to account for similarities, which is not ideal as dot product is not metric learning, so it does not convey the important inequality property. Based on this observation, we propose three novel deep learning approaches that utilize Mahalanobis distance. Our first approach uses user-playlist-song interactions, and combines Mahalanobis distance scores between (i) a target user and a target song, and (ii) between a target playlist and the target song to account for both the user's preference and the playlist's theme. Our second approach measures song-song similarities by considering Mahalanobis distance scores between the target song and each member song (i.e., existing song) in the target playlist. The contribution of each distance score is measured by our proposed memory metric-based attention mechanism. In the third approach, we fuse the two previous models into a unified model to further enhance their performance. In addition, we adopt and customize Adversarial Personalized Ranking (APR) for our three approaches to further improve their robustness and predictive capabilities. Through extensive experiments, we show that our proposed models outperform eight state-of-the-art models in two large-scale real-world datasets.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel32">
+        <strong> Interact and Decide: Medley of Sub-Attention Networks for Effective Group Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lucas+Vinh+Tran">Lucas Vinh Tran</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tuan-Anh+Nguyen+Pham">Tuan-Anh Nguyen Pham</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yi+Tay">Yi Tay</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yiding+Liu">Yiding Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gao+Cong">Gao Cong</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaoli+Li">Xiaoli Li</a> (2) </u>  <br>
+        1:  Nanyang Technological University, 2:  Institute for Infocomm Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331251">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Interact and Decide: Medley of Sub-Attention Networks for Effective Group Recommendation">Google Scholar</a></div>
+        (32)
+        <br>
+        <b>概要:　</b> 本論文では、グループ推薦タスクのための新しいニューラルアーキテクチャ「Medley of Sub-Attention Networks (MoSAN)」を提案します。グループレベルの推薦は、グループ内の複雑なダイナミクスを考慮する必要があるため、一般的に困難なタスクとして知られています。このことは、単一のユーザーに対して個別化された推薦を行う標準的な推薦問題とは対照的です。我々の提案手法は、グループ内の意思決定プロセスが一般的に動的であり、つまりユーザーの決定が他のグループメンバーに大きく依存するという直感に基づいています。総じて、我々の主要な動機は、グループメンバー間の細かい相互作用を捉える注意型ニューラルモデルの形で具現化されています。MoSANモデルでは、各サブアテンションモジュールが一人のメンバーを代表し、他の全メンバーに対するユーザーの嗜好をモデル化します。次に、複数のサブアテンションモジュールをメドレーとして使用し、グループ全体の最終的な決定を行います。全体的に見て、我々の提案するモデルは表現力が高く、効果的です。一連の広範な実験を通じて、MoSANが最新の性能を達成するだけでなく、標準的なベースラインを大幅に改善することを示します。
+        </label>
+        <input type="checkbox" id="Panel32" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This paper proposes Medley of Sub-Attention Networks (MoSAN), a new novel neural architecture for the group recommendation task. Group-level recommendation is known to be a challenging task, in which intricate group dynamics have to be considered. As such, this is to be contrasted with the standard recommendation problem where recommendations are personalized with respect to a single user. Our proposed approach hinges upon the key intuition that the decision making process (in groups) is generally dynamic, i.e., a user's decision is highly dependent on the other group members. All in all, our key motivation manifests in a form of an attentive neural model that captures fine-grained interactions between group members. In our MoSAN model, each sub-attention module is representative of a single member, which models a user's preference with respect to all other group members. Subsequently, a Medley of Sub-Attention modules is then used to collectively make the group's final decision. Overall, our proposed model is both expressive and effective. Via a series of extensive experiments, we show that MoSAN not only achieves state-of-the-art performance but also improves standard baselines by a considerable margin.
+        </div> </ul> <br>
+
+
+        Session details: Session 3B: Interpretatibility and Explainability
+
+        <label for="Panel34">
+        <strong> Transparent, Scrutable and Explainable User Models for Personalized Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Krisztian+Balog">Krisztian Balog</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Filip+Radlinski">Filip Radlinski</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shushan+Arakelyan">Shushan Arakelyan</a> (2) </u>  <br>
+        1:  Google, 2:  USC Information Sciences Institute <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331211">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Transparent, Scrutable and Explainable User Models for Personalized Recommendation">Google Scholar</a></div>
+        (34)
+        <br>
+        <b>概要:　</b> 多くのレコメンダーシステムは、ユーザーによる暗黙的または明示的なアイテムレベルのフィードバックに基づいて推奨を行います。これらのアイテム評価は複雑なユーザーモデルに組み込まれ、その後他のアイテムの適合性を予測します。この方法は効果的ではあるものの、可監査性や透明性に限界があります。例えば、ユーザーの興味が変わった場合、ユーザーの推奨を大きく変えるためには多くのアイテム評価を変更する必要があります。同様に、システムがユーザーをどのように特徴付けるかを説明することは、知られているすべてのアイテム評価リストを提示する以外には不可能です。本論文では、新しい集合ベースの推薦技術を提案します。この技術により、ユーザーモデルを自然言語で明示的にユーザーに提示することができ、ユーザーが推薦内容を理解し、動的に推奨を改善することが可能になります。我々のアプローチは、標準的な静的設定で従来の協調フィルタリング技術に匹敵する性能を発揮しながら、ユーザーが効率的に推奨を改善することを可能にします。さらに、この技術はモデルの検証と調整を容易にし、ユーザーの信頼と理解を構築する助けとなります。
+        </label>
+        <input type="checkbox" id="Panel34" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Most recommender systems base their recommendations on implicit or explicit item-level feedback provided by users. These item ratings are combined into a complex user model, which then predicts the suitability of other items. While effective, such methods have limited scrutability and transparency. For instance, if a user's interests change, then many item ratings would usually need to be modified to significantly shift the user's recommendations. Similarly, explaining how the system characterizes the user is impossible, short of presenting the entire list of known item ratings. In this paper, we present a new set-based recommendation technique that permits the user model to be explicitly presented to users in natural language, empowering users to understand recommendations made and improve the recommendations dynamically. While performing comparably to traditional collaborative filtering techniques in a standard static setting, our approach allows users to efficiently improve recommendations. Further, it makes it easier for the model to be validated and adjusted, building user trust and understanding.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel35">
+        <strong> A Capsule Network for Recommendation and Explaining What You Like and Dislike </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chenliang+Li">Chenliang Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Cong+Quan">Cong Quan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Li+Peng">Li Peng</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yunwei+Qi">Yunwei Qi</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yuming+Deng">Yuming Deng</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Libing+Wu">Libing Wu</a> (1) </u>  <br>
+        1:  Wuhan University, 2:  Alibaba Group <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331216">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Capsule Network for Recommendation and Explaining What You Like and Dislike">Google Scholar</a></div>
+        (35)
+        <br>
+        <b>概要:　</b> ユーザーレビューにはアイテムの特徴に対するユーザーの好みを反映する豊かな意味が含まれています。最近では、レビューを活用して推薦を行う多くのディープラーニングベースのソリューションが提案されています。これらの研究では、主にアテンションメカニズムが採用されており、評価予測に重要な単語や側面を特定します。しかし、レビューの詳細を調べなければ、ユーザーがあるアイテムの側面をどの観点からどの程度好むか否かを理解するのは依然として困難です。ここでは、ユーザーが持つ観点とアイテムの側面のペアを論理単位とみなし、その対応する感情を解明することで、説明可能な評価予測が可能になると考えます。本論文では、この目的のために、ユーザーレビューを基にした評価予測モデルCARP (Capsule network based model for rating prediction) を提案します。各ユーザー-アイテムペアに対し、CARPはレビューから有益な論理単位を抽出し、それらの感情を推論します。まず、ユーザーとアイテムのレビュー文書から観点と側面をそれぞれ抽出します。次に、観点と側面から各論理単位の表現を導出します。新しい「Routing by Bi-Agreement」メカニズムを持つ感情カプセルアーキテクチャを提案し、ユーザー-アイテムレベルで有益な論理単位と感情に基づく表現を特定して評価予測を行います。7つの多様な特性を持つ実世界のデータセットで広範な実験を行いました。その結果、提案するCARPは、予測精度において最近提案された最先端モデルに対して大幅な性能向上を達成しました。さらなる分析により、本モデルが細かい粒度レベルで解釈可能な理由を成功裏に発見できることが示されました。
+        </label>
+        <input type="checkbox" id="Panel35" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> User reviews contain rich semantics towards the preference of users to features of items. Recently, many deep learning based solutions have been proposed by exploiting reviews for recommendation. The attention mechanism is mainly adopted in these works to identify words or aspects that are important for rating prediction. However, it is still hard to understand whether a user likes or dislikes an aspect of an item according to what viewpoint the user holds and to what extent, without examining the review details. Here, we consider a pair of a viewpoint held by a user and an aspect of an item as a logic unit. Reasoning a rating behavior by discovering the informative logic units from the reviews and resolving their corresponding sentiments could enable a better rating prediction with explanation. To this end, in this paper, we propose a capsule network based model for rating prediction with user reviews, named CARP. For each user-item pair, CARP is devised to extract the informative logic units from the reviews and infer their corresponding sentiments. The model firstly extracts the viewpoints and aspects from the user and item review documents respectively. Then we derive the representation of each logic unit based on its constituent viewpoint and aspect. A sentiment capsule architecture with a novel Routing by Bi-Agreement mechanism is proposed to identify the informative logic unit and the sentiment based representations in user-item level for rating prediction. Extensive experiments are conducted over seven real-world datasets with diverse characteristics. Our results demonstrate that the proposed CARP obtains substantial performance gain over recently proposed state-of-the-art models in terms of prediction accuracy. Further analysis shows that our model can successfully discover the interpretable reasons at a finer level of granularity.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel36">
+        <strong> Reinforcement Knowledge Graph Reasoning for Explainable Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yikun+Xian">Yikun Xian</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zuohui+Fu">Zuohui Fu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=S.+Muthukrishnan">S. Muthukrishnan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gerard+de+Melo">Gerard de Melo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongfeng+Zhang">Yongfeng Zhang</a> (1) </u>  <br>
+        1:  Rutgers University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331203">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Reinforcement Knowledge Graph Reasoning for Explainable Recommendation">Google Scholar</a></div>
+        (36)
+        <br>
+        <b>概要:　</b> 最近のパーソナライズドレコメンデーションの進展により、知識グラフが提供する豊富な構造情報の活用に大きな関心が寄せられています。既存のアプローチの多くが、より正確なレコメンデーションのために知識グラフを利用することに重点を置いているのとは異なり、我々は知識を用いた明示的な推論を行い、意思決定のために推奨項目を生成し、それを解釈可能な因果推論プロセスで裏付けることを目指します。この目的のため、Policy-Guided Path Reasoning（PGPR）と呼ばれる手法を提案します。この手法は、知識グラフ内の実際のパスを提供することで、レコメンデーションと解釈可能性を結びつけます。我々の貢献は、以下の4つの側面にわたります。まず、知識グラフをレコメンデーションに取り入れることの重要性を強調し、推論プロセスを正式に定義し解釈します。次に、革新的なソフトリワード戦略、ユーザー条件付きアクションプルーニング、およびマルチホップスコアリング機能を備えた強化学習（RL）アプローチを提案します。三番目に、効率的かつ効果的にレコメンデーションのための推論パスをサンプリングするためのポリシーガイドグラフ探索アルゴリズムを設計します。最後に、いくつかの大規模な実世界のベンチマークデータセットで我々の手法を広範に評価し、最新の手法と比較して好結果を得ています。
+        </label>
+        <input type="checkbox" id="Panel36" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Recent advances in personalized recommendation have sparked great interest in the exploitation of rich structured information provided by knowledge graphs. Unlike most existing approaches that only focus on leveraging knowledge graphs for more accurate recommendation, we aim to conduct explicit reasoning with knowledge for decision making so that the recommendations are generated and supported by an interpretable causal inference procedure. To this end, we propose a method called Policy-Guided Path Reasoning (PGPR), which couples recommendation and interpretability by providing actual paths in a knowledge graph. Our contributions include four aspects. We first highlight the significance of incorporating knowledge graphs into recommendation to formally define and interpret the reasoning process. Second, we propose a reinforcement learning (RL) approach featured by an innovative soft reward strategy, user-conditional action pruning and a multi-hop scoring function. Third, we design a policy-guided graph search algorithm to efficiently and effectively sample reasoning paths for recommendation. Finally, we extensively evaluate our method on several large-scale real-world benchmark datasets, obtaining favorable results compared with state-of-the-art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel37">
+        <strong> The FacT: Taming Latent Factor Models for Explainability with Factorization Trees </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yiyi+Tao">Yiyi Tao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yiling+Jia">Yiling Jia</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nan+Wang">Nan Wang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongning+Wang">Hongning Wang</a> (2) </u>  <br>
+        1:  Peking University, 2:  University of Virginia <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331244">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=The FacT: Taming Latent Factor Models for Explainability with Factorization Trees">Google Scholar</a></div>
+        (37)
+        <br>
+        <b>概要:　</b> 潜在因子モデルは個人化推薦において大きな成功を収めていますが、説明が非常に難しいという欠点があります。本研究では、推薦のために潜在因子モデルの学習を導くために回帰木を統合し、得られた潜在因子を説明するために学習された木構造を利用します。具体的には、ユーザー生成のレビューを用いてユーザーおよびアイテムについてそれぞれ回帰木を構築し、木の各ノードにユーザーおよびアイテムを表す潜在プロファイルを関連付けます。回帰木が成長するに従い、木構造によって課される正則化により潜在因子が徐々に洗練されます。その結果、各因子の回帰木の経路を調べることで潜在プロファイルの生成を追跡でき、その結果として得られる推薦の説明となります。AmazonとYelpのレビューの大規模なデータセットにおける広範な実験により、本モデルがいくつかの競争力のあるベースラインアルゴリズムよりも優れていることが実証されました。また、広範なユーザースタディでも、本モデルによって生成された説明可能な推薦の実用的な価値が確認されました。
+        </label>
+        <input type="checkbox" id="Panel37" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Latent factor models have achieved great success in personalized recommendations, but they are also notoriously difficult to explain. In this work, we integrate regression trees to guide the learning of latent factor models for recommendation, and use the learnt tree structure to explain the resulting latent factors. Specifically, we build regression trees on users and items respectively with user-generated reviews, and associate a latent profile to each node on the trees to represent users and items. With the growth of regression tree, the latent factors are gradually refined under the regularization imposed by the tree structure. As a result, we are able to track the creation of latent profiles by looking into the path of each factor on regression trees, which thus serves as an explanation for the resulting recommendations. Extensive experiments on two large collections of Amazon and Yelp reviews demonstrate the advantage of our model over several competitive baseline algorithms. Besides, our extensive user study also confirms the practical value of explainable recommendations generated by our model.
+        </div> </ul> <br>
+
+
+        Session details: Session 3C: Fact-checking, Privacy and Legal
+
+        <label for="Panel39">
+        <strong> Privacy-aware Document Ranking with Neural Signals </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jinjin+Shao">Jinjin Shao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shiyu+Ji">Shiyu Ji</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tao+Yang">Tao Yang</a> (1) </u>  <br>
+        1:  University of California <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331189">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Privacy-aware Document Ranking with Neural Signals">Google Scholar</a></div>
+        (39)
+        <br>
+        <b>概要:　</b> 近年のニューラルランキングに関する研究では、単語の埋め込みを用いて文書とクエリの類似性を探ることで、関連性の向上が実現されています。一方で、クラウド上でのトップK文書検索において、プライバシー対応のランキングにこの進展を活用する方法は未解決の課題であります。ニューラルランキングがスコア計算の複雑性を増すため、サーバーが埋め込みベースのセマンティック特徴を発見し、プライバシーに敏感な情報を推測するのを防ぐことは困難です。本論文では、インタラクションベースのニューラルランキングにおける重要な漏洩を分析し、その漏洩を軽減するための対策を検討します。具体的には、ツリーアンサンブルとカーネル値の曖昧化、適応的にクラスタリングされた単語クローズを用いたソフトマッチマップを統合したプライバシー対応のニューラルランキング方式を提案します。また、提案手法の関連性およびプライバシーとストレージ効率のトレードオフをTRECの2つのデータセットを用いて評価します。
+        </label>
+        <input type="checkbox" id="Panel39" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The recent work on neural ranking has achieved solid relevance improvement, by exploring similarities between documents and queries using word embeddings. It is an open problem how to leverage such an advancement for privacy-aware ranking, which is important for top K document search on the cloud. Since neural ranking adds more complexity in score computation, it is difficult to prevent the server from discovering embedding-based semantic features and inferring privacy-sensitive information. This paper analyzes the critical leakages in interaction-based neural ranking and studies countermeasures to mitigate such a leakage. It proposes a privacy-aware neural ranking scheme that integrates tree ensembles with kernel value obfuscation and a soft match map based on adaptively-clustered term closures. The paper also presents an evaluation with two TREC datasets on the relevance of the proposed techniques and the trade-offs for privacy and storage efficiency.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel40">
+        <strong> Legal Intelligence for E-commerce: Multi-task Learning by Leveraging Multiview Dispute Representation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xin+Zhou">Xin Zhou</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yating+Zhang">Yating Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaozhong+Liu">Xiaozhong Liu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Changlong+Sun">Changlong Sun</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Luo+Si">Luo Si</a> (1) </u>  <br>
+        1:  Alibaba Group, 2:  Indiana University Bloomington <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331212">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Legal Intelligence for E-commerce: Multi-task Learning by Leveraging Multiview Dispute Representation">Google Scholar</a></div>
+        (40)
+        <br>
+        <b>概要:　</b> 様々なeコマースプラットフォームは、毎日何百万もの取引を生み出し、これに対する多くの取引紛争が発生します。これにより、eコマース取引に対する効果的かつ効率的な紛争解決の需要が高まっています。本論文では、eコマース取引に対する法的紛争判断（Legal Dispute Judgment, LDJ）の予測という新しい研究課題を提案し、eコマースデータマイニングと法的インテリジェンスという、これまで隔離されていた二つの領域を結びつけます。従来の法的インテリジェンスが紛争自体のテキスト証拠に焦点を当てているのに対し、新たな研究では、売り手と買い手の過去の行動情報ならびに現在の取引のテキスト証拠といった多面的な情報を活用します。この多面的な紛争の表現は、法的結果を予測するための革新的なマルチタスク学習フレームワークに統合されています。世界的なリーディングeコマースプラットフォームから収集された大規模な紛争ケースデータセットを用いた広範な実験結果により、提案されたモデルが購入者、販売者、および取引の観点から紛争ケースをより正確に特徴づけ、いくつかの代替モデルに対して法的判断の予測精度を向上させることが示されました。
+        </label>
+        <input type="checkbox" id="Panel40" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Various e-commerce platforms produce millions of transactions per day with many transaction disputes. This generates the demand for effective and efficient dispute resolutions for e-commerce transactions. This paper proposes a novel research task of Legal Dispute Judgment (LDJ) prediction for e-commerce transactions, which connects two yet isolated domains, e-commerce data mining and legal intelligence. Different from traditional legal intelligence with the focus on textual evidence of the dispute itself, the new research utilizes multiview information such as past behavior information of seller and buyer as well as textual evidence of the current transaction. The multiview dispute representation is integrated into an innovative multi-task learning framework for predicting the legal result. An extensive set of experiments with a large dispute case dataset collected from a world leading e-commerce platform shows that the proposed model can more accurately characterize a dispute case through buyer, seller, and transaction viewpoints for legal judgment prediction against several alternatives.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel41">
+        <strong> Hierarchical Matching Network for Crime Classification </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pengfei+Wang">Pengfei Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yu+Fan">Yu Fan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shuzi+Niu">Shuzi Niu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ze+Yang">Ze Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongfeng+Zhang">Yongfeng Zhang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiafeng+Guo">Jiafeng Guo</a> (2) </u>  <br>
+        1:  Beijing University of Posts and Telecommunications, 2:  Chinese Academy of Sciences, 3:  Rutgers University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331223">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Hierarchical Matching Network for Crime Classification">Google Scholar</a></div>
+        (41)
+        <br>
+        <b>概要:　</b> 自動犯罪分類は法律分野における基本的な課題です。事実の記述を基に、裁判官はまず関連する違反法律を特定し、その後に関連条項を特定します。法律と条項は木構造の階層（すなわち、法律が親ラベル、条項が子ラベル）としてグループ化されているため、この課題は自然に二層の階層型マルチラベル分類問題として形式化できます。一般的に、ラベルのセマンティクス（つまり、条項の定義）と階層構造は、裁判官が正しい判断を下すための二つの有益な特性です。しかし、従来の多くの手法は通常、ラベルの構造を無視し、全てのラベルをフラットな分類フレームワークに投入するか、ラベルのセマンティクスを無視し、事実の記述のみを利用して犯罪分類を行うため、その性能は制限される可能性があります。本研究では、これらの問題に対処するために犯罪分類問題をマッチングタスクとして形式化します。我々のモデルを「階層型マッチングネットワーク（略称HMN）」と命名します。木構造に基づき、HMNは明示的に子ラベルのセマンティクスを残差成分とアライメント成分に分解します。残差成分は各個別子ラベルの固有の特徴を保持し、アライメント成分は兄弟子ラベル間の共通セマンティクスを捕捉し、これがさらに親ラベルの表現として集約されます。最終的に、事実の記述に基づき、共同注意メトリックが適用され、関連する法律や条項を効果的にマッチングします。二つの実世界の司法データセットでの実験では、我々のモデルが最新の手法を大幅に上回る性能を示すことが実証されました。
+        </label>
+        <input type="checkbox" id="Panel41" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Automatic crime classification is a fundamental task in the legal field. Given the fact descriptions, judges first determine the relevant violated laws, and then the articles. As laws and articles are grouped into a tree-shaped hierarchy (i.e., laws as parent labels, articles as children labels), this task can be naturally formalized as a two layers' hierarchical multi-label classification problem. Generally, the label semantics (i.e., definition of articles) and the hierarchical structure are two informative properties for judges to make a correct decision. However, most previous methods usually ignore the label structure and feed all labels into a flat classification framework, or neglect the label semantics and only utilize fact descriptions for crime classification, thus the performance may be limited. In this paper, we formalize crime classification problem into a matching task to address these issues. We name our model as Hierarchical Matching Network (HMN for short). Based on the tree hierarchy, HMN explicitly decomposes the semantics of children labels into the residual and alignment components. The residual components keep the unique characteristics of each individual children label, while the alignment components capture the common semantics among sibling children labels, which are further aggregated as the representation of their parent label. Finally, given a fact description, a co-attention metric is applied to effectively match the relevant laws and articles. Experiments on two real-world judicial datasets demonstrate that our model can significantly outperform the state-of-the-art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel42">
+        <strong> Learning from Fact-checkers: Analysis and Generation of Fact-checking Language </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nguyen+Vo">Nguyen Vo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kyumin+Lee">Kyumin Lee</a> (1) </u>  <br>
+        1:  Worcester Polytechnic Institute <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331248">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Learning from Fact-checkers: Analysis and Generation of Fact-checking Language">Google Scholar</a></div>
+        (42)
+        <br>
+        <b>概要:　</b> フェイクニュースに対抗するために、近年、snopes.comやpolitifact.comなどの人手ベースのファクトチェックサイトと自動検出システムを含む多くのファクトチェックシステムが開発されてきました。しかし、オンラインユーザーはデバンクされたフェイクニュースでさえも共有し続けています。これは、早期のフェイクニュース検出が不十分であり、誤情報の拡散を抑制するためには他の補完的なアプローチが必要であることを意味します。本論文では、フェイクニュース対策のためのテキスト生成の新しい応用を紹介します。具体的には、(1) 公共の議論において信用できる証拠としてファクトチェックサイトを引用するオンラインユーザー（ファクトチェッカーと名付けます）を活用し、(2) ファクトチェックツイートの言語的特性を分析し、(3) ファクトチェックの意図を持った応答を生成し、ファクトチェッカーの活動への関与を高めるための深層学習フレームワークを提案・構築します。我々の分析によると、ファクトチェッカーは誤情報を反駁し、フォーマルな言語（例：罵倒語やインターネットスラングの少ない言葉）を使用する傾向があります。我々のフレームワークは関連性の高い応答を生成し、競合するモデルに対して最大30%の改善を達成しました。また、質的研究によって、既存モデルから生成された応答と比較して、我々の生成した応答の優位性が確認されました。
+        </label>
+        <input type="checkbox" id="Panel42" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In fighting against fake news, many fact-checking systems comprised of human-based fact-checking sites (e.g., snopes.com and politifact.com) and automatic detection systems have been developed in recent years. However, online users still keep sharing fake news even when it has been debunked. It means that early fake news detection may be insufficient and we need another complementary approach to mitigate the spread of misinformation. In this paper, we introduce a novel application of text generation for combating fake news. In particular, we (1) leverage online users named fact-checkers, who cite fact-checking sites as credible evidences to fact-check information in public discourse; (2) analyze linguistic characteristics of fact-checking tweets; and (3) propose and build a deep learning framework to generate responses with fact-checking intention to increase the fact-checkers' engagement in fact-checking activities. Our analysis reveals that the fact-checkers tend to refute misinformation and use formal language (e.g. few swear words and Internet slangs). Our framework successfully generates relevant responses, and outperforms competing models by achieving up to 30% improvements. Our qualitative study also confirms that the superiority of our generated responses compared with responses generated from the existing models.
+        </div> </ul> <br>
+
+
+        Session details: Session 4A: Recommendations and Classificatiion
+
+        <label for="Panel44">
+        <strong> A Collaborative Session-based Recommendation Approach with Parallel Memory Modules </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Meirui+Wang">Meirui Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pengjie+Ren">Pengjie Ren</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lei+Mei">Lei Mei</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhumin+Chen">Zhumin Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Ma">Jun Ma</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maarten+de+Rijke">Maarten de Rijke</a> (2) </u>  <br>
+        1:  Shandong University, 2:  University of Amsterdam <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331210">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Collaborative Session-based Recommendation Approach with Parallel Memory Modules">Google Scholar</a></div>
+        (44)
+        <br>
+        <b>概要:　</b> セッションベースの推薦は匿名の行動シーケンスしか利用できない状況で、次に推薦するアイテムを予測するタスクです。従来のセッションベースの推薦方法は主に現在のセッションに焦点を当てており、他のユーザーによって以前に生成された、現在のセッションと類似のユーザー意図を反映する「近隣セッション」における協調情報を無視していました。私たちは、そのような近隣セッションに含まれる協調情報が現在のセッションに対する推薦パフォーマンスを向上させるのに役立つと仮定しています。我々はセッションベースの推薦に協調近隣情報を適用するための新しいハイブリッドフレームワークである「協調セッションベース推薦機」（Collaborative Session-based Recommendation Machine、CSRM）を提案します。CSRMは2つの並行モジュール、すなわち「内部メモリエンコーダー」（Inner Memory Encoder、IME）と「外部メモリエンコーダー」（Outer Memory Encoder、OME）で構成されています。IMEはリカレントニューラルネットワーク（RNNs）とアテンションメカニズムを利用して、現在のセッションでのユーザー自身の情報をモデル化します。一方、OMEは協調情報を活用して、近隣セッションを調査することで現在のセッションの意図をよりよく予測します。その後、融合ゲーティングメカニズムを使用して、IMEとOMEからの情報を選択的に結合し、現在のセッションの最終的な表現を得ます。最後に、CSRMは最終的な表現と双線型一致を計算することで、各候補アイテムの推薦スコアを取得します。3つの公開データセットでの実験結果は、CSRMが最先端のセッションベース推薦システムと比較して効果的であることを示しています。CSRMの推薦プロセスに関する我々の分析は、協調近隣情報と融合ゲーティングメカニズムがセッションベースの推薦のパフォーマンスにいつ、どのように影響を与えるかを明らかにしています。
+        </label>
+        <input type="checkbox" id="Panel44" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Session-based recommendation is the task of predicting the next item to recommend when the only available information consists of anonymous behavior sequences. Previous methods for session-based recommendation focus mostly on the current session, ignoring collaborative information in so-called neighborhood sessions, sessions that have been generated previously by other users and reflect similar user intents as the current session. We hypothesize that the collaborative information contained in such neighborhood sessions may help to improve recommendation performance for the current session. We propose a Collaborative Session-based Recommendation Machine (CSRM), a novel hybrid framework to apply collaborative neighborhood information to session-based recommendations. CSRM consists of two parallel modules: an Inner Memory Encoder (IME) and an Outer Memory Encoder (OME). The IME models a user's own information in the current session with the help of Recurrent Neural Networks (RNNs) and an attention mechanism. The OME exploits collaborative information to better predict the intent of current sessions by investigating neighborhood sessions. Then, a fusion gating mechanism is used to selectively combine information from the IME and OME so as to obtain the final representation of the current session. Finally, CSRM obtains a recommendation score for each candidate item by computing a bilinear match with the final representation. Experimental results on three public datasets demonstrate the effectiveness of CSRM compared to state-of-the-art session-based recommender systems. Our analysis of CSRM's recommendation process shows when and how collaborative neighborhood information and the fusion gating mechanism positively impact the performance of session-based recommendations.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel45">
+        <strong> Similarity-Based Synthetic Document Representations for Meta-Feature Generation in Text Classification </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sergio+Canuto">Sergio Canuto</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Thiago+Salles">Thiago Salles</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Thierson+C.+Rosa">Thierson C. Rosa</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Marcos+A.+Gonçalves">Marcos A. Gonçalves</a> (1) </u>  <br>
+        1:  DCC - UFMG, 2:  INF - UFG <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331239">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Similarity-Based Synthetic Document Representations for Meta-Feature Generation in Text Classification">Google Scholar</a></div>
+        (45)
+        <br>
+        <b>概要:　</b> 私たちは、メタ特徴のテキスト分類への非常に成功した応用を強化・拡張する新しい解決策を提案します。私たちの新しく提案されたメタ特徴は次の能力を持っています。(1) 合成文書表現と（局所的およびグローバルな）ハイパープレーン距離の手段により、隣人間で共有される小さな証拠の断片とラベル付きカテゴリーとの相関を改善します。(2) 提案された新しいメタ特徴と既存のメタ特徴により導入される誤差のレベルを推定します。特に、特徴空間の分類が難しい領域に対して有効です。多くの代表的なデータセットを用いた実験では、私たちの新しい解決策がテストされたすべてのシナリオで最良の結果を生み出し、文献中で最も強力なメタ特徴の提案に対して最大12%の向上を達成しました。
+        </label>
+        <input type="checkbox" id="Panel45" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We propose new solutions that enhance and extend the already very successful application of meta-features to text classification. Our newly proposed meta-features are capable of: (1) improving the correlation of small pieces of evidence shared by neighbors with labeled categories by means of synthetic document representations and (local and global) hyperplane distances; and (2) estimating the level of error introduced by these newly proposed and the existing meta-features in the literature, specially for hard-to-classify regions of the feature space. Our experiments with large and representative number of datasets show that our new solutions produce the best results in all tested scenarios, achieving gains of up to 12% over the strongest meta-feature proposal of the literature.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel46">
+        <strong> Finding Camouflaged Needle in a Haystack?: Pornographic Products Detection via Berrypicking Tree Model </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Guoxiu+He">Guoxiu He</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yangyang+Kang">Yangyang Kang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhe+Gao">Zhe Gao</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhuoren+Jiang">Zhuoren Jiang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Changlong+Sun">Changlong Sun</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaozhong+Liu">Xiaozhong Liu</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+Lu">Wei Lu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qiong+Zhang">Qiong Zhang</a> (5), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Luo+Si">Luo Si</a> (6) </u>  <br>
+        1:  Wuhan University, 2:  Alibaba Group, 3:  Sun Yat-sen University, 4:  Indiana University Bloomington, 5:  Alibaba Group, 6:  Alibaba Group <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331197">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Finding Camouflaged Needle in a Haystack?: Pornographic Products Detection via Berrypicking Tree Model">Google Scholar</a></div>
+        (46)
+        <br>
+        <b>概要:　</b> 分散型eコマースサービス（例：eBay、eBid、Taobao）において、未分類のポルノ製品などの違法製品を検出することは重要かつ緊急の研究課題です。しかし、現在の検出アルゴリズムを欺くために、一部の売り手が偽装されたテキストを利用および変更することがあるため、これは困難なタスクです。本研究では、大規模な製品コレクションから動的にポルノ製品を特定する新しいタスクを提案します。従来の製品分類の取り組みがテキスト情報に焦点を当てているのに対し、提案されたBIRD（BerryPIcking TRee MoDel）は製品のテキストコンテンツと購入者の探索行動情報の両方をberrypickingツリーとして利用します。具体的には、BIRDはすべての分岐シーケンスと全体的な潜在的購入者意図に関する意味情報を符号化し、探索プロセス全体を通じて分析します。幅広い実験を実施し、提案モデルが代替ソリューションに対して優れていることを示しました。この実用的かつ重要な問題に関するさらなる研究を促進するために、コードと購入者の探索行動データが公開されています。
+        </label>
+        <input type="checkbox" id="Panel46" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> It is an important and urgent research problem for decentralized eCommerce services, e.g., eBay, eBid, and Taobao, to detect illegal products, e.g., unclassified pornographic products. However, it is a challenging task as some sellers may utilize and change camouflaged text to deceive the current detection algorithms. In this study, we propose a novel task to dynamically locate the pornographic products from very large product collections. Unlike prior product classification efforts focusing on textual information, the proposed model, BerryPIcking TRee MoDel (BIRD), utilizes both product textual content and buyers' seeking behavior information as berrypicking trees. In particular, the BIRD encodes both semantic information with respect to all branches sequence and the overall latent buyer intent during the whole seeking process. An extensive set of experiments have been conducted to demonstrate the advantage of the proposed model against alternative solutions. To facilitate further research of this practical and important problem, the codes and buyers' seeking behavior data have been made publicly available1.
+        </div> </ul> <br>
+
+
+        Session details: Session 4B: Queries
+
+        <label for="Panel48">
+        <strong> Why do Users Issue Good Queries?: Neural Correlates of Term Specificity </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lauri+Kangassalo">Lauri Kangassalo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michiel+Spapé">Michiel Spapé</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Giulio+Jacucci">Giulio Jacucci</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tuukka+Ruotsalo">Tuukka Ruotsalo</a> (2) </u>  <br>
+        1:  University of Helsinki, 2:  Aalto University & University of Helsinki <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331243">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Why do Users Issue Good Queries?: Neural Correlates of Term Specificity">Google Scholar</a></div>
+        (48)
+        <br>
+        <b>概要:　</b> 過去数十年間で、検索エンジンに入力されるクエリの種類やユーザーへのクエリ提案方法の研究は進展してきましたが、クエリ用語の良否を人間の認知がどのように推定するのかという根本的な問いは依然として解明されていません。例えば、「猫」に関する情報を検索する際、人は「家猫」「ネコ科」や「動物」などの関連用語を選び、「似ている」「種類」「区別」などの不適切な用語を避けることができます。我々は、文書に出現する用語の具体性と脳波（EEG）によって測定された人間の脳活動の関連性を調査しました。Wikipediaの文書から抽出した用語を読むことに対する脳活動データを15名の参加者について分析しました。用語の具体性は、誘発された脳反応の振幅と関連があることが示されました。この結果は、人々が文書間の最大情報量を伝達し、最適に区別できる用語を認識し、良いクエリ用語を入力できる能力を持っていることを示しています。さらに、実際の検索行動研究でよく観察される効果的なクエリ用語選択プロセスには、神経基盤が存在することを示唆します。我々の研究成果は、クエリの形成過程および一般的な言語の情報価値の評価に関する認知処理を明らかにする重要な一歩であると考えています。
+        </label>
+        <input type="checkbox" id="Panel48" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Despite advances in the past few decades in studying what kind of queries users input to search engines and how to suggest queries for the users, the fundamental question of what makes human cognition able to estimate goodness of query terms is largely unanswered. For example, a person searching information about "cats'' is able to choose query terms, such as "housecat'', "feline'', or "animal'' and avoid terms like "similar'', "variety'', and "distinguish''. We investigated the association between the specificity of terms occurring in documents and human brain activity measured via electroencephalography (EEG). We analyzed the brain activity data of fifteen participants, recorded in response to reading terms from Wikipedia documents. Term specificity was shown to be associated with the amplitude of evoked brain responses. The results indicate that by being able to determine which terms carry maximal information about, and can best discriminate between, documents, people have the capability to enter good query terms. Moreover, our results suggest that the effective query term selection process, often observed in practical search behavior studies, has a neural basis. We believe our findings constitute an important step in revealing the cognitive processing behind query formulation and evaluating informativeness of language in general.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel49">
+        <strong> Context Attentive Document Ranking and Query Suggestion </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wasi+Uddin+Ahmad">Wasi Uddin Ahmad</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kai-Wei+Chang">Kai-Wei Chang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongning+Wang">Hongning Wang</a> (2) </u>  <br>
+        1:  University of California, 2:  University of Virginia <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331246">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Context Attentive Document Ranking and Query Suggestion">Google Scholar</a></div>
+        (49)
+        <br>
+        <b>概要:　</b> ユーザーのタスク中の検索活動を活用し、検索性能を向上させるためのコンテキスト認識ニューラルランキングモデルを提案します。特に、2レベルの階層型リカレントニューラルネットワークを導入し、個々のクエリ、検索タスク、およびそれに対応する依存構造の検索コンテキスト表現を学習します。このアプローチでは、文書ランキングとクエリ提案という2つの補完的な検索タスクを共同で最適化します。検索コンテキストとユーザーの進行中の検索活動との間の可変依存構造を識別するため、リカレント状態の両レベルにおいてアテンション機構を導入しました。豊富なベースライン手法との徹底した実験比較と詳細なアブレーション分析により、検索タスクの中に埋め込まれた検索コンテキストをモデル化するための提案手法の価値が確認されました。
+        </label>
+        <input type="checkbox" id="Panel49" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We present a context-aware neural ranking model to exploit users' on-task search activities and enhance retrieval performance. In particular, a two-level hierarchical recurrent neural network is introduced to learn search context representation of individual queries, search tasks, and corresponding dependency structure by jointly optimizing two companion retrieval tasks: document ranking and query suggestion. To identify variable dependency structure between search context and users' ongoing search activities, attention at both levels of recurrent states are introduced. Extensive experiment comparisons against a rich set of baseline methods and an in-depth ablation analysis confirm the value of our proposed approach for modeling search context buried in search tasks.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel50">
+        <strong> Information Needs, Queries, and Query Performance Prediction </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Oleg+Zendel">Oleg Zendel</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Anna+Shtok">Anna Shtok</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fiana+Raiber">Fiana Raiber</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Oren+Kurland">Oren Kurland</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=J.+Shane+Culpepper">J. Shane Culpepper</a> (4) </u>  <br>
+        1:  Technion, 2:  No Affiliation, 3:  Yahoo Research, 4:  RMIT University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331253">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Information Needs, Queries, and Query Performance Prediction">Google Scholar</a></div>
+        (50)
+        <br>
+        <b>概要:　</b> 検索パフォーマンス予測（QPP）タスクは、関連性の評価がなくても、クエリに応じた検索の有効性を推定することです。現行のQPP手法は、クエリが基礎情報要求をどれだけ効果的に表しているかを考慮していません。この問題の広範な影響を、標準的なTRECベースのQPP評価手法を用いて示します。具体的には、情報要求を表すクエリの有効性に応じて、予測品質パターンが異なることが明らかになりました。これらの知見に基づき、QPPタスクの基本的な確率的定式を修正し、情報要求とクエリとの関係を考慮に入れます。さらに、この関係を探求するために、同じ情報要求を表す一連のクエリの情報を活用する新しいQPPアプローチを提案します。我々のアプローチから生成された予測子は、様々な既存のQPP手法を用いた場合、その予測品質が単一のクエリを用いた場合に比べて大幅に向上することが確認されました。さらに、我々のアプローチのさまざまな側面に関する詳細な実証分析は、QPPにおけるクエリの有効性の重要な役割を裏付けています。
+        </label>
+        <input type="checkbox" id="Panel50" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The query performance prediction (QPP) task is to estimate the effectiveness of a search performed in response to a query with no relevance judgments. Existing QPP methods do not account for the effectiveness of a query in representing the underlying information need. We demonstrate the far-reaching implications of this reality using standard TREC-based evaluation of QPP methods: their relative prediction quality patterns vary with respect to the effectiveness of queries used to represent the information needs. Motivated by our findings, we revise the basic probabilistic formulation of the QPP task by accounting for the information need and its connection to the query. We further explore this connection by proposing a novel QPP approach that utilizes information about a set of queries representing the same information need. Predictors instantiated from our approach using a wide variety of existing QPP methods post prediction quality that substantially transcends that of applying these methods, as is standard, using a single query representing the information need. Additional in-depth empirical analysis of different aspects of our approach further attests to the crucial role of query effectiveness in QPP.
+        </div> </ul> <br>
+
+
+        Session details: Session 4C: Users and Tasks
+
+        <label for="Panel52">
+        <strong> Task Completion Detection: A Study in the Context of Intelligent Systems </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ryen+W.+White">Ryen W. White</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ahmed+Hassan+Awadallah">Ahmed Hassan Awadallah</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Robert+Sim">Robert Sim</a> (1) </u>  <br>
+        1:  Microsoft Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331187">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Task Completion Detection: A Study in the Context of Intelligent Systems">Google Scholar</a></div>
+        (52)
+        <br>
+        <b>概要:　</b> 人々は、やるべきことリスト、デジタルアシスタント、その他のタスク管理ソフトウェアを使用して、保留中のタスクを記録することができます。しかし、これらのシステムのユーザーは少なくとも二つの課題に直面します。（1）タスクを手動で完了としてマークする必要があり、（2）システムが保留中のタスクについて積極的にリマインドする際に（例えば、中断を伴う通知で）、タスクの完了状況に関する情報が欠けていることです。その結果、やるべきことリストの完全な利益を享受できない（リストには完了済みタスクと保留中タスクの両方が含まれる可能性があるため）、さらに既に終えたタスクについて思い出させられることで（時間を無駄にし、イライラを引き起こす）ことになります。本論文では、タスク完了を自動的に検出する方法を提示します。これらの推論は、完了したタスクの非表示や、これらのタスクに関する通知の抑制（または、タスクの優先順位付けなど他の目的にも）に利用できます。人気のあるデジタルアシスタントのログデータを使用し、タスク完了の時間的な動態を分析し、様々な特徴（タスク作成から経過した時間、タスク内容、メール、通知、ユーザー履歴）を使用して、タスク完了を80％以上の精度で検出する機械学習モデルを訓練しました。本研究の成果は、人々がタスクを管理するためのインテリジェントシステムの設計に関する示唆を提供します。
+        </label>
+        <input type="checkbox" id="Panel52" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> People can record their pending tasks using to-do lists, digital assistants, and other task management software. In doing so, users of these systems face at least two challenges: (1) they must manually mark their tasks as complete, and (2) when systems proactively remind them about their pending tasks, say, via interruptive notifications, they lack information on task completion status. As a result, people may not realize the full benefits of to-do lists (since these lists can contain both completed and pending tasks) and they may be reminded about tasks they have already done (wasting time and causing frustration). In this paper, we present methods to automatically detect task completion. These inferences can be used to deprecate completed tasks and/or suppress notifications for these tasks (or for other purposes, e.g., task prioritization). Using log data from a popular digital assistant, we analyze temporal dynamics in the completion of tasks and train machine-learned models to detect completion with accuracy exceeding 80% using a variety of features (time elapsed since task creation, task content, email, notifications, user history). The findings have implications for the design of intelligent systems to help people manage their tasks.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel53">
+        <strong> Bridging Gaps: Predicting User and Task Characteristics from Partial User Information </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Matthew+Mitsui">Matthew Mitsui</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chirag+Shah">Chirag Shah</a> (1) </u>  <br>
+        1:  Rutgers University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331221">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Bridging Gaps: Predicting User and Task Characteristics from Partial User Information">Google Scholar</a></div>
+        (53)
+        <br>
+        <b>概要:　</b> インタラクティブ情報検索（IIR）研究者は、情報を求める人々と情報検索システムの関係を理解するために、実験室での研究を頻繁に行います。彼らは観察可能な行動、検索者の文脈、および基礎的な認知の間の関係についての新たな理解を創造するために、広範なデータ収集方法とツールを開発し、人々の情報検索をより良くサポートしています。しかしながら、データのサイズ、リアリズム、デモグラフィックスの問題に加え、実験室での研究は研究できる現象の数や性質に制約があります。そのため、実験室で収集されたデータは異なる検索者集団を含み、重複していないユーザおよびタスクの特徴を集めます。研究解析および収集方法が孤立している中で、IIRの広範な理解というミッションをどのように推進できるのでしょうか？私たちはこれを不完全なデータを用いた構造学習問題として取り組み、不完全なデータがインタラクションからユーザおよびタスクの特徴を予測するためにどの程度使用できるかを決定します。特に、異種データセットを組み合わせることが単一のデータセットを使用するよりも予測に効果的であるかどうかを検討します。我々の結果は、外部データを追加することで、検索者の特徴、タスクの特徴、および行動の予測が大幅に向上することを示しており、たとえデータが検索者についての同一の情報を含んでいなくても、その効果は顕著です。
+        </label>
+        <input type="checkbox" id="Panel53" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Interactive information retrieval (IIR) researchers often conduct laboratory studies to understand the relationship between people seeking information and information retrieval systems. They develop extensive data collection methods and tools create new understanding about the relationship between observable behaviors, searcher context, and underlying cognition, to better support people's information seeking. Yet aside from the problems of data size, realism, and demographics, laboratory studies are limited in the number and nature of phenomena they can study. Hence, data collected in laboratories contains different searcher populations and collects non-overlapping user and task characteristics. While research analyses and collection methods are isolated, how can we further IIR's mission of broad understanding? We approach this as a structure learning problem on incomplete data, determining the extent to which incomplete data can be used to predict user and task characteristics from interactions. In particular, we examine whether combining heterogeneous data sets is more effective than using a single data set alone in prediction. Our results indicate that adding external data significantly improves predictions of searcher characteristics, task characteristics, and behaviors, even when the data does not contain identical information about searchers.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel54">
+        <strong> Human Behavior Inspired Machine Reading Comprehension </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yukun+Zheng">Yukun Zheng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiaxin+Mao">Jiaxin Mao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yiqun+Liu">Yiqun Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zixin+Ye">Zixin Ye</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min+Zhang">Min Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shaoping+Ma">Shaoping Ma</a> (1) </u>  <br>
+        1:  Tsinghua University, 2:  Beihang University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331231">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Human Behavior Inspired Machine Reading Comprehension">Google Scholar</a></div>
+        (54)
+        <br>
+        <b>概要:　</b> 機械読解（MRC）は、NLP（自然言語処理）とIR（情報検索）の研究において最も難解な課題の一つです。近年、複数の深層ニューラルモデルが単純化されたMRCタスク設定において成功を収めており、その性能は人間に匹敵するか、場合によってはそれを超えました。しかし、MS MARCOやDuReaderデータセットのようなより実践的な設定では、これらのモデルは依然として人間と大きな性能差があります。人間の読解行動を研究する多くの研究がありますが、複雑な読解シナリオにおける行動パターンは十分に調査されていません。人間が読解プロセス中にどのように読んで注意を配分するかをより良く理解することが、MRCタスクの性能向上に役立つと信じています。本研究では、32名のユーザーを対象に60の異なるタスクを実施し、人間の読解行動パターンを調査するラボ研究を行います。収集した視線追跡データと参加者からの回答を分析することで、可能な回答候補を探索する検索段階と、比較および検証プロセスを通じて最終回答を生成する生成段階の二段階読解行動モデルを提案します。また、人間の注意の分布が質問依存の要因（例えば、回答および質問とのソフトマッチング信号）と質問非依存の要因（例えば、単語の位置、IDF、品詞タグ）によって影響を受けることを発見しました。この二段階読解行動モデルに基づいて抽出された特徴を用いて読解中の人間の注意信号を予測することで、MRCタスクの性能を大幅に向上させます。我々の研究の発見は、人間の読解および情報検索プロセスの理解に洞察を提供し、機械がユーザーの情報ニーズをよりよく満たす手助けとなるでしょう。
+        </label>
+        <input type="checkbox" id="Panel54" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Machine Reading Comprehension (MRC) is one of the most challenging tasks in both NLP and IR researches. Recently, a number of deep neural models have been successfully adopted to some simplified MRC task settings, whose performances were close to or even better than human beings. However, these models still have large performance gaps with human beings in more practical settings, such as MS MARCO and DuReader datasets. Although there are many works studying human reading behavior, the behavior patterns in complex reading comprehension scenarios remain under-investigated. We believe that a better understanding of how human reads and allocates their attention during reading comprehension processes can help improve the performance of MRC tasks. In this paper, we conduct a lab study to investigate human's reading behavior patterns during reading comprehension tasks, where 32 users are recruited to take 60 distinct tasks. By analyzing the collected eye-tracking data and answers from participants, we propose a two-stage reading behavior model, in which the first stage is to search for possible answer candidates and the second stage is to generate the final answer through a comparison and verification process. We also find that human's attention distribution is affected by both question-dependent factors (e.g., answer and soft matching signal with questions) and question-independent factors (e.g., position, IDF and Part-of-Speech tags of words). We extract features derived from the two-stage reading behavior model to predict human's attention signals during reading comprehension, which significantly improves performance in the MRC task. Findings in our work may bring insight into the understanding of human reading and information seeking processes, and help the machine to better meet users' information needs.
+        </div> </ul> <br>
+
+
+        Session details: Session 5A: Conversation and Dialog
+
+        <label for="Panel56">
+        <strong> EnsembleGAN: Adversarial Learning for Retrieval-Generation Ensemble Model on Short-Text Conversation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiayi+Zhang">Jiayi Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chongyang+Tao">Chongyang Tao</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhenjing+Xu">Zhenjing Xu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qiaojing+Xie">Qiaojing Xie</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+Chen">Wei Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rui+Yan">Rui Yan</a> (2) </u>  <br>
+        1:  Turing Robot, 2:  Peking University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331193">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=EnsembleGAN: Adversarial Learning for Retrieval-Generation Ensemble Model on Short-Text Conversation">Google Scholar</a></div>
+        (56)
+        <br>
+        <b>概要:　</b> 人間とコンピュータの対話システムにおいて、質の高い応答を生成することは常に挑戦であり続けています。既存の対話システムは通常、検索ベースまたは生成ベースのアプローチのいずれかに由来し、それぞれに長所と短所があります。これら二つのアプローチを組み合わせたアンサンブルモデルは自然な発想ですが、従来のアンサンブル手法は一方を利用して他方を強化することに焦点を当てていました。しかし、適切なトレーニング戦略を取れば、さらなる相互強化が可能であると私たちは考えます。本論文では、オープンドメインの会話シナリオにおいて検索生成アンサンブルモデルを強化するための対抗学習フレームワークであるensembleGANを提案します。ensembleGANは、言語モデルのようなジェネレーター、ランカー生成器、そしてランカ識別器から構成されます。発話が真実に近く、識別器から高い評価を受けるようにすることを目指し、2つの生成器はそれぞれ改善された高関連性の応答と競争力のある未観測の候補を生成することを学習します。一方で識別ランカーは、対抗的なものから真の応答を識別するように訓練され、これにより両方の生成器のメリットを取り入れています。大規模な短文会話データにおける実験結果は、ensembleGANが人間と自動評価指標の両方での改善を通じてその有効性を示しています。
+        </label>
+        <input type="checkbox" id="Panel56" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Generating qualitative responses has always been a challenge for human-computer dialogue systems. Existing dialogue systems generally derive from either retrieval-based or generative-based approaches, both of which have their own pros and cons. Despite the natural idea of an ensemble model of the two, existing ensemble methods only focused on leveraging one approach to enhance another, we argue however that they can be further mutually enhanced with a proper training strategy. In this paper, we propose ensembleGAN, an adversarial learning framework for enhancing a retrieval-generation ensemble model in open-domain conversation scenario. It consists of a language-model-like generator, a ranker generator, and one ranker discriminator. Aiming at generating responses that approximate the ground-truth and receive high ranking scores from the discriminator, the two generators learn to generate improved highly relevant responses and competitive unobserved candidates respectively, while the discriminative ranker is trained to identify true responses from adversarial ones, thus featuring the merits of both generator counterparts. The experimental results on a large short-text conversation data demonstrate the effectiveness of the ensembleGAN by the amelioration on both human and automatic evaluation metrics.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel57">
+        <strong> User Attention-guided Multimodal Dialog Systems </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chen+Cui">Chen Cui</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wenjie+Wang">Wenjie Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xuemeng+Song">Xuemeng Song</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minlie+Huang">Minlie Huang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xin-Shun+Xu">Xin-Shun Xu</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Liqiang+Nie">Liqiang Nie</a> (1) </u>  <br>
+        1:  Shandong University, 2:  Tsinghua University, 3:  Shandong University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331226">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=User Attention-guided Multimodal Dialog Systems">Google Scholar</a></div>
+        (57)
+        <br>
+        <b>概要:　</b> コンピュータとインタラクションするための知的な方法として、対話システムはますます注目を集めています。しかし、ほとんどの研究がテキストベースの対話システムにのみ焦点を当てており、視覚的な手がかりが伝える豊かなセマンティクスを完全に無視しています。実際、オンライン小売や旅行など多くの分野の急速な拡大に伴い、マルチモーダルなタスク指向対話システムの需要が高まっています。さらに、階層的な製品分類法やユーザーの製品への注意を明示的に考慮する研究はほとんどありません。事実として、ユーザーは対話が進むにつれて、製品の色やスタイルなどセマンティックな属性に対する注意を表現する傾向があります。この目標に向けて、本研究では階層的なユーザー注意誘導マルチモーダル対話システム（UMD：User attention-guided Multimodal Dialog system）を提案します。UMDは双方向リカレントニューラルネットワークを利用してユーザーとチャットボットの間の進行中の対話を高レベルでモデル化します。低レベルでは、マルチモーダルエンコーダーとデコーダーがそれぞれマルチモーダル発話をエンコードし、マルチモーダル応答を生成する能力を持っています。マルチモーダルエンコーダーは、分類属性併合ツリーを用いて画像の視覚的表現を学習し、視覚的特徴は注意メカニズムを通じてテキスト特徴と相互作用します。一方、マルチモーダルデコーダーは対話履歴に基づいて必要な視覚画像を選択し、テキスト応答を生成します。我々の提案モデルを評価するために、小売分野の公開されているマルチモーダル対話データセットで広範な実験を行いました。実験結果は、マルチモーダル発話を統合し、ユーザーの属性レベルの注意に基づいて視覚的特徴をエンコードすることにより、我々のモデルが既存の最先端の手法を上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel57" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> As an intelligent way to interact with computers, the dialog system has been catching more and more attention. However, most research efforts only focus on text-based dialog systems, completely ignoring the rich semantics conveyed by the visual cues. Indeed, the desire for multimodal task-oriented dialog systems is growing with the rapid expansion of many domains, such as the online retailing and travel. Besides, few work considers the hierarchical product taxonomy and the users' attention to products explicitly. The fact is that users tend to express their attention to the semantic attributes of products such as color and style as the dialog goes on. Towards this end, in this work, we present a hierarchical User attention-guided Multimodal Dialog system, named UMD for short. UMD leverages a bidirectional Recurrent Neural Network to model the ongoing dialog between users and chatbots at a high level; As to the low level, the multimodal encoder and decoder are capable of encoding multimodal utterances and generating multimodal responses, respectively. The multimodal encoder learns the visual presentation of images with the help of a taxonomy-attribute combined tree, and then the visual features interact with textual features through an attention mechanism; whereas the multimodal decoder selects the required visual images and generates textual responses according to the dialog history. To evaluate our proposed model, we conduct extensive experiments on a public multimodal dialog dataset in the retailing domain. Experimental results demonstrate that our model outperforms the existing state-of-the-art methods by integrating the multimodal utterances and encoding the visual features based on the users' attribute-level attention.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel58">
+        <strong> Triple-to-Text: Converting RDF Triples into High-Quality Natural Languages via Optimizing an Inverse KL Divergence </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yaoming+Zhu">Yaoming Zhu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Juncheng+Wan">Juncheng Wan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhiming+Zhou">Zhiming Zhou</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Liheng+Chen">Liheng Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lin+Qiu">Lin Qiu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weinan+Zhang">Weinan Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xin+Jiang">Xin Jiang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yong+Yu">Yong Yu</a> (1) </u>  <br>
+        1:  Shanghai Jiao Tong University, 2:  Noah's Ark Lab <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331232">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Triple-to-Text: Converting RDF Triples into High-Quality Natural Languages via Optimizing an Inverse KL Divergence">Google Scholar</a></div>
+        (58)
+        <br>
+        <b>概要:　</b> 知識ベースは、情報を構造化して表現するための主要な形式の一つです。知識ベースは通常、エンティティとその関係を記述するリソース記述フレームワーク（RDF）トリプルで構成されます。知識ベースの自然言語記述を生成することはNLPにおける重要な課題であり、条件付き言語生成タスクとして定式化され、シークエンス・ツー・シークエンス（Seq2Seq）フレームワークを使用して取り組まれています。現在の研究では、主に最大尤度推定によって言語モデルの学習が行われますが、この方法では質の低い文が生成されがちです。本論文では、この最大尤度推定の問題が本質的であり、ネットワーク構造を変更するだけでは一般的に不可逆であると主張します。これに対応するため、新しいトリプル・ツー・テキスト（T2T）フレームワークを提案します。これは、実際の文と生成された文の分布間の逆Kullback-Leibler（KL）ダイバージェンスを最適化するものです。逆KLが偽物に見えるサンプルに対して大きなペナルティを課す性質があるため、提案手法は低品質な文の生成確率を大幅に減少させることができます。我々の3つの実世界データセットにおける実験は、T2Tがより高品質な文を生成し、いくつかの評価指標でベースラインモデルを上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel58" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Knowledge base is one of the main forms to represent information in a structured way. A knowledge base typically consists of Resource Description Frameworks (RDF) triples which describe the entities and their relations. Generating natural language description of the knowledge base is an important task in NLP, which has been formulated as a conditional language generation task and tackled using the sequence-to-sequence framework. Current works mostly train the language models by maximum likelihood estimation, which tends to generate lousy sentences. In this paper, we argue that such a problem of maximum likelihood estimation is intrinsic, which is generally irrevocable via changing network structures. Accordingly, we propose a novel Triple-to-Text (T2T) framework, which approximately optimizes the inverse Kullback-Leibler (KL) divergence between the distributions of the real and generated sentences. Due to the nature that inverse KL imposes large penalty on fake-looking samples, the proposed method can significantly reduce the probability of generating low-quality sentences. Our experiments on three real-world datasets demonstrate that T2T can generate higher-quality sentences and outperform baseline models in several evaluation metrics.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel59">
+        <strong> Video Dialog via Multi-Grained Convolutional Self-Attention Context Networks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weike+Jin">Weike Jin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhou+Zhao">Zhou Zhao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mao+Gu">Mao Gu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Yu">Jun Yu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Xiao">Jun Xiao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yueting+Zhuang">Yueting Zhuang</a> (1) </u>  <br>
+        1:  Zhejiang University, 2:  Hangzhou Dianzi University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331240">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Video Dialog via Multi-Grained Convolutional Self-Attention Context Networks">Google Scholar</a></div>
+        (59)
+        <br>
+        <b>概要:　</b> ビデオダイアログは新しく挑戦的なタスクであり、人間と自然言語でビデオの内容について有意義な会話を維持することをAIエージェントに要求します。具体的には、ビデオ、ダイアログ履歴、およびビデオに関する新しい質問が与えられた場合に、エージェントはビデオ情報とダイアログ履歴を組み合わせて回答を推論する必要があります。そして、ビデオ情報の複雑さのため、イメージダイアログの方法を直接ビデオダイアログに適用することは効果的でない可能性があります。本論文では、ビデオ情報をダイアログ履歴と組み合わせるための、新しいビデオダイアログ手法である多粒度畳み込み自己注意コンテキストネットワークを提案します。シーケンス情報をエンコードするためにRNNを使用する代わりに、要素レベルとセグメントレベルの相互作用をキャプチャする多粒度畳み込み自己注意メカニズムを設計し、多粒度のシーケンス情報を含めます。そして、文脈対応の質問表現を学習する階層的なダイアログ履歴エンコーダと、文脈対応のビデオ表現を学習する二重ストリームビデオエンコーダを設計しました。我々の手法を2つの大規模データセットで評価しました。新しい注意メカニズムの柔軟性と並列性により、我々の手法はより高い時間効率を達成でき、広範な実験でも我々の手法の効果が示されました。
+        </label>
+        <input type="checkbox" id="Panel59" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Video dialog is a new and challenging task, which requires an AI agent to maintain a meaningful dialog with humans in natural language about video contents. Specifically, given a video, a dialog history and a new question about the video, the agent has to combine video information with dialog history to infer the answer. And due to the complexity of video information, the methods of image dialog might be ineffectively applied directly to video dialog. In this paper, we propose a novel approach for video dialog called multi-grained convolutional self-attention context network, which combines video information with dialog history. Instead of using RNN to encode the sequence information, we design a multi-grained convolutional self-attention mechanism to capture both element and segment level interactions which contain multi-grained sequence information. Then, we design a hierarchical dialog history encoder to learn the context-aware question representation and a two-stream video encoder to learn the context-aware video representation. We evaluate our method on two large-scale datasets. Due to the flexibility and parallelism of the new attention mechanism, our method can achieve higher time efficiency, and the extensive experiments also show the effectiveness of our method.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel60">
+        <strong> Asking Clarifying Questions in Open-Domain Information-Seeking Conversations </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mohammad+Aliannejadi">Mohammad Aliannejadi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hamed+Zamani">Hamed Zamani</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fabio+Crestani">Fabio Crestani</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=W.+Bruce+Croft">W. Bruce Croft</a> (3) </u>  <br>
+        1:  Università della Svizzera Italiana, 2:  University of Massachusetts Amherst, 3:  University of Massachusetts Amherst <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331265">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Asking Clarifying Questions in Open-Domain Information-Seeking Conversations">Google Scholar</a></div>
+        (60)
+        <br>
+        <b>概要:　</b> ユーザーはしばしば、複雑な情報ニーズを単一のクエリでうまく表現できません。その結果、複数の結果ページを確認したり、クエリを再構築したりする必要があり、これがユーザーにとってフラストレーションの原因となることがあります。これに代わる方法として、システムがユーザーの情報ニーズを明確にするために積極的に質問をすることで、ユーザー満足度を向上させることができます。明確化のための質問をすることは、会話型システムにおいて特に重要です。なぜなら、これらのシステムは限られた数（多くの場合は一つだけ）しか結果を返せないからです。本論文では、オープンドメインの情報検索型会話システムにおける明確化のための質問のタスクを定式化します。具体的には、このタスクのオフライン評価手法を提案し、クラウドソーシングを通じて収集したQulacというデータセットを紹介します。我々のデータセットは、TREC Web Track 2009-2012のデータに基づいて構築されており、198のTRECトピックと762のファセットに対して10,000対以上の質問-回答ペアが含まれています。我々のオラクルモデルの実験では、たった一つの適切な質問を行うだけで、P@1の観点で170%以上の検索性能向上が見られ、このタスクの潜在的な影響力を明確に示しています。さらに、質問の検索、質問の選択、およびドキュメントの検索の三つのコンポーネントからなる検索フレームワークを提案します。特に、質問選択モデルは、次の質問を選択する際に元のクエリおよび以前の質問-回答のやり取りを考慮に入れます。我々のモデルは、競合するベースラインを大幅に上回る性能を示しました。この分野のさらなる研究を促進するために、Qulacデータセットを公開しています。
+        </label>
+        <input type="checkbox" id="Panel60" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Users often fail to formulate their complex information needs in a single query. As a consequence, they may need to scan multiple result pages or reformulate their queries, which may be a frustrating experience. Alternatively, systems can improve user satisfaction by proactively asking questions of the users to clarify their information needs. Asking clarifying questions is especially important in conversational systems since they can only return a limited number of (often only one) result(s). In this paper, we formulate the task of asking clarifying questions in open-domain information-seeking conversational systems. To this end, we propose an offline evaluation methodology for the task and collect a dataset, called Qulac, through crowdsourcing. Our dataset is built on top of the TREC Web Track 2009-2012 data and consists of over 10K question-answer pairs for 198 TREC topics with 762 facets. Our experiments on an oracle model demonstrate that asking only one good question leads to over 170% retrieval performance improvement in terms of P@1, which clearly demonstrates the potential impact of the task. We further propose a retrieval framework consisting of three components: question retrieval, question selection, and document retrieval. In particular, our question selection model takes into account the original query and previous question-answer interactions while selecting the next question. Our model significantly outperforms competitive baselines. To foster research in this area, we have made Qulac publicly available.
+        </div> </ul> <br>
+
+
+        Session details: Session 5B: Efficiency, Effectiveness and Performance
+
+        <label for="Panel62">
+        <strong> Accelerated Query Processing Via Similarity Score Prediction </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Matthias+Petri">Matthias Petri</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alistair+Moffat">Alistair Moffat</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Joel+Mackenzie">Joel Mackenzie</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=J.+Shane+Culpepper">J. Shane Culpepper</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Daniel+Beck">Daniel Beck</a> (1) </u>  <br>
+        1:  The University of Melbourne, 2:  RMIT University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331207">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Accelerated Query Processing Via Similarity Score Prediction">Google Scholar</a></div>
+        (62)
+        <br>
+        <b>概要:　</b> top-k bag-of-wordsクエリの処理は、ウェブ規模の検索を含む多くの情報検索アプリケーションにおいて重要な役割を果たします。本研究では、動的プルーニングメカニズムに関連するアルゴリズム的特性を検討します。このようなアルゴリズムは、これまでに特定された最も高い類似性スコアのうちk番目のスコアを閾値として維持し、スコアの低い文書を除外することで、効果を損なうことなく迅速なtop-k 検索を可能にします。標準的なプルーニングアルゴリズムでは、スコアの閾値は最も低い可能な値に初期化されます。処理を高速化するために、我々は用語およびクエリ依存の特性を用いてその閾値の最終値を予測し、処理の開始時からその予測値を利用します。予測誤差に関連する非対称性（推定閾値が高すぎる場合、正しい結果を保証するためにクエリを再実行する必要がある）を考慮すると、予測プロセスはリスクに敏感でなければなりません。我々は、これらの要因をバランスさせる技術を探り、新しいアプローチの実用性を示す詳細な実験結果を提供します。
+        </label>
+        <input type="checkbox" id="Panel62" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Processing top-k bag-of-words queries is critical to many information retrieval applications, including web-scale search. In this work, we consider algorithmic properties associated with dynamic pruning mechanisms. Such algorithms maintain a score threshold (the k th highest similarity score identified so far) so that low-scoring documents can be bypassed, allowing fast top-k retrieval with no loss in effectiveness. In standard pruning algorithms the score threshold is initialized to the lowest possible value. To accelerate processing, we make use of term- and query-dependent features to predict the final value of that threshold, and then employ the predicted value right from the commencement of processing. Because of the asymmetry associated with prediction errors (if the estimated threshold is too high the query will need to be re-executed in order to assure the correct answer), the prediction process must be risk-sensitive. We explore techniques for balancing those factors, and provide detailed experimental results that show the practical usefulness of the new approach.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel63">
+        <strong> Optimal Freshness Crawl Under Politeness Constraints </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Andrey+Kolobov">Andrey Kolobov</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yuval+Peres">Yuval Peres</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Eyal+Lubetzky">Eyal Lubetzky</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Eric+Horvitz">Eric Horvitz</a> (1) </u>  <br>
+        1:  Microsoft Research, 2:  No Affiliation, 3:  New York University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331241">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Optimal Freshness Crawl Under Politeness Constraints">Google Scholar</a></div>
+        (63)
+        <br>
+        <b>概要:　</b> ウェブクローラーは、検索エンジンの重要な部分であり、ユーザーに提供される情報を収集する役割を果たします。ウェブがますます動的になるにつれて、クローラーは新しいウェブページを発見するだけでなく、すでに検索エンジンのインデックスに登録されているページを再訪し、その変更されたコンテンツを収集してインデックスを新鮮に保つ必要があります。ページをどの頻度で再クロールするかを決定するには、ページの相対的な重要性と変更頻度に基づくトレードオフを行う必要があり、検索エンジン側のクロールリクエストの限られた日次予算と、特定ホストからのリクエスト率を制限する礼儀的制約といった複数のリソース制約を考慮しなければなりません。本論文では、礼儀的制約だけでなく、非一様なページ重要性スコアおよびクローラー自身のクロールリクエスト制限を考慮した最初の最適なアルゴリズムであるPoliteBinaryLambdaCrawlを紹介します。また、理論的最適性条件を述べるとともに、フレッシュネスクロールスケジューリングのための単なるヒューリスティックと考えられていたアプローチとの関連性を発見する過程で、これの近似を提案します。我々は14週間にわたり毎日18.5M以上のURLをクロールして収集したデータセットを用いて、PoliteBinaryLambdaCrawlと他の礼儀的制約を扱う方法の相対的なパフォーマンスを探究します。
+        </label>
+        <input type="checkbox" id="Panel63" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> A Web crawler is an essential part of a search engine that procures information subsequently served by the search engine to its users. As the Web is becoming increasingly more dynamic, in addition to discovering new web pages a crawler needs to keep revisiting those already in the search engine's index, in order to keep the index fresh by picking up the pages' changed content. Determining how often to recrawl pages requires making tradeoffs based on the pages' relative importance and change rates, subject to multiple resource constraints - the limited daily budget of crawl requests on the search engine's end and politeness constraints restricting the rate at which pages can be requested from a given host. In this paper, we introduce PoliteBinaryLambdaCrawl, the first optimal algorithm for freshness crawl scheduling in the presence of politeness constraints as well as non-uniform page importance scores and the crawler's own crawl request limit. We also propose an approximation for it, stating its theoretical optimality conditions and in the process discovering a connection to an approach previously thought of as a mere heuristic for freshness crawl scheduling. We explore the relative performance of PoliteBinaryLambdaCrawl and other methods for handling politeness constraints on a dataset collected by crawling over 18.5M URLs daily over 14 weeks.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel64">
+        <strong> Statistical Significance Testing in Information Retrieval: An Empirical Analysis of Type I, Type II and Type III Errors </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Julián+Urbano">Julián Urbano</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Harlley+Lima">Harlley Lima</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alan+Hanjalic">Alan Hanjalic</a> (1) </u>  <br>
+        1:  Delft University of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331259">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Statistical Significance Testing in Information Retrieval: An Empirical Analysis of Type I, Type II and Type III Errors">Google Scholar</a></div>
+        (64)
+        <br>
+        <b>概要:　</b> 統計的有意性検定は、トピックの選択に起因するランダムなノイズとは対照的に、システム間の効果の差が実際の差をどれだけ反映しているかを評価する手段として広く受け入れられています。SIGIR、CIKM、ECIR、TOISの最近の調査によると、t検定がIR（情報検索）研究者の間で最も人気のある選択肢です。しかし、理論的な議論に主に基づいて、過去の研究ではブートストラップや置換検定などのコンピュータ集約的なテストが提案されています。一方、経験的な視点からは、ウィルコクソン検定などのノンパラメトリックな代替手段が示唆されています。この質問、すなわちどの検定を使用すべきかという問題は、何十年にもわたりIRや関連分野を付きまとってきました。この問題についての過去の理論的研究は、IR実験で検定の仮定が満たされていないことがわかっているために限界があり、経験的研究では現実的な条件下で実際のタイプIおよびタイプIIエラー率を計算するための帰無仮説の必要な制御がないため限界がありました。したがって、どの検定を使用するべきか明確ではないだけでなく、それらをどれだけ信用するべきかも不明確です。これに対して、本論文ではこれらの制限を克服するためにTRECデータからの最新のシミュレーション方法論を採用しています。我々の研究は、複数のテスト、システム、効果測定、トピックセットサイズ、および効果サイズ、さらに2尾および1尾のケースに対して計算された5億を超えるp値を網羅しています。このように大量のIR評価データと帰無仮説に関する完全な知識を持つことで、統計的有意性検定がIRデータに対してどれだけ正確に振る舞うかを評価し、実務者への確かな推奨を行う立場に初めて立てるのです。
+        </label>
+        <input type="checkbox" id="Panel64" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Statistical significance testing is widely accepted as a means to assess how well a difference in effectiveness reflects an actual difference between systems, as opposed to random noise because of the selection of topics. According to recent surveys on SIGIR, CIKM, ECIR and TOIS papers, the t-test is the most popular choice among IR researchers. However, previous work has suggested computer intensive tests like the bootstrap or the permutation test, based mainly on theoretical arguments. On empirical grounds, others have suggested non-parametric alternatives such as the Wilcoxon test. Indeed, the question of which tests we should use has accompanied IR and related fields for decades now. Previous theoretical studies on this matter were limited in that we know that test assumptions are not met in IR experiments, and empirical studies were limited in that we do not have the necessary control over the null hypotheses to compute actual Type I and Type II error rates under realistic conditions. Therefore, not only is it unclear which test to use, but also how much trust we should put in them. In contrast to past studies, in this paper we employ a recent simulation methodology from TREC data to go around these limitations. Our study comprises over 500 million p-values computed for a range of tests, systems, effectiveness measures, topic set sizes and effect sizes, and for both the 2-tail and 1-tail cases. Having such a large supply of IR evaluation data with full knowledge of the null hypotheses, we are finally in a position to evaluate how well statistical significance tests really behave with IR data, and make sound recommendations for practitioners.
+        </div> </ul> <br>
+
+
+        Session details: Session 6A: Social Media
+
+        <label for="Panel66">
+        <strong> CROSS: Cross-platform Recommendation for Social E-Commerce </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tzu-Heng+Lin">Tzu-Heng Lin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chen+Gao">Chen Gao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yong+Li">Yong Li</a> (1) </u>  <br>
+        1:  Tsinghua Unversity <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331191">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=CROSS: Cross-platform Recommendation for Social E-Commerce">Google Scholar</a></div>
+        (66)
+        <br>
+        <b>概要:　</b> 社会的電子商取引（ソーシャルeコマース）は、電子商取引の新しい概念として、ソーシャルメディアをオンラインショッピングの新たな普及プラットフォームとして活用しています。ユーザーは、単一のソーシャルメディアアプリ内で商品の閲覧、カートへの追加、購入が可能です。本論文では、ソーシャルeコマースにおけるクロスプラットフォームのレコメンデーションの問題、すなわち、ソーシャルメディアを通じてショッピングを行うユーザーへ商品を推薦する問題に取り組みます。我々の知る限り、これはAmazonやAlibabaなど、すべてのeコマース企業にとって新しく重要な問題ですが、これまで研究されたことはありません。既存のクロスプラットフォームやソーシャル関連のレコメンデーション手法は、この問題に対して、ソーシャル情報とクロスプラットフォーム特性を一緒に考慮していないため、直接適用することはできません。この問題を研究するために、まず伝統的なeコマースアプリとソーシャルメディアの間の異種ショッピング行動を調査します。データからの観察に基づき、我々は、双方のプラットフォームにおけるユーザーアイテムの相互作用データに加えて、ソーシャルメディアのソーシャル関係データも活用するレコメンデーションモデル「CROSS」（Social Mediaにおけるオンラインショッピングのためのクロスプラットフォーム推奨）を提案します。実世界のオンラインショッピングデータセットにおける広範な実験により、提案するCROSSが既存の最先端手法を大幅に上回ることを示しました。
+        </label>
+        <input type="checkbox" id="Panel66" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Social e-commerce, as a new concept of e-commerce, uses social media as a new prevalent platform for online shopping. Users are now able to view, add to cart, and buy products within a single social media app. In this paper, we address the problem of cross-platform recommendation for social e-commerce, i.e., recommending products to users when they are shopping through social media. To the best of our knowledge, this is a new and important problem for all e-commerce companies (e.g. Amazon, Alibaba), but has never been studied before. Existing cross-platform and social related recommendation methods cannot be applied directly for this problem since they do not co-consider the social information and the cross-platform characteristics together. To study this problem, we first investigate the heterogeneous shopping behaviors between traditional e-commerce app and social media. Based on these observations from data, we propose CROSS (Cross-platform Recommendation for Online Shopping in Social Media), a recommendation model utilizing not only user-item interaction data on both platforms, but also social relation data on social media. Extensive experiments on real-world online shopping dataset demonstrate that our proposed CROSS significantly outperforms existing state-of-the-art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel67">
+        <strong> Hot Topic-Aware Retweet Prediction with Masked Self-attentive Model </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Renfeng+Ma">Renfeng Ma</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiangkun+Hu">Xiangkun Hu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qi+Zhang">Qi Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xuanjing+Huang">Xuanjing Huang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yu-Gang+Jiang">Yu-Gang Jiang</a> (1) </u>  <br>
+        1:  Fudan University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331236">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Hot Topic-Aware Retweet Prediction with Masked Self-attentive Model">Google Scholar</a></div>
+        (67)
+        <br>
+        <b>概要:　</b> ソーシャルメディアユーザは毎日、さまざまなトピックについて数百万のマイクロブログエントリーを作成しています。リツイート行動はソーシャルメディア上でトピックを拡散する上で重要な役割を果たします。リツイート予測タスクは近年、相当な注目を集めています。既存のリツイート予測手法の多くは、ユーザプロフィール、投稿履歴、フォロー関係など、さまざまな情報を利用して、ユーザの嗜好をモデリングすることに焦点を当てています。しかし、ユーザがフォロワーのリアルタイムの投稿にさらされることが、リツイート予測に大きく寄与することを考慮すると、ユーザが以前の興味に限定されず、フォロワーが議論しているホットトピックに参加する可能性があることがわかります。ホットトピックを効率的に利用するために、ユーザのフォロワーが議論しているホットトピックを認識することでリツイート予測タスクを実行する新しいマスクドセルフアテンティブモデルを提案します。ユーザの投稿履歴を外部メモリと統合し、階層的なアテンションメカニズムを利用してユーザの興味を構築します。したがって、私たちのモデルはホットトピックに対する認識とユーザの興味に対する認識を組み合わせて最終的な予測を行うことができます。Twitterから収集したデータセットを用いた実験結果は、提案手法が最先端の手法よりも優れた性能を達成できることを示しました。
+        </label>
+        <input type="checkbox" id="Panel67" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Social media users create millions of microblog entries on various topics each day. Retweet behaviour play a crucial role in spreading topics on social media. Retweet prediction task has received considerable attention in recent years. The majority of existing retweet prediction methods are focus on modeling user preference by utilizing various information, such as user profiles, user post history, user following relationships, etc. Yet, the users exposures towards real-time posting from their followees contribute significantly to making retweet predictions, considering that the users may participate into the hot topics discussed by their followees rather than be limited to their previous interests. To make efficient use of hot topics, we propose a novel masked self-attentive model to perform the retweet prediction task by perceiving the hot topics discussed by the users' followees. We incorporate the posting histories of users with external memory and utilize a hierarchical attention mechanism to construct the users' interests. Hence, our model can be jointly hot-topic aware and user interests aware to make a final prediction. Experimental results on a dataset collected from Twitter demonstrated that the proposed method can achieve better performance than state-of-the-art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel68">
+        <strong> Mention Recommendation in Twitter with Cooperative Multi-Agent Reinforcement Learning </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tao+Gui">Tao Gui</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Peng+Liu">Peng Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qi+Zhang">Qi Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Liang+Zhu">Liang Zhu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minlong+Peng">Minlong Peng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yunhua+Zhou">Yunhua Zhou</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xuanjing+Huang">Xuanjing Huang</a> (1) </u>  <br>
+        1:  Fudan University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331237">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Mention Recommendation in Twitter with Cooperative Multi-Agent Reinforcement Learning">Google Scholar</a></div>
+        (68)
+        <br>
+        <b>概要:　</b> Twitterのようなソーシャルネットワーキングサービスでは、「@」シンボルを使用して、メッセージに関してアラートを発信したいユーザーを言及することができます。ユーザーに対して候補となる名前の小リストを自動的に提案することで、コミュニケーションの効率を向上させることができます。従来の研究では、通常、最も最近のツイート数件を使用するか、ランダムに過去のツイートを選択して、この優先名前リストに関する推論を行っていました。しかし、ユーザーが行うツイートの数が多く、コンテンツの種類も多岐にわたるため、数件のツイートだけでは望んだ結果を保証することはできません。本研究では、従来のアプローチよりも数十件多くの過去ツイートを組み込む斬新な協力型マルチエージェントアプローチを用いたメンション推奨方法を提案します。提案された手法は、ユーザーおよび言及されたユーザーの双方から関連する指標ツイートを協力的に抽出し、効果的に過去のツイートの小セットを選択することができます。実験結果は、提案手法が最先端の方法を上回る性能を示していることを立証しています。
+        </label>
+        <input type="checkbox" id="Panel68" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In Twitter-like social networking services, the "@'' symbol can be used with the tweet to mention users whom the user wants to alert regarding the message. An automatic suggestion to the user of a small list of candidate names can improve communication efficiency. Previous work usually used several most recent tweets or randomly select historical tweets to make an inference about this preferred list of names. However, because there are too many historical tweets by users and a wide variety of content types, the use of several tweets cannot guarantee the desired results. In this work, we propose the use of a novel cooperative multi-agent approach to mention recommendation, which incorporates dozens of more historical tweets than earlier approaches. The proposed method can effectively select a small set of historical tweets and cooperatively extract relevant indicator tweets from both the user and mentioned users. Experimental results demonstrate that the proposed method outperforms state-of-the-art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel69">
+        <strong> Online User Representation Learning Across Heterogeneous Social Networks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weiqing+Wang">Weiqing Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongzhi+Yin">Hongzhi Yin</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xingzhong+Du">Xingzhong Du</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wen+Hua">Wen Hua</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongjun+Li">Yongjun Li</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Quoc+Viet+Hung+Nguyen">Quoc Viet Hung Nguyen</a> (5) </u>  <br>
+        1:  Monash University, 2:  The University of Queensland, 3:  Coles Advanced Analytics Centre, 4:  Northwestern Polytechnical University, 5:  Griffith University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331258">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Online User Representation Learning Across Heterogeneous Social Networks">Google Scholar</a></div>
+        (69)
+        <br>
+        <b>概要:　</b> 正確なユーザー表現学習は、コミュニティ検出や推薦システムなど多くのソーシャルメディアアプリケーションにおいて基本となることが証明されています。しかし、単一のソーシャルネットワークで利用可能なデータは通常、非常に限られており、疎らです。現実世界では、多くの人々が複数のソーシャルネットワークに同時に参加しています。各ソーシャルプラットフォームの機能や設計によって一人のユーザーに関する情報は特定の視点からの部分的な見解に過ぎません。本研究では、MV-URLというマルチビューのユーザー表現学習モデルを提案し、複数のネットワークからの知識を統合することでユーザーモデリングを強化します。従来のネットワーク埋め込みフレームワークとは異なり、このフレームワークでは単一ネットワークに基づくか、関与する各ネットワークが均質的なネットワークであるかという形態ではなく、複数のソーシャルネットワークに焦点を当て、我々の課題内の各ネットワークは異質的なネットワークです。この設定で知識を効果的に融合するのは非常に困難であり、融合は情報源の関連性の変動だけでなく、ターゲットアプリケーションタスクにも依存します。MV-URLは、ユーザーアカウントリンク（すなわち、ソーシャルメディア間で欠落している真のユーザーアカウントリンクを予測する）およびユーザー属性予測の二つのタスクに焦点を当てています。リンクされたソーシャルネットワークの二つの実データ集に対して広範な評価を行い、実験結果は既存の最先端埋め込み手法と比較してMV-URLの優位性を示しています。このモデルはオンライン学習が可能で、容易に並列化できる特性を持っているため、実世界のアプリケーションに適しています。
+        </label>
+        <input type="checkbox" id="Panel69" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Accurate user representation learning has been proven fundamental for many social media applications, including community detection, recommendation, etc. A major challenge lies in that, the available data in a single social network are usually very limited and sparse. In real life, many people are members of several social networks in the same time. Constrained by the features and design of each, any single social platform offers only a partial view of a user from a particular perspective. In this paper, we propose MV-URL, a multi-view user representation learning model to enhance user modeling by integrating the knowledge from various networks. Different from the traditional network embedding frameworks where either the whole framework is single-network based or each network involved is a homogeneous network, we focus on multiple social networks and each network in our task is a heterogeneous network. It's very challenging to effectively fuse knowledge in this setting as the fusion depends upon not only the varying relatedness of information sources, but also the target application tasks. MV-URL focuses on two tasks: user account linkage (i.e., to predict the missing true user account linkage across social media) and user attribute prediction. Extensive evaluations have been conducted on two real-world collections of linked social networks, and the experimental results show the superiority of MV-URL compared with existing state-of-art embedding methods. It can be learned online, and is trivially parallelizable. These qualities make it suitable for real world applications.
+        </div> </ul> <br>
+
+
+        Session details: Session 6B: Personalization and Personal Data Search
+
+        <label for="Panel71">
+        <strong> PSGAN: A Minimax Game for Personalized Search with Limited and Noisy Click Data </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shuqi+Lu">Shuqi Lu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhicheng+Dou">Zhicheng Dou</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xu+Jun">Xu Jun</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jian-Yun+Nie">Jian-Yun Nie</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ji-Rong+Wen">Ji-Rong Wen</a> (2) </u>  <br>
+        1:  Renmin University of China, 2:  Renmin University of China & Beijing Key Laboratory of Big Data Management and Analysis Methods, 3:  Université de Montréal <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331218">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=PSGAN: A Minimax Game for Personalized Search with Limited and Noisy Click Data">Google Scholar</a></div>
+        (71)
+        <br>
+        <b>概要:　</b> パーソナライズド検索は、ユーザーの個人的な興味に応じてドキュメントのランキングを適応させることを目的としています。従来は、履歴データからクリックやトピカルな特徴を抽出し、ユーザープロフィールを構築して行われていました。近年、深層学習はその自動特徴学習能力によりパーソナライズド検索で成功を収めています。しかし、少量のノイズの多い個人データは、深層学習モデルにとって関連性のある結果とない結果の間のパーソナライズドな分類境界を学習する際に課題をもたらします。本論文では、パーソナライズド検索のための生成対向ネットワーク（GAN）フレームワークであるPSGANを提案します。対立訓練を通じて、識別が難しい訓練データにモデルがより注目するようにします。識別器を使用してドキュメントのパーソナライズドな関連性を評価し、生成器を使用して関連ドキュメントの分布を学習します。フレームワークの中で生成器を構築する二つの代替方法を試しました：現在のクエリベースと生成クエリセットベースです。商用検索エンジンのデータを用いた実験において、我々のモデルは最先端のモデルを大幅に上回る改善をもたらすことが示されました。
+        </label>
+        <input type="checkbox" id="Panel71" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Personalized search aims to adapt document ranking to user's personal interests. Traditionally, this is done by extracting click and topical features from historical data in order to construct a user profile. In recent years, deep learning has been successfully used in personalized search due to its ability of automatic feature learning. However, the small amount of noisy personal data poses challenges to deep learning models to learn the personalized classification boundary between relevant and irrelevant results. In this paper, we propose PSGAN, a Generative Adversarial Network (GAN) framework for personalized search. By means of adversarial training, we enforce the model to pay more attention to training data that are difficult to distinguish. We use the discriminator to evaluate personalized relevance of documents and use the generator to learn the distribution of relevant documents. Two alternative ways to construct the generator in the framework are tested: based on the current query or based on a set of generated queries. Experiments on data from a commercial search engine show that our models can yield significant improvements over state-of-the-art models.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel72">
+        <strong> Lifelong Sequential Modeling with Personalized Memorization for User Response Prediction </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kan+Ren">Kan Ren</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiarui+Qin">Jiarui Qin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yuchen+Fang">Yuchen Fang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weinan+Zhang">Weinan Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lei+Zheng">Lei Zheng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weijie+Bian">Weijie Bian</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Guorui+Zhou">Guorui Zhou</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jian+Xu">Jian Xu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yong+Yu">Yong Yu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaoqiang+Zhu">Xiaoqiang Zhu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kun+Gai">Kun Gai</a> (2) </u>  <br>
+        1:  Shanghai Jiao Tong University, 2:  Alibaba Group <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331230">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Lifelong Sequential Modeling with Personalized Memorization for User Response Prediction">Google Scholar</a></div>
+        (72)
+        <br>
+        <b>概要:　</b> ユーザー応答予測は、提示されたアイテムに対するユーザーの好みをモデル化するもので、オンラインサービスにおいて重要な役割を果たします。この20年間で急速に発展したことから、現在では成熟したインターネットサービスプラットフォームにおける累積ユーザー行動シーケンスが、ユーザーの初回登録以来非常に長くなっています。各ユーザーは固有の嗜好を持つだけでなく、生涯にわたって個人的な興味を変え続けます。このため、各ユーザーの生涯にわたるシーケンスモデル化を扱うことは困難です。既存のシーケンスモデル化手法は、比較的最近のユーザー行動にしか対処できないため、特に長期的なシーケンスパターンのモデル化には大きな課題が残っています。さらに、ユーザーの行動は全オンライン活動履歴内の様々な以前の行動に影響されるため、マルチスケールのシーケンスパターンを含む長期的な依存関係が生じます。これらの課題に対処するために、本論文ではユーザーごとのシーケンスパターンを個別に記憶するための、生涯シーケンスモデル化のための階層的周期メモリネットワークを提案します。このモデルはまた、ユーザーの興味のマルチスケールシーケンスパターンをキャプチャしつつ、進化するユーザー行動ログをサポートするための階層的かつ周期的な更新メカニズムを採用しています。3つの大規模な実世界データセットを用いた実験結果は、ユーザー応答予測性能において、最新技術に対する私たちの提案モデルの優位性を示しています。
+        </label>
+        <input type="checkbox" id="Panel72" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> User response prediction, which models the user preference w.r.t. the presented items, plays a key role in online services. With two-decade rapid development, nowadays the cumulated user behavior sequences on mature Internet service platforms have become extremely long since the user's first registration. Each user not only has intrinsic tastes, but also keeps changing her personal interests during lifetime. Hence, it is challenging to handle such lifelong sequential modeling for each individual user. Existing methodologies for sequential modeling are only capable of dealing with relatively recent user behaviors, which leaves huge space for modeling long-term especially lifelong sequential patterns to facilitate user modeling. Moreover, one user's behavior may be accounted for various previous behaviors within her whole online activity history, i.e., long-term dependency with multi-scale sequential patterns. In order to tackle these challenges, in this paper, we propose a Hierarchical Periodic Memory Network for lifelong sequential modeling with personalized memorization of sequential patterns for each user. The model also adopts a hierarchical and periodical updating mechanism to capture multi-scale sequential patterns of user interests while supporting the evolving user behavior logs. The experimental results over three large-scale real-world datasets have demonstrated the advantages of our proposed model with significant improvement in user response prediction performance against the state-of-the-arts.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel73">
+        <strong> Multi-view Embedding-based Synonyms for Email Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Cheng+Li">Cheng Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mingyang+Zhang">Mingyang Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michael+Bendersky">Michael Bendersky</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongbo+Deng">Hongbo Deng</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Donald+Metzler">Donald Metzler</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Marc+Najork">Marc Najork</a> (1) </u>  <br>
+        1:  Google, 2:  Alibaba Inc. <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331250">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Multi-view Embedding-based Synonyms for Email Search">Google Scholar</a></div>
+        (73)
+        <br>
+        <b>概要:　</b> 同義語拡張は、検索クエリに関連する単語を追加する技術であり、より関連する文書を検索することでリコールを向上させることができます。ウェブ検索における同義語拡張に関する先行研究は多数存在しますが、電子メール検索への応用を扱った研究は非常に少ないです。電子メールのようなプライベートなコーパスにおける同義語拡張には、いくつかの独特な研究課題があります。第一に、電子メールはユーザー間で共有されないため、ウェブ検索で標準的に利用されるクエリ-文書の二部グラフを直接適用することができません。第二に、ユーザーの検索クエリは個人的な性質を持ち、ユーザー全体で一般化することが困難です。第三に、同義語を抽出する基盤となるコーパスのサイズは、ウェブコーパスの規模に比べて相対的に小さい（つまり、ユーザーのプライベートな電子メールボックス）です。したがって、本研究では、電子メール検索における同義語拡張の課題に特化した解決策を提案します。我々はこれをマルチビュー学習問題として定式化し、複数の情報源から最適な同義語候補を取得するための新しい埋め込みベースのモデルを提案します。提案手法の有効性を示すために、明示的な人間の評価と、世界最大級の電子メール検索エンジンであるGmail検索サービスを用いたライブ実験の両方を使用してモデルを評価しました。
+        </label>
+        <input type="checkbox" id="Panel73" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Synonym expansion is a technique that adds related words to search queries, which may lead to more relevant documents being retrieved, thus improving recall. There is extensive prior work on synonym expansion for web search, however very few studies have tackled its application for email search. Synonym expansion for private corpora like emails poses several unique research challenges. First, the emails are not shared across users, which precludes us from directly employing query-document bipartite graphs, which are standard in web search synonym expansion. Second, user search queries are of personal nature, and may not be generalizable across users. Third, the size of the underlying corpora from which the synonyms may be mined is relatively small (i.e., user's private email inbox) compared to the size of the web corpus. Therefore, in this paper, we propose a solution tailored to the challenges of synonym expansion for email search. We formulate it as a multi-view learning problem, and propose a novel embedding-based model that joins information from multiple sources to obtain the optimal synonym candidates. To demonstrate the effectiveness of the proposed technique, we evaluate our model using both explicit human ratings as well as a live experiment using the Gmail Search service, one of the world's largest email search engines.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel74">
+        <strong> Context-Aware Intent Identification in Email Conversations </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+Wang">Wei Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Saghar+Hosseini">Saghar Hosseini</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ahmed+Hassan+Awadallah">Ahmed Hassan Awadallah</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Paul+N.+Bennett">Paul N. Bennett</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chris+Quirk">Chris Quirk</a> (1) </u>  <br>
+        1:  Microsoft <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331260">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Context-Aware Intent Identification in Email Conversations">Google Scholar</a></div>
+        (74)
+        <br>
+        <b>概要:　</b> 電子メールは依然として最も重要なオンラインコミュニケーション手段の一つである。人々は、タスクの管理、情報の交換などのために、多くの時間を費やして電子メールを送信、読解、検索、返信している。本論文では、職場の電子メールにおける意図の特定を研究する。大規模な公開メールデータセットを使用して、企業メールにおける意図を特性化し、メール会話における意図特定の改善方法を提案する。これまでの研究は、メールメッセージを広範なトピックカテゴリーに分類するか、アクションアイテムを含む文や特定の発話行為に従う文の検出に焦点を当てていた。今回の研究では、文レベルの意図特定に焦点を当て、完全なメッセージ本文や他のメタデータなどのより多くのコンテキストを取り入れることで、意図特定モデルの性能を向上させる方法を調査する。コンテキストを活用するための複数のモデルを、クラシカルな機械学習手法および深層学習手法の両方で実験する。文とコンテキストの相互作用をモデル化することで、性能が大幅に向上することを示す。
+        </label>
+        <input type="checkbox" id="Panel74" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Email continues to be one of the most important means of online communication. People spend a significant amount of time sending, reading, searching and responding to email in order to manage tasks, exchange information, etc. In this paper, we study intent identification in workplace email. We use a large scale publicly available email dataset to characterize intents in enterprise email and propose methods for improving intent identification in email conversations. Previous work focused on classifying email messages into broad topical categories or detecting sentences that contain action items or follow certain speech acts. In this work, we focus on sentence-level intent identification and study how incorporating more context (such as the full message body and other metadata) could improve the performance of the intent identification models. We experiment with several models for leveraging context including both classical machine learning and deep learning approaches. We show that modeling the interaction between sentence and context can significantly improve the performance.
+        </div> </ul> <br>
+
+
+        Session details: Session 7A: Relevance and Evaluation 1
+
+        <label for="Panel76">
+        <strong> Which Diversity Evaluation Measures Are "Good"? </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tetsuya+Sakai">Tetsuya Sakai</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhaohao+Zeng">Zhaohao Zeng</a> (1) </u>  <br>
+        1:  Waseda University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331215">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Which Diversity Evaluation Measures Are "Good"?">Google Scholar</a></div>
+        (76)
+        <br>
+        <b>概要:　</b> 本研究では、9つのアドホックIR評価指標と21の多様化IR評価指標を含む計30の評価指標（またはそのインスタンス）を、特定のSERP（検索エンジン結果ページ）に対する評価がユーザーの評価とどれだけ一致するかという視点から評価しました。ゴールド基準の評価は、15名のアセッサーを雇用し、1,127組のSERPペアを独立して評価してもらうことで構築されました。評価は「どちらのSERPがより関連的か？」という関連質問に基づくものと、「どちらのSERPがより多くのユーザーを満足させる可能性が高いか？」という多様性質問に基づくものの2セットが収集されました。私たちの知る限りでは、このようにして多様性に関する評価を収集し、多様性評価指標を成功裏に評価した研究は初めてです。<br><br>主要な結果としては、(a) nDCGのような一般的なアドホックIR評価指標はゴールド基準の関連性評価とよく一致しており、(b) ♯-measuresは多様性のゴールド基準評価とよく一致する一方で、意図認識型の評価指標は比較的パフォーマンスが低いことが示されました。さらに、既存の評価指標の分析から新しいアドホック指標であるiRBU（意図別Rank-Biased Utility）とEBR（期待混合比率）を定義し、iRBUのインスタンスがゴールド基準の関連性評価と比較してnDCGと同じくらいのパフォーマンスを発揮することを示しました。一方、元のRBU（最近提案された多様性評価指標）は、多様性のゴールド基準評価と比較すると♯-measuresには劣ることがわかりました。
+        </label>
+        <input type="checkbox" id="Panel76" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This study evaluates 30 IR evaluation measures or their instances, of which nine are for adhoc IR and 21 are for diversified IR, primarily from the viewpoint of whether their preferences of one SERP (search engine result page) over another actually align with users' preferences. The gold preferences were contructed by hiring 15 assessors, who independently examined 1,127 SERP pairs and made preference assessments. Two sets of preference assessments were obtained: one based on a relevance question "Which SERP is more relevant?'' and the other based on a diversity question "Which SERP is likely to satisfy a higher number of users?'' To our knowledge, our study is the first to have collected diversity preference assessments in this way and evaluated diversity measures successfully. Our main results are that (a) Popular adhoc IR measures such as nDCG actually align quite well with the gold relevance preferences; and that (b) While the ♯-measures align well with the gold diversity preferences, intent-aware measures perform relatively poorly. Moreover, as by-products of our analysis of existing evaluation measures, we define new adhoc measures called iRBU (intentwise Rank-Biased Utility) and EBR (Expected Blended Ratio); we demonstrate that an instance of iRBU performs as well as nDCG when compared to the gold relevance preferences. On the other hand, the original RBU, a recently-proposed diversity measure, underperforms the best ♯-measures when compared to the gold diversity preferences.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel77">
+        <strong> Investigating Passage-level Relevance and Its Role in Document-level Relevance Judgment </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhijing+Wu">Zhijing Wu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiaxin+Mao">Jiaxin Mao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yiqun+Liu">Yiqun Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min+Zhang">Min Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shaoping+Ma">Shaoping Ma</a> (1) </u>  <br>
+        1:  Tsinghua University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331233">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Investigating Passage-level Relevance and Its Role in Document-level Relevance Judgment">Google Scholar</a></div>
+        (77)
+        <br>
+        <b>概要:　</b> 関連性判断プロセスの理解は、検索モデルの設計に対して着想を与える。従来の検索モデルは通常、ドキュメントレベルの信号に基づいて関連性を推定するが、最近の研究では、さらに検索性能を向上させるために、より細かい粒度のパッセージレベルの関連情報を考慮している。しかし、パッセージレベルの関連信号がどのように全体のドキュメントの関連性判断を決定または影響するかについての詳細な分析は不足している。本研究では、ドキュメントレベルおよびパッセージレベルの関連ラベルを持つアドホック検索データセットを構築し、パッセージレベルの関連性がドキュメントレベルの関連性判断に果たす役割を調査した。詳細な分析により以下の点が明らかになった: 1) ドキュメントレベルの関連性と無関連から高い関連性までのパッセージの割合には強い相関がある; 2) パッセージの位置、長さ、クエリ類似度がドキュメントレベルの関連性の決定に異なる役割を果たす; 3) ドキュメント内の連続したパッセージレベルの関連性がドキュメントレベルの関連性の潜在的な指標となる可能性がある。パッセージレベルとドキュメントレベルの関連性の関係に基づき、パッセージレベルの関連信号を利用することで既存のドキュメントランク付けモデルの性能を向上させることができることを示した。本研究は、ユーザーがドキュメントの関連性をどのように捉えるかをよりよく理解し、細かい粒度のパッセージレベルの関連信号を活用する新しいランク付けモデルの設計に着想を与える。
+        </label>
+        <input type="checkbox" id="Panel77" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The understanding of the process of relevance judgment helps to inspire the design of retrieval models. Traditional retrieval models usually estimate relevance based on document-level signals. Recent works consider a more fine-grain, passage-level relevance information, which can further enhance retrieval performance. However, it lacks a detailed analysis of how passage-level relevance signals determine or influence the relevance judgment of the whole document. To investigate the role of passage-level relevance in the document-level relevance judgment, we construct an ad-hoc retrieval dataset with both passage-level and document-level relevance labels. A thorough analysis reveals that: 1) there is a strong correlation between the document-level relevance and the fractions of irrelevant passages to highly relevant passages; 2) the position, length and query similarity of passages play different roles in the determination of document-level relevance; 3) The sequential passage-level relevance within a document is a potential indicator for the document-level relevance. Based on the relationship between passage-level and document-level relevance, we also show that utilizing passage-level relevance signals can improve existing document ranking models. This study helps us better understand how users perceive relevance for a document and inspire the designing of novel ranking models leveraging fine-grain, passage-level relevance signals.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel78">
+        <strong> Jointly Modeling Relevance and Sensitivity for Search Among Sensitive Content </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mahmoud+F.+Sayed">Mahmoud F. Sayed</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Douglas+W.+Oard">Douglas W. Oard</a> (1) </u>  <br>
+        1:  University of Maryland <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331256">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Jointly Modeling Relevance and Sensitivity for Search Among Sensitive Content">Google Scholar</a></div>
+        (78)
+        <br>
+        <b>概要:　</b> 現在の検索エンジンは、我々が求めるものを見つけるために設計されています。しかし、機密性の高い内容を含む未処理のアーカイブコレクションは、保護すべき内容があるため、検索可能にすることができません。従来は、まず機密性審査プロセスを通じて内容を確認する方法が取られていましたが、内容の量が増加するにつれて、この作業はより困難で時間がかかるようになります。これらのコストと遅延を軽減するために、検索技術は機密性の高い内容を保護しつつ、関連する内容へのアクセスを提供できるべきです。本稿では、ランキング学習技術を利用したアプローチを提案します。我々は、ランキング学習を用いて、関連性のある内容を見つける価値と、機密性のある内容を保護する必要性とのバランスを取る損失関数を最適化します。実験では、LETORベンチマークデータセットであるOHSUMEDを使用し、機密文書を表すMeSHラベルのサブセットを用いました。結果は、提案したアプローチがいくつかのシンプルなベースラインと比較して有効であることを示しています。
+        </label>
+        <input type="checkbox" id="Panel78" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Current search engines are designed to find what we want. But unprocessed archival collections can't be made available for search if they contain sensitive content that needs to be protected. Traditionally, content if first examined through a sensitivity review process, which becomes more difficult and time-consuming as content volumes increase. To mitigate these costs and delays, search technology should be capable of providing access to relevant content while protecting sensitive content. This paper proposes an approach that leverages learning to rank techniques. We use learning to rank to optimize a loss function that balances the value of finding relevant content with the imperative to protect sensitive content. In the experiments, a LETOR benchmark dataset, OHSUMED, is used with a subset of the MeSH labels representing the sensitive documents. Results show the efficacy of the proposed approach in comparison with some simpler baselines.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel79">
+        <strong> Revisiting Online Personal Search Metrics with the User in Mind </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Azin+Ashkan">Azin Ashkan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Donald+Metzler">Donald Metzler</a> (1) </u>  <br>
+        1:  Google Inc. <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331266">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Revisiting Online Personal Search Metrics with the User in Mind">Google Scholar</a></div>
+        (79)
+        <br>
+        <b>概要:　</b> 従来のオンライン品質評価指標は、クリック位置やクリック時間などの検索および閲覧シグナルに基づいています。このような指標は、通常、すべてのユーザーの行動を同じようにモデル化します。しかし、Web検索において個々のユーザーの行動をモデル化することは難しい場合があります。たとえば、ユーザーが特定のサービスにサインインしていない場合、そのユーザーの過去の行動が常に利用可能であるとは限りません。一方で、パーソナル検索では、ユーザーは自身の個人コーパス（例：メール、ファイルなど）に対してクエリを発行し、サービスにログインしています。これにより、個々のユーザーの検索習慣に基づいてオンライン品質評価指標を調整する機会が生まれます。この目的を達成するために、本論文ではユーザー中心の評価フレームワークに焦点を当て、個々のユーザーの検索および閲覧行動の変動性を考慮します。主なアイデアは、ユーザーの過去の行動と検索習慣に基づいて各インタラクションを調整することです。これを形式化するために、関心のある関連シグナルに基づくオンライン評価指標の特徴付けを提案し、そのシグナルが指標のゲイン計算にどのように寄与するかを説明します。本提案のフレームワークは、関連シグナルに対するユーザーの平均的な検索習慣に基づく「パーソナライズドメトリクス（pMetrics）」と呼ばれるオンライン評価指標のバリアントを導入します。GMail検索ユーザーの大規模な人口における広範なオンライン実験を通じて、pMetricsが感度、堅牢性、および安定性において、標準的な指標や異なる正規化係数を持つベースラインと比較して有効であることを示します。
+        </label>
+        <input type="checkbox" id="Panel79" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Traditional online quality metrics are based on search and browsing signals, such as position and time of the click. Such metrics typically model all users' behavior in exactly the same manner. Modeling individuals' behavior in Web search may be challenging as the user's historical behavior may not always be available (e.g., if the user is not signed into a given service). However, in personal search, individual users issue queries over their personal corpus (e.g. emails, files, etc.) while they are logged into the service. This brings an opportunity to calibrate online quality metrics with respect to an individual's search habits. With this goal in mind, the current paper focuses on a user-centric evaluation framework for personal search by taking into account variability of search and browsing behavior across individuals. The main idea is to calibrate each interaction of a user with respect to their historical behavior and search habits. To formalize this, a characterization of online metrics is proposed according to the relevance signal of interest and how the signal contributes to the computation of the gain in a metric. The proposed framework introduces a variant of online metrics called pMetrics (short for personalized metrics) that are based on the average search habits of users for the relevance signal of interest. Through extensive online experiments on a large population of GMail search users, we show that pMetrics are effective in terms of their sensitivity, robustness, and stability compared to their standard variants as well as baselines with different normalization factors.
+        </div> </ul> <br>
+
+
+        Session details: Session 7B: Multilingual and Cross-modal Retrieval
+
+        <label for="Panel81">
+        <strong> Scalable Deep Multimodal Learning for Cross-Modal Retrieval </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Peng+Hu">Peng Hu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Liangli+Zhen">Liangli Zhen</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dezhong+Peng">Dezhong Peng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pei+Liu">Pei Liu</a> (1) </u>  <br>
+        1:  Sichuan University, 2:  Agency for Science <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331213">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Scalable Deep Multimodal Learning for Cross-Modal Retrieval">Google Scholar</a></div>
+        (81)
+        <br>
+        <b>概要:　</b> クロスモーダル検索は、ある種類のデータをクエリとして、別の種類の関連データを検索する手法です。従来のクロスモーダル検索手法の多くは、すべてのモダリティデータがトレーニング全体で関与する共通サブスペースを共同で学習することを目的として提案されてきました。これらの手法では、異なるモダリティ固有の変換の最適なパラメータが相互に依存しており、新しいモダリティのサンプルを扱う際にはモデル全体を再訓練する必要があります。本論文では、スケーラブルディープマルチモーダルラーニング (SDML) と呼ばれる新しいクロスモーダル検索手法を提案します。SDMLは、クラス間の変動を最大化しつつ、クラス内の変動を最小化する共通サブスペースを事前に定義することを提案します。次に、m個のモダリティに対してm個のモダリティ固有ネットワーク （各モダリティに1つのネットワーク）をトレーニングし、マルチモーダルデータを定義された共通サブスペースに変換してマルチモーダル学習を実現します。多くの既存手法とは異なり、本手法は異なるモダリティ固有ネットワークを独立してトレーニングできるため、モダリティの数に応じてスケーラブルです。本手法が任意の数のモダリティデータを独立して事前定義された共通サブスペースに投影する最初の研究の一つである可能性があります。4つの広く使用されているベンチマークデータセットでの包括的な実験結果により、本手法がマルチモーダル学習において効果的かつ効率的であり、クロスモーダル検索において最先端の手法を上回る性能を持つことが示されています。
+        </label>
+        <input type="checkbox" id="Panel81" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Cross-modal retrieval takes one type of data as the query to retrieve relevant data of another type. Most of existing cross-modal retrieval approaches were proposed to learn a common subspace in a joint manner, where the data from all modalities have to be involved during the whole training process. For these approaches, the optimal parameters of different modality-specific transformations are dependent on each other and the whole model has to be retrained when handling samples from new modalities. In this paper, we present a novel cross-modal retrieval method, called Scalable Deep Multimodal Learning (SDML). It proposes to predefine a common subspace, in which the between-class variation is maximized while the within-class variation is minimized. Then, it trains m modality-specific networks for m modalities (one network for each modality) to transform the multimodal data into the predefined common subspace to achieve multimodal learning. Unlike many of the existing methods, our method can train different modality-specific networks independently and thus be scalable to the number of modalities. To the best of our knowledge, the proposed SDML could be one of the first works to independently project data of an unfixed number of modalities into a predefined common subspace. Comprehensive experimental results on four widely-used benchmark datasets demonstrate that the proposed method is effective and efficient in multimodal learning and outperforms the state-of-the-art methods in cross-modal retrieval.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel82">
+        <strong> Neural-Network Lexical Translation for Cross-lingual IR from Text and Speech </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rabih+Zbib">Rabih Zbib</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lingjun+Zhao">Lingjun Zhao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Damianos+Karakos">Damianos Karakos</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=William+Hartmann">William Hartmann</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jay+DeYoung">Jay DeYoung</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhongqiang+Huang">Zhongqiang Huang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhuolin+Jiang">Zhuolin Jiang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Noah+Rivkin">Noah Rivkin</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Le+Zhang">Le Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Richard+Schwartz">Richard Schwartz</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=John+Makhoul">John Makhoul</a> (1) </u>  <br>
+        1:  Raytheon BBN Technologies, 2:  Northeastern University, 3:  Alibaba Technologies, 4:  Franklin W. Olin College of Engineering <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331222">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Neural-Network Lexical Translation for Cross-lingual IR from Text and Speech">Google Scholar</a></div>
+        (82)
+        <br>
+        <b>概要:　</b> 本研究では、クロスリンガル情報検索（CLIR）のための単語確率を推定するニューラルネットワークモデルを提案します。このモデルは自動単語アライメントのみよりも優れた単語確率を推定し、未見のソース-ターゲット単語ペアにも一般化します。さらに、ソース単語の文脈を取り入れ、入力ソース単語の文字列をエンコードして語彙外の単語をすることで、語彙ニューラルモデル（およびCLIR）の性能を向上させます。通常、ニューラルネットワークモデルは効果的であるためには、最終タスクに直接ラベル付けされた大量のデータでの学習が必要です（この場合、クエリとの関連性）。これに対し、我々のアプローチはモデルをトレーニングするために並列データのみを必要とし、CLIR関連スコアを計算するために教師なしモデルを使用します。我々は限られたトレーニングデータリソース（スワヒリ語、タガログ語、ソマリ語）と短い英語クエリを用いて、テキストおよび音声ドキュメントの検索結果を報告します。各言語について約200万語の並列トレーニングデータのみで学習したにもかかわらず、本タスクには非常に効果的なニューラルネットワークモデルを得ることができました。さらに、（i）ソースドキュメント内の各クエリ語のの出現確率を使用する修正関連モデル、および（ii）自動音声認識（ASR）システムの出力における複数の転写代替案をエンコードする混合ネットワーク（1-best出力の代わりに）を使用することで、さらなる改善を得ました。基礎確率モデルに対してスワヒリ語で最大24％、タガログ語で50％、ソマリ語で39％のMAP相対向上を達成し、機械出力からのモノリンガル検索に対してより大きな改善を達成しました。
+        </label>
+        <input type="checkbox" id="Panel82" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We propose a neural network model to estimate word translation probabilities for Cross-Lingual Information Retrieval (CLIR). The model estimates better probabilities for word translations than automatic word alignments alone, and generalizes to unseen source-target word pairs. We further improve the lexical neural translation model (and subsequently CLIR), by incorporating source word context, and by encoding the character sequences of input source words to generate translations of out-of-vocabulary words. To be effective, neural network models typically need training on large amounts of data labeled directly on the final task, in this case relevance to queries. In contrast, our approach only requires parallel data to train the translation model, and uses an unsupervised model to compute CLIR relevance scores. We report results on the retrieval of text and speech documents from three morphologically complex languages with limited training data resources (Swahili, Tagalog, and Somali) and short English queries. Despite training on only about 2M words of parallel training data for each language, we obtain neural network translation models that are very effective for this task. We also obtain further improvements using (i) a modified relevance model, which uses the probability of occurrence of a translation of each query term in the source document, and (ii) confusion networks (instead of 1-best output) that encode multiple transcription alternatives in the output of an Automatic Speech Recognition (ASR) system. We achieve overall MAP relative improvements of up to 24% on Swahili, 50% on Tagalog, and 39% on Somali over the baseline probabilistic model, and larger improvements over monolingual retrieval from machine translation output.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel83">
+        <strong> Cross-Modal Interaction Networks for Query-Based Moment Retrieval in Videos </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhu+Zhang">Zhu Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhijie+Lin">Zhijie Lin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhou+Zhao">Zhou Zhao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhenxin+Xiao">Zhenxin Xiao</a> (1) </u>  <br>
+        1:  Zhejiang University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331235">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Cross-Modal Interaction Networks for Query-Based Moment Retrieval in Videos">Google Scholar</a></div>
+        (83)
+        <br>
+        <b>概要:　</b> クエリベースのモーメント検索は、指定された自然言語クエリに基づいて、トリミングされていないビデオの中で最も関連性の高いモーメントをローカライズすることを目的としています。既存の研究はしばしば、クエリ表現学習、ビデオコンテキストのモデリング、またはマルチモーダル融合など、この新興タスクの1つの側面にのみ焦点を当てており、さらなる性能向上のための包括的なシステムの開発に失敗しています。本論文では、この挑戦的なタスクに対して、複数の重要な要素を考慮する新しいクロスモーダル・インタラクション・ネットワーク（CMIN）を紹介します。その重要な要素とは、(1) 自然言語クエリの統語構造、(2) ビデオコンテキスト内の長距離の意味的依存関係、(3) 十分なクロスモーダルインタラクションです。具体的には、クエリの統語構造を活用して細粒度の表現学習を行うための統語GCNを考案し、ビデオコンテキストから長距離の意味的依存関係を捉えるためのマルチヘッド・セルフアテンションを提案し、次にビデオとクエリの内容の潜在的な関係を探るためにマルチステージのクロスモーダルインタラクションを採用します。広範囲な実験によって、提案手法の有効性が証明されています。
+        </label>
+        <input type="checkbox" id="Panel83" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Query-based moment retrieval aims to localize the most relevant moment in an untrimmed video according to the given natural language query. Existing works often only focus on one aspect of this emerging task, such as the query representation learning, video context modeling or multi-modal fusion, thus fail to develop a comprehensive system for further performance improvement. In this paper, we introduce a novel Cross-Modal Interaction Network (CMIN) to consider multiple crucial factors for this challenging task, including (1) the syntactic structure of natural language queries; (2) long-range semantic dependencies in video context and (3) the sufficient cross-modal interaction. Specifically, we devise a syntactic GCN to leverage the syntactic structure of queries for fine-grained representation learning, propose a multi-head self-attention to capture long-range semantic dependencies from video context, and next employ a multi-stage cross-modal interaction to explore the potential relations of video and query contents. The extensive experiments demonstrate the effectiveness of our proposed method.
+        </div> </ul> <br>
+
+
+        Session details: Session 7C: Recommendations 2
+
+        <label for="Panel85">
+        <strong> Bayesian Personalized Feature Interaction Selection for Factorization Machines </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yifan+Chen">Yifan Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pengjie+Ren">Pengjie Ren</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yang+Wang">Yang Wang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maarten+de+Rijke">Maarten de Rijke</a> (1) </u>  <br>
+        1:  University of Amsterdam, 2:  Hefei University of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331196">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Bayesian Personalized Feature Interaction Selection for Factorization Machines">Google Scholar</a></div>
+        (85)
+        <br>
+        <b>概要:　</b> ファクトライゼーションマシン（FMs）は特徴ベースの協調フィルタリングタスクに広く利用されており、特徴間の相互作用を効果的にモデル化する能力で知られています。しかし、既存のFMベースの手法は全ての特徴相互作用を考慮に入れるため、必ずしも合理的ではありません。すべての特徴相互作用が有用というわけではないからです。不要な特徴相互作用を取り入れると、ノイズが増え、推奨性能が低下する可能性があります。最近では、無駄な特徴相互作用を排除する効果的な方法として、特徴相互作用選択（FIS）を行う手法が注目されています。しかし、これらの手法はすべてのユーザーが同じ特徴相互作用を共有すると仮定しており、特に協調フィルタリングのタスクにおいては必ずしも正確ではありません。本研究では、この問題に対処し、パーソナライズされた特徴相互作用選択（P-FIS）を研究します。我々は、ベイズ型個別特徴相互作用選択（BP-FIS）メカニズムを提案し、ベイズ変数選択（BVS）理論の下でこれを実現します。具体的には、まずP-FISのために遺伝性スパイク＆スラブ事前分布を持つ相互作用選択変数を導入します。次に、ベイズ生成モデルを構築し、効率的な確率的勾配変分ベイズ（SGVB）法でパラメータを学習するためのエビデンス下限（ELBO）を導出します。最後に、BP-FISは異なるFMのバリアントとシームレスに統合できるため、本研究では提案したBP-FISの下で2つのFMバリアントを実装しました。3つのベンチマークデータセットを用いて実験を行い、実証結果は、個別の相互作用を選択し推奨性能を改善する上でのBP-FISの有効性を示しています。
+        </label>
+        <input type="checkbox" id="Panel85" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Factorization Machines (FMs) are widely used for feature-based collaborative filtering tasks, as they are very effective at modeling feature interactions. Existing FM-based methods usually take all feature interactions into account, which is unreasonable because not all feature interactions are helpful: incorporating useless feature interactions will introduce noise and degrade the recommendation performance. Recently, methods that perform Feature Interaction Selection (FIS) have attracted attention because of their effectiveness at filtering out useless feature interactions. However, they assume that all users share the same feature interactions, which is not necessarily true, especially for collaborative filtering tasks. In this work, we address this issue and study Personalized Feature Interaction Selection (P-FIS) by proposing a Bayesian Personalized Feature Interaction Selection (BP-FIS) mechanism under the Bayesian Variable Selection (BVS) theory. Specifically, we first introduce interaction selection variables with hereditary spike and slab priors for P-FIS. Then, we form a Bayesian generative model and derive the Evidence Lower Bound (ELBO), which can be optimized by an efficient Stochastic Gradient Variational Bayes (SGVB) method to learn the parameters. Finally, because BP-FIS can be seamlessly integrated with different variants of FMs, we implement two FM variants under the proposed BP-FIS. We carry out experiments on three benchmark datasets. The empirical results demonstrate the effectiveness of BP-FIS for selecting personalized interactions and improving the recommendation performance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel86">
+        <strong> CTRec: A Long-Short Demands Evolution Model for Continuous-Time Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ting+Bai">Ting Bai</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lixin+Zou">Lixin Zou</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wayne+Xin+Zhao">Wayne Xin Zhao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pan+Du">Pan Du</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weidong+Liu">Weidong Liu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jian-Yun+Nie">Jian-Yun Nie</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ji-Rong+Wen">Ji-Rong Wen</a> (1) </u>  <br>
+        1:  Renmin University of China & Beijing Key Laboratory of Big Data Management and Analysis Methods, 2:  Tsinghua University, 3:  University of Montreal <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331199">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=CTRec: A Long-Short Demands Evolution Model for Continuous-Time Recommendation">Google Scholar</a></div>
+        (86)
+        <br>
+        <b>概要:　</b> Eコマースにおいて、ユーザーの需要は彼らのプロフィールや嗜好だけでなく、最近の購入によって生じる新たな需要や、しばらく前の購入に依存する周期的な需要によっても条件づけられます。これらをそれぞれ短期需要および長期需要と呼びます。本論文では、時間の経過とともに変化するユーザーの需要を捉えるための新しい自己注意型連続時間推薦モデル（CTRec）を提案します。この時間に敏感な需要をモデル化するために、ディスクリートな購入記録から学べる需要対応ホークス過程（Demand-aware Hawkes Process, DHP）フレームワークをCTRecに設計しました。具体的には、短期需要を捉えるために畳み込みニューラルネットワークを利用し、長期需要の周期的な購入サイクルを捉えるために自己注意機構を使用します。すべての需要タイプはDHPに融合され、最終的な連続時間推薦を行います。次アイテム推薦および次セッション/バスケット推薦を含む一般的な順序推薦問題に対してCTRecの有効性を実証するために、4つの実世界の商用データセットを用いて広範な実験を実施しました。特に、CTRecが製品の購入サイクルを学習し、ユーザーに対して製品の購入時間を推定する能力を有していることを観察しました。
+        </label>
+        <input type="checkbox" id="Panel86" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In e-commerce, users' demands are not only conditioned by their profile and preferences, but also by their recent purchases that may generate new demands, as well as periodical demands that depend on purchases made some time ago. We call them respectively short-term demands and long-term demands. In this paper, we propose a novel self-attentive Continuous-Time Recommendation model (CTRec) for capturing the evolving demands of users over time. For modeling such time-sensitive demands, a Demand-aware Hawkes Process (DHP) framework is designed in CTRec to learn from the discrete purchase records of users. More specifically, a convolutional neural network is utilized to capture the short-term demands; and a self-attention mechanism is employed to capture the periodical purchase cycles of long-term demands. All types of demands are fused in DHP to make final continuous-time recommendations. We conduct extensive experiments on four real-world commercial datasets to demonstrate that CTRec is effective for general sequential recommendation problems, including next-item and next-session/basket recommendations. We observe in particular that CTRec is capable of learning the purchase cycles of products and estimating the purchase time of a product given a user.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel87">
+        <strong> π-Net: A Parallel Information-sharing Network for Shared-account Cross-domain Sequential Recommendations </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Muyang+Ma">Muyang Ma</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pengjie+Ren">Pengjie Ren</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yujie+Lin">Yujie Lin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhumin+Chen">Zhumin Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Ma">Jun Ma</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maarten+de+Rijke">Maarten de Rijke</a> (2) </u>  <br>
+        1:  Shandong University, 2:  University of Amsterdam <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331200">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=π-Net: A Parallel Information-sharing Network for Shared-account Cross-domain Sequential Recommendations">Google Scholar</a></div>
+        (87)
+        <br>
+        <b>概要:　</b> シーケンシャルレコメンデーション（Sequential Recommendation, SR）は、記録されたユーザ行動のシーケンスに基づいて次のアイテムを推薦するタスクです。本研究では、特に困難な状況である複数の個別ユーザが1つのアカウントを共有する環境（共有アカウント）およびユーザ行動が複数のドメインで利用可能な環境（クロスドメイン）でのSRを検討します。これらの特性は、従来のSRタスクに新たな課題をもたらします。一方で、同じアカウント下にある異なるユーザ行動を識別し、適切なタイミングで正しいユーザに正しいアイテムを推薦する必要があります。他方で、あるドメインの行動を識別し、それが他のドメインでの推薦を改善するのに役立つかもしれない情報を識別する必要があります。我々は、共有アカウント・クロスドメインシーケンシャルレコメンデーション（Shared-account Cross-domain Sequential Recommendation, SCSR）タスクを並行シーケンシャルレコメンデーション問題として定式化します。我々は、ユーザ行動が各タイムスタンプで同期的に共有される2つのドメインで同時に推薦を生成するために、Parallel Information-sharing Network (π-Net) を提案します。π-Netは、共有アカウントフィルターユニット（SFU）とクロスドメイン転送ユニット（CTU）の2つのコアユニットを含みます。SFUは共有アカウントによって引き起こされる課題に対処するために使用され、ユーザ固有の表現を学習し、ゲーティングメカニズムを用いて他のドメインに役立つかもしれない一部のユーザの情報をフィルタリングします。CTUはクロスドメイン環境による課題に対処するために使用され、各タイムスタンプでSFUからの情報を適応的に統合し、別のドメインに転送します。その後、π-Netは両方のドメインからの情報を統合することにより、2つのドメインそれぞれのアイテムに対する推薦スコアを見積もります。π-Netの有効性を評価するために、実世界のスマートTV視聴ログから新しいデータセットHVIDEOを構築しました。我々の知る限り、これは共有アカウントとクロスドメインの特性を持つ初のデータセットです。将来の研究を促進するためにHVIDEOを公開します。実験結果は、MRRおよびリコールの観点でπ-Netが最先端のベースラインを上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel87" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Sequential Recommendation (SR) is the task of recommending the next item based on a sequence of recorded user behaviors. We study SR in a particularly challenging context, in which multiple individual users share a single account (shared-account) and in which user behaviors are available in multiple domains (cross-domain). These characteristics bring new challenges on top of those of the traditional SR task. On the one hand, we need to identify different user behaviors under the same account in order to recommend the right item to the right user at the right time. On the other hand, we need to discriminate the behaviors from one domain that might be helpful to improve recommendations in the other domains. We formulate the Shared-account Cross-domain Sequential Recommendation (SCSR) task as a parallel sequential recommendation problem. We propose a Parallel Information-sharing Network (π-Net) to simultaneously generate recommendations for two domains where user behaviors on two domains are synchronously shared at each timestamp. π-Net contains two core units: a shared account filter unit (SFU) and a cross-domain transfer unit (CTU). The SFU is used to address the challenge raised by shared accounts; it learns user-specific representations, and uses a gating mechanism to filter out information of some users that might be useful for another domain. The CTU is used to address the challenge raised by the cross-domain setting; it adaptively combines the information from the SFU at each timestamp and then transfers it to another domain. After that, π-Net estimates recommendation scores for each item in two domains by integrating information from both domains. To assess the effectiveness of π-Net, we construct a new dataset HVIDEO from real-world smart TV watching logs. To the best of our knowledge, this is the first dataset with both shared-account and cross-domain characteristics. We release HVIDEO to facilitate future research. Our experimental results demonstrate that π-Net outperforms state-of-the-art baselines in terms of MRR and Recall.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel88">
+        <strong> Warm Up Cold-start Advertisements: Improving CTR Predictions via Learning to Learn ID Embeddings </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Feiyang+Pan">Feiyang Pan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shuokai+Li">Shuokai Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiang+Ao">Xiang Ao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pingzhong+Tang">Pingzhong Tang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qing+He">Qing He</a> (1) </u>  <br>
+        1:  Institute of Computing Technology, 2:  IIIS <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331268">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Warm Up Cold-start Advertisements: Improving CTR Predictions via Learning to Learn ID Embeddings">Google Scholar</a></div>
+        (88)
+        <br>
+        <b>概要:　</b> クリック率（CTR）予測は、コンピューショナル広告における最も重要な課題の一つである。最近では、広告IDの低次元表現を生成する埋め込み技術が、CTR予測の精度を劇的に向上させている。しかし、このような学習技術は大量のデータを必要とし、ログデータがほとんどない新規広告にはうまく機能しない。これはコールドスタート問題として知られている。本論文では、新しい広告が候補プールに追加された際のコールドスタート段階とウォームアップ段階の両方でCTR予測を改善することを目指す。私たちは、新しい広告IDに対して望ましい初期埋め込みを生成するためのメタ学習に基づくアプローチであるMeta-Embeddingを提案する。提案手法では、勾配に基づくメタ学習を通じて、以前に学習した広告を利用しながら新しい広告IDの埋め込み生成器を訓練する。言い換えれば、我々の手法はより良い埋め込みを学習する方法を学習する。新しい広告が来た場合、訓練された生成器はその内容と属性を入力することによってそのIDの埋め込みを初期化する。次に、生成された埋め込みにより、いくつかのラベル付きデータが利用可能なウォームアップ段階におけるモデルフィッティングが既存の初期化方法と比較して加速される。三つの実世界のデータセットにおける実験結果は、Meta-Embeddingが六つの既存のCTR予測モデル、例えば、Factorization Machinesのような軽量モデルからPNNやDeepFMのような複雑なディープモデルに至るまで、コールドスタートとウォームアップの性能を大幅に改善できることを示している。以上のことは、コンバージョン率（CVR）予測にも適用される。
+        </label>
+        <input type="checkbox" id="Panel88" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Click-through rate (CTR) prediction has been one of the most central problems in computational advertising. Lately, embedding techniques that produce low-dimensional representations of ad IDs drastically improve CTR prediction accuracies. However, such learning techniques are data demanding and work poorly on new ads with little logging data, which is known as the cold-start problem. In this paper, we aim to improve CTR predictions during both the cold-start phase and the warm-up phase when a new ad is added to the candidate pool. We propose Meta-Embedding, a meta-learning-based approach that learns to generate desirable initial embeddings for new ad IDs. The proposed method trains an embedding generator for new ad IDs by making use of previously learned ads through gradient-based meta-learning. In other words, our method learns how to learn better embeddings. When a new ad comes, the trained generator initializes the embedding of its ID by feeding its contents and attributes. Next, the generated embedding can speed up the model fitting during the warm-up phase when a few labeled examples are available, compared to the existing initialization methods. Experimental results on three real-world datasets showed that Meta-Embedding can significantly improve both the cold-start and warm-up performances for six existing CTR prediction models, ranging from lightweight models such as Factorization Machines to complicated deep models such as PNN and DeepFM. All of the above apply to conversion rate (CVR) predictions as well.
+        </div> </ul> <br>
+
+
+        Session details: Session 8A: User Behavior and Experience
+
+        <label for="Panel90">
+        <strong> Effects of User Negative Experience in Mobile News Streaming </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongyu+Lu">Hongyu Lu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min+Zhang">Min Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weizhi+Ma">Weizhi Ma</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ce+Wang">Ce Wang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Feng+xia">Feng xia</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yiqun+Liu">Yiqun Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Leyu+Lin">Leyu Lin</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shaoping+Ma">Shaoping Ma</a> (1) </u>  <br>
+        1:  Tsinghua University, 2:  Tencent <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331247">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Effects of User Negative Experience in Mobile News Streaming">Google Scholar</a></div>
+        (90)
+        <br>
+        <b>概要:　</b> オンラインニュースのストリーミングサービスは、携帯ユーザーにとって主要な情報取得手段の一つとなっています。しかし、多くの場合、ユーザーが記事をクリックしても期待に応えられず、むしろ不快に感じることがあります。直感的には、これらのネガティブな体験がユーザーの行動や満足度に影響を及ぼすと考えられますが、その影響は十分に理解されていません。本研究では、商業ニュースストリーミングアプリから取得した実際のユーザーログデータを用いて、ユーザーのネガティブな体験に関する明示的なフィードバックを含む遡及的分析を行いました。複数のセッション内比較実験を通じて、現在のセッションでユーザーがネガティブな体験をした場合、コンテンツを読む時間が短くなり、活動性が低下し、早めに離脱することが分かりました。また、次のセッションにおけるユーザー行動の明らかな変化や再訪率の低下も観察され、ネガティブな体験のセッション間効果が存在することが示されました。ユーザーのネガティブな体験が一般的には暗黙的であるため、それらを自動的に識別する可能性と方法についても検討しました。結果は、セッション内およびセッション間の両方の行動変化を使用することで、識別能力が大幅に向上することを示しています。さらに、ユーザー行動への影響だけでなく、満足度への影響についても、実験室ユーザースタディを組み込むことで探求しました。結果は、ネガティブな体験がそのセッション内でユーザー満足度を低下させ、影響が次のセッションにも持続することを示しています。加えて、ユーザーのネガティブなフィードバックがオンラインメトリクスのメタ評価に役立つことを実証しました。我々の研究は、ユーザーのアイテムレベルのネガティブな体験の影響を包括的に分析し、ユーザー行動と満足度の理解に新たな視点を提供します。
+        </label>
+        <input type="checkbox" id="Panel90" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Online news streaming services have been one of the major information acquisition resources for mobile users. In many cases, users click an article but find it cannot satisfy or even annoy them. Intuitively, these negative experiences will affect users' behaviors and satisfaction, but such effects have not been well understood. In this work, a retrospective analysis is conducted using real users' log data, containing user's explicit feedback of negative experiences, from a commercial news streaming application. Through multiple intra-session comparison experiments, we find that in current session, users will spend less time reading the content, lose activeness and leave sooner after having negative experiences. Later return and significant changes of user behaviors in the next session are also observed, which demonstrates the existence of inter-session effects of negative experiences. Since users' negative experiences are generally implicit, we further investigate the possibility and the approach to automatically identify them. Results show that using changes of both users' intra-session and inter-session behaviors achieves significant improvement. Besides the effects on user behaviors, we also explore the effects on user satisfaction by incorporating a laboratory user study. Results show that negative experiences reduce user satisfaction in the current session, and the impact will last to the next session. Moreover, we demonstrate users' negative feedback helps on the meta-evaluation of online metrics. Our research has comprehensively analyzed the impacts of users' item-level negative experiences, and shed light on the understanding of user behaviors and satisfaction.
+        </div> </ul> <br>
+
+
+        Session details: Session 8B: Hashing
+
+        <label for="Panel92">
+        <strong> Online Multi-modal Hashing with Dynamic Query-adaption </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xu+Lu">Xu Lu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lei+Zhu">Lei Zhu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhiyong+Cheng">Zhiyong Cheng</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Liqiang+Nie">Liqiang Nie</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Huaxiang+Zhang">Huaxiang Zhang</a> (1) </u>  <br>
+        1:  Shandong Normal University, 2:  Qilu University of Technology, 3:  Shandong University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331217">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Online Multi-modal Hashing with Dynamic Query-adaption">Google Scholar</a></div>
+        (92)
+        <br>
+        <b>概要:　</b> マルチモーダルハッシングは、大規模なマルチメディア検索を支援するための効果的な手法であり、異種のマルチモーダル特徴をコンパクトかつ類似性を保持したバイナリコードにエンコードする能力があります。これまでに大きな進展が見られたものの、現存する手法には以下の問題が残っています: 1) すべての既存手法は、オンラインハッシング過程において固定されたモダリティ結合重みを単純に採用し、クエリハッシュコードを生成します。この戦略では、異なるクエリの変動を適応的に捉えることができません。2) それらは、不十分な意味論（教師なし手法の場合）や、高い計算コストおよびストレージコスト（ペアワイズセマンティックマトリックスに依存する教師あり手法の場合）がかかります。3) 緩和された最適化戦略やビット単位の離散最適化でハッシュコードを解決するため、重大な量子化損失が発生したり、相当な計算時間がかかります。これらの制約に対処するために、本論文では新しい方式で動的クエリアダプションを備えたオンラインマルチモーダルハッシング（OMH-DQ）手法を提案します。具体的には、自己重み付けフュージョン戦略を設計し、相補性を利用してマルチモーダル特徴情報をハッシュコードに適応的に保持します。ハッシュコードは、ペアワイズセマンティックラベルの監督下で学習され、難解な対称的類似性マトリックスの因子分解を避けながら、その識別能力を強化します。このような学習フレームワークの下で、バイナリハッシュコードは、効率的な操作で直接取得でき、量子化誤差を伴いません。従って、我々の手法はセマンティックラベルのメリットを享受し、同時に高い計算複雑性を回避できます。さらに、クエリの変動を正確に捉えるために、オンライン検索段階では、動的なクエリコンテンツに応じてクエリハッシュコードを適応的に学習できるパラメーターフリーのオンラインハッシングモジュールを設計しました。広範な実験により、提案手法の最先端の性能が様々な側面から実証されました。
+        </label>
+        <input type="checkbox" id="Panel92" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Multi-modal hashing is an effective technique to support large-scale multimedia retrieval, due to its capability of encoding heterogeneous multi-modal features into compact and similarity-preserving binary codes. Although great progress has been achieved so far, existing methods still suffer from several problems, including: 1) All existing methods simply adopt fixed modality combination weights in online hashing process to generate the query hash codes. This strategy cannot adaptively capture the variations of different queries. 2) They either suffer from insufficient semantics (for unsupervised methods) or require high computation and storage cost (for the supervised methods, which rely on pair-wise semantic matrix). 3) They solve the hash codes with relaxed optimization strategy or bit-by-bit discrete optimization, which results in significant quantization loss or consumes considerable computation time. To address the above limitations, in this paper, we propose an Online Multi-modal Hashing with Dynamic Query-adaption (OMH-DQ) method in a novel fashion. Specifically, a self-weighted fusion strategy is designed to adaptively preserve the multi-modal feature information into hash codes by exploiting their complementarity. The hash codes are learned with the supervision of pair-wise semantic labels to enhance their discriminative capability, while avoiding the challenging symmetric similarity matrix factorization. Under such learning framework, the binary hash codes can be directly obtained with efficient operations and without quantization errors. Accordingly, our method can benefit from the semantic labels, and simultaneously, avoid the high computation complexity. Moreover, to accurately capture the query variations, at the online retrieval stage, we design a parameter-free online hashing module which can adaptively learn the query hash codes according to the dynamic query contents. Extensive experiments demonstrate the state-of-the-art performance of the proposed approach from various aspects.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel93">
+        <strong> Supervised Hierarchical Cross-Modal Hashing </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Changchang+Sun">Changchang Sun</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xuemeng+Song">Xuemeng Song</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fuli+Feng">Fuli Feng</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wayne+Xin+Zhao">Wayne Xin Zhao</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hao+Zhang">Hao Zhang</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Liqiang+Nie">Liqiang Nie</a> (1) </u>  <br>
+        1:  Shandong University, 2:  National University of Singapore, 3:  Renmin University of China, 4:  Mercari <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331229">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Supervised Hierarchical Cross-Modal Hashing">Google Scholar</a></div>
+        (93)
+        <br>
+        <b>概要:　</b> 近年、マルチメディアデータの急速な増加に伴い、クロスモーダルハッシングが効率的なクロスメディア検索のために注目を集めています。典型的には、既存のクロスモーダルハッシング手法はインスタンスのラベルを独立に扱い、ラベル間の相関を見落としがちです。しかし、実際の多くのシナリオ、例えばオンラインファッション領域では、インスタンス（アイテム）は特定の階層によって相関するカテゴリのセットでラベル付けされます。本稿では、インスタンスの階層的ラベルを明示的に活用する、新しいエンドツーエンドの監督型クロスモーダルハッシング手法であるHiCHNetを提案します。特に、事前に確立されたラベル階層を用いて、インスタンスの各モダリティをレイヤーごとのハッシュ表現セットで包括的に特徴付けます。本質的に、ハッシュコードはラベル階層によってエンコードされたレイヤーごとのセマンティックな類似性を保持するだけでなく、階層的な識別能力も保持することを奨励します。ベンチマークデータセットが不足しているため、ファッション領域の既存データセットFashionVCを適応させるだけでなく、オンラインファッションプラットフォームSsenseから32の階層カテゴリでラベル付けされた15,696組の画像-テキストペアを含むデータセットを作成しました。二つの実世界データセットでの広範な実験により、我々のモデルが最先端手法に対する優越性を示しました。
+        </label>
+        <input type="checkbox" id="Panel93" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Recently, due to the unprecedented growth of multimedia data, cross-modal hashing has gained increasing attention for the efficient cross-media retrieval. Typically, existing methods on cross-modal hashing treat labels of one instance independently but overlook the correlations among labels. Indeed, in many real-world scenarios, like the online fashion domain, instances (items) are labeled with a set of categories correlated by certain hierarchy. In this paper, we propose a new end-to-end solution for supervised cross-modal hashing, named HiCHNet, which explicitly exploits the hierarchical labels of instances. In particular, by the pre-established label hierarchy, we comprehensively characterize each modality of the instance with a set of layer-wise hash representations. In essence, hash codes are encouraged to not only preserve the layer-wise semantic similarities encoded by the label hierarchy, but also retain the hierarchical discriminative capabilities. Due to the lack of benchmark datasets, apart from adapting the existing dataset FashionVC from fashion domain, we create a dataset from the online fashion platform Ssense consisting of 15,696 image-text pairs labeled by 32 hierarchical categories. Extensive experiments on two real-world datasets demonstrate the superiority of our model over the state-of-the-art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel94">
+        <strong> Unsupervised Neural Generative Semantic Hashing </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Casper+Hansen">Casper Hansen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Christian+Hansen">Christian Hansen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jakob+Grue+Simonsen">Jakob Grue Simonsen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Stephen+Alstrup">Stephen Alstrup</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Christina+Lioma">Christina Lioma</a> (1) </u>  <br>
+        1:  University of Copenhagen <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331255">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Unsupervised Neural Generative Semantic Hashing">Google Scholar</a></div>
+        (94)
+        <br>
+        <b>概要:　</b> 高速な類似検索は、大規模な情報検索において重要な要素であり、セマンティックハッシュは文書をバイナリハッシュコードで表現するための一般的な戦略となっています。この分野の最近の進展は、ニューラルネットワークベースのモデルを通じて達成されており、特に生成モデルが元の文書を再構成することを学習することで訓練されています。本論文では、新しい教師なし生成セマンティックハッシュ手法であるRanking based Semantic Hashing（RBSH）を提案します。この手法は、変分成分とランキング成分の両方を含みます。変分オートエンコーダと同様に、変分成分は生成されたハッシュコードに基づいて元の文書を再構成するよう訓練されますが、従来の研究と同じように文書を個別に扱います。ランキング成分はこの制約を克服し、ハッシュコード生成に文書間の類似性を取り込み、ヒンジ損失を通じて文書のランキングをモデル化します。ヒンジ損失を計算するためのラベル付きデータの必要性を回避するために、我々は弱ラベラーを使用し、この手法を完全に教師なしとしています。4つの公開データセットを用いた従来のベースラインおよび最新の最先端のセマンティックハッシュ手法に対する広範な実験評価により、RBSHが評価されたすべてのハッシュコード長において他のすべての手法を大きく上回ることを示しました。実際、RBSHのハッシュコードは、状態の最先端のハッシュコードと同等の性能を示しながらも、使用するビット数が2〜4倍少なくて済みます。
+        </label>
+        <input type="checkbox" id="Panel94" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Fast similarity search is a key component in large-scale information retrieval, where semantic hashing has become a popular strategy for representing documents as binary hash codes. Recent advances in this area have been obtained through neural network based models: generative models trained by learning to reconstruct the original documents. We present a novel unsupervised generative semantic hashing approach, Ranking based Semantic Hashing (RBSH) that consists of both a variational and a ranking based component. Similarly to variational autoencoders, the variational component is trained to reconstruct the original document conditioned on its generated hash code, and as in prior work, it only considers documents individually. The ranking component solves this limitation by incorporating inter-document similarity into the hash code generation, modelling document ranking through a hinge loss. To circumvent the need for labelled data to compute the hinge loss, we use a weak labeller and thus keep the approach fully unsupervised. Extensive experimental evaluation on four publicly available datasets against traditional baselines and recent state-of-the-art methods for semantic hashing shows that RBSH significantly outperforms all other methods across all evaluated hash code lengths. In fact, RBSH hash codes are able to perform similarly to state-of-the-art hash codes while using 2-4x fewer bits.
+        </div> </ul> <br>
+
+
+        Session details: Session 8C: Summarization and Information Extraction
+
+        <label for="Panel96">
+        <strong> Outline Generation: Understanding the Inherent Content Structure of Documents </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ruqing+Zhang">Ruqing Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiafeng+Guo">Jiafeng Guo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yixing+Fan">Yixing Fan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yanyan+Lan">Yanyan Lan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xueqi+Cheng">Xueqi Cheng</a> (1) </u>  <br>
+        1:  Institute of Computing Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331208">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Outline Generation: Understanding the Inherent Content Structure of Documents">Google Scholar</a></div>
+        (96)
+        <br>
+        <b>概要:　</b> 本論文では、複数段落にわたる文書の潜在的セクションを特定し、それに対応するセクション見出しを生成することを目的とするアウトライン生成（OG）タスクを紹介し、その課題に取り組みます。一般性を損なうことなく、OGタスクは新しい構造化タスクと見なすことができます。適切なアウトラインを生成するために、理想的なOGモデルは三つのレベルのコヒーレンスを捉える必要があります。すなわち、コンテキスト段落間のコヒーレンス、セクションとその見出し間のコヒーレンス、そしてコンテキスト見出し間のコヒーレンスです。最初のコヒーレンスはセクション特定の基盤であり、後の二つは一貫した見出し生成に重要です。本研究では、OGタスクを階層構造予測問題として定式化し、まずセクション境界のシーケンスを予測し、それに応じてセクション見出しのシーケンスを予測する方法を取ります。このタスクに対して、新しい階層構造神経生成モデル「HiStGen」を提案します。我々のモデルは次の方法で三つのレベルのコヒーレンスを捉えることを試みます。第一に、セクション特定のためにコンテキスト段落間のマルコフ段落依存メカニズムを導入します。第二に、セクションとその見出しの間の意味的コヒーレンスを確保するために、セクション認識注意メカニズムを採用します。最後に、セクション見出しの一貫性を向上させ重複を排除するために、コンテキスト見出し間のマルコフ見出し依存メカニズムとレビューメカニズムを活用します。また、OGタスクに関する研究のために、1.75百万以上の文書-アウトラインペアを含む新しい公開データセット「Wriptsize IKI OG」を構築しました。我々のベンチマークデータセットにおける実験結果は、我々のモデルがOGタスクにおいていくつかの最先端のシーケンシャル生成モデルを大幅に上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel96" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In this paper, we introduce and tackle the Outline Generation (OG) task, which aims to unveil the inherent content structure of a multi-paragraph document by identifying its potential sections and generating the corresponding section headings. Without loss of generality, the OG task can be viewed as a novel structured summarization task. To generate a sound outline, an ideal OG model should be able to capture three levels of coherence, namely the coherence between context paragraphs, that between a section and its heading, and that between context headings. The first one is the foundation for section identification, while the latter two are critical for consistent heading generation. In this work, we formulate the OG task as a hierarchical structured prediction problem, i.e., to first predict a sequence of section boundaries and then a sequence of section headings accordingly. We propose a novel hierarchical structured neural generation model, named HiStGen, for the task. Our model attempts to capture the three-level coherence via the following ways. First, we introduce a Markov paragraph dependency mechanism between context paragraphs for section identification. Second, we employ a section-aware attention mechanism to ensure the semantic coherence between a section and its heading. Finally, we leverage a Markov heading dependency mechanism and a review mechanism between context headings to improve the consistency and eliminate duplication between section headings. Besides, we build a novel Wriptsize IKI OG dataset, a public collection which consists of over 1.75 million document-outline pairs for research on the OG task. Experimental results on our benchmark dataset demonstrate that our model can significantly outperform several state-of-the-art sequential generation models for the OG task.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel97">
+        <strong> DivGraphPointer: A Graph Pointer Network for Extracting Diverse Keyphrases </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhiqing+Sun">Zhiqing Sun</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jian+Tang">Jian Tang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pan+Du">Pan Du</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhi-Hong+Deng">Zhi-Hong Deng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jian-Yun+Nie">Jian-Yun Nie</a> (3) </u>  <br>
+        1:  Peking University, 2:  Mila-Quebec Institute for Learning Algorithms, 3:  Université de Montréal <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331219">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=DivGraphPointer: A Graph Pointer Network for Extracting Diverse Keyphrases">Google Scholar</a></div>
+        (97)
+        <br>
+        <b>概要:　</b> 文書からのキーフレーズ抽出は、情報検索や文書といった多様な応用に役立ちます。本論文では、文書から多様なキーフレーズのセットを抽出するためのエンドツーエンドの方法「DivGraphPointer」を提案します。DivGraphPointerは、従来のグラフベースのランキング方法と最近のニューラルネットワークベースのアプローチの利点を組み合わせています。具体的には、文書が与えられると、単語の近接度に基づいて文書から単語グラフが構築され、これをグラフ畳み込みネットワークでエンコードします。この方法により、文書内の単語間の長距離依存関係をモデル化し、同一単語の複数の出現を1つのノードに集約することで、文書レベルの単語の重要性を効果的に捉えることができます。さらに、デコーディングプロセスで単語グラフから多様なキーフレーズのセットを生成するために、多様化ポイントネットワークを提案します。5つのベンチマークデータセットでの実験結果は、提案手法が既存の最先端アプローチを大幅に上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel97" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Keyphrase extraction from documents is useful to a variety of applications such as information retrieval and document summarization. This paper presents an end-to-end method called DivGraphPointer for extracting a set of diversified keyphrases from a document. DivGraphPointer combines the advantages of traditional graph-based ranking methods and recent neural network-based approaches. Specifically, given a document, a word graph is constructed from the document based on word proximity and is encoded with graph convolutional networks, which effectively capture document-level word salience by modeling long-range dependency between words in the document and aggregating multiple appearances of identical words into one node. Furthermore, we propose a diversified point network to generate a set of diverse keyphrases out of the word graph in the decoding process. Experimental results on five benchmark data sets show that our proposed method significantly outperforms the existing state-of-the-art approaches.
+        </div> </ul> <br>
+
+
+        Session details: Session 9A: Fashion Match
+
+        <label for="Panel99">
+        <strong> Personalized Fashion Recommendation with Visual Explanations based on Multimodal Attention Network: Towards Visually Explainable Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xu+Chen">Xu Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hanxiong+Chen">Hanxiong Chen</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongteng+Xu">Hongteng Xu</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongfeng+Zhang">Yongfeng Zhang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yixin+Cao">Yixin Cao</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zheng+Qin">Zheng Qin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongyuan+Zha">Hongyuan Zha</a> (5) </u>  <br>
+        1:  Tsinghua University, 2:  Rutgers University, 3:  Duke University & InfiniaML, 4:  National University of Singapore, 5:  Georgia Institute of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331254">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Personalized Fashion Recommendation with Visual Explanations based on Multimodal Attention Network: Towards Visually Explainable Recommendation">Google Scholar</a></div>
+        (99)
+        <br>
+        <b>概要:　</b> ファッション推薦は産業界と学術界の両方から増大する関心を集めています。本論文では、画像の領域レベルの特徴とユーザーレビュー情報の両方に基づいた、新しいニューラルアーキテクチャを提案します。我々の基本的な直感は、ファッション画像のすべての領域がユーザーにとって同等に重要ではない、つまり、通常、人々はファッション画像のいくつかの部分に関心を持つというものです。この人間の感覚をモデル化するために、多くの事前に分割された画像領域に対する注意モデルを学習し、それによってユーザーが画像のどこに本当に関心を持っているかを理解し、それに応じて画像をより正確に表現することができます。さらに、このような細粒度の視覚的嗜好を発見することで、画像のいくつかの領域を強調することにより、推薦を視覚的に説明できます。注意モデルをより良く学習するために、弱い監督信号としてユーザーレビュー情報を導入して、より包括的なユーザーの嗜好を収集します。我々の最終的なフレームワークでは、視覚的およびテキストの特徴がマルチモーダル注意ネットワークによってシームレスに結合されます。このアーキテクチャに基づいて、正確な推薦を提供できるだけでなく、各推薦アイテムに斬新な視覚的説明を伴わせることもできます。トップN推薦に関して本モデルの優位性を示すために広範な実験を行い、また提供する視覚的説明を定量的に評価するために集合的にラベル付けされたデータセットを作成しました。
+        </label>
+        <input type="checkbox" id="Panel99" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Fashion recommendation has attracted increasing attention from both industry and academic communities. This paper proposes a novel neural architecture for fashion recommendation based on both image region-level features and user review information. Our basic intuition is that: for a fashion image, not all the regions are equally important for the users, i.e., people usually care about a few parts of the fashion image. To model such human sense, we learn an attention model over many pre-segmented image regions, based on which we can understand where a user is really interested in on the image, and correspondingly, represent the image in a more accurate manner. In addition, by discovering such fine-grained visual preference, we can visually explain a recommendation by highlighting some regions of its image. For better learning the attention model, we also introduce user review information as a weak supervision signal to collect more comprehensive user preference. In our final framework, the visual and textual features are seamlessly coupled by a multimodal attention network. Based on this architecture, we can not only provide accurate recommendation, but also can accompany each recommended item with novel visual explanations. We conduct extensive experiments to demonstrate the superiority of our proposed model in terms of Top-N recommendation, and also we build a collectively labeled dataset for evaluating our provided visual explanations in a quantitative manner.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel100">
+        <strong> Interpretable Fashion Matching with Rich Attributes </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xun+Yang">Xun Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiangnan+He">Xiangnan He</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiang+Wang">Xiang Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yunshan+Ma">Yunshan Ma</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fuli+Feng">Fuli Feng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Meng+Wang">Meng Wang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tat-Seng+Chua">Tat-Seng Chua</a> (1) </u>  <br>
+        1:  National University of Singapore, 2:  University of Science and Technology of China, 3:  Hefei University of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331242">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Interpretable Fashion Matching with Rich Attributes">Google Scholar</a></div>
+        (100)
+        <br>
+        <b>概要:　</b> ファッションアイテムの組み合わせ関係の理解は、ファッション業界においてますます注目を集めています。既存の手法は主に視覚的内容を利用して、視覚的な互換性を学習し、潜在的空間でのマッチングを行ってきました。その効果にもかかわらず、これらの手法はブラックボックスのように機能し、二つのアイテムがうまくマッチする理由を明らかにすることができません。ファッションアイテムに関連する豊富な属性（例：オフショルダードレスや黒のスキニージーンズ）が、人間に解釈可能な方法でアイテムの意味を説明するにもかかわらず、これまでほとんど無視されてきました。本研究では、アイテムの互換性モデリングに解釈可能性を導入することを目指して、解釈可能なファッションマッチングタスクに取り組みます。具体的には、一組のマッチしたアイテムのコーパスが与えられると、未知のペアの互換性スコアを予測できるだけでなく、良いマッチに至る解釈可能なパターンも学習できます（例：白いTシャツは黒いズボンとマッチする）。我々は、新しい解決策として属性ベースの解釈可能な互換性（AIC）法を提案します。これは以下の三つのモジュールで構成されています：1）マッチング予測において決定規則を抽出するツリーベースのモジュール；2）属性の意味を考慮して規則のベクトル表現を学習する埋め込みモジュール；3）視覚的埋め込みと規則埋め込みを統合してマッチングスコアを予測する共同モデリングモジュール。提案の正当性を示すために、ファッション属性が利用可能な新しいLookasticデータセットを提供します。広範な実験により、AICがいくつかの最先端の手法を上回るだけでなく、マッチング決定における良好な解釈可能性を提供することを示しました。
+        </label>
+        <input type="checkbox" id="Panel100" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Understanding the mix-and-match relationships of fashion items receives increasing attention in fashion industry. Existing methods have primarily utilized the visual content to learn the visual compatibility and performed matching in a latent space. Despite their effectiveness, these methods work like a black box and cannot reveal the reasons that two items match well. The rich attributes associated with fashion items, e.g.,off-shoulder dress and black skinny jean, which describe the semantics of items in a human-interpretable way, have largely been ignored. This work tackles the interpretable fashion matching task, aiming to inject interpretability into the compatibility modeling of items. Specifically, given a corpus of matched pairs of items, we not only can predict the compatibility score of unseen pairs, but also learn the interpretable patterns that lead to a good match, e.g., white T-shirt matches with black trouser. We propose a new solution named A ttribute-based I nterpretable C ompatibility (AIC) method, which consists of three modules: 1) a tree-based module that extracts decision rules on matching prediction; 2) an embedding module that learns vector representation for a rule by accounting for the attribute semantics; and 3) a joint modeling module that unifies the visual embedding and rule embedding to predict the matching score. To justify our proposal, we contribute a new Lookastic dataset with fashion attributes available. Extensive experiments show that AIC not only outperforms several state-of-the-art methods, but also provides good interpretability on matching decisions.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel101">
+        <strong> Prototype-guided Attribute-wise Interpretable Scheme for Clothing Matching </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xianjing+Han">Xianjing Han</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xuemeng+Song">Xuemeng Song</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jianhua+Yin">Jianhua Yin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yinglong+Wang">Yinglong Wang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Liqiang+Nie">Liqiang Nie</a> (1) </u>  <br>
+        1:  Shandong University, 2:  Shandong Computer Science Center (National Supercomputer Center in Jinan) <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331245">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Prototype-guided Attribute-wise Interpretable Scheme for Clothing Matching">Google Scholar</a></div>
+        (101)
+        <br>
+        <b>概要:　</b> 最近、衣服の組み合わせは人々の日常生活において重要な部分として、ますます研究の注目を集めています。多くの既存の研究は、高度なニューラルネットワークを用いたファッションアイテム間の数値的な互換性モデリングに焦点を当てており、その結果、現実世界での適用性が低いという解釈の難しさに悩まされています。実際には、人々は与えられたファッションアイテムが互換性があるかどうかだけでなく、合理的な解釈や互換性のないアイテムを調和させるための提案も知りたいと考えています。この包括的な解釈可能な衣服の組み合わせに関する研究はほとんど未開拓であることを踏まえ、本研究ではプロトタイプガイドの属性ごとの解釈可能な互換性モデリング（PAICM）スキームを提案します。これは、潜在互換性/非互換性プロトタイプの学習と互換性モデリングをベイジアンパーソナライズドランキング（BPR）フレームワークにシームレスに統合するものです。特に、非負行列因子分解（NMF）によって学習された潜在属性相互作用プロトタイプをテンプレートとして使用し、不一致の属性を解釈し、各ファッションアイテムペアの代替アイテムを提案します。実世界のデータセットを用いた広範な実験により、本スキームの有効性が実証されました。
+        </label>
+        <input type="checkbox" id="Panel101" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Recently, as an essential part of people's daily life, clothing matching has gained increasing research attention. Most existing efforts focus on the numerical compatibility modeling between fashion items with advanced neural networks, and hence suffer from the poor interpretation, which makes them less applicable in real world applications. In fact, people prefer to know not only whether the given fashion items are compatible, but also the reasonable interpretations as well as suggestions regarding how to make the incompatible outfit harmonious. Considering that the research line of the comprehensively interpretable clothing matching is largely untapped, in this work, we propose a prototype-guided attribute-wise interpretable compatibility modeling (PAICM) scheme, which seamlessly integrates the latent compatible/incompatible prototype learning and compatibility modeling with the Bayesian personalized ranking (BPR) framework. In particular, the latent attribute interaction prototypes, learned by the non-negative matrix factorization (NMF), are treated as templates to interpret the discordant attribute and suggest the alternative item for each fashion item pair. Extensive experiments on the real-world dataset have demonstrated the effectiveness of our scheme.
+        </div> </ul> <br>
+
+
+        Session details: Session 9B: Relevance and Evaluation 2
+
+        <label for="Panel103">
+        <strong> Teach Machine How to Read: Reading Behavior Inspired Relevance Estimation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiangsheng+Li">Xiangsheng Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiaxin+Mao">Jiaxin Mao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chao+Wang">Chao Wang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yiqun+Liu">Yiqun Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min+Zhang">Min Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shaoping+Ma">Shaoping Ma</a> (1) </u>  <br>
+        1:  Tsinghua University, 2:  6ESTATES PTE LTD <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331205">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Teach Machine How to Read: Reading Behavior Inspired Relevance Estimation">Google Scholar</a></div>
+        (103)
+        <br>
+        <b>概要:　</b> 情報検索モデルは、あるクエリに対する文書の関連性を評価することを目的としています。既存の検索モデルは、情報探索行動の理解を深めると同時に、実際の検索システム（例：ウェブ検索エンジン）を構築する上で多くの成功を収めてきました。しかし、これらのモデルは、人間が関連性を判断する方法とはかなり異なる方法で動作していることを認めざるをえません。本論文では、既存のモデルを再検討し、人間が関連性評価の際に文書を読む方法に基づいて新しいモデルを提案することを目的としています。まず、実際のユーザー行動パターンから、暗黙的ヒューリスティックと明示的ヒューリスティックに分類される複数の読書ヒューリスティックをします。さまざまな既存の検索モデルをレビューすることで、それらの多くがこれらの読書ヒューリスティックの一部しか満たしていないことがわかります。各ヒューリスティックの有効性を評価するために、アブレーション研究を実施し、ほとんどのヒューリスティックが検索性能にプラスの影響を与えることを発見しました。さらに、すべての有効なヒューリスティックを新しい検索モデルである「Reading Inspired Model（RIM）」に統合しました。具体的には、暗黙的読書ヒューリスティックをモデルフレームワークに組み込み、明示的読書ヒューリスティックはマルコフ決定過程としてモデル化し、強化学習で学習しました。大規模な公開ベンチマークデータセットおよびNTCIR WWWタスクの二つのテストセットでの実験結果は、RIMがほとんどの既存モデルを上回り、読書ヒューリスティックの有効性を示しています。本研究が、高い検索性能と優れた説明可能性を兼ね備えた検索モデルの構築に貢献することを期待しています。
+        </label>
+        <input type="checkbox" id="Panel103" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Retrieval models aim to estimate the relevance of a document to a certain query. Although existing retrieval models have gained much success in both deepening our understanding of information seeking behavior and constructing practical retrieval systems (e.g. Web search engines), we have to admit that the models work in a rather different manner than how humans make relevance judgments. In this paper, we aim to reexamine the existing models as well as to propose new ones based on the findings in how human read documents during relevance judgment. First, we summarize a number of reading heuristics from practical user behavior patterns, which are categorized into implicit and explicit heuristics. By reviewing a variety of existing retrieval models, we find that most of them only satisfy a part of these reading heuristics. To evaluate the effectiveness of each heuristic, we conduct an ablation study and find that most heuristics have positive impacts on retrieval performance. We further integrate all the effective heuristics into a new retrieval model named Reading Inspired Model (RIM). Specifically, implicit reading heuristics are incorporated into the model framework and explicit reading heuristics are modeled as a Markov Decision Process and learned by reinforcement learning. Experimental results on a large-scale public available benchmark dataset and two test sets from NTCIR WWW tasks show that RIM outperforms most existing models, which illustrates the effectiveness of the reading heuristics. We believe that this work contributes to constructing retrieval models with both higher retrieval performance and better explainability.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel104">
+        <strong> Improving the Accuracy of System Performance Estimation by Using Shards </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nicola+Ferro">Nicola Ferro</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mark+Sanderson">Mark Sanderson</a> (2) </u>  <br>
+        1:  University of Padua, 2:  RMIT University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3338062">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Improving the Accuracy of System Performance Estimation by Using Shards">Google Scholar</a></div>
+        (104)
+        <br>
+        <b>概要:　</b> テストコレクションスコアに存在するノイズをより適切にモデル化することで、検索システムのパフォーマンス測定精度を向上させます。私たちの技術は、二つのアプローチに着想を得ています。ひとつはトピックの可変測定精度を活用し、もうひとつはドキュメントコレクションをランダムにシャードに分割する方法です。トピック、システム、ドキュメントシャードおよびそれらの相互作用の影響を捉えることができるANOVAモデルを記述し、理論的に分析します。複数のTRECコレクションを用いて、理論的結果が改善された推定精度および見つかった有意差の堅牢性において実証されていることを確認しました。広く使用されているテストコレクション測定技術と比較して、その改善は大幅なものです。テストコレクションのトピックがパフォーマンスを同等に測定することを仮定しないために、この技術が機能すると推測します。
+        </label>
+        <input type="checkbox" id="Panel104" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We improve the measurement accuracy of retrieval system performance by better modeling the noise present in test collection scores. Our technique draws its inspiration from two approaches: one, which exploits the variable measurement accuracy of topics; the other, which randomly splits document collections into shards. We describe and theoretically analyze an ANOVA model able to capture the effects of topics, systems, and document shards as well as their interactions. Using multiple TREC collections, we empirically confirm theoretical results in terms of improved estimation accuracy and robustness of found significant differences. The improvements compared to widely used test collection measurement techniques are substantial. We speculate that our technique works because we do not assume that the topics of a test collection measure performance equally.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel105">
+        <strong> Fast Approximate Filtering of Search Results Sorted by Attribute </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Franco+Maria+Nardini">Franco Maria Nardini</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Roberto+Trani">Roberto Trani</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rossano+Venturini">Rossano Venturini</a> (3) </u>  <br>
+        1:  ISTI-CNR, 2:  ISTI-CNR and University of Pisa, 3:  University of Pisa <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331227">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Fast Approximate Filtering of Search Results Sorted by Attribute">Google Scholar</a></div>
+        (105)
+        <br>
+        <b>概要:　</b> 摘要<br><br>いくつかのWeb検索サービスは、ユーザーが特定の属性によって検索結果を並べ替える機能を提供しています。例えば、eコマースでは「価格順」に並べ替えることができます。しかし、属性で結果を並べ替えると、重要度が低い結果が上位に表示され、ユーザー体験の低下につながる可能性があります。これが、関連性を考慮したフィルタリング問題の定義を動機付けています。この問題では、最終的な全体の関連性を最大化するために、属性で並べ替えたリストから結果を削除することを求めています。最近、この問題に対する最適な解法が提案されましたが、計算コストが高いため、Webのシナリオでは強い制約があります。本論文では、最終リストの関連性に関して強力な近似保証を提供する効率的な近似アルゴリズムであるϵ-フィルタリングを提案します。具体的には、許容される近似誤差ϵが与えられた場合、提案されたアルゴリズムは(1-ϵ)最適フィルタリングを見つけます。つまり、その解の関連性は最適の少なくとも(1-ϵ)倍です。2つの実世界の公開データセットを用いて、最先端の競合アルゴリズムと比較し、ϵ-フィルタリングの包括的な評価を行います。実験結果は、ϵ-フィルタリングが最適解と比較して最大2桁の高速化を達成しつつ、非常に小さな近似誤差を保証しながら、期待されるレベルの効果を達成することを示しています。
+        </label>
+        <input type="checkbox" id="Panel105" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Several Web search services enable their users with the possibility of sorting the list of results by a specific attribute, e.g., sort "by price" in e-commerce. However, sorting the results by attribute could bring marginally relevant results in the top positions thus leading to a poor user experience. This motivates the definition of the relevance-aware filtering problem. This problem asks to remove results from the attribute-sorted list to maximize its final overall relevance. Recently, an optimal solution to this problem has been proposed. However, it has strong limitations in the Web scenario due to its high computational cost. In this paper, we propose ϵ-Filtering: an efficient approximate algorithm with strong approximation guarantees on the relevance of the final list. More precisely, given an allowed approximation error ϵ, the proposed algorithm finds a(1-ϵ)"optimal filtering, i.e., the relevance of its solution is at least (1-ϵ) times the optimum. We conduct a comprehensive evaluation of ϵ-Filtering against state-of-the-art competitors on two real-world public datasets. Experiments show that ϵ-Filtering achieves the desired levels of effectiveness with a speedup of up to two orders of magnitude with respect to the optimal solution while guaranteeing very small approximation errors.
+        </div> </ul> <br>
+
+
+        Session details: Session 9C: Learning to Rank 2
+
+        <label for="Panel107">
+        <strong> Intervention Harvesting for Context-Dependent Examination-Bias Estimation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhichong+Fang">Zhichong Fang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Aman+Agarwal">Aman Agarwal</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Thorsten+Joachims">Thorsten Joachims</a> (2) </u>  <br>
+        1:  Tsinghua University, 2:  Cornell University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331238">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Intervention Harvesting for Context-Dependent Examination-Bias Estimation">Google Scholar</a></div>
+        (107)
+        <br>
+        <b>概要:　</b> 明確な学習-to-rankのための正確な検査バイアス推定は、検索エンジンおよびレコメンダシステムにおける暗黙のフィードバックからバイアスのない学習を行うために不可欠です。これにより、選択バイアスや欠損データに対処するための逆傾向スコア（Inverse Propensity Score, IPS）重み付け技術を使用できるようになります。残念ながら、既存の検査バイアス推定器はドキュメントのランクにのみ依存するPosition-Based Model（PBM）に限定されています。この制限を克服するために、クエリとユーザーを記述するコンテキストベクターにも依存するContextual Position-Based Model（CPBM）を提案します。さらに、介入収集に基づいたCPBMの効果的な推定器も提案します。この推定器の主要な特徴は、破壊的な介入を必要とせず、複数の歴史的なランキング関数を用いた自然な変動を活用する点にあります。ArXiv検索エンジンにおける実世界実験とYahoo Learning-To-Rankデータセットを使用した半合成実験により、この新しいアプローチの優れた効果と堅牢性が実証されました。
+        </label>
+        <input type="checkbox" id="Panel107" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Accurate estimates of examination bias are crucial for unbiased learning-to-rank from implicit feedback in search engines and recommender systems, since they enable the use of Inverse Propensity Score (IPS) weighting techniques to address selection biases and missing data. Unfortunately, existing examination-bias estimators are limited to the Position-Based Model (PBM), where the examination bias may only depend on the rank of the document. To overcome this limitation, we propose a Contextual Position-Based Model (CPBM) where the examination bias may also depend on a context vector describing the query and the user. Furthermore, we propose an effective estimator for the CPBM based on intervention harvesting. A key feature of the estimator is that it does not require disruptive interventions but merely exploits natural variation resulting from the use of multiple historic ranking functions. Real-world experiments on the ArXiv search engine and semi-synthetic experiments on the Yahoo Learning-To-Rank dataset demonstrate the superior effectiveness and robustness of the new approach.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel108">
+        <strong> Variance Reduction in Gradient Exploration for Online Learning to Rank </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Huazheng+Wang">Huazheng Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sonwoo+Kim">Sonwoo Kim</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Eric+McCord-Snook">Eric McCord-Snook</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qingyun+Wu">Qingyun Wu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongning+Wang">Hongning Wang</a> (1) </u>  <br>
+        1:  University of Virginia <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331264">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Variance Reduction in Gradient Exploration for Online Learning to Rank">Google Scholar</a></div>
+        (108)
+        <br>
+        <b>概要:　</b> オンライン学習型ランキング (OL2R) アルゴリズムは、暗黙のユーザーフィードバックからリアルタイムで学習します。これらのアルゴリズムの鍵は、勾配の偏りのない推定を得ることにあり、それはしばしばパラメータ空間全体から一様にサンプリングすることで（簡単に）達成されます。しかし、これは勾配推定における分散が大きくなり、特にパラメータ空間の次元が大きい場合にモデル更新中の後悔が高くなる結果を招きます。本研究では、OL2Rアルゴリズムにおける勾配推定の分散を削減することを目指します。インターリーブテストの後、選択された更新方向（つまり勝利方向）を現在のクエリに基づく検討中の文書からの特徴ベクトルによって広がる空間（「文書空間」と称します）に射影します。私たちの主要な洞察は、インターリーブテストの結果がユーザーの検討された文書に対する関連評価によってのみ支配されるという点にあります。したがって、このテストによって導入される真の勾配は、構築された文書空間でのみ反映され、提案する勾配の文書空間に直交する成分は、分散削減の目的で安全に削除できます。この射影された勾配が依然として真の勾配の偏りのない推定であることを証明し、この低分散の勾配推定が大幅な後悔の削減をもたらすことを示します。我々の提案する方法は、線形モデルを用いて文書をランク付けする既存のすべてのOL2Rアルゴリズムと互換性があります。最先端の複数のOL2Rアルゴリズムとの広範な実験比較により、我々の提案手法が勾配推定の分散を減らし、全体的なランキング性能を向上させる効果的な方法であることが確認されました。
+        </label>
+        <input type="checkbox" id="Panel108" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Online Learning to Rank (OL2R) algorithms learn from implicit user feedback on the fly. The key to such algorithms is an unbiased estimate of gradients, which is often (trivially) achieved by uniformly sampling from the entire parameter space. Unfortunately, this leads to high-variance in gradient estimation, resulting in high regret during model updates, especially when the dimension of the parameter space is large. In this work, we aim at reducing the variance of gradient estimation in OL2R algorithms. We project the selected updating direction (i.e., the winning direction) into a space spanned by the feature vectors from examined documents under the current query (termed the "document space" for short), after an interleaved test. Our key insight is that the result of an interleaved test is solely governed by a user's relevance evaluation over the examined documents. Hence, the true gradient introduced by this test is only reflected in the constructed document space, and components of the proposed gradient which are orthogonal to the document space can be safely removed, for variance reduction purpose. We prove that this projected gradient is still an unbiased estimation of the true gradient, and show that this lower-variance gradient estimation results in significant regret reduction. Our proposed method is compatible with all existing OL2R algorithms which rank documents using a linear model. Extensive experimental comparisons with several state-of-the-art OL2R algorithms have confirmed the effectiveness of our proposed method in reducing the variance of gradient estimation and improving overall ranking performance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel109">
+        <strong> Yelling at Your TV: An Analysis of Speech Recognition Errors and Subsequent User Behavior on Entertainment Systems </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Raphael+Tang">Raphael Tang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ferhan+Ture">Ferhan Ture</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimmy+Lin">Jimmy Lin</a> (3) </u>  <br>
+        1:  Comcast Applied AI Research Lab & University of Waterloo, 2:  Comcast Applied AI Research Lab, 3:  University of Waterloo <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331271">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Yelling at Your TV: An Analysis of Speech Recognition Errors and Subsequent User Behavior on Entertainment Systems">Google Scholar</a></div>
+        (109)
+        <br>
+        <b>概要:　</b> Comcast X1、Amazon Fire TV、Roku TVなどのテレビベースのエンターテイメントシステムを通じて、数百万人の消費者が音声クエリを発しています。自動音声認識（ASR）システムは、これらの音声クエリをテキストに転記し、その後の自然言語理解モジュールに供給する役割を担っています。しかし、ASRは完璧とは言えず、しばしば誤った転記を生成し、ユーザーに修正の手間を強いることがあります。本研究では、このようなセッションへの影響をよりよく理解するために、音声認識エラーとその後のユーザー応答を特性評価します。音響属性および語彙属性の両方を定量的および定性的に分析します。この研究は、広く利用されているエンターテイメントシステムにおける実際のユーザーによる音声認識エラーに関する最初の分析であると、私たちは認識しています。
+        </label>
+        <input type="checkbox" id="Panel109" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Millions of consumers issue voice queries through television-based entertainment systems such as the Comcast X1, the Amazon Fire TV, and Roku TV. Automatic speech recognition (ASR) systems are responsible for transcribing these voice queries into text to feed downstream natural language understanding modules. However, ASR is far from perfect, often producing incorrect transcriptions and forcing users to take corrective action. To better understand their impact on sessions, this paper characterizes speech recognition errors as well as subsequent user responses. We provide both quantitative and qualitative analyses, examining the acoustic as well as lexical attributes of the utterances. This work represents, to our knowledge, the first analysis of speech recognition errors from real users on a widely-deployed entertainment system.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel110">
+        <strong> Learning More From Less: Towards Strengthening Weak Supervision for Ad-Hoc Retrieval </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dany+Haddad">Dany Haddad</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Joydeep+Ghosh">Joydeep Ghosh</a> (1) </u>  <br>
+        1:  University of Texas at Austin <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331272">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Learning More From Less: Towards Strengthening Weak Supervision for Ad-Hoc Retrieval">Google Scholar</a></div>
+        (110)
+        <br>
+        <b>概要:　</b> グラウンドトゥルースの関連ラベルの限られた利用可能性は、アドホック検索における教師あり学習法の適用において大きな障害となっています。その結果、BM25のような非教師ありのスコアリング方法は、コンピュータビジョンや自然言語処理などの他の分野で劇的な改善をもたらしたディープラーニング技術にとって依然として強力な競争相手です。最近の研究では、これらの非教師あり手法の性能を利用して学習2ランクモデルの訓練データを生成することが可能であることが示されています。この研究の主要な制限は、元の非教師あり手法の性能を上回るために必要な訓練データのサイズであり、それは最大で1013個の訓練例にも及ぶことがあります。これらの洞察を基に、私たちは必要な訓練データ量を減少させるための2つの方法を提案します。最初の方法はクラウドソーシングからインスピレーションを得ており、複数の非教師ありランカーを活用してソフトな、またはノイズを意識した訓練ラベルを生成します。2つ目の方法は、有害な、または誤ってラベル付けされた訓練例を識別し、それらを訓練セットから除去します。私たちの方法により、以前の研究よりもはるかに少ない訓練例で非教師ありベースラインの性能を上回ることができることを示しています。
+        </label>
+        <input type="checkbox" id="Panel110" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The limited availability of ground truth relevance labels has been a major impediment to the application of supervised methods to ad-hoc retrieval. As a result, unsupervised scoring methods, such as BM25, remain strong competitors to deep learning techniques which have brought on dramatic improvements in other domains, such as computer vision and natural language processing. Recent works have shown that it is possible to take advantage of the performance of these unsupervised methods to generate training data for learning-to-rank models. The key limitation to this line of work is the size of the training set required to surpass the performance of the original unsupervised method, which can be as large as 1013 training examples. Building on these insights, we propose two methods to reduce the amount of training data required. The first method takes inspiration from crowdsourcing, and leverages multiple unsupervised rankers to generate soft, or noise-aware, training labels. The second identifies harmful, or mislabeled, training examples and removes them from the training set. We show that our methods allow us to surpass the performance of the unsupervised baseline with far fewer training examples than previous works.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel111">
+        <strong> Network Embedding and Change Modeling in Dynamic Heterogeneous Networks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ranran+Bian">Ranran Bian</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yun+Sing+Koh">Yun Sing Koh</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gillian+Dobbie">Gillian Dobbie</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Anna+Divoli">Anna Divoli</a> (3) </u>  <br>
+        1:  University of Auckland and Pingar, 2:  University of Auckland, 3:  Pingar <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331273">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Network Embedding and Change Modeling in Dynamic Heterogeneous Networks">Google Scholar</a></div>
+        (111)
+        <br>
+        <b>概要:　</b> ネットワーク埋め込みはノードのベクトル表現を学習しますが、ほとんどの実世界のネットワークは異質で、時と共に進化します。しかし、これまで動的な異質ネットワークに特化したネットワーク埋め込み手法は存在していません。この研究ギャップを埋めることは、実世界のネットワークの解析やマイニングに対して有益です。我々は、異質動的ネットワークを異なるタイムスタンプを持つネットワークのスナップショットとして捉える、新しい表現学習法「change2vec」を開発しました。各タイムスタンプでネットワーク全体を処理するのではなく、change2vecは二つの連続した静的ネットワーク間の変化をモデル化し、新しく追加されたノード及び削除されたノードとその隣接ノード、新しく形成されたエッジや削除されたエッジを捉え、三連結や開プロセスなどのコアな構造変化を引き起こします。change2vecはメタパスに基づくノード埋め込みと変化モデリングを活用し、ネットワークの異質な特徴と動的な特徴の両方を保つことができます。実験結果は、change2vecがクラスタリング性能と効率の面で、最先端の2つの手法を凌駕することを示しています。
+        </label>
+        <input type="checkbox" id="Panel111" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Network embedding learns the vector representations of nodes. Most real world networks are heterogeneous and evolve over time. There are, however, no network embedding approaches designed for dynamic heterogeneous networks so far. Addressing this research gap is beneficial for analyzing and mining real world networks. We develop a novel representation learning method, change2vec, which considers a dynamic heterogeneous network as snapshots of networks with different time stamps. Instead of processing the whole network at each time stamp, change2vec models changes between two consecutive static networks by capturing newly-added and deleted nodes with their neighbour nodes as well as newly-formed or deleted edges that caused core structural changes known as triad closure or open processes. Change2vec leverages metapath based node embedding and change modeling to preserve both heterogeneous and dynamic features of a network. Experimental results show that change2vec outperforms two state-of-the-art methods in terms of clustering performance and efficiency.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel112">
+        <strong> From Text to Sound: A Preliminary Study on Retrieving Sound Effects to Radio Stories </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Songwei+Ge">Songwei Ge</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Curtis+Xuan">Curtis Xuan</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ruihua+Song">Ruihua Song</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chao+Zou">Chao Zou</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+Liu">Wei Liu</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jin+Zhou">Jin Zhou</a> (4) </u>  <br>
+        1:  Carnegie Mellon University, 2:  University of California, 3:  Microsoft XiaoIce, 4:  Beijing Film Academy <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331274">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=From Text to Sound: A Preliminary Study on Retrieving Sound Effects to Radio Stories">Google Scholar</a></div>
+        (112)
+        <br>
+        <b>概要:　</b> 音響効果は高品質のラジオストーリー制作において不可欠な役割を果たしますが、その追加には膨大な労力が必要です。本論文では、ラジオストーリーに音響効果を自動的に追加する問題に取り組むため、検索ベースのモデルを用いた方法を提案します。しかし、タグベースの検索モデルを直接実装すると、ストーリー内容の曖昧さから誤判定が多発します。この問題を解決するために、意味推論モデルとハイブリッド化した検索ベースのフレームワークを導入し、頑健な検索結果を達成します。我々のモデルは、候補トリガーの文脈から抽出された精緻な特徴に依存しています。音響効果を追加する設定を分析し、提案手法の訓練とテストを行うために、クラウドソーシングを通じて2つのストーリーダビングデータセットを収集しました。さらに各特徴の重要性を議論し、精度と再現率のトレードオフのためのいくつかのヒューリスティックなルールを紹介します。テキスト音声変換技術とともに、我々の結果は高品質のラジオストーリーを自動的に制作するための有望なパイプラインを示しています。
+        </label>
+        <input type="checkbox" id="Panel112" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Sound effects play an essential role in producing high-quality radio stories but require enormous labor cost to add. In this paper, we address the problem of automatically adding sound effects to radio stories with a retrieval-based model. However, directly implementing a tag-based retrieval model leads to high false positives due to the ambiguity of story contents. To solve this problem, we introduce a retrieval-based framework hybridized with a semantic inference model which helps to achieve robust retrieval results. Our model relies on fine-designed features extracted from the context of candidate triggers. We collect two story dubbing datasets through crowdsourcing to analyze the setting of adding sound effects and to train and test our proposed methods. We further discuss the importance of each feature and introduce several heuristic rules for the trade-off between precision and recall. Together with the text-to-speech technology, our results reveal a promising automatic pipeline on producing high-quality radio stories.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel113">
+        <strong> Length-adaptive Neural Network for Answer Selection </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Taihua+Shao">Taihua Shao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fei+Cai">Fei Cai</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Honghui+Chen">Honghui Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maarten+de+Rijke">Maarten de Rijke</a> (2) </u>  <br>
+        1:  National University of Defense Technology, 2:  University of Amsterdam <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331277">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Length-adaptive Neural Network for Answer Selection">Google Scholar</a></div>
+        (113)
+        <br>
+        <b>概要:　</b> 質問に対する正答を選択することに焦点を当てる「アンサーセレクション」は、以前の多くの研究においてRNNを用いることにより良好な成果を上げてきました。RNNは、文の長さに関係なく、すべての質問文と回答文を同じ特徴抽出器で処理しますが、これにより長期依存性の問題に直面することが多々あります。この問題を解決するために、入力文の長さに応じてニューラル特徴抽出器を自動選択可能な「Length-adaptive Neural Network (LaNN)」を提案します。特に、短い文にはBiLSTMベースの特徴抽出器を、長い文にはTransformerベースの特徴抽出器を適用する柔軟なニューラル構造を提案します。我々の知る限りでは、LaNNは入力に基づいて特徴抽出機構を自動選択できる最初のニューラルネットワーク構造です。公開されているWikiQAデータセットを用いて、いくつかの競合するベースラインに対するLaNNの改善を定量化し、最先端技術に対して大幅な改善を示します。
+        </label>
+        <input type="checkbox" id="Panel113" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Answer selection focuses on selecting the correct answer for a question. Most previous work on answer selection achieves good performance by employing an RNN, which processes all question and answer sentences with the same feature extractor regardless of the sentence length. These methods often encounter the problem of long-term dependencies. To address this issue, we propose a Length-adaptive Neural Network (LaNN) for answer selection that can auto-select a neural feature extractor according to the length of the input sentence. In particular, we propose a flexible neural structure that applies a BiLSTM-based feature extractor for short sentences and a Transformer-based feature extractor for long sentences. To the best of our knowledge, LaNN is the first neural network structure that can auto-select the feature extraction mechanism based on the input. We quantify the improvements of LaNN against several competitive baselines on the public WikiQA dataset, showing significant improvements over the state-of-the-art.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel114">
+        <strong> Embedding Edge-attributed Relational Hierarchies </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Muhao+Chen">Muhao Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chris+Quirk">Chris Quirk</a> (2) </u>  <br>
+        1:  University of California, 2:  Microsoft Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331278">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Embedding Edge-attributed Relational Hierarchies">Google Scholar</a></div>
+        (114)
+        <br>
+        <b>概要:　</b> 関係埋め込み手法は、オブジェクトとその関係を低次元のベクトルとしてエンコードします。これらの手法は、さまざまな関係推論タスクで競争力のある性能を達成する一方で、既存のグラフデータ内でしばしば形成される階層構造を保持することには不十分であり、関係の事実を記述する豊富なエッジ属性を無視しています。本論文では、階層的特性とエッジ情報を同時に保持する新しい埋め込み手法を提案します。本手法は、エッジ属性を利用して各関係事実の重要性を捉え、双曲ベクトル変換の非線形性を活用することで階層関係を保持します。我々の実験は、エンロン社の社員間の監督関係にメールベースの属性が付随する、よく知られたエンロンの組織図を用いて行いました。結果として、提案手法は最先端の手法よりも高品質な関係埋め込みを生成し、組織図の再構築において多様な強力なベースラインを凌駕することを示しました。
+        </label>
+        <input type="checkbox" id="Panel114" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Relational embedding methods encode objects and their relations as low-dimensional vectors. While achieving competitive performance on a variety of relational inference tasks, these methods fall short of preserving the hierarchies that are often formed in existing graph data, and ignore the rich edge attributes that describe the relation facts. In this paper, we propose a novel embedding method that simultaneously preserve the hierarchical property and the edge information in the edge-attributed relational hierarchies. The proposed method preserves the hierarchical relations by leveraging the non-linearity of hyperbolic vector translations, for which the edge attributes are exploited to capture the importance of each relation fact. Our experiment is conducted on the well-known Enron organizational chart, where the supervision relations between employees of the Enron company are accompanied with email-based attributes. We show that our method produces relational embeddings of higher quality than state-of-the-art methods, and outperforms a variety of strong baselines in reconstructing the organizational chart.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel115">
+        <strong> Leveraging Emotional Signals for Credibility Detection </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Anastasia+Giachanou">Anastasia Giachanou</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Paolo+Rosso">Paolo Rosso</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fabio+Crestani">Fabio Crestani</a> (2) </u>  <br>
+        1:  Universitat Politècnica de València, 2:  Universita della Svizzera italiana <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331285">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Leveraging Emotional Signals for Credibility Detection">Google Scholar</a></div>
+        (115)
+        <br>
+        <b>概要:　</b> ウェブ上の虚偽情報の拡散は、我々の社会における主要な問題の一つです。フェイクニュース投稿の自動検出は、それらが読者を誤導する意図で書かれ、また感情を強く刺激してソーシャルネットワーク上で拡散されやすくするという性質から、難しい課題です。近年の研究では虚偽の主張に関するさまざまな言語的パターンが探求されているものの、感情的信号の役割はまだ十分に検討されていません。本論文では、フェイクニュース検出における感情的信号の役割を研究します。具体的には、主張のテキストから抽出した感情的信号を取り入れるLSTMモデルを提案し、信頼性のある主張とそうでない主張を区別します。実世界のデータセットを用いた実験により、信頼性評価における感情的信号の重要性が示されました。
+        </label>
+        <input type="checkbox" id="Panel115" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The spread of false information on the Web is one of the main problems of our society. Automatic detection of fake news posts is a hard task since they are intentionally written to mislead the readers and to trigger intense emotions to them in an attempt to be disseminated in the social networks. Even though recent studies have explored different linguistic patterns of false claims, the role of emotional signals has not yet been explored. In this paper, we study the role of emotional signals in fake news detection. In particular, we propose an LSTM model that incorporates emotional signals extracted from the text of the claims to differentiate between credible and non-credible ones. Experiments on real world datasets show the importance of emotional signals for credibility assessment.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel116">
+        <strong> Encoding Syntactic Dependency and Topical Information for Social Emotion Classification </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chang+Wang">Chang Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Bang+Wang">Bang Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+Xiang">Wei Xiang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minghua+Xu">Minghua Xu</a> (1) </u>  <br>
+        1:  Huazhong University of Science and Technology (HUST) <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331287">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Encoding Syntactic Dependency and Topical Information for Social Emotion Classification">Google Scholar</a></div>
+        (116)
+        <br>
+        <b>概要:　</b> ソーシャルエモーションクラス分類は、記事が読者に引き起こす感情の分布を推定することです。本論文では、文の統語依存関係と文書のトピック情報を文書の表現にエンコードすることによって、新しいニューラルネットワークモデルを設計します。まず、依存関係を埋め込んだ再帰型ニューラルネットワークを用いて各文の統語的特徴を学習し、次にゲート付きリカレントユニットを使用して文のベクトルを文書ベクトルに変換します。また、マルチレイヤーパーセプトロンを使用して文書のトピック情報をトピックベクトルにエンコードします。最後に、ゲート層を用いて文書ベクトルとトピックベクトルのゲート付き総和から文書表現を構成します。2つの公開データセットでの実験結果は、提案モデルが平均ピアソン相関係数およびMicroF1性能において最先端の方法を上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel116" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Social emotion classification is to estimate the distribution of readers' emotion evoked by an article. In this paper, we design a new neural network model by encoding sentence syntactic dependency and document topical information into the document representation. We first use a dependency embedded recursive neural network to learn syntactic features for each sentence, and then use a gated recurrent unit to transform the sentences' vectors into a document vector. We also use a multi-layer perceptron to encode the topical information of a document into a topic vector. Finally, a gate layer is used to compose the document representation from the gated summation of the document vector and the topic vector. Experiment results on two public datasets indicate that our proposed model outperforms the state-of-the-art methods in terms of better average Pearson correlation coefficient and MicroF1 performance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel117">
+        <strong> Information Cascades Modeling via Deep Multi-Task Learning </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xueqin+Chen">Xueqin Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kunpeng+Zhang">Kunpeng Zhang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fan+Zhou">Fan Zhou</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Goce+Trajcevski">Goce Trajcevski</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ting+Zhong">Ting Zhong</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fengli+Zhang">Fengli Zhang</a> (1) </u>  <br>
+        1:  University of Electronic Science and Technology of China, 2:  University of Maryland, 3:  Iowa State University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331288">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Information Cascades Modeling via Deep Multi-Task Learning">Google Scholar</a></div>
+        (117)
+        <br>
+        <b>概要:　</b> 情報カスケードの効果的なモデリングと予測は、情報拡散の理解の核心にあり、これはフェイクニュース検出やバイラルマーケティング識別などの多くの関連アプリケーションにとって不可欠です。従来のカスケード予測手法は、拡散モデルと手作りの特徴に大きく依存しています。近年、複数の分野での深層学習の著しい成功に基づき、ニューラルネットワークを用いたカスケード予測の試みが行われています。しかし、既存のモデルはカスケードグラフの基礎構造と拡散プロセスにおけるノードの順序の両方を捉えることができず、その結果、予測性能は不十分なものとなっています。本論文では、カスケードの理解と予測を明示的に援助するために共有表現層の新しい設計を備えたディープマルチタスク学習フレームワークを提案します。結果として、共有表現層から学習された潜在表現は、カスケードの構造とノードの順序を非常によくエンコードすることができます。我々の実験は、実世界のデータセット上で行われ、我々の方法が最先端のベースラインと比較して予測精度を著しく向上させ、計算コストを削減できることを示しています。
+        </label>
+        <input type="checkbox" id="Panel117" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Effectively modeling and predicting the information cascades is at the core of understanding the information diffusion, which is essential for many related downstream applications, such as fake news detection and viral marketing identification. Conventional methods for cascade prediction heavily depend on the hypothesis of diffusion models and hand-crafted features. Owing to the significant recent successes of deep learning in multiple domains, attempts have been made to predict cascades by developing neural networks based approaches. However, the existing models are not capable of capturing both the underlying structure of a cascade graph and the node sequence in the diffusion process which, in turn, results in unsatisfactory prediction performance. In this paper, we propose a deep multi-task learning framework with a novel design of shared-representation layer to aid in explicitly understanding and predicting the cascades. As it turns out, the learned latent representation from the shared-representation layer can encode the structure and the node sequence of the cascade very well. Our experiments conducted on real-world datasets demonstrate that our method can significantly improve the prediction accuracy and reduce the computational cost compared to state-of-the-art baselines.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel118">
+        <strong> An Analysis of the Change in Discussions on Social Media with Bitcoin Price </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Andrew+Burnie">Andrew Burnie</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Emine+Yilmaz">Emine Yilmaz</a> (1) </u>  <br>
+        1:  The Alan Turing Institute and University College London <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331304">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=An Analysis of the Change in Discussions on Social Media with Bitcoin Price">Google Scholar</a></div>
+        (118)
+        <br>
+        <b>概要:　</b> 私達は、word2vecに基づくトピックモデリングを時間的に解釈する新しいアプローチを開発し、時系列のフェーズの変化に随伴するソーシャルメディア上のトピックを明らかにすることで、潜在的な相互作用を理解しようとしています。これは特に、2017-18年にかけての4つの明確なフェーズを持つビットコイン価格のように非常に変動しやすい場合に関連します。我々は、異なるステージ間でどの単語の頻度が変化するかを統計的にテストし、文脈上結びつく単語を関連付けるための加重無向グラフにおける一貫性を評価するため、4つのword2vecモデルを比較しました。価格が上昇から下降へ移行するときに頻度が低下する単語については、4つのアプローチすべてで8つのトピックが特定され、頻度が上昇する単語については5つのトピックのうち3つが一定のままでした。これらのトピックは直感的であり、実際のニュースイベントと一致しています。
+        </label>
+        <input type="checkbox" id="Panel118" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We develop a new approach to temporalizing word2vec-based topic modelling that determines which topics on social media vary with shifts in the phases of a time series to understand potential interactions. This is particularly relevant for the highly volatile bitcoin price with its distinct four phases across 2017-18. We statistically test which words change in frequency between the different stages and compare four word2vec models to assess their consistency in relating connected words in weighted, undirected graphs. For words that fall in frequency when prices shift from rising to falling, all eight topics are identified with the four approaches; for words rising in frequency, three out of the five topics remain constant. These topics are intuitive and match with actual events in the news.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel119">
+        <strong> Ensembles of Recurrent Networks for Classifying the Relationship of Fake News Titles </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ting+Su">Ting Su</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Craig+Macdonald">Craig Macdonald</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Iadh+Ounis">Iadh Ounis</a> (1) </u>  <br>
+        1:  University of Glasgow <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331305">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Ensembles of Recurrent Networks for Classifying the Relationship of Fake News Titles">Google Scholar</a></div>
+        (119)
+        <br>
+        <b>概要:　</b> 近年、誰もが匿名でオンライン上にニュースや情報を作成し、発信することが可能となっています。しかし、それらのニュースや情報の信憑性は保証されていません。偽ニュースを本物のニュースと区別するためには、最新のニュースと以前に投稿されたものを比較する方法があります。特定された怪しいニュースは、拡散を防ぐために事実確認が行われます。本論文では、リカレントニューラルネットワークに基づく言語表現（例：BERT、BiLSTM）の利点を調査し、それを用いて、一つのニュースタイトルが以前のニュースタイトルと関連し、かつ異議を唱えているかを正確に予測できるアンサンブル分類器を構築します。WSDM 2019チャレンジのために作成された321kのニュースタイトルのデータセットを用いた実験では、BERTベースのモデルがBiLSTMを大幅に上回り、さらに単純な埋め込みベースの表現をも大幅に上回ることが示されました。加えて、最先端のBERTアプローチは、シンプルなBM25特徴と組み合わせることでさらに強化できることがわかりました。
+        </label>
+        <input type="checkbox" id="Panel119" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Nowadays, everyone can create and publish news and information anonymously online. However, the credibility of such news and information are not guaranteed. To differentiate fake news from genuine news, one can compare a recent news with earlier posted ones. Identified suspicious news can be debunked to stop the fake news from spreading further. In this paper, we investigate the advantages of recurrent neural networks-based language representations (e.g., BERT, BiLSTM) in order to build ensemble classifiers that can accurately predict if one news title is related to, and, additionally disagrees with an earlier news title. Our experiments, on a dataset of 321k news titles created for the WSDM 2019 challenge, show that the BERT-based models significantly outperform BiLSTM, which in-turn significantly outperforms a simpler embedding-based representation. Furthermore, even the state-of-the-art BERT approach can be enhanced when combined with a simple BM25 feature.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel120">
+        <strong> Contextually Propagated Term Weights for Document Representation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Casper+Hansen">Casper Hansen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Christian+Hansen">Christian Hansen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Stephen+Alstrup">Stephen Alstrup</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jakob+Grue+Simonsen">Jakob Grue Simonsen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Christina+Lioma">Christina Lioma</a> (1) </u>  <br>
+        1:  University of Copenhagen <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331307">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Contextually Propagated Term Weights for Document Representation">Google Scholar</a></div>
+        (120)
+        <br>
+        <b>概要:　</b> 単語埋め込みは、小さく密集した埋め込みベクトルを学習することで、その近接の単語から特定の単語を予測します。実際には、この予測は予測された単語に与えられる意味のスコア（または用語の重要度）に相当します。本研究では、新たなモデルを提案します。これは、ターゲット単語を与えられた際に、その単語（単語埋め込みで計算された重みを持つ）の重みの一部を、ターゲット単語と似た文脈で出現する単語に分配します。したがって、我々のモデルは、似た文脈で出現する単語によって共有される意味をシミュレートし、これをバグ・オブ・ワーズの文書表現に組み込みます。無監督学習の設定で8つの最先端のベースラインと比較した実験的評価では、我々のモデルが難易度の増すデータセットにおいて、マイクロおよびマクロのF1スコアで最高の成績を収めることが示されました。
+        </label>
+        <input type="checkbox" id="Panel120" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Word embeddings predict a word from its neighbours by learning small, dense embedding vectors. In practice, this prediction corresponds to a semantic score given to the predicted word (or term weight). We present a novel model that, given a target word, redistributes part of that word's weight (that has been computed with word embeddings) across words occurring in similar contexts as the target word. Thus, our model aims to simulate how semantic meaning is shared by words occurring in similar contexts, which is incorporated into bag-of-words document representations. Experimental evaluation in an unsupervised setting against 8 state of the art baselines shows that our model yields the best micro and macro F1 scores across datasets of increasing difficulty.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel121">
+        <strong> Time-Limits and Summaries for Faster Relevance Assessing </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shahin+Rahbariasl">Shahin Rahbariasl</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mark+D.+Smucker">Mark D. Smucker</a> (1) </u>  <br>
+        1:  University of Waterloo <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331270">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Time-Limits and Summaries for Faster Relevance Assessing">Google Scholar</a></div>
+        (121)
+        <br>
+        <b>概要:　</b> 関連性評価は、テストコレクション構築や、大量の関連性フィードバックを必要とする高リコール検索などのアプリケーションにおいて重要な役割を果たします。これらのアプリケーションでは、何万もの関連性評価が必要とされ、評価コストは評価の速さに直接関連しています。私たちは60人の参加者を対象にユーザースタディを実施し、時間制限（15秒、30秒、60秒）と文書サイズ（全文 vs. 短いが関連性評価に及ぼす影響を調査しました。参加者には、15秒、30秒、または60秒の時間制限内で全文書または文書を判断してもらいました。15秒という短い時間制限や全文書の代わりに文書を評価することが、大幅に評価の速さを上げる一方で、評価の質にはほとんど影響しないことがわかりました。参加者は、60秒の時間制限で文書を評価することを6つの条件の中で最も容易で最良の体験と感じました。時間制限は評価の速さを上げるかもしれませんが、高品質な文書を使用することで、評価者にとって改良された評価体験を提供しつつ、同様のスピード上の利点を得ることができます。
+        </label>
+        <input type="checkbox" id="Panel121" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Relevance assessing is a critical part of test collection construction as well as applications such as high-recall retrieval that require large amounts of relevance feedback. In these applications, tens of thousands of relevance assessments are required and assessing costs are directly related to the speed at which assessments are made. We conducted a user study with 60 participants where we investigated the impact of time limits (15, 30, and 60 seconds) and document size (full length vs. short summaries) on relevance assessing. Participants were shown either full documents or document summaries that they had to judge within a 15, 30, or 60 seconds time constraint per document. We found that using a time limit as short as 15 seconds or judging document summaries in place of full documents could significantly speed judging without significantly affecting judging quality. Participants found judging document summaries with a 60 second time limit to be the easiest and best experience of the six conditions. While time limits may speed judging, the same speed benefits can be had with high quality document summaries while providing an improved judging experience for assessors.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel122">
+        <strong> Deep Collaborative Discrete Hashing with Semantic-Invariant Structure </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zijian+Wang">Zijian Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zheng+Zhang">Zheng Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yadan+Luo">Yadan Luo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zi+Huang">Zi Huang</a> (1) </u>  <br>
+        1:  The University of Queensland <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331275">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Deep Collaborative Discrete Hashing with Semantic-Invariant Structure">Google Scholar</a></div>
+        (122)
+        <br>
+        <b>概要:　</b> 既存の深層ハッシュ化アプローチは、意味的な相関性を十分に探求せず、視覚的注意学習に対する言語的コンテキストの影響を無視するため、性能が劣る結果となっています。本論文では、Deep Collaborative Discrete Hashing (DCDH) と呼ばれるデュアルストリーム学習フレームワークを提案します。これは、視覚的特徴と意味ラベルから導かれる共有および個別のセマンティクスを協調的に組み込むことで識別性の高い共通離散空間を構築します。具体的には、視覚的埋め込みとセマンティックエンコードの外積を用いてコンテキスト認識表現を生成します。さらに、ラベルの再構築を行い、頻出および希少な概念を活用するためにフォーカルロスを導入します。共通のバイナリコード空間は、言語によって注意付けられた視覚的表現、セマンティック不変構造の構築、およびラベル分布の補正を共同で学習することで構築されます。広範な実験により、我々の手法の優位性が実証されました。
+        </label>
+        <input type="checkbox" id="Panel122" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Existing deep hashing approaches fail to fully explore semantic correlations and neglect the effect of linguistic context on visual attention learning, leading to inferior performance. This paper proposes a dual-stream learning framework, dubbed Deep Collaborative Discrete Hashing (DCDH), which constructs a discriminative common discrete space by collaboratively incorporating the shared and individual semantics deduced from visual features and semantic labels. Specifically, the context-aware representations are generated by employing the outer product of visual embeddings and semantic encodings. Moreover, we reconstruct the labels and introduce the focal loss to take advantage of frequent and rare concepts. The common binary code space is built on the joint learning of the visual representations attended by language, the semantic-invariant structure construction and the label distribution correction. Extensive experiments demonstrate the superiority of our method.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel123">
+        <strong> On Topic Difficulty in IR Evaluation: The Effect of Systems, Corpora, and System Components </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fabio+Zampieri">Fabio Zampieri</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kevin+Roitero">Kevin Roitero</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=J.+Shane+Culpepper">J. Shane Culpepper</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Oren+Kurland">Oren Kurland</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Stefano+Mizzaro">Stefano Mizzaro</a> (1) </u>  <br>
+        1:  University of Udine, 2:  RMIT University, 3:  Technion <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331279">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=On Topic Difficulty in IR Evaluation: The Effect of Systems, Corpora, and System Components">Google Scholar</a></div>
+        (123)
+        <br>
+        <b>概要:　</b> テストコレクション環境において、トピックの難易度は特定のトピックに対する一連のシステムの平均的な有効性として定義できます。本論文では、トピックの難易度に対する以下の要素の影響を研究します。(i) 情報検索システムのセット；(ii) 基盤となる文書コーパス；および (iii) システムコンポーネント。最近提案されたシステムコンポーネントの要因分析を研究する手法を一般化することで、トピックの難易度およびシステム、コーパス、コンポーネントの相互作用の相対的な影響について包括的な分析を行います。我々の研究結果は、コーパスがトピックの難易度に最も重大な影響を与えることを示しています。
+        </label>
+        <input type="checkbox" id="Panel123" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In a test collection setting, topic difficulty can be defined as the average effectiveness of a set of systems for a topic. In this paper we study the effects on the topic difficulty of: (i) the set of retrieval systems; (ii) the underlying document corpus; and (iii) the system components. By generalizing methods recently proposed to study system component factor analysis, we perform a comprehensive analysis on topic difficulty and the relative effects of systems, corpora, and component interactions. Our findings show that corpora have the most significant effect on topic difficulty.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel124">
+        <strong> M-HIN: Complex Embeddings for Heterogeneous Information Networks via Metagraphs </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yang+Fang">Yang Fang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiang+Zhao">Xiang Zhao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Peixin+Huang">Peixin Huang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weidong+Xiao">Weidong Xiao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maarten+de+Rijke">Maarten de Rijke</a> (2) </u>  <br>
+        1:  National University of Defense Technology, 2:  University of Amsterdam <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331281">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=M-HIN: Complex Embeddings for Heterogeneous Information Networks via Metagraphs">Google Scholar</a></div>
+        (124)
+        <br>
+        <b>概要:　</b> 複雑なネットワークを表現するために、ノード間の関係を捉える手段としてパスがよく用いられます。例えば、ランダムウォークは（同種）ネットワークでは一般的であり、メタパスは異種情報ネットワーク（HINs）に使用されます。しかし、パスを用いて2つのノード間のサブグラフを表現する際に、パスは線形構造であり、サブグラフはそうでないことが多いため、構造的（および場合によっては意味的）情報が失われます。ネットワーク埋め込みのためのより良い代替手段を見つけることはできるのでしょうか？私たちは、パス指向のモデルよりも多くの構造的および意味的情報を保持するメタグラフを用いて、HINノードの特徴を捉える新しい手法を提案します。知識グラフ埋め込みの進展に触発され、ノードとその間のメタグラフを用いてHINトリプレットを構築することを提案します。メタグラフは、HINにおける頻出サブグラフパターンを列挙するGRAMIアルゴリズムを利用して生成されます。その後、ハダマード関数を適用することでノードとメタグラフ間の関係をエンコードし、HINトリプレットが評価される確率を求めます。さらに、対称および非対称メタグラフのケースをより良く識別するために、HINノードの微細な特徴を正確に表現できる複雑な埋め込み手法を導入します。我々が提案するモデル、M-HINを実際のデータセットで評価した結果、最新のモデルを大幅かつ一貫して上回ることが示されました。
+        </label>
+        <input type="checkbox" id="Panel124" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> To represent a complex network, paths are often employed for capturing relationships among node: random walks for (homogeneous) networks and metapaths for heterogeneous information networks (HINs). However, there is structural (and possibly semantic) information loss when using paths to represent the subgraph between two nodes, since a path is a linear structure and a subgraph often is not. Can we find a better alternative for network embeddings? We offer a novel mechanism to capture the features of HIN nodes via metagraphs, which retains more structural and semantic information than path-oriented models. Inspired by developments in knowledge graph embedding, we propose to construct HIN triplets using nodes and metagraphs between them. Metagraphs are generated by harnessing the GRAMI algorithm, which enumerates frequent subgraph patterns in a HIN. Subsequently, the Hadamard function is applied to encode relationships between nodes and metagraphs, and the probability whether a HIN triplet can be evaluated. Further, to better distinguish between symmetric and asymmetric cases of metagraphs, we introduce a complex embedding scheme that is able to precisely express fine-grained features of HIN nodes. We evaluate the proposed model, M-HIN, on real-life datasets and demonstrate that it significantly and consistently outperforms state-of-the-art models.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel125">
+        <strong> How to Deal with Scarce Annotations in Answer Selection </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Emmanuel+Vallee">Emmanuel Vallee</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Delphine+Charlet">Delphine Charlet</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gabriel+Marzinotto">Gabriel Marzinotto</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fabrice+Clerot">Fabrice Clerot</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Frank+Meyer">Frank Meyer</a> (1) </u>  <br>
+        1:  Orange Labs, 2:  Aix Marseille Univ <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331291">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=How to Deal with Scarce Annotations in Answer Selection">Google Scholar</a></div>
+        (125)
+        <br>
+        <b>概要:　</b> 複雑なニューラルネットワークを用いた質問応答（QA）タスクに取り組む際は、モデルの満足な精度を達成するために大量のアノテーションデータが必要となることが一般的です。本研究では、アノテーションのない、または少ないデータセットでも良好な性能を発揮できる可能性のあるシンプルなモデルに焦点を当てます。まず、分散表現を活用した新しい教師なしベースラインを提案します。次に、少数のアノテーションサンプルから学習する我々のニューラルネットワークアーキテクチャの能力を比較し、外部データセットでの事前学習がこれらの方法にどのように利益をもたらすかを示します。結果の再現性を特に重視し、四つの一般的なQAデータセットで我々のシンプルなモデルが最先端の性能に迫る、または達することができることを示します。
+        </label>
+        <input type="checkbox" id="Panel125" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Addressing Question Answering (QA) tasks with complex neural networks typically requires a large amount of annotated data to achieve a satisfactory accuracy of the models. In this work, we are interested in simple models that can potentially give good performance on datasets with no or few annotations. First, we propose new unsupervised baselines that leverage distributed word and sentence representations. Second, we compare the ability of our neural network architectures to learn from few annotated samples and we demonstrate how these methods can benefit from a pre-training on an external dataset. With a particular emphasis on the reproducibility of our results, we show that our simple models can approach or reach state-of-the-art performance on four common QA datasets.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel126">
+        <strong> One-Class Collaborative Filtering with the Queryable Variational Autoencoder </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ga+Wu">Ga Wu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mohamed+Reda+Bouadjenek">Mohamed Reda Bouadjenek</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Scott+Sanner">Scott Sanner</a> (1) </u>  <br>
+        1:  University of Toronto <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331292">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=One-Class Collaborative Filtering with the Queryable Variational Autoencoder">Google Scholar</a></div>
+        (126)
+        <br>
+        <b>概要:　</b> 変分オートエンコーダ（Variational Autoencoder: VAE）を用いた協調フィルタリング（Collaborative Filtering: CF）手法は、暗黙的な否定フィードバックを含むワンクラスレコメンデーションタスクにおいて、オートエンコーダを緩和されたが扱いやすい潜在分布に拡張することで、優れた性能を示しています。ユーザの嗜好に関する潜在分布を明示的にモデル化することにより、VAEは観測された相互作用を再現するだけでなく、類似のユーザやアイテムからの学習を活用してそれらを一般化することができます。しかしながら、VAE-CFは学習特性において最適でない場合があり、たとえば、異なる嗜好が多いユーザほど予測の信頼度が高くなり、ユーザの表現に曖昧性が生じることがあります。この問題を解決するために、観測間の任意の条件関係を明示的にモデル化する、新しいクエリ可能な変分オートエンコーダ（Queryable Variational Autoencoder: Q-VAE）というVAEのバリアントを提案します。本提案モデルでは、ユーザの嗜好が多い場合に曖昧なユーザ表現が生じる状況で、信頼度を減少させるのではなく、不確実性を適切に増加させることができます。2つのベンチマークデータセットを用いた実験により、Q-VAEは一般的にVAEベースのレコメンダーや他の最先端手法と同等またはそれ以上の性能を示し、ユーザ嗜好の密度スペクトラム全体にわたって競争力を有することが明らかになりました。他の手法は嗜好密度レベルの特定範囲でピークを迎えるのに対し、Q-VAEは安定して優れた結果を提供します。
+        </label>
+        <input type="checkbox" id="Panel126" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Variational Autoencoder (VAE) based methods for Collaborative Filtering (CF) demonstrate remarkable performance for one-class (implicit negative) recommendation tasks by extending autoencoders with relaxed but tractable latent distributions. Explicitly modeling a latent distribution over user preferences allows VAEs to learn user and item representations that not only reproduce observed interactions, but also generalize them by leveraging learning from similar users and items. Unfortunately, VAE-CF can exhibit suboptimal learning properties; e.g., VAE-CFs will increase their prediction confidence as they receive more preferences per user, even when those preferences may vary widely and create ambiguity in the user representation. To address this issue, we propose a novel Queryable Variational Autoencoder (Q-VAE) variant of the VAE that explicitly models arbitrary conditional relationships between observations. The proposed model appropriately increases uncertainty (rather than reduces it) in cases where a large number of user preferences may lead to an ambiguous user representation. Our experiments on two benchmark datasets show that the Q-VAE generally performs comparably or outperforms VAE-based recommenders as well as other state-of-the-art approaches and is generally competitive across the user preference density spectrum, where other methods peak for certain preference density levels.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel127">
+        <strong> Developing Evaluation Metrics for Instant Search Using Mixed Methods Methods </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Praveen+Chandar">Praveen Chandar</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jean+Garcia-Gathright">Jean Garcia-Gathright</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Christine+Hosey">Christine Hosey</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Brian+St.+Thomas">Brian St. Thomas</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jennifer+Thom">Jennifer Thom</a> (2) </u>  <br>
+        1:  Spotify, 2:  Spotify <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331293">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Developing Evaluation Metrics for Instant Search Using Mixed Methods Methods">Google Scholar</a></div>
+        (127)
+        <br>
+        <b>概要:　</b> インスタントサーチは、ユーザーが入力する各キーに対して新しい検索結果ページが表示される人気の検索パラダイムとなっています。近年、このパラダイムはパーソナルメール検索、eコマース、音楽検索などの多くの領域で広く採用されています。それにもかかわらず、このようなシステムの評価方法や指標については、これまでの文献であまり取り上げられていません。本研究では、音楽検索の文脈でインスタントサーチシステムを評価し、ユーザーの期待を理解するための混合手法アプローチについて説明します。我々の方法論は、ユーザーの行動と期待についての定性的な理解を得るために、一連のユーザーインタビューを実施することから始まります。ユーザーリサーチから得られた仮説を拡張し、大規模な定量分析によって検証します。音楽検索をレンズとして使用することで、定性的リサーチからの洞察を伴うことで、研究者や実務者が行動ログをより効果的に解釈できることを示します。さらに、ユーザーリサーチはユーザー満足度を推定するためのユーザーシグナルを特定する際の推測作業を排除することを実証します。最後に、我々のアプローチで特定された指標が、インスタントサーチにおいて一般的に使用されるクリック率指標よりも感度が高いことを明らかにします。
+        </label>
+        <input type="checkbox" id="Panel127" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Instant search has become a popular search paradigm in which users are shown a new result page in response to every keystroke triggered. Over recent years, the paradigm has been widely adopted in several domains including personal email search, e-commerce, and music search. However, the topic of evaluation and metrics of such systems has been less explored in the literature thus far. In this work, we describe a mixed methods approach to understanding user expectations and evaluating an instant search system in the context of music search. Our methodology involves conducting a set of user interviews to gain a qualitative understanding of users' behaviors and their expectations. The hypotheses from user research are then extended and verified by a large-scale quantitative analysis of interaction logs. Using music search as a lens, we show that researchers and practitioners can interpret the behavior logs more effectively when accompanied by insights from qualitative research. Further, we also show that user research eliminates the guesswork involved in identifying users signals that estimate user satisfaction. Finally, we demonstrate that metrics identified using our approach are more sensitive than the commonly used click-through rate metric for instant search.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel128">
+        <strong> FAQ Retrieval Using Attentive Matching </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sparsh+Gupta">Sparsh Gupta</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Vitor+R.+Carvalho">Vitor R. Carvalho</a> (2) </u>  <br>
+        1:  University of California, 2:  Intuit AI <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331294">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=FAQ Retrieval Using Attentive Matching">Google Scholar</a></div>
+        (128)
+        <br>
+        <b>概要:　</b> FAQ（よくある質問）検索における応答クエリに対する質問応答ペアのランキングタスクは、従来、クエリと質問の関連性シグナルを広範な手動特徴工学に基づいて抽出することに焦点を当てていました。この記事では、特徴工学の必要性を排除し、クエリと質問およびクエリと回答の類似性を巧みに組み合わせることができる、FAQ検索用の複数の深層学習アーキテクチャを提案します。我々は、階層的な注意メカニズムを用いてクエリと質問、クエリと回答の両方の表現を効果的に組み合わせるモデルが、提案した全てのモデルの中で最良の結果をもたらすことを示す実験結果を提示します。また、類似質問検出タスク向けに元々設計された全く別の注意ベースのアーキテクチャに対して実験を行い、等しく印象的なランキング結果を観察することで、FAQ検索に対する注意メカニズムの有効性を確認します。
+        </label>
+        <input type="checkbox" id="Panel128" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The task of ranking question-answer pairs in response to an input query, aka FAQ (Frequently Asked Question) Retrieval, has traditionally been focused mostly on extracting relevance signals between query and questions based on extensive manual feature engineering. In this paper we propose multiple deep learning architectures designed for FAQ Retrieval that eliminate the need for feature engineering and are able to elegantly combine both query-question and query-answer similarities. We present experimental results showing that models that effectively combine both query-question and query-answer representations using attention mechanisms in a hierarchical manner yield the best results from all proposed models. We further verify the effectiveness of attention mechanisms for FAQ Retrieval by conducting experiments on a completely different attention-based architecture, originally designed for question duplicate detection tasks, and observing equally impressive experimental ranking results.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel129">
+        <strong> Item Recommendation by Combining Relative and Absolute Feedback Data </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Saikishore+Kalloori">Saikishore Kalloori</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tianyu+Li">Tianyu Li</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Francesco+Ricci">Francesco Ricci</a> (1) </u>  <br>
+        1:  Free University of Bozen-Bolzano, 2:  Rakuten Institute of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331295">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Item Recommendation by Combining Relative and Absolute Feedback Data">Google Scholar</a></div>
+        (129)
+        <br>
+        <b>概要:　</b> 絶対的なフィードバックの形式であるユーザーの評価（例：評価点数）は、推薦システム（RS）で広く利用されています。最近の研究では、相対的なフィードバックを示すペアワイズ比較によって表現された好みの使用が探索されています。ペアワイズ比較は評価点数と効果的に組み合わせることができることが示されましたが、両方のフィードバックを活用する技術を微調整することが重要です。従来のアプローチは、評価点数をペアワイズ比較に変換して単一のモデルを訓練し、そのデータのみを使用します。しかし、これらの二つのタイプの好みはユーザーの関心について異なる情報を明らかにするので、異なる方法で活用するべきだと主張します。したがって、本研究では、絶対的および相対的な好みをハイブリッドモデルで個別に利用するランキング技術を開発します。具体的には、絶対的および相対的なユーザーの好みの両方に基づいて計算される共同損失関数を提案します。我々の提案するランキングモデルは、ペアワイズ比較データを使用してアイテムの間のユーザーの好み順を予測し、高評価（関連性の高い）アイテムをランキングの上位に押し上げるために評価点数を使用します。3つの異なるデータセットでの実験結果は、提案する技術が評価指向の評価指標において競合するベースラインアルゴリズムを上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel129" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> User preferences in the form of absolute feedback, s.a., ratings, are widely exploited in Recommender Systems (RSs). Recent research has explored the usage of preferences expressed with pairwise comparisons, which signal relative feedback. It has been shown that pairwise comparisons can be effectively combined with ratings, but, it is important to fine tune the technique that leverages both types of feedback. Previous approaches train a single model by converting ratings into pairwise comparisons, and then use only that type of data. However, we claim that these two types of preferences reveal different information about users interests and should be exploited differently. Hence, in this work, we develop a ranking technique that separately exploits absolute and relative preferences in a hybrid model. In particular, we propose a joint loss function which is computed on both absolute and relative preferences of users. Our proposed ranking model uses pairwise comparisons data to predict the user's preference order between pairs of items and uses ratings to push high rated (relevant) items to the top of the ranking. Experimental results on three different data sets demonstrate that the proposed technique outperforms competitive baseline algorithms on popular ranking-oriented evaluation metrics.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel130">
+        <strong> Multiple Query Processing via Logic Function Factoring </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Matteo+Catena">Matteo Catena</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nicola+Tonellotto">Nicola Tonellotto</a> (1) </u>  <br>
+        1:  ISTI-CNR <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331297">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Multiple Query Processing via Logic Function Factoring">Google Scholar</a></div>
+        (130)
+        <br>
+        <b>概要:　</b> 一部の検索システムの拡張には、複数クエリの処理支援が必要です。これは、同じ情報ニーズに対する異なるクエリの定式化であるクエリの多様性の場合がそうです。これらのクエリの処理結果を統合することで、検索の有効性を向上させることができますが、このためにはクエリ項目のポスティングリスト（逆引きリスト）を複数回トラバースする必要があり、複数クエリの処理時間が延びてしまいます。本研究では、クエリの多様性の処理を最適化し、全体的な応答時間を短縮するアプローチを提案します。標準的なブールモデルと同様に、まずクエリの多様性のグループを論理関数として表現し、ブール変数がクエリ項目を表します。その後、この関数にファクタリングを適用し、よりコンパクトで論理的に同等の表現を生成します。ファクタリングされた形式を用いて、クエリの多様性を単一のパスで逆引きインデックスをトラバースして処理します。我々の実験結果は、平均処理時間を最大1.95倍改善できることを示しており、NDCG@10に関して統計的に有意な劣化は見られませんでした。
+        </label>
+        <input type="checkbox" id="Panel130" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Some extensions to search systems require support for multiple query processing. This is the case with query variations, i.e., different query formulations of the same information need. The results of their processing can be fused together to improve effectiveness, but this requires to traverse more than once the query terms' posting lists, thus prolonging the multiple query processing time. In this work, we propose an approach to optimize the processing of query variations to reduce their overall response time. Similarly to the standard Boolean model, we firstly represent a group of query variations as a logic function where Boolean variables represent query terms. We then apply factoring to such function, in order to produce a more compact but logically equivalent representation. The factored form is used to process the query variations in a single pass over the inverted index. We experimentally show that our approach can improve by up to 1.95× the mean processing time of a multiple query with no statistically significant degradation in terms of NDCG@10.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel131">
+        <strong> Information Nutritional Label and Word Embedding to Estimate Information Check-Worthiness </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Cédric+Lespagnol">Cédric Lespagnol</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Josiane+Mothe">Josiane Mothe</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Md+Zia+Ullah">Md Zia Ullah</a> (3) </u>  <br>
+        1:  IRIT, 2:  IRIT, 3:  IRIT <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331298">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Information Nutritional Label and Word Embedding to Estimate Information Check-Worthiness">Google Scholar</a></div>
+        (131)
+        <br>
+        <b>概要:　</b> 今日、誰でも何についてでも情報を書き、それをソーシャルメディアで共有することができるため、自動事実検証は重要な課題となっています。本論文では、情報のチェック価値問題を再考し、「情報栄養ラベル」特徴と品詞タグ（POSタグ）、および単語埋め込み表現を組み合わせた新しい手法を提案します。情報のチェック価値がある主張を予測するために、これらの特徴に基づいた機械学習モデルを訓練しました。提案手法をCheckThat! CLEF 2018コレクションで実験および評価した結果、情報栄養ラベルと単語埋め込み特徴を組み合わせた我々のモデルは、ベースラインおよびCheckThat! 2018チャレンジの公式参加者のランを上回る性能を示しました。
+        </label>
+        <input type="checkbox" id="Panel131" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Automatic fact-checking is an important challenge nowadays since anyone can write about anything and spread it in social media, no matter the information quality. In this paper, we revisit the information check-worthiness problem and propose a method that combines the "information nutritional label" features with POS-tags and word-embedding representations. To predict the information check-worthy claim, we train a machine learning model based on these features. We experiment and evaluate the proposed approach on the CheckThat! CLEF 2018 collection. The experimental result shows that our model that combines information nutritional label and word-embedding features outperforms the baselines and the official participants' runs of CheckThat! 2018 challenge.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel132">
+        <strong> Unbiased Low-Variance Estimators for Precision and Related Information Retrieval Effectiveness Measures </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gordon+V.+Cormack">Gordon V. Cormack</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maura+R.+Grossman">Maura R. Grossman</a> (1) </u>  <br>
+        1:  University of Waterloo <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331355">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Unbiased Low-Variance Estimators for Precision and Related Information Retrieval Effectiveness Measures">Google Scholar</a></div>
+        (132)
+        <br>
+        <b>概要:　</b> 本研究では、一様または非一様な関連性評価サンプルから精度、順位バイアス付き精度、および累積ゲインの無偏測定値を導出する推定器を紹介します。敵対的検証により、私たちの推定器が既存の情報検索手法によって返される結果とは質的に異なる結果を測定する場合でも、希薄なサンプルから無偏低分散の測定値をもたらすことが理論的に支持されています。また、検索結果の関連性を評価するためにサンプリングを使用するテストコレクションは、特にプールに貢献しない検索手法の結果に対して、プールを使用するテストコレクションよりも正確な測定値を提供することが示唆されます。
+        </label>
+        <input type="checkbox" id="Panel132" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This work describes an estimator from which unbiased measurements of precision, rank-biased precision, and cumulative gain may be derived from a uniform or non-uniform sample of relevance assessments. Adversarial testing supports the theory that our estimator yields unbiased low-variance measurements from sparse samples, even when used to measure results that are qualitatively different from those returned by known information retrieval methods. Our results suggest that test collections using sampling to select documents for relevance assessment yield more accurate measurements than test collections using pooling, especially for the results of retrieval methods not contributing to the pool.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel133">
+        <strong> Multi-Level Matching Networks for Text Matching </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chunlin+Xu">Chunlin Xu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhiwei+Lin">Zhiwei Lin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shengli+Wu">Shengli Wu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hui+Wang">Hui Wang</a> (1) </u>  <br>
+        1:  Ulster University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331276">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Multi-Level Matching Networks for Text Matching">Google Scholar</a></div>
+        (133)
+        <br>
+        <b>概要:　</b> テキストマッチングは、二つのテキスト間のマッチング関係を確立することを目的としています。これは、質問の重複検出、質問応答、対話システムなど、いくつかの情報検索に関連するタスクにおいて重要な操作です。注意メカニズムを備えた双方向長短期記憶（BiLSTM）は、テキストマッチングにおいて最先端の性能を達成しています。しかし、既存の研究の主要な制限は、高レベルのコンテクスト化された単語表現のみを使用して単語レベルのマッチング結果を得ることであり、他のレベルの単語表現を考慮していないため、高レベルのコンテクスト化された単語表現空間で意味が異なる二つの単語が非常に近いケースでの誤ったマッチング判断をもたらします。したがって、本論文では、単一レベルの単語表現を利用して判断を行う代わりに、複数レベルの単語表現を利用して最終的なテキストレベルのマッチング判断を行うために、複数レベルのマッチングネットワーク（MMN）を提案します。広く使用されている二つのベンチマーク、SNLIとScaitailでの実験結果は、提案されたMMNが最先端の性能を達成していることを示しています。
+        </label>
+        <input type="checkbox" id="Panel133" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Text matching aims to establish the matching relationship between two texts. It is an important operation in some information retrieval related tasks such as question duplicate detection, question answering, and dialog systems. Bidirectional long short term memory (BiLSTM) coupled with attention mechanism has achieved state-of-the-art performance in text matching. A major limitation of existing works is that only high level contextualized word representations are utilized to obtain word level matching results without considering other levels of word representations, thus resulting in incorrect matching decisions for cases where two words with different meanings are very close in high level contextualized word representation space. Therefore, instead of making decisions utilizing single level word representations, a multi-level matching network (MMN) is proposed in this paper for text matching, which utilizes multiple levels of word representations to obtain multiple word level matching results for final text level matching decision. Experimental results on two widely used benchmarks, SNLI and Scaitail, show that the proposed MMN achieves the state-of-the-art performance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel134">
+        <strong> Investigating the Interplay Between Searchers' Privacy Concerns and Their Search Behavior </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Steven+Zimmerman">Steven Zimmerman</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alistair+Thorpe">Alistair Thorpe</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chris+Fox">Chris Fox</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Udo+Kruschwitz">Udo Kruschwitz</a> (1) </u>  <br>
+        1:  University of Essex <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331280">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Investigating the Interplay Between Searchers' Privacy Concerns and Their Search Behavior">Google Scholar</a></div>
+        (134)
+        <br>
+        <b>概要:　</b> 検索アプリケーションにおけるプライバシーの懸念が主な焦点となりつつある現在、これらの懸念に対処する取り組みの影響を理解する必要が増しています。本研究は、食事栄養ラベルに関する意思決定研究から着想を得た「プライバシー警告ラベル」を備えた検索システムの調査を行いました。このアプローチは、情報検索における潜在的なプライバシー脅威についてユーザーに警告することで、プライバシーの懸念に対応する一つの手段として設計されています。我々の主な目標は、プライバシーに対する態度がプライバシーを保護する行動にどの程度結びついているかを理解することです。本研究では、参加者に健康に関する事実ベースの意思決定タスクを与え、プライバシー警告ライトシステムを含むさまざまな検索エンジン結果ページ（SERP）を回覧させました。最終的に、参加者にはプライバシーに対する態度、プライバシーを保護する行動、その他の人口統計情報を捉えるためのアンケートを実施しました。プライバシー警告付きのSERPと対照のSERPのインタラクティブな検索行動を比較することに加え、自己報告のプライバシー測定とインタラクティブな検索行動を比較しました。参加者は健康情報のプライバシーに対する強い懸念を報告する一方で、この情報の正確性に高い重要性を置いていました。インタラクティブな実験と自己報告のプライバシー測定の分析により、1) プライバシー保護ブラウザの選択は、SERPにおけるプライバシー態度およびプライバシー保護行動に有意なリンクがあること、2) プライバシーへの懸念を報告する一方で、プライバシーを保護する警告がある情報検索システムにおいて記録された行動とは有意なリンクがないことが示されました。
+        </label>
+        <input type="checkbox" id="Panel134" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Privacy concerns are becoming a dominant focus in search applications, thus there is a growing need to understand implications of efforts to address these concerns. Our research investigates a search system with privacy warning labels, an approach inspired by decision making research on food nutrition labels. This approach is designed to alert users to potential privacy threats in their search for information as one possible avenue to address privacy concerns. Our primary goal is to understand the extent to which attitudes towards privacy are linked to behaviors that protect privacy. In the present study, participants were given a set of fact-based decision tasks from the domain of health search. Participants were rotated through variations of search engine results pages (SERPs) including a SERP with a privacy warning light system. Lastly, participants completed a survey to capture attitudes towards privacy, behaviors to protect privacy, and other demographic information. In addition to the comparison of interactive search behaviors of a privacy warning SERP with a control SERP, we compared self-report privacy measures with interactive search behaviors. Participants reported strong concerns around privacy of health information while simultaneously placing high importance on the correctness of this information. Analysis of our interactive experiment and self-report privacy measures indicate that 1) choice of privacy-protective browsers has a significant link to privacy attitudes and privacy-protective behaviors in a SERP and 2) there are no significant links between reported concerns towards privacy and recorded behavior in an information retrieval system with warnings that enable users to protect their privacy.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel135">
+        <strong> A Systematic Comparison of Methods for Finding Good Premises for Claims </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lorik+Dumani">Lorik Dumani</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ralf+Schenkel">Ralf Schenkel</a> (1) </u>  <br>
+        1:  University of Trier <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331282">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Systematic Comparison of Methods for Finding Good Premises for Claims">Google Scholar</a></div>
+        (135)
+        <br>
+        <b>概要:　</b> 計算議論に関する研究は近年非常に人気が高まっています。議論は、少なくとも一つの前提によって支持または批判される主張で構成され、他者を説得することを目的としています。この分野における重要な問題は、指定された主張に対して良い前提をコーパスから見つけ出すことです。主張が与えられた場合、既存のアプローチの多くはまずテキスト的に類似する主張を見つけることです。本研究では、論争ポータルから収集した大量の（主張、前提）ペアのコーパスを用いて、テキスト類似性によって主張の類似性を決定するための196の方法を体系的に比較します。さらに、主張のテキスト類似性が関連する前提の重要性をどの程度予測できるかも評価します。<br><br>ジャーナル：機械学習<br>目的：わかりやすく、明確な文章<br>対象：分野の専門家<br>スタイル：分析的、PhDレベル
+        </label>
+        <input type="checkbox" id="Panel135" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Research on computational argumentation has recently become very popular. An argument consists of a claim that is supported or attacked by at least one premise. Its intention is the persuasion of others. An important problem in this field is retrieving good premises for a designated claim from a corpus of arguments. Given a claim, oftentimes existing approaches' first step is finding textually similar claims. In this paper we compare 196 methods systematically for determining similar claims by textual similarity, using a large corpus of (claim, premise) pairs crawled from debate portals. We also evaluate how well textual similarity of claims can predict relevance of the associated premises.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel136">
+        <strong> Graph Intention Network for Click-through Rate Prediction in Sponsored Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Feng+Li">Feng Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhenrui+Chen">Zhenrui Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pengjie+Wang">Pengjie Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yi+Ren">Yi Ren</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Di+Zhang">Di Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaoyu+Zhu">Xiaoyu Zhu</a> (1) </u>  <br>
+        1:  Alibaba Group <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331283">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Graph Intention Network for Click-through Rate Prediction in Sponsored Search">Google Scholar</a></div>
+        (136)
+        <br>
+        <b>概要:　</b> クリック率 (CTR) を正確に推定することは、スポンサー付き検索におけるユーザー体験と収益の向上において非常に重要です。CTR予測モデルにおいては、ユーザーのリアルタイムの検索意図を把握することが必要です。現在のほとんどの研究は、ユーザーのリアルタイムの行動に基づいてその意図を探ることに焦点を当てています。しかしながら、ユーザーの行動が希薄な場合には意図を捉えることが難しく、これが行動の希薄性問題を引き起こします。さらに、ユーザーが過去の特定の行動パターンから抜け出して新しい興味を探索することも困難であり、これが一般化の弱さ問題につながります。我々は、ユーザーの意図を見出すために、共起商品グラフに基づく新しいアプローチ「グラフ意図ネットワーク (GIN)」を提案します。多層グラフ拡散を採用することで、GINはユーザーの行動を豊かにし、行動の希薄性問題を解決します。商品間の共起関係を導入することで、潜在的な好みを探索し、一般化の弱さ問題も緩和します。我々の知る限り、GIN方法はCTR予測においてユーザー意図を探るためにグラフ学習を導入し、グラフ学習とCTR予測タスクのエンドツーエンド結合訓練を提案した初めての手法です。現在、GINはeコマースプラットフォームの実世界データにおいて既存のディープラーニングモデルを上回る優れたオフライン成果を達成しており、オンラインで安定したテストを実施し、CTRの大幅な改善を実現しています。
+        </label>
+        <input type="checkbox" id="Panel136" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Estimating click-through rate (CTR) accurately has an essential impact on improving user experience and revenue in sponsored search. For CTR prediction model, it is necessary to make out user's real-time search intention. Most of the current work is to mine their intentions based on users' real-time behaviors. However, it is difficult to capture the intention when user behaviors are sparse, causing thebehavior sparsity problem. Moreover, it is difficult for user to jump out of their specific historical behaviors for possible interest exploration, namelyweak generalization problem. We propose a new approach Graph Intention Network (GIN) based on co-occurrence commodity graph to mine user intention. By adopting multi-layered graph diffusion, GIN enriches user behaviors to solve the behavior sparsity problem. By introducing co-occurrence relationship of commodities to explore the potential preferences, the weak generalization problem is also alleviated. To the best of our knowledge, the GIN method is the first to introduce graph learning for user intention mining in CTR prediction and propose end-to-end joint training of graph learning and CTR prediction tasks in sponsored search. At present, GIN has achieved excellent offline results on the real-world data of the e-commerce platform outperforming existing deep learning models, and has been running stable tests online and achieved significant CTR improvements.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel137">
+        <strong> A Scalable Virtual Document-Based Keyword Search System for RDF Datasets </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dennis+Dosso">Dennis Dosso</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gianmaria+Silvello">Gianmaria Silvello</a> (1) </u>  <br>
+        1:  University of Padua <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331284">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Scalable Virtual Document-Based Keyword Search System for RDF Datasets">Google Scholar</a></div>
+        (137)
+        <br>
+        <b>概要:　</b> 知識ベースのWebアプリケーションの発展に伴い、RDFデータセットの利用がますます有用となってきています。SPARQLは、RDFデータセットを検索およびアクセスするための公式な構造化クエリ言語です。その有効性にもかかわらず、非専門家にとっては構文の複雑さやデータベースクエリの基礎的なデータ構造を知る必要があるため、使用するのが難しい場合があります。この点において、キーワード検索は非専門家ユーザーが直感的にRDFデータセット内のデータにアクセスすることを可能にします。本研究では、大規模なRDFデータセット上での効果的かつ効率的なキーワード検索を実現するためのTSA+VDPキーワード検索システムについて説明します。このシステムは、新たな評価フレームワークを用いて、実世界および合成の異なるデータセットで他の最先端の手法と比較されており、その評価フレームワークは容易に再現可能かつ共有可能です。
+        </label>
+        <input type="checkbox" id="Panel137" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> RDF datasets are becoming increasingly useful with the development of knowledge-based web applications. SPARQL is the official structured query language to search and access RDF datasets. Despite its effectiveness, the language is often difficult to use for non-experts because of its syntax and the necessity to know the underlying data structure of the database queries. In this regard, keyword search enables non-expert users to access the data contained in RDF datasets intuitively. This work describes the TSA+VDP keyword search system for effective and efficient keyword search over large RDF datasets. The system is compared with other state-of-the-art methods on different datasets, both real-world and synthetic, using a new evaluation framework that is easily reproducible and sharable.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel138">
+        <strong> Query-Task Mapping </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michael+Völske">Michael Völske</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ehsan+Fatehifar">Ehsan Fatehifar</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Benno+Stein">Benno Stein</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Matthias+Hagen">Matthias Hagen</a> (2) </u>  <br>
+        1:  Bauhaus-Universität Weimar, 2:  Martin-Luther-Universität Halle-Wittenberg <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331286">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Query-Task Mapping">Google Scholar</a></div>
+        (138)
+        <br>
+        <b>概要:　</b> 最近のいくつかのタスクベースの検索研究は、クエリログを同一のタスクや情報ニーズに基づいてセットに分割することを目的としています。我々は、この自然な次のステップに取り組みます：現在提出されたクエリを、既にタスク分割されたログの適切なタスクにマッピングすることです。このクエリ-タスクマッピングは、例えばクエリのサジェストを強化することができ、そのためには精度だけでなく効率も重要な目標となります。我々の主な貢献は、3つの大規模ベンチマークデータセットと、4つのクエリ-タスクマッピングアプローチに関する予備実験です：(1) Trieベースのアプローチ、(2) MinHash~LSH、(3) Word2Vec設定でのワードムーバーズ距離、(4) 逆インデックスベースのアプローチ。実験の結果、迅速かつ正確な逆インデックスベースの手法が強力なベースラインを形成することが示されました。
+        </label>
+        <input type="checkbox" id="Panel138" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Several recent task-based search studies aim at splitting query logs into sets of queries for the same task or information need. We address the natural next step: mapping a currently submitted query to an appropriate task in an already task-split log. This query-task mapping can, for instance, enhance query suggestions---rendering efficiency of the mapping, besides accuracy, a key objective. Our main contributions are three large benchmark datasets and preliminary experiments with four query-task mapping approaches: (1) a Trie-based approach, (2) MinHash~LSH, (3) word movers distance in a Word2Vec setup, and (4) an inverted index-based approach. The experiments show that the fast and accurate inverted index-based method forms a strong baseline.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel139">
+        <strong> An Analysis of Query Reformulation Techniques for Precision Medicine </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maristella+Agosti">Maristella Agosti</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Giorgio+Maria+Di+Nunzio">Giorgio Maria Di Nunzio</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Stefano+Marchesin">Stefano Marchesin</a> (1) </u>  <br>
+        1:  University of Padua <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331289">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=An Analysis of Query Reformulation Techniques for Precision Medicine">Google Scholar</a></div>
+        (139)
+        <br>
+        <b>概要:　</b> Text REtrieval Conference (TREC) の Precision Medicine (PM) トラックは、癌患者を治療する臨床医に有用な精密医療関連情報を提供することに焦点を当てています。PM トラックは、同じトピックセットを使用して科学文献と臨床試験という2つの異なるコレクションに対する医療情報検索 (IR) システムを評価するユニークな機会を提供します。本論文では、この機会を活かして、科学文献および臨床試験の両方の検索において有効であるかどうかを明らかにするため、最新のクエリ展開および縮減技術を提案・評価します。TREC の両方のエディションにおいて一貫して有効であるアプローチを提示し、TREC PM 2017 および 2018 に提出された最良のパフォーマンスを示すランと比較します。
+        </label>
+        <input type="checkbox" id="Panel139" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The Precision Medicine (PM) track at the Text REtrieval Conference (TREC) focuses on providing useful precision medicine-related information to clinicians treating cancer patients. The PM track gives the unique opportunity to evaluate medical IR systems using the same set of topics on two different collections: scientific literature and clinical trials. In the paper, we take advantage of this opportunity and we propose and evaluate state-of-the-art query expansion and reduction techniques to identify whether a particular approach can be helpful in both scientific literature and clinical trial retrieval. We present those approaches that are consistently effective in both TREC editions and we compare the results obtained with the best performing runs submitted to TREC PM 2017 and 2018.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel140">
+        <strong> Using Trails to Support Users with Tasks of Varying Scope </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Robert+Capra">Robert Capra</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jaime+Arguello">Jaime Arguello</a> (1) </u>  <br>
+        1:  University of North Carolina at Chapel Hill <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331290">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Using Trails to Support Users with Tasks of Varying Scope">Google Scholar</a></div>
+        (140)
+        <br>
+        <b>概要:　</b> 検索履歴は、以前に関連タスクに取り組んだ検索者のアプローチを対話形式で視覚化するものです。ユーザーに検索履歴を活用させるためには、タスク、ユーザー、および履歴の側面を理解する必要があります。本論文では、二つの課題を詳しく検討します。第一に、他の人の検索履歴から利益を得るユーザーの能力に影響を与えるタスクの特徴は何か。第二に、現在のユーザーのタスクと検索履歴を作成した以前のユーザーのタスクとの「ミスマッチ」の影響は何か。この調査では、参加者が検索履歴を使用してタスクを完了する際の認識と行動に対する二つの要因の影響を調査しました。第一の要因はタスクの範囲で、参加者に割り当てられたタスクの範囲（広範から狭範）に焦点を当てました。この要因の操作には、タスクに関連する制約の数を変えることが含まれました。第二の要因は履歴の範囲で、参加者に提供された検索履歴の元となったタスクの範囲に焦点を当てました。我々は、タスクの範囲と履歴の範囲が参加者の（研究質問1）事前の認識、（研究質問2）事後の認識、および（研究質問3）検索行動にどのように影響するかを調査しました。我々の結果が、検索履歴を使用して支援を提供するシステムに与える影響について議論します。
+        </label>
+        <input type="checkbox" id="Panel140" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> A search trail is an interactive visualization of how a previous searcher approached a related task. Using search trails to assist users requires understanding aspects of the task, user, and trails. In this paper, we examine two questions. First, what are task characteristics that influence a user's ability to gain benefits from others' trails? Second, what is the impact of a "mismatch" between a current user's task and previous user's task which originated the trail? We report on a study that investigated the influence of two factors on participants' perceptions and behaviors while using search trails to complete tasks. Our first factor, task scope, focused on the scope of the task assigned to the participant (broad to narrow). Our manipulation of this factor involved varying the number of constraints associated with tasks. Our second factor, trail scope, focused on the scope of the task that originated the search trails given to participants. We investigated how task scope and trail scope affected participants' (RQ1) pre-task perceptions, (RQ2) post-task perceptions, and (RQ3) search behaviors. We discuss implications of our results for systems that use search trails to provide assistance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel141">
+        <strong> An Axiomatic Approach to Regularizing Neural Ranking Models </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Corby+Rosset">Corby Rosset</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Bhaskar+Mitra">Bhaskar Mitra</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chenyan+Xiong">Chenyan Xiong</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nick+Craswell">Nick Craswell</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xia+Song">Xia Song</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Saurabh+Tiwary">Saurabh Tiwary</a> (1) </u>  <br>
+        1:  Microsoft, 2:  Microsoft, 3:  Microsoft <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331296">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=An Axiomatic Approach to Regularizing Neural Ranking Models">Google Scholar</a></div>
+        (141)
+        <br>
+        <b>概要:　</b> 公理的情報検索 (IR) は、IRモデルにおいて望ましい一連の基本的性質を探求する分野です。これらの性質は正式に表現されることで、より優れた関連性推定関数を探す際の指針となります。ニューラルランキングモデルは通常、多くの学習可能なパラメータを含みます。これらのモデルの訓練には、大量のラベル付きデータに基づいて適切なパラメータ値を探索するプロセスが含まれます。直感的には、古典的なIRモデルの改善を導く公理は、機械学習ベースのランカーのパラメータ推定にも役立つはずです。本研究では、ニューラルランキングモデルの訓練において、ラベル付きデータからの直接監督を補完するために、IR公理を利用する方法を探求します。我々は、訓練中にデータセット内の文書を有名な公理に沿って修正し、ランキングモデルと公理間の合意に基づく正則化損失を追加します。この正則化は、元の文書と修正された文書のどちらが優先されるべきかを決定する際に使用されます。我々の実験結果は、ニューラルランキングモデルが公理的正則化によってより早く収束し、より良い一般化を達成することを示しています。
+        </label>
+        <input type="checkbox" id="Panel141" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Axiomatic information retrieval (IR) seeks a set of principle properties desirable in IR models. These properties when formally expressed provide guidance in the search for better relevance estimation functions. Neural ranking models typically contain many learnable parameters. The training of these models involves a search for appropriate parameter values based on large quantities of labeled examples. Intuitively, axioms that can guide the search for better traditional IR models should also help in better parameter estimation for machine learning based rankers. This work explores the use of IR axioms to augment the direct supervision from labeled data for training neural ranking models. We modify the documents in our dataset along the lines of well-known axioms during training and add a regularization loss based on the agreement between the ranking model and the axioms on which version of the document---the original or the perturbed---should be preferred. Our experiments show that the neural ranking model achieves faster convergence and better generalization with axiomatic regularization.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel142">
+        <strong> Deeper Text Understanding for IR with Contextual Neural Language Modeling </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhuyun+Dai">Zhuyun Dai</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jamie+Callan">Jamie Callan</a> (1) </u>  <br>
+        1:  Carnegie Mellon University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331303">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Deeper Text Understanding for IR with Contextual Neural Language Modeling">Google Scholar</a></div>
+        (142)
+        <br>
+        <b>概要:　</b> ニューラルネットワークは、複雑な言語パターンやクエリとドキュメントの関係を自動的に学習する新たな可能性を提供します。ニューラルIRモデルは、クエリとドキュメントの関連性パターンの学習で有望な結果を達成していますが、クエリやドキュメントのテキスト内容を理解するための探索はほとんど行われていません。本研究では、最近提案されたコンテクストニューラル言語モデルBERTを活用して、IRのためのより深いテキスト理解を提供することを検討します。実験結果は、BERTのコンテクストテキスト表現が従来の単語埋め込みよりも効果的であることを示しています。バッグオブワーズ検索モデルと比較して、コンテクスト言語モデルは言語構造をよりよく活用でき、自然言語で書かれたクエリに対して大きな改善をもたらします。テキスト理解能力と検索知識を組み合わせることで、訓練データが限られている関連検索タスクに利益をもたらす強化されたBERTの事前訓練モデルが生まれます。
+        </label>
+        <input type="checkbox" id="Panel142" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Neural networks provide new possibilities to automatically learn complex language patterns and query-document relations. Neural IR models have achieved promising results in learning query-document relevance patterns, but few explorations have been done on understanding the text content of a query or a document. This paper studies leveraging a recently-proposed contextual neural language model, BERT, to provide deeper text understanding for IR. Experimental results demonstrate that the contextual text representations from BERT are more effective than traditional word embeddings. Compared to bag-of-words retrieval models, the contextual language model can better leverage language structures, bringing large improvements on queries written in natural languages. Combining the text understanding ability with search knowledge leads to an enhanced pre-trained BERT model that can benefit related search tasks where training data are limited.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel143">
+        <strong> Understanding the Interpretability of Search Result Summaries </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Siyu+Mi">Siyu Mi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiepu+Jiang">Jiepu Jiang</a> (1) </u>  <br>
+        1:  Virginia Tech <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331306">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Understanding the Interpretability of Search Result Summaries">Google Scholar</a></div>
+        (143)
+        <br>
+        <b>概要:　</b> 現在のウェブ検索エンジンにおける検索結果の解釈可能性を、ラボユーザースタディを通じて検証しました。特に、検索結果のが、システムがなぜその結果を取得したのか、そしてその結果がどの程度有用であるかをユーザーに知らせる解釈可能な手法として評価しました。160セッションにわたる40人のユーザーから、合計1,252件の検索結果に対する判断を収集しました。実験結果は、検索結果の解釈可能性が、ユーザーのクリック意志決定に重要な影響を与えることを示しています。なぜその結果が取得されたのかが理解できない場合（透明性が低い）や、に基づいてその結果が有用かどうかを評価できない場合（評価可能性が低い）、ユーザーは結果リンクをクリックする可能性が低くなります。我々の研究結果は、検索結果のの解釈可能性を向上させ、検索エンジンユーザーに取得結果を説明するためのより良い手法を開発することが重要であることを示唆しています。
+        </label>
+        <input type="checkbox" id="Panel143" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We examine the interpretability of search results in current web search engines through a lab user study. Particularly, we evaluate search result summary as an interpretable technique that informs users why the system retrieves a result and to which extent the result is useful. We collected judgments about 1,252 search results from 40 users in 160 sessions. Experimental results indicate that the interpretability of a search result summary is a salient factor influencing users' click decisions. Users are less likely to click on a result link if they do not understand why it was retrieved (low transparency) or cannot assess if the result would be useful based on the summary (low assessability). Our findings suggest it is crucial to improve the interpretability of search result summaries and develop better techniques to explain retrieved results to search engine users.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel144">
+        <strong> Content-Based Weak Supervision for Ad-Hoc Re-Ranking </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sean+MacAvaney">Sean MacAvaney</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Andrew+Yates">Andrew Yates</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kai+Hui">Kai Hui</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ophir+Frieder">Ophir Frieder</a> (1) </u>  <br>
+        1:  Georgetown University, 2:  Max Planck Institute for Informatics, 3:  Amazon <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331316">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Content-Based Weak Supervision for Ad-Hoc Re-Ranking">Google Scholar</a></div>
+        (144)
+        <br>
+        <b>概要:　</b> ニューラルランキングにおける課題の一つは、大量の手動でラベル付けされた関連性判断をトレーニングのために必要とすることです。これに対し、以前の研究とは異なり、既存の関連性を示す疑似クエリ-文書ペアを生成する弱い監督学習ソースの利用を検討します（例：ニュース記事の見出し-本文ペアや百科事典の見出し-段落ペア）。さらに、ドメイン外のトレーニングサンプルを排除するために、ヒューリスティックベースのアプローチとニューラルランカーを再利用する新しい監視フィルターを用いた2つの技術を提案します。いくつかの主要なニューラルランキングアーキテクチャと複数の弱い監督学習データセットを使用して、これらのトレーニングペアソースが単独で効果的であり（以前の弱い監督技術よりも高性能）、フィルタリングがさらに性能を向上させることを示します。
+        </label>
+        <input type="checkbox" id="Panel144" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> One challenge with neural ranking is the need for a large amount of manually-labeled relevance judgments for training. In contrast with prior work, we examine the use of weak supervision sources for training that yield pseudo query-document pairs that already exhibit relevance (e.g., newswire headline-content pairs and encyclopedic heading-paragraph pairs). We also propose filtering techniques to eliminate training samples that are too far out of domain using two techniques: a heuristic-based approach and novel supervised filter that re-purposes a neural ranker. Using several leading neural ranking architectures and multiple weak supervision datasets, we show that these sources of training pairs are effective on their own (outperforming prior weak supervision techniques), and that filtering can further improve performance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel145">
+        <strong> Evaluating Variable-Length Multiple-Option Lists in Chatbots and Mobile Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pepa+Atanasova">Pepa Atanasova</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Georgi+Karadzhov">Georgi Karadzhov</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yasen+Kiprov">Yasen Kiprov</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Preslav+Nakov">Preslav Nakov</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fabrizio+Sebastiani">Fabrizio Sebastiani</a> (4) </u>  <br>
+        1:  University of Copenhagen, 2:  SiteGround Hosting EOOD, 3:  Qatar Computing Research Institute, 4:  Istituto di Scienza e Tecnologie dell'Informazione <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331308">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Evaluating Variable-Length Multiple-Option Lists in Chatbots and Mobile Search">Google Scholar</a></div>
+        (145)
+        <br>
+        <b>概要:　</b> 近年では、スマートモバイルデバイスの普及により、モバイルプラットフォーム内での検索機能が徐々に統合されてきました。これにより、モバイルユーザーが「青いリンク10件」にクリックする可能性が低く、スニペットから直接答えを得ることを期待するため、このメタファーから脱却する動機が生まれました。結果として、クエスチョンアンサリング（Question Answering）への関心が再燃しました。その後、チャットボットや対話システム、メッセージングプラットフォームが登場し、ユーザーの意図をよりよく理解するためにフォローアップの質問を行うシステムがより適切にニーズに応えられるようになりました。通常、ユーザーは話し言葉での言い回しに対して単一の応答を期待しますが、システムはユーザーの意図をさまざまに理解し、それに基づいて複数の選択肢を提示することもできます。しかし、この可能性を過度に使用すると、ユーザーを混乱させたり不快にさせたりする可能性があります。短いリストを維持しつつ正解を含む可能性を最大化するという相反する目標を考慮したうえで、良質な可変長リストを生成する方法はあまり探求されていない問題です。また、そのようなシステムを評価する方法も明確ではありません。本研究は、このギャップを埋めることを目的としています。具体的には、この目的に適した評価基準が持つべき必要な特性と選択的な特性を定義します。さらに、IR（情報検索）伝統の既存の評価基準がこの設定には完全には適していないことを示し、この問題を十分に解決するための新しい評価基準を提案します。
+        </label>
+        <input type="checkbox" id="Panel145" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In recent years, the proliferation of smart mobile devices has lead to the gradual integration of search functionality within mobile platforms. This has created an incentive to move away from the "ten blue links" metaphor, as mobile users are less likely to click on them, expecting to get the answer directly from the snippets. In turn, this has revived the interest in Question Answering. Then, along came chatbots, conversational systems, and messaging platforms, where the user needs could be better served with the system asking follow-up questions in order to better understand the user's intent. While typically a user would expect a single response at any utterance, a system could also return multiple options for the user to select from, based on different system understandings of the user's intent. However, this possibility should not be overused, as this practice could confuse and/or annoy the user. How to produce good variable-length lists, given the conflicting objectives of staying short while maximizing the likelihood of having a correct answer included in the list, is an underexplored problem. It is also unclear how to evaluate a system that tries to do that. Here we aim to bridge this gap. In particular, we define some necessary and some optional properties that an evaluation measure fit for this purpose should have. We further show that existing evaluation measures from the IR tradition are not entirely suitable for this setup, and we propose novel evaluation measures that address it satisfactorily.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel146">
+        <strong> On Tradeoffs Between Document Signature Methods for a Legal Due Diligence Corpus </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Adam+Roegiest">Adam Roegiest</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Edward+Lee">Edward Lee</a> (1) </u>  <br>
+        1:  Kira Systems <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331311">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=On Tradeoffs Between Document Signature Methods for a Legal Due Diligence Corpus">Google Scholar</a></div>
+        (146)
+        <br>
+        <b>概要:　</b> 文書署名は情報検索（IR）における確立されたツールであるが、主にウェブ文書の文脈で調査が行われてきた。法務デューデリジェンス文書は、その性質上、標準的なウェブコレクションに比べて、より類似した構造と言語を持つことが多い。さらに、多くのデューデリジェンスシステムはリアルタイムの対話を促進することを目指しているため、文書の取込から利用可能になるまでの時間は最小限に抑える必要がある。このような制約により、近似重複文書の識別における解決策の範囲はさらに限定される。本論文では、デューデリジェンス分野における文書署名手法が直面するトレードオフを検討する。特に、90,000件のデューデリジェンス文書コーパスに対して、署名の長さ、計算時間、ハッシュ衝突数、最も近い近傍の数の間のトレードオフを定量化する。
+        </label>
+        <input type="checkbox" id="Panel146" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> While document signatures are a well established tool in IR, they have primarily been investigated in the context of web documents. Legal due diligence documents, by their nature, have more similar structure and language than we may expect out of standard web collections. Moreover, many due diligence systems strive to facilitate real-time interactions and so time from document ingestion to availability should be minimal. Such constraints further limit the possible solution space when identifying near duplicate documents. We present an examination of the tradeoffs that document signature methods face in the due diligence domain. In particular, we quantify the trade-off between signature length, time to compute, number of hash collisions, and number of nearest neighbours for a 90,000 document due diligence corpus.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel147">
+        <strong> A study on the Interpretability of Neural Retrieval Models using DeepSHAP </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zeon+Trevor+Fernando">Zeon Trevor Fernando</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jaspreet+Singh">Jaspreet Singh</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Avishek+Anand">Avishek Anand</a> (1) </u>  <br>
+        1:  L3S Research Center <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331312">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A study on the Interpretability of Neural Retrieval Models using DeepSHAP">Google Scholar</a></div>
+        (147)
+        <br>
+        <b>概要:　</b> 最近の情報検索（IR）のトレンドとして、ニューラルネットワークを使用してテキストベースのアドホック検索モデルを学習する方法が注目されています。これらのアプローチやアーキテクチャは、BM25のような従来の検索モデルに比べて大幅に優れた性能を示していますが、文書がクエリに対してなぜ関連性があるのかを理解することは依然として困難です。機械学習（ML）の分野では、ディープニューラルネットワークが下す決定を説明するためのさまざまなアプローチが提案されています。たとえば、DeepSHAPはDeepLiftアルゴリズムを修正し、特定の決定に対して入力特徴量の相対的重要性（シャープレイ値）を推定する手法です。これを行う際、ネットワーク内の活性化を、基準となる入力に対する活性化と比較します。画像分類では、基準入力は通常、真っ黒な画像です。DeepSHAPが画像分類タスクでよく研究されている一方で、その手法をニューラル検索モデル（NRM）の出力の説明にどのように適応させるかはまだ明らかにされていません。特に、IRの文脈では「黒い」画像とは何かという点が問題となります。本研究ではさまざまな基準入力文書の構築技術を探求しました。さらに、DeepSHAPによって生成された説明とLIME（モデルに依存しないアプローチ）の説明を比較し、両者の説明が大幅に異なることを発見しました。私たちの研究は、NRMに対する説明の頑健性と正確性について懸念を提起しています。本論文を通じて、NRMの解釈可能性に関する興味深い問題に光を当て、今後の研究領域を強調することを目指しています。
+        </label>
+        <input type="checkbox" id="Panel147" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> A recent trend in IR has been the usage of neural networks to learn retrieval models for text based adhoc search. While various approaches and architectures have yielded significantly better performance than traditional retrieval models such as BM25, it is still difficult to understand exactly why a document is relevant to a query. In the ML community several approaches for explaining decisions made by deep neural networks have been proposed -- including DeepSHAP which modifies the DeepLift algorithm to estimate the relative importance (shapley values) of input features for a given decision by comparing the activations in the network for a given image against the activations caused by a reference input. In image classification, the reference input tends to be a plain black image. While DeepSHAP has been well studied for image classification tasks, it remains to be seen how we can adapt it to explain the output of Neural Retrieval Models (NRMs). In particular, what is a good "black" image in the context of IR? In this paper we explored various reference input document construction techniques. Additionally, we compared the explanations generated by DeepSHAP to LIME (a model agnostic approach) and found that the explanations differ considerably. Our study raises concerns regarding the robustness and accuracy of explanations produced for NRMs. With this paper we aim to shed light on interesting problems surrounding interpretability in NRMs and highlight areas of future work.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel148">
+        <strong> Automatic Task Completion Flows from Web APIs </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kyle+Williams">Kyle Williams</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Seyyed+Hadi+Hashemi">Seyyed Hadi Hashemi</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Imed+Zitouni">Imed Zitouni</a> (1) </u>  <br>
+        1:  Microsoft, 2:  University of Amsterdam <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331318">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Automatic Task Completion Flows from Web APIs">Google Scholar</a></div>
+        (148)
+        <br>
+        <b>概要:　</b> Webには、多数のAPIが存在し、それらを組み合わせることで、インテリジェントアシスタントが様々なタスクを完了することが可能です。我々は、これらのAPIをグラフとして組み合わせ、そのグラフからタスク完了用の経路を自動的に抽出する方法を提案します。これらの経路はAPI呼び出しを連鎖させ、実行されたAPIの出力を他のAPIの入力として利用します。我々は、ユーザーのクエリに応じてAPIグラフから自動的にこれらの経路を抽出し、それらがユーザー満足をもたらす可能性に基づいてランク付けします。我々のアプローチをメールとカレンダーの領域でのタスク完了に適用し、自動的にタスク完了のフローを生成する方法を示します。
+        </label>
+        <input type="checkbox" id="Panel148" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The Web contains many APIs that could be combined in countless ways to enable Intelligent Assistants to complete all sorts of tasks. We propose a method to automatically produce task completion flows from a collection of these APIs by combining them in a graph and automatically extracting paths from the graph for task completion. These paths chain together API calls and use the output of executed APIs as inputs to others. We automatically extract these paths from an API graph in response to a user query and then rank the paths by the likelihood of them leading to user satisfaction. We apply our approach for task completion in the email and calendar domains and show how it can be used to automatically create task completion flows.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel149">
+        <strong> Ontology-Aware Clinical Abstractive Summarization </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sean+MacAvaney">Sean MacAvaney</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sajad+Sotudeh">Sajad Sotudeh</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Arman+Cohan">Arman Cohan</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nazli+Goharian">Nazli Goharian</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ish+Talati">Ish Talati</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ross+W.+Filice">Ross W. Filice</a> (3) </u>  <br>
+        1:  Georgetown University, 2:  Allen Institute for Artificial Intelligence, 3:  MedStar Georgetown University Hospital <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331319">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Ontology-Aware Clinical Abstractive Summarization">Google Scholar</a></div>
+        (149)
+        <br>
+        <b>概要:　</b> 臨床報告から正確なを自動生成することは、臨床医の時間を節約し、の網羅性を向上させ、エラーを減少させる可能性があります。本研究では、内容選択および生成を強化するために、領域固有のオントロジー情報を拡張したシーケンス・トゥ・シーケンス的モデルを提案します。我々の手法を放射線報告書のデータセットに適用した結果、ルージュスコアの観点で現在の最先端技術を大幅に上回ることを示しました。さらに、放射線科医による広範な人間評価により、このアプローチが重要な詳細を省略する可能性が低く、それでいて可読性や正確性を損なわないを生成することが確認されました。
+        </label>
+        <input type="checkbox" id="Panel149" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Automatically generating accurate summaries from clinical reports could save a clinician's time, improve summary coverage, and reduce errors. We propose a sequence-to-sequence abstractive summarization model augmented with domain-specific ontological information to enhance content selection and summary generation. We apply our method to a dataset of radiology reports and show that it significantly outperforms the current state-of-the-art on this task in terms of rouge scores. Extensive human evaluation conducted by a radiologist further indicates that this approach yields summaries that are less likely to omit important details, without sacrificing readability or accuracy.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel150">
+        <strong> Hyperlink Classification via Structured Graph Embedding </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Geon+Lee">Geon Lee</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Seonggoo+Kang">Seonggoo Kang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Joyce+Jiyoung+Whang">Joyce Jiyoung Whang</a> (1) </u>  <br>
+        1:  Sungkyunkwan University (SKKU), 2:  Naver Corporation <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331325">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Hyperlink Classification via Structured Graph Embedding">Google Scholar</a></div>
+        (150)
+        <br>
+        <b>概要:　</b> 本研究では、ウェブ検索におけるハイパーリンクをその役割に基づいて「ナビゲーション」、「提案」、「アクション」の3つのクラスに分類することにより、ハイパーリンク分類問題を正式に定義します。このタスクに対して、実世界のウェブグラフデータセットが生成されます。我々はハイパーリンク分類問題に対して構造化グラフ埋め込みの視点から取り組み、最近提案された知識グラフ埋め込み技術を改良することでこの問題を解決できることを示します。改良の主なアイデアは、従来の知識グラフ埋め込みモデルがトレーニング中に負の三重項を生成する際にエンティティのみを破壊するのに対し、関係の摂動を導入することです。我々の知る限り、この研究は知識グラフ埋め込みのアイデアをハイパーリンク分類問題に適用した最初の研究です。我々のモデルは、ウェブグラフ上のハイパーリンクを分類する際に、従来の知識グラフ埋め込みモデルを大幅に上回る性能を示します。
+        </label>
+        <input type="checkbox" id="Panel150" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We formally define a hyperlink classification problem in web search by classifying hyperlinks into three classes based on their roles: navigation, suggestion, and action. Real-world web graph datasets are generated for this task. We approach the hyperlink classification problem from a structured graph embedding perspective, and show that we can solve the problem by modifying the recently proposed knowledge graph embedding techniques. The key idea of our modification is to introduce a relation perturbation while the original knowledge graph embedding models only corrupt entities when generating negative triplets in training. To the best of our knowledge, this is the first study to apply the knowledge graph embedding idea to the hyperlink classification problem. We show that our model significantly outperforms the original knowledge graph embedding models in classifying hyperlinks on web graphs.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel151">
+        <strong> Answer-enhanced Path-aware Relation Detection over Knowledge Base </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Daoyuan+Chen">Daoyuan Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min+Yang">Min Yang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hai-Tao+Zheng">Hai-Tao Zheng</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yaliang+Li">Yaliang Li</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ying+Shen">Ying Shen</a> (1) </u>  <br>
+        1:  Peking University, 2:  University of the Chinese Academy of Sciences, 3:  Tsinghua University, 4:  Alibaba Group <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331328">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Answer-enhanced Path-aware Relation Detection over Knowledge Base">Google Scholar</a></div>
+        (151)
+        <br>
+        <b>概要:　</b> 知識ベース質問応答（Knowledge Based Question Answering, KBQA）は、ユーザーが投稿する質問に適切な回答を提供するための最も有望なアプローチの一つです。知識ベース（KB）に含まれる豊富な知識を最大限に活用することを目指す関係検出はますます重要になっています。KB上での関係検出においては、著しい進展が見られます。しかし、最近の最先端の深層ニューラルネットワークは、質問文の文脈情報のみを考慮し、質問と回答候補の関連性や情報を提供するリレーショナルパスの学習には重きを置いていません。本論文では、回答強化型の質問表現およびパス認識型の関係表現を対話的に学習するためのKnowledge-driven Relation Detectionネットワーク（KRD）を提案します。質問表現と関係表現の類似性マッチングプロセスには、Siamese LSTMを導入します。SimpleQuestionsおよびWebQSPデータセットでの実験結果は、KRDが最新のメソッドを上回るパフォーマンスを示すことを証明しています。加えて、一連のアブレーションテストは、提案手法の堅牢な優位性を示しています。
+        </label>
+        <input type="checkbox" id="Panel151" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Knowledge Based Question Answering (KBQA) is one of the most promising approaches to provide suitable answers for the queries posted by users. Relation detection that aims to take full advantage of the substantial knowledge contained in knowledge base (KB) becomes increasingly important. Significant progress has been made in performing relation detection over KB. However, recent deep neural networks that achieve the state of the art on KB-based relation detection task only consider the context information of question sentences rather than the relatedness between question and answer candidates, and exclusively extract the relation from KB triple rather than learn informative relational path. In this paper, we propose a Knowledge-driven Relation Detection network (KRD) to interactively learn answer-enhanced question representations and path-aware relation representations for relation detection. A Siamese LSTM is employed into a similarity matching process between the question representation and relation representation. Experimental results on the SimpleQuestions and WebQSP datasets demonstrate that KRD outperforms the state-of-the-art methods. In addition, a series of ablation test show the robust superiority of the proposed method.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel152">
+        <strong> Block-distributed Gradient Boosted Trees </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Theodore+Vasiloudis">Theodore Vasiloudis</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hyunsu+Cho">Hyunsu Cho</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Henrik+Boström">Henrik Boström</a> (3) </u>  <br>
+        1:  RISE AI, 2:  Amazon Web Services, 3:  KTH Royal Institute of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331331">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Block-distributed Gradient Boosted Trees">Google Scholar</a></div>
+        (152)
+        <br>
+        <b>概要:　</b> 勾配ブースト木（GBT）アルゴリズムは、クリック率（CTR）予測やランキング学習を含むタスクにおいて、プロダクションで最も広く使用される機械学習アルゴリズムの一つです。今日の巨大なデータセットに対応するために、多くの分散型GBT法が提案されています。しかし、これらの方法は全て行分散データセットを前提としており、データポイントの数に対するスケーラビリティのみを考慮して、特徴量の数には対応していません。その結果、高次元データに対する通信コストが増大します。データポイントと特徴量の次元の両方に対するスケーラビリティを実現し、通信コストを削減するために、ブロック分散型GBTを提案します。我々は、データのスパース性を最大限に活用し、Quickscorerアルゴリズムをブロック分散設定に適応させることで、通信効率を達成します。我々の手法を数百万の特徴量を持つデータセットで評価し、スパースデータにおいて通信コストを数桁削減しつつ、精度の損失なしに、よりスケーラブルな設計を実現できることを示します。その結果、高次元データのトレーニング時間を短縮し、コスト効率の良いスケールアウトを可能にし、高価なネットワーク通信を必要としなくなります。
+        </label>
+        <input type="checkbox" id="Panel152" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The Gradient Boosted Tree (GBT) algorithm is one of the most popular machine learning algorithms used in production, for tasks that include Click-Through Rate (CTR) prediction and learning-to-rank. To deal with the massive datasets available today, many distributed GBT methods have been proposed. However, they all assume a row-distributed dataset, addressing scalability only with respect to the number of data points and not the number of features, and increasing communication cost for high-dimensional data. In order to allow for scalability across both the data point and feature dimensions, and reduce communication cost, we propose block-distributed GBTs. We achieve communication efficiency by making full use of the data sparsity and adapting the Quickscorer algorithm to the block-distributed setting. We evaluate our approach using datasets with millions of features, and demonstrate that we are able to achieve multiple orders of magnitude reduction in communication cost for sparse data, with no loss in accuracy, while providing a more scalable design. As a result, we are able to reduce the training time for high-dimensional data, and allow more cost-effective scale-out without the need for expensive network communication.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel153">
+        <strong> Table2Vec: Neural Word and Entity Embeddings for Table Population and Retrieval </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Li+Zhang">Li Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shuo+Zhang">Shuo Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Krisztian+Balog">Krisztian Balog</a> (1) </u>  <br>
+        1:  University of Stavanger <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331333">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Table2Vec: Neural Word and Entity Embeddings for Table Population and Retrieval">Google Scholar</a></div>
+        (153)
+        <br>
+        <b>概要:　</b> 表は構造化された形で貴重な知識を含んでいます。私たちはニューラル言語モデリング手法を用いて、表データをベクトル空間に埋め込みます。具体的には、表のキャプション、列見出し、セルなどの異なる要素を考慮し、これらを用いて単語およびエンティティの埋め込みを訓練します。これらの埋め込みは、行の補完、列の補完、表の検索という特定の3つの表関連タスクにおいて、既存の検索モデルに追加の意味的類似性シグナルとして組み込まれます。評価結果により、表の埋め込みは最先端のベースラインの性能を大幅に向上させることができることが示されました。
+        </label>
+        <input type="checkbox" id="Panel153" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Tables contain valuable knowledge in a structured form. We employ neural language modeling approaches to embed tabular data into vector spaces. Specifically, we consider different table elements, such caption, column headings, and cells, for training word and entity embeddings. These embeddings are then utilized in three particular table-related tasks, row population, column population, and table retrieval, by incorporating them into existing retrieval models as additional semantic similarity signals. Evaluation results show that table embeddings can significantly improve upon the performance of state-of-the-art baselines.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel154">
+        <strong> Coarse-to-Fine Grained Classification </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yuqi+Huo">Yuqi Huo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yao+Lu">Yao Lu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yulei+Niu">Yulei Niu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhiwu+Lu">Zhiwu Lu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ji-Rong+Wen">Ji-Rong Wen</a> (1) </u>  <br>
+        1:  Renmin University of China <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331336">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Coarse-to-Fine Grained Classification">Google Scholar</a></div>
+        (154)
+        <br>
+        <b>概要:　</b> 細粒度の画像分類と検索は、コンピュータビジョンおよび情報検索の分野で注目されています。実際のシナリオでは、観測対象が近づくにつれて細粒度のタスクと粗粒度のタスクが同時に発生することが多いです。しかし、従来の研究では、細粒度と粗粒度のタスクの組み合わせが無視されることが多かったです。本論文では、低解像度から高解像度に至る複数の解像度で対象物のクラスを認識することを目的とする「粗粒度から細粒度への分類（C2FGC）」という新しい問題を定義します。この問題を解決するために、新たな手法である「階層型マルチリニアプーリング（MLPH）」モデルを提案します。具体的には、まず三線形プーリングと二線形プーリングの両方を含むマルチリニアプーリングモジュールを設計し、その後、粗粒度と細粒度のタスクを統一されたフレームワーク内で定式化します。2つのベンチマークデータセットでの実験により、我々のモデルが最先端の結果を達成することを示しています。
+        </label>
+        <input type="checkbox" id="Panel154" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Fine-grained image classification and retrieval become topical in both computer vision and information retrieval. In real-life scenarios, fine-grained tasks tend to appear along with coarse-grained tasks when the observed object is coming closer. However, in previous works, the combination of fine-grained and coarse-grained tasks was often ignored. In this paper, we define a new problem called coarse-to-fine grained classification (C2FGC) which aims to recognize the classes of objects in multiple resolutions (from low to high). To solve this problem, we propose a novel Multi-linear Pooling with Hierarchy (MLPH) model. Specifically, we first design a multi-linear pooling module to include both trilinear and bilinear pooling, and then formulate the coarse-grained and fine-grained tasks within a unified framework. Experiments on two benchmark datasets show that our model achieves state-of-the-art results.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel155">
+        <strong> Local Matrix Approximation based on Graph Random Walk </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xuejiao+Yang">Xuejiao Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Bang+Wang">Bang Wang</a> (1) </u>  <br>
+        1:  Huazhong University of Science and Technology (HUST) <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331338">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Local Matrix Approximation based on Graph Random Walk">Google Scholar</a></div>
+        (155)
+        <br>
+        <b>概要:　</b> 大規模なグローバル行列を多くの小さなローカル行列に分解する手法は、行列近似の分野で近年多く研究されています。しかし、行列分解における距離計算は困難な課題であり、最適な特徴ベクトルや距離測定方法についての事前知識は存在しません。本論文では、距離計算を伴わないローカル行列の構築のための新しい手法を提案します。本手法の基本的なアイデアは、グラフランダムウォークの収束確率の応用に基づいています。まず、グローバル行列からユーザー項目二部グラフを構築します。次に、二部グラフ上でランダムウォークを実行し、いくつかのユーザー項目ペアをアンカーとして選択します。その後、リスタート付きランダムウォークを適用して、各アンカーに対するローカル行列を構築します。最終的に、ローカル行列の予測結果を平均化することで、グローバル行列の近似を得ます。4つの実世界データセットを用いた実験では、提案手法が予測誤差の低減およびカバレッジ率の向上において、最新の手法を上回ることが示されました。
+        </label>
+        <input type="checkbox" id="Panel155" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> How to decompose a large global matrix into many small local matrices has been recently researched a lot for matrix approximation. However, the distance computation in matrix decomposition is a challenging issue, as no prior knowledge about the most appropriate feature vectors and distance measures are available. In this paper, we propose a novel scheme for local matrix construction without involving distance computation. The basic idea is based on the application of convergence probabilities of graph random walk. At first, a user-item bipartite graph is constructed from the global matrix. After performing random walk on the bipartite graph, we select some user-item pairs as anchors. Then another random walk with restart is applied to construct the local matrix for each anchor. Finally, the global matrix approximation is obtained by averaging the prediction results of local matrices. Our experiments on the four real-world datasets show that the proposed solution outperforms the state-of-the-art schemes in terms of lower prediction errors and higher coverage ratios.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel156">
+        <strong> A Context-based Framework for Resource Citation Classification in Scientific Literatures </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=He+Zhao">He Zhao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhunchen+Luo">Zhunchen Luo</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chong+Feng">Chong Feng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yuming+Ye">Yuming Ye</a> (2) </u>  <br>
+        1:  Beijing Institute of Technology, 2:  PLA Academy of Military Science <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331348">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Context-based Framework for Resource Citation Classification in Scientific Literatures">Google Scholar</a></div>
+        (156)
+        <br>
+        <b>概要:　</b> 本論文では、文脈ベースのフレームワークを用いて科学文献の「リソース引用分類」タスクを紹介します。このタスクは、科学文献内でオンラインリソースを引用する目的を、各リソース引用の役割と機能をモデル化することで分析することを目的としています。リソースのインデックス作成や推薦システムに組み込むことで、科学文献中のオンラインリソースの理解と分類を向上させることが可能です。私たちはこのタスクのために新たな注釈スキームを提案し、3,088件の手動で注釈付けされたリソース引用からなるデータセットを開発しました。ニューラルベースのモデルを採用して分類器を構築し、大規模なARCデータセットに適用して、時間を経た機能のトレンドから科学リソースの変遷を調査します。
+        </label>
+        <input type="checkbox" id="Panel156" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In this paper, we introduce the task of resource citation classification for scientific literature using a context-based framework. This task is to analyze the purpose of citing an on-line resource in scientific text by modeling the role and function of each resource citation. It can be incorporated into resource indexing and recommendation systems to help better understand and classify on-line resources in scientific literature. We propose a new annotation scheme for this task and develop a dataset of 3,088 manually annotated resource citations. We adopt a neural-based model to build the classifiers and apply them on the large ARC dataset to examine the revolution of scientific resources from trends in their function over time.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel157">
+        <strong> Text Retrieval Priors for Bayesian Logistic Regression </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Eugene+Yang">Eugene Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=David+D.+Lewis">David D. Lewis</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ophir+Frieder">Ophir Frieder</a> (1) </u>  <br>
+        1:  Georgetown University, 2:  Cyxtera Technologies <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331299">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Text Retrieval Priors for Bayesian Logistic Regression">Google Scholar</a></div>
+        (157)
+        <br>
+        <b>概要:　</b> ロジスティック回帰のような判別学習アルゴリズムは、トレーニングデータが豊富な場合には優れた性能を発揮しますが、データが乏しい場合にはその性能が低下します。特に、テキスト検索（トレーニングデータがゼロ）では、判別学習が不可能であり、ドメイン知識（トピカルキーワードクエリ）と生成学習（ナイーブベイズ）を組み合わせたヒューリスティックな手法であるBM25が主流となります。過去の研究に基づき、トピカルキーワードに基づくベイジアンロジスティック回帰におけるBM25インスパイアのガウス事前分布が、通常のL2（ゼロモード、一様分散）ガウス事前分布よりも効果的であることを示しました。2つの高リコール検索データセットにおいて、結果として得られるモデルは、トレーニングデータ量が増加するにつれてBM25レベルの有効性から判別有効性へと滑らかに移行し、多量のトレーニングデータが提供されている場合でもL2正則化よりも優れた性能を示します。
+        </label>
+        <input type="checkbox" id="Panel157" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Discriminative learning algorithms such as logistic regression excel when training data are plentiful, but falter when it is meager. An extreme case is text retrieval (zero training data), where discriminative learning is impossible and heuristics such as BM25, which combine domain knowledge (a topical keyword query) with generative learning (Naive Bayes), are dominant. Building on past work, we show that BM25-inspired Gaussian priors for Bayesian logistic regression based on topical keywords provide better effectiveness than the usual L2 (zero mode, uniform variance) Gaussian prior. On two high recall retrieval datasets, the resulting models transition smoothly from BM25 level effectiveness to discriminative effectiveness as training data volume increases, dominating L2 regularization even when substantial training data is available.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel158">
+        <strong> A Lightweight Representation of News Events on Social Media </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mauricio+Quezada">Mauricio Quezada</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Barbara+Poblete">Barbara Poblete</a> (1) </u>  <br>
+        1:  Universidad de Chile & IMFD <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331300">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Lightweight Representation of News Events on Social Media">Google Scholar</a></div>
+        (158)
+        <br>
+        <b>概要:　</b> ソーシャルメディアプラットフォームにおいてユーザーが公開する大量のニュース性のある情報は、効率的かつ効果的なフィルタリングおよび内容の整理方法を必要とします。この文脈では、市販の方法では大量のデータを処理できず、通常は計算資源を追加することで対処します。単純なデータの集約は、空間と時間の制約に対処しつつ、トピック検出やなどの特定のアプリケーションの効果を向上させることができます。我々は、ニュース性のあるソーシャルメディアデータの軽量な表現を提案します。提案する表現は、共有URLや単語埋め込みからの代替テキストを使用することにより、冗長性や再共有機能といったマイクロブログの特徴を活用します。我々の表現は、完全なデータを使用する場合と比較して同等のクラスタリング結果を達成しつつ、実行時間と必要なメモリを削減することを可能にします。これは、ノイズの多い生のユーザー生成ソーシャルメディアデータを扱う際に有用です。
+        </label>
+        <input type="checkbox" id="Panel158" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The sheer amount of newsworthy information published by users in social media platforms makes it necessary to have efficient and effective methods to filter and organize content. In this scenario, off-the-shelf methods fail to process large amounts of data, which is usually approached by adding more computational resources. Simple data aggregations can help to cope with space and time constraints, while at the same time improve the effectiveness of certain applications, such as topic detection or summarization. We propose a lightweight representation of newsworthy social media data. The proposed representation leverages microblog features, such as redundancy and re-sharing capabilities, by using surrogate texts from shared URLs and word embeddings. Our representation allows us to achieve comparable clustering results to those obtained by using the complete data, while reducing running time and required memory. This is useful when dealing with noisy and raw user-generated social media data.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel159">
+        <strong> Analyzing and Predicting News Popularity in an Instant Messaging Service </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mohammad+Naseri">Mohammad Naseri</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hamed+Zamani">Hamed Zamani</a> (2) </u>  <br>
+        1:  Shahid Beheshti University, 2:  University of Massachusetts Amherst <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331301">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Analyzing and Predicting News Popularity in an Instant Messaging Service">Google Scholar</a></div>
+        (159)
+        <br>
+        <b>概要:　</b> モバイルデバイスの普及に伴い、インスタントメッセージング（IM）サービスは数百万のユーザーによって注目されています。これにより、ニュース機関はウェブサイトや人気のソーシャルメディアに加え、IMサービスを通じても内容を共有するようになりました。その結果、今日では、数千人のユーザーがIMサービスの認証済みチャンネルを通じてニュース機関をフォローしています。しかし、こうしたプラットフォームでのユーザーの相互作用は比較的未研究のままです。本稿では、インスタントメッセージングサービスにおけるニュースの人気を分析・予測するための初期研究を提供します。この目的のために、月間アクティブユーザーが2億人に上る人気のIMサービスであるTelegramに焦点を当てます。我々はTelegramとTwitterなどの典型的なソーシャルメディアにおけるニュースの人気分析の違いを探り、その独自の特性を強調します。収集した4つの多様なニュース機関のデータを用いて分析を行った後、Telegramにおけるニュース人気予測の課題を研究し、マルチタスク学習を用いて複数のニュース機関のデータから学習することで予測モデルの性能が大幅に向上することを示します。この分野の研究を促進するために、収集したデータを公開しています。
+        </label>
+        <input type="checkbox" id="Panel159" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> With widespread use of mobile devices, instant messaging (IM) services have recently attracted a great deal of attention by millions of users. This has motivated news agencies to share their contents via such platforms in addition to their websites and popular social media. As a result, thousands of users nowadays follow the news agencies through their verified channels in IM services. However, user interactions with such platforms is relatively unstudied. In this paper, we provide an initial study to analyze and predict news popularity in an instant messaging service. To this aim, we focus on Telegram, a popular IM service with 200 million monthly active users. We explore the differences between news popularity analysis in Telegram and typical social media, such as Twitter, and highlight its unique characteristics. We perform our analysis on the data we collected from four diverse news agencies. Following our analysis, we study the task of news popularity prediction in Telegram and show that the performance of the prediction models can be substantially improved by learning from the data of multiple news agencies using multi-task learning. To foster research in this area, we have made the collected data publicly available.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel160">
+        <strong> Adversarial Training for Review-Based Recommendations </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dimitrios+Rafailidis">Dimitrios Rafailidis</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fabio+Crestani">Fabio Crestani</a> (2) </u>  <br>
+        1:  Maastricht University, 2:  Università della Svizzera italiana (USI) <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331313">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Adversarial Training for Review-Based Recommendations">Google Scholar</a></div>
+        (160)
+        <br>
+        <b>概要:　</b> 最近の研究では、ユーザーのレビューを協調フィルタリング戦略に組み込むことで、推薦精度が大幅に向上することが示されています。緊急の課題は、レビューがユーザーの評価行動にどのように影響を与えるかを学習することにあります。本論文では、レビューを基にした推薦のための敵対的訓練（Adversarial Training）アプローチ、すなわちATRを提案します。我々は、敵対的訓練戦略に基づいて、アイテムに関するユーザーレビューの深層表現を計算するシーケンス・ツー・シーケンス学習のニューラルアーキテクチャを設計しました。同時に、レビューの深層表現をユーザーおよびアイテムの潜在特徴で正則化することで、評価行列の因数分解を共同で学習します。これにより、我々のモデルはレビューと評価の間の非線形の関連性を捉え、各ユーザー・アイテムペアに対するレビューを生成します。公開されているデータセットを用いた実験結果は、提案モデルが他の最先端手法を凌駕する有効性を示しています。
+        </label>
+        <input type="checkbox" id="Panel160" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Recent studies have shown that incorporating users' reviews into the collaborative filtering strategy can significantly boost the recommendation accuracy. A pressing challenge resides on learning how reviews influence users' rating behaviors. In this paper, we propose an Adversarial Training approach for Review-based recommendations, namely ATR. We design a neural architecture of sequence-to-sequence learning to calculate the deep representations of users' reviews on items following an adversarial training strategy. At the same time we jointly learn to factorize the rating matrix, by regularizing the deep representations of reviews with the user and item latent features. In doing so, our model captures the non-linear associations among reviews and ratings while producing a review for each user-item pair. Our experiments on publicly available datasets demonstrate the effectiveness of the proposed model, outperforming other state-of-the-art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel161">
+        <strong> A New Perspective on Score Standardization </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Julián+Urbano">Julián Urbano</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Harlley+Lima">Harlley Lima</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alan+Hanjalic">Alan Hanjalic</a> (1) </u>  <br>
+        1:  Delft University of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331315">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A New Perspective on Score Standardization">Google Scholar</a></div>
+        (161)
+        <br>
+        <b>概要:　</b> IRシステムのテストコレクションベースの評価において、異なるコレクション間でシステムを比較し、特定のトピックにおけるアウトライアランの影響を最小限に抑えるために、スコアの標準化が提案されている。根底にある考えはトピックの難易度を考慮し、システムのスコアを相対的に評価することである。Webberらは、標準正規分布を用いた非線形変換を通じて最初に標準化を提案し、最近ではSakaiが単純な線形変換を提案した。本論文では、これら両方のアプローチが実際には、特定のトピックスコアの分布を仮定した単純な標準化の特別なケースであることを示す。この観点から、経験的分布に基づく変換がこの種の標準化に対して最も適切な選択肢であると主張する。TRECデータを用いた一連の実験を通じて、スコアの安定性および統計的テストの挙動に関する我々の提案の利点を示す。
+        </label>
+        <input type="checkbox" id="Panel161" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In test collection based evaluation of IR systems, score standardization has been proposed to compare systems across collections and minimize the effect of outlier runs on specific topics. The underlying idea is to account for the difficulty of topics, so that systems are scored relative to it. Webber et al. first proposed standardization through a non-linear transformation with the standard normal distribution, and recently Sakai proposed a simple linear transformation. In this paper, we show that both approaches are actually special cases of a simple standardization which assumes specific distributions for the per-topic scores. From this viewpoint, we argue that a transformation based on the empirical distribution is the most appropriate choice for this kind of standardization. Through a series of experiments on TREC data, we show the benefits of our proposal in terms of score stability and statistical test behavior.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel162">
+        <strong> Adversarial Collaborative Neural Network for Robust Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Feng+Yuan">Feng Yuan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lina+Yao">Lina Yao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Boualem+Benatallah">Boualem Benatallah</a> (1) </u>  <br>
+        1:  University of New South Wales <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331321">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Adversarial Collaborative Neural Network for Robust Recommendation">Google Scholar</a></div>
+        (162)
+        <br>
+        <b>概要:　</b> 近年のニューラルネットワーク(NN)ベースの推薦技術の多くは、ユーザーのフィードバックを真実と見なした上で、トップN推薦のヒット率など、全体的なパフォーマンスの向上に主に焦点を当てています。しかし、実際のアプリケーションでは、これらのフィードバックはユーザーの不完全な行動によって汚染される可能性があり、堅牢な推薦方法の設計に挑戦をもたらします。一部の方法では、入力データに人工的なノイズを適用してネットワークの学習をより効果的に行う（例：協調フィルタリングに基づくデノイジングオートエンコーダー）ことがあります。本研究では、NNベースの推薦モデルに対する一般的な対人学習フレームワークを提案し、モデルの堅牢性と全体的なパフォーマンスの両方を向上させます。我々のアプローチを協調フィルタリングオートエンコーダーモデルに適用し、対人学習とNNベースのモデルの組み合わせが、3つの公開データセットで高度に競争力のある最新の推薦方法を上回ることを示します。
+        </label>
+        <input type="checkbox" id="Panel162" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Most of recent neural network(NN)-based recommendation techniques mainly focus on improving the overall performance, such as hit ratio for top-N recommendation, where the users' feedbacks are considered as the ground-truth. In real-world applications, those feedbacks are possibly contaminated by imperfect user behaviours, posing challenges on the design of robust recommendation methods. Some methods apply man-made noises on the input data to train the networks more effectively (e.g. the collaborative denoising auto-encoder). In this work, we propose a general adversarial training framework for NN-based recommendation models, improving both the model robustness and the overall performance. We apply our approach on the collaborative auto-encoder model, and show that the combination of adversarial training and NN-based models outperforms highly competitive state-of-the-art recommendation methods on three public datasets.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel163">
+        <strong> Sequence and Time Aware Neighborhood for Session-based Recommendations: STAN </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Diksha+Garg">Diksha Garg</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Priyanka+Gupta">Priyanka Gupta</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pankaj+Malhotra">Pankaj Malhotra</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lovekesh+Vig">Lovekesh Vig</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gautam+Shroff">Gautam Shroff</a> (1) </u>  <br>
+        1:  TCS Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331322">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Sequence and Time Aware Neighborhood for Session-based Recommendations: STAN">Google Scholar</a></div>
+        (163)
+        <br>
+        <b>概要:　</b> 再帰的ニューラルネットワークに基づくセッションベースの推薦におけるシーケンスを意識したアプローチの最近の進展は、推薦を行う際にセッションからの時系列情報を活用する重要性を強調しています。また、セッションベースのk最近傍法（SKNN）は、セッションベースの推薦における強力なベースラインであることが証明されています。しかし、SKNNはセッションから得られる時系列および時間に関する情報を考慮していません。本研究では、基本形としてのSKNNを含む、シーケンスおよび時間を考慮した近傍（Sequence and Time Aware Neighborhood, STAN）を提案します。STANは以下の要因を考慮して推薦を行います：i)現セッション内のアイテムの位置、ii)現セッションに対する過去のセッションの最近度、およびiii)隣接するセッション内の推薦可能なアイテムの位置。特定のアプリケーションにおけるこれらの要因の重要性は、制御可能な減衰係数によって調整できます。簡便かつ直感的で実装が容易であるにもかかわらず、3つの実世界データセットに対する実証評価により、STANがSKNNよりも大幅に改善されているだけでなく、最近提案された最先端のディープラーニングアプローチにも匹敵することが示されました。我々の結果は、STANが将来のセッションベースの推薦アルゴリズムを評価するための強力なベースラインとして考慮できることを示唆しています。
+        </label>
+        <input type="checkbox" id="Panel163" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Recent advances in sequence-aware approaches for session-based recommendation, such as those based on recurrent neural networks, highlight the importance of leveraging sequential information from a session while making recommendations. Further, a session based k-nearest-neighbors approach (SKNN) has proven to be a strong baseline for session-based recommendations. However, SKNN does not take into account the readily available sequential and temporal information from sessions. In this work, we propose Sequence and Time Aware Neighborhood (STAN), with vanilla SKNN as its special case. STAN takes into account the following factors for making recommendations: i) position of an item in the current session, ii) recency of a past session w.r.t. to the current session, and iii) position of a recommendable item in a neighboring session. The importance of above factors for a specific application can be adjusted via controllable decay factors. Despite being simple, intuitive and easy to implement, empirical evaluation on three real-world datasets shows that STAN significantly improves over SKNN, and is even comparable to the recently proposed state-of-the-art deep learning approaches. Our results suggest that STAN can be considered as a strong baseline for evaluating session-based recommendation algorithms in future.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel164">
+        <strong> Addressing Vocabulary Gap in E-commerce Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Subhadeep+Maji">Subhadeep Maji</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rohan+Kumar">Rohan Kumar</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Manish+Bansal">Manish Bansal</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kalyani+Roy">Kalyani Roy</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mohit+Kumar">Mohit Kumar</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pawan+Goyal">Pawan Goyal</a> (2) </u>  <br>
+        1:  Flipkart, 2:  IIT Kharagpur <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331323">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Addressing Vocabulary Gap in E-commerce Search">Google Scholar</a></div>
+        (164)
+        <br>
+        <b>概要:　</b> Eコマースの顧客は、購入意図をいくつかの方法で表現しますが、その中には製品カタログの語彙と異なるものも含まれます。たとえば、「マタニティドレス（women maternity gown）」の意図は、「妊婦向けのドレス（ladies pregnancy dress）」というクエリで表現されることがよくあります。検索エンジンは通常、このようなクエリに対して低いパフォーマンスを示します。これは、クエリ用語と目的の商品仕様との間の重複が少ないためです。過去の研究では、これらのクエリを語彙ギャップクエリとして言及しています。私たちの実験では、私たちの手法が強力なベースラインを大幅に上回ることを示し、さらにオンラインA/B実験を通じて実世界での有効性を示しました。
+        </label>
+        <input type="checkbox" id="Panel164" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> E-commerce customers express their purchase intents in several ways, some of which may use a different vocabulary than that of the product catalog. For example, the intent for "women maternity gown" is often expressed with the query, "ladies pregnancy dress". Search engines typically suffer from poor performance on such queries because of low overlap between query terms and specifications of the desired products. Past work has referred to these queries as vocabulary gap queries. In our experiments, we show that our technique significantly outperforms strong baselines and also show its real-world effectiveness with an online A/B experiment.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel165">
+        <strong> Gated Spectral Units: Modeling Co-evolving Patterns for Sequential Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lei+Zheng">Lei Zheng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ziwei+Fan">Ziwei Fan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chun-Ta+Lu">Chun-Ta Lu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiawei+Zhang">Jiawei Zhang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Philip+S.+Yu">Philip S. Yu</a> (1) </u>  <br>
+        1:  University of Illinois at Chicago, 2:  Florida State University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331329">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Gated Spectral Units: Modeling Co-evolving Patterns for Sequential Recommendation">Google Scholar</a></div>
+        (165)
+        <br>
+        <b>概要:　</b> 利用者の過去のデータを活用して将来を予測することは、効果的なレコメンダーシステム（RS）を構築する上で重要です。最近のシーケンスレコメンデーション手法では、利用者の過去の行動をシーケンスとして表し、そのシーケンスの時間的ダイナミクスを捉えて次のアイテムを予測しようとします。しかし、利用者の興味は相互影響により時間とともに進化しており、ほとんどの既存手法はシーケンシャルグラフで表されるデータに含まれる豊富な共進化パターンを活用する能力に欠けています。シーケンスレコメンデーションのための共進化知識を捉えるために、まず効率的なスペクトル畳み込み操作を導入し、グラフのスペクトル領域から利用者とアイテムの複雑な関係を発見します。これにより、グラフの隠れた接続情報を明らかにすることができます。次に、スペクトル畳み込みをゲート機構を利用してシーケンシャルグラフをモデル化するリカレント手法に一般化します。実験的には、共進化パターンのモデリングの利点を示し、Gated Spectral Units（GSU）はいくつかのベンチマークデータセットで最先端の性能を達成します。
+        </label>
+        <input type="checkbox" id="Panel165" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Exploiting historical data of users to make future predictions lives at the heart of building effective recommender systems (RS). Recent approaches for sequential recommendations often render past actions of a user into a sequence, seeking to capture the temporal dynamics in the sequence to predict the next item. However, the interests of users evolve over time together due to their mutual influence, and most of existing methods lack the ability to utilize the rich coevolutionary patterns available in underlying data represented by sequential graphs. In order to capture the co-evolving knowledge for sequential recommendations, we start from introducing an efficient spectral convolution operation to discover complex relationships between users and items from the spectral domain of a graph, where the hidden connectivity information of the graph can be revealed. Then, the spectral convolution is generalized into an recurrent method by utilizing gated mechanisms to model sequential graphs. Experimentally, we demonstrate the advantages of modeling co-evolving patterns, and Gated Spectral Units (GSUs) achieve state-of-the-art performance on several benchmark datasets.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel166">
+        <strong> Deep Distribution Network: Addressing the Data Sparsity Issue for Top-N Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lei+Zheng">Lei Zheng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chaozhuo+Li">Chaozhuo Li</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chun-Ta+Lu">Chun-Ta Lu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiawei+Zhang">Jiawei Zhang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Philip+S.+Yu">Philip S. Yu</a> (1) </u>  <br>
+        1:  University of Illinois at Chicago, 2:  Beihang University, 3:  Florida State University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331330">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Deep Distribution Network: Addressing the Data Sparsity Issue for Top-N Recommendation">Google Scholar</a></div>
+        (166)
+        <br>
+        <b>概要:　</b> 既存の推薦方法は主にユーザーとアイテムの固定ベクトルを低次元の連続空間で学習し、その後、一般的なドット積を用いてユーザーとアイテムの距離を算出します。しかし、これらの方法には2つの欠点があります：(1) データのスパース性問題のため、高品質の表現を学習することができない；(2) ドット積が重要な三角不等式に違反し、その結果、最適ではないパフォーマンスをもたらします。本研究では、これら2つの欠点を克服するために、ユーザーとアイテムをガウス分布でモデル化するDeep Distribution Network (DDN)を提案します。固定ベクトルと比べて、分布ベースの表現はユーザーの不確定な興味やアイテムの独自な特性をより強力に特徴づけることができると主張します。さらに、重要な三角不等式を満たすことができるWassersteinベースの損失関数を提案します。実験では、標準データセットを用いてDDNと比較モデルを評価しました。その結果、DDNが最先端のモデルを大幅に上回ることが示され、提案した分布ベースの表現とWasserstein損失の利点が明らかになりました。
+        </label>
+        <input type="checkbox" id="Panel166" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Existing recommendation methods mostly learn fixed vectors for users and items in a low-dimensional continuous space, and then calculate the popular dot-product to derive user-item distances. However, these methods suffer from two drawbacks: (1) the data sparsity issue prevents from learning high-quality representations; and (2) the dot-product violates the crucial triangular inequality and therefore, results in a sub-optimal performance. In this work, in order to overcome the two aforementioned drawbacks, we propose Deep Distribution Network (DDN) to model users and items via Gaussian distributions. We argue that, compared to fixed vectors, distribution-based representations are more powerful to characterize users' uncertain interests and items' distinct properties. In addition, we propose a Wasserstein-based loss, in which the critical triangular inequality can be satisfied. In experiments, we evaluate DDN and comparative models on standard datasets. It is shown that DDN significantly outperforms state-of-the-art models, demonstrating the advantages of the proposed distribution-based representations and wassertein loss.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel167">
+        <strong> Normalized Query Commitment Revisited </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Haggai+Roitman">Haggai Roitman</a> (1) </u>  <br>
+        1:  IBM Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331334">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Normalized Query Commitment Revisited">Google Scholar</a></div>
+        (167)
+        <br>
+        <b>概要:　</b> 本論文では、Normalized Query Commitment (NQC) 問合せ性能予測 (QPP) 手法を再検討します。この目的のために、判別的QPPフレームワークにスケール化の拡張を提案し、それを用いてNQCを分析します。この分析を活用して、NQCを再設計し、改善のためのいくつかの選択肢を提案します。
+        </label>
+        <input type="checkbox" id="Panel167" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We revisit the Normalized Query Commitment (NQC) query performance prediction (QPP) method. To this end, we suggest a scaled extension to a discriminative QPP framework and use it to analyze NQC. Using this analysis allows us to redesign NQC and suggest several options for improvement.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel168">
+        <strong> Quantifying Bias and Variance of System Rankings </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gordon+V.+Cormack">Gordon V. Cormack</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maura+R.+Grossman">Maura R. Grossman</a> (1) </u>  <br>
+        1:  University of Waterloo <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331356">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Quantifying Bias and Variance of System Rankings">Google Scholar</a></div>
+        (168)
+        <br>
+        <b>概要:　</b> システムランキングの精度を評価する際、ケンドールのタウやその他の順位相関尺度は、誤差の原因としてのバイアスと分散を混同します。我々は、タウからユークリッド空間におけるランキング間の距離を導き出し、それによってバイアス、分散、および誤差の大きさを特定することができます。ブートストラップ推定法を用いて、浅いプールが、サイズに比例した確率サンプリングおよび最近リリースされたdynAP推定器と比較すると、バイアスが大幅に高く、分散がわずかに低いことを示します。
+        </label>
+        <input type="checkbox" id="Panel168" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> When used to assess the accuracy of system rankings, Kendall's tau and other rank correlation measures conflate bias and variance as sources of error. We derive from tau a distance between rankings in Euclidean space, from which we can determine the magnitude of bias, variance, and error. Using bootstrap estimation, we show that shallow pooling has substantially higher bias and insubstantially lower variance than probability-proportional-to-size sampling, coupled with the recently released dynAP estimator.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel169">
+        <strong> Towards Better Support for Exploratory Search through an Investigation of Notes-to-self and Notes-to-share </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Anita+Crescenzi">Anita Crescenzi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yuan+Li">Yuan Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yinglong+Zhang">Yinglong Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rob+Capra">Rob Capra</a> (1) </u>  <br>
+        1:  University of North Carolina at Chapel Hill <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331309">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Towards Better Support for Exploratory Search through an Investigation of Notes-to-self and Notes-to-share">Google Scholar</a></div>
+        (169)
+        <br>
+        <b>概要:　</b> 近年、情報検索システムをユーザーの知識開発プロセスとより密接に統合し、特に探求的検索をサポートすることへの関心が高まっています。本研究では、人々が探求的検索中に発見した情報をどのように整理し構築するかを調査しました。実験室での研究では、24名の参加者に、探求的検索を行う際に将来使用するための手書きのメモを取るよう依頼しました。その後、参加者に、同じトピックを探求したい他の人と共有するために、発見内容を整理するよう求めました。最後に、保存された情報の種類と参加者が発見した情報の整理方法について洞察を得るために、セッション後のインタビューを実施しました。メモとインタビューの質的分析において、メモにはトピックの背景情報、重要な概念、具体的な詳細、有益な情報源、および幅広い業務タスクに役立つ情報が含まれていることが分かりました。メモは主にリスト形式で構成され、直線的なメモ取り戦略と情報源やトピックテーマごとのグループ化を組み合わせたものでした。参加者は、共有メモの内容と構造を変更し、理解しやすくし、トピックのより完全なを提供しました。この発見は、現在の検索者が情報を整理、構造化、統合し、同様の情報探求タスクに従事する将来の検索者を支援するための検索ツールの設計に影響を与える可能性があります。
+        </label>
+        <input type="checkbox" id="Panel169" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Recently, there has been interest in integrating information retrieval systems more closely with users' knowledge development processes, especially to support exploratory search. In this work, we investigated how people organize and structure information they discover during exploratory searches. In a lab study, we asked 24 participants to take hand-written notes they could use in the future while they were completing an exploratory search. We then asked participants to organize their findings to share with someone else who wants to explore the topic. Finally, we conducted post-session interviews to gain insights into the types of information saved and how participants organized the information they found. In our qualitative analysis of the notes and interviews, we found that the notes included background information about the topic, key concepts, specific details, useful information sources, and information to help with the broader work task. Notes were primarily structured in lists, and reflected a combination of linear note-taking strategies and grouping by information source or topical themes. Participants changed the content and structure of the shared notes to make them easier to understand and to provide a more thorough overview of the topic. Our findings have implications for the design of search tools to help current searchers organize, structure, and synthesize information and to help future searchers engaged in similar information seeking tasks.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel170">
+        <strong> The Emotion Profile of Web Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gabriella+Kazai">Gabriella Kazai</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Paul+Thomas">Paul Thomas</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nick+Craswell">Nick Craswell</a> (3) </u>  <br>
+        1:  Microsoft, 2:  Microsoft, 3:  Microsoft <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331314">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=The Emotion Profile of Web Search">Google Scholar</a></div>
+        (170)
+        <br>
+        <b>概要:　</b> A感情は意思決定を含むほとんどの人間の活動にとって不可欠な部分です。感情は、ウェブページに示された情報などに応じて発生し、その情報を伝えるために使用される言葉にも表現されます。本論文では、ウェブ検索結果の取得およびクリックされた結果の感情プロファイルを研究し、ウェブ検索における感情の役割をよりよく理解することを目的としています。2019年1月末までの4か月間のクリックログを使用して、検索結果に関連する感情を調査し、順位と関連性を考慮に入れながらクリックされた結果の感情と対比します。感情は、「SentiWordNet」（ポジティブ、ネガティブ、オブジェクティブな感情）と「EmoLexData」（恐れ、面白い、怒り、苛立ち、無関心、幸福、インスピレーション、悲しみ）の2つの語彙集に基づいてウェブページに割り当てられます。私たちは、論争の的となるトピックや日常的なトピックに関連する検索結果の感情プロファイルを調べ、ユーザーが感情的に強い結果をクリックする可能性が高いことを仮定し、特にそのクエリが論争の的となるトピックに関するものである場合にその傾向が顕著であることを示します。
+        </label>
+        <input type="checkbox" id="Panel170" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Emotions are an essential part of most human activities, including decision-making. Emotions arise in response to information, e.g., presented in web pages, and are also expressed in the words used to convey that information in the first place. In this paper, we study the emotion profile of retrieved and clicked web search results towards the goal of better understanding the role of emotions in web search. Using click logs from a four-month period, up to the end of January 2019, we examine the emotions associated with search results and contrast them to the emotions of clicked results, taking rank and relevance into account. Emotions are assigned to web pages based on two lexicons: SentiWordNet (positive, negative and objective sentiments) and EmoLexData (afraid, amused, angry, annoyed, don't care, happy, inspired, and sad emotions). We look at the sentiment/emotion profiles of search results grouped around a set of controversial and mundane topics and hypothesise that users are more likely to click emotionally charged results than emotionless results, both in general, and in particular when their query relates to controversial topics.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel171">
+        <strong> CEDR: Contextualized Embeddings for Document Ranking </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sean+MacAvaney">Sean MacAvaney</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Andrew+Yates">Andrew Yates</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Arman+Cohan">Arman Cohan</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nazli+Goharian">Nazli Goharian</a> (1) </u>  <br>
+        1:  Georgetown University, 2:  Max Planck Institute for Informatics, 3:  Allen Institute for Artificial Intelligence <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331317">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=CEDR: Contextualized Embeddings for Document Ranking">Google Scholar</a></div>
+        (171)
+        <br>
+        <b>概要:　</b> 近年、ニューラルランキングのアーキテクチャにかなりの注目が集まっていますが、これらのモデルの入力として使用される語彙表現にはあまり注意が払われていません。本研究では、二つの事前学習済みの文脈化言語モデル（ELMoとBERT）がアドホック文書ランキングにどのように利用できるかを調査します。TRECベンチマークを用いた実験を通じて、いくつかの既存のニューラルランキングアーキテクチャが、文脈化言語モデルによって提供される追加のコンテキストから利益を得られることを発見しました。さらに、BERTの分類ベクトルを既存のニューラルモデルに組み込むジョイントアプローチを提案し、最先端のアドホックランキングのベースラインを上回ることを示しました。このジョイントアプローチをCEDR（文脈化埋め込みによる文書ランキング）と呼びます。また、BERTによって課される最大入力長や文脈化言語モデルのランタイム性能への影響など、これらのモデルをランキングに使用する際の実際的な課題にも対処します。
+        </label>
+        <input type="checkbox" id="Panel171" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Although considerable attention has been given to neural ranking architectures recently, far less attention has been paid to the term representations that are used as input to these models. In this work, we investigate how two pretrained contextualized language models (ELMo and BERT) can be utilized for ad-hoc document ranking. Through experiments on TREC benchmarks, we find that several ex-sting neural ranking architectures can benefit from the additional context provided by contextualized language models. Furthermore, we propose a joint approach that incorporates BERT's classification vector into existing neural models and show that it outperforms state-of-the-art ad-hoc ranking baselines. We call this joint approach CEDR (Contextualized Embeddings for Document Ranking). We also address practical challenges in using these models for ranking, including the maximum input length imposed by BERT and runtime performance impacts of contextualized language models.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel172">
+        <strong> Learning Unsupervised Semantic Document Representation for Fine-grained Aspect-based Sentiment Analysis </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hao-Ming+Fu">Hao-Ming Fu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pu-Jen+Cheng">Pu-Jen Cheng</a> (1) </u>  <br>
+        1:  National Taiwan University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331320">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Learning Unsupervised Semantic Document Representation for Fine-grained Aspect-based Sentiment Analysis">Google Scholar</a></div>
+        (172)
+        <br>
+        <b>概要:　</b> ドキュメント表現は機械理解における多くの自然言語処理（NLP）タスクの核心となる要素です。教師なし学習で学ばれた一般的な表現は汎用性を保持し、さまざまな応用に利用することができます。実際には、感情分析（SA）は深い意味論に関連すると見なされ、一般的な表現を評価するためによく使われる困難なタスクです。教師なしのドキュメント表現学習に関する既存の方法は、語順を明示的に考慮するシーケンシャルな方法と、そうでない非シーケンシャルな方法の2つのファミリーに分けられます。しかし、両者ともそれぞれの弱点を持っています。本論文では、これらの両ファミリーの方法が直面する困難を克服するモデルを提案します。実験の結果、我々のモデルは人気のあるSAデータセットおよび細粒度のアスペクトベースSAにおいて、最先端の方法よりも大幅に優れていることが示されました。
+        </label>
+        <input type="checkbox" id="Panel172" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Document representation is the core of many NLP tasks on machine understanding. A general representation learned in an unsupervised manner reserves generality and can be used for various applications. In practice, sentiment analysis (SA) has been a challenging task that is regarded to be deeply semantic-related and is often used to assess general representations. Existing methods on unsupervised document representation learning can be separated into two families: sequential ones, which explicitly take the ordering of words into consideration, and non-sequential ones, which do not explicitly do so. However, both of them suffer from their own weaknesses. In this paper, we propose a model that overcomes difficulties encountered by both families of methods. Experiments show that our model outperforms state-of-the-art methods on popular SA datasets and a fine-grained aspect-based SA by a large margin.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel173">
+        <strong> Evaluating Resource-Lean Cross-Lingual Embedding Models in Unsupervised Retrieval </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Robert+Litschko">Robert Litschko</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Goran+Glavaš">Goran Glavaš</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ivan+Vulic">Ivan Vulic</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Laura+Dietz">Laura Dietz</a> (3) </u>  <br>
+        1:  University of Mannheim, 2:  University of Cambridge, 3:  University of New Hampshire <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331324">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Evaluating Resource-Lean Cross-Lingual Embedding Models in Unsupervised Retrieval">Google Scholar</a></div>
+        (173)
+        <br>
+        <b>概要:　</b> クロスリンガル埋め込み（CLE）は、クロスリンガルな自然言語処理と情報検索を容易にします。最近では、限定的または無監督のバイリンガル監督を必要とするさまざまなリソース効率の良い投影ベースのモデルが導入され、CLEの生成が行われています。これらのCLEモデルは、下流のIRおよびNLPタスクにおいて有用である可能性があるにもかかわらず、ほとんどは単語タスクでのみ評価されています。本研究では、投影ベースのCLEモデルを文レベルおよび文書レベルのクロスリンガル情報検索（CLIR）において、包括的な比較評価を行います。我々は、いくつかの設定において、リソース効率の良いCLEベースのCLIRモデルが、完全な機械（MT）を使用するリソース集約型モデルを凌駕する可能性があることを示します。我々の研究が、CLIRの実務者が適切なモデルを選択するための指針となることを期待しています。
+        </label>
+        <input type="checkbox" id="Panel173" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Cross-lingual embeddings (CLE) facilitate cross-lingual natural language processing and information retrieval. Recently, a wide variety of resource-lean projection-based models for inducing CLEs has been introduced, requiring limited or no bilingual supervision. Despite potential usefulness in downstream IR and NLP tasks, these CLE models have almost exclusively been evaluated on word translation tasks. In this work, we provide a comprehensive comparative evaluation of projection-based CLE models for both sentence-level and document-level cross-lingual Information Retrieval (CLIR). We show that in some settings resource-lean CLE-based CLIR models may outperform resource-intensive models using full-blown machine translation (MT). We hope our work serves as a guideline for choosing the right model for CLIR practitioners.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel174">
+        <strong> FAQ Retrieval using Query-Question Similarity and BERT-Based Query-Answer Relevance </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wataru+Sakata">Wataru Sakata</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tomohide+Shibata">Tomohide Shibata</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ribeka+Tanaka">Ribeka Tanaka</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sadao+Kurohashi">Sadao Kurohashi</a> (2) </u>  <br>
+        1:  LINE Corporation, 2:  Kyoto University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331326">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=FAQ Retrieval using Query-Question Similarity and BERT-Based Query-Answer Relevance">Google Scholar</a></div>
+        (174)
+        <br>
+        <b>概要:　</b> FAQ（よくある質問）の検索は、ユーザーのクエリに基づいてデータベースから適切な質問と回答（QA）ペアを取得する重要なタスクです。私たちは、ユーザーのクエリと質問間の類似性、およびクエリと回答間の関連性を考慮したFAQ検索システムを提案します。FAQ検索の一般的なアプローチは、ラベル付きデータを作成して学習することですが、これはアノテーションコストがかかります。したがって、私たちは、クエリと質問の類似性を計算するために従来の教師なし情報検索システムを使用します。一方で、クエリと回答間の関連性は、FAQデータベース内のQAペアを使用して学習することができます。最近提案されたBERTモデルを関連性の計算に使用します。FAQページ内のQAペアの数はモデルを十分に学習するには不十分なので、類似したFAQセットを活用してこの問題に対処します。私たちのアプローチを2つのデータセットで評価します。1つ目は、日本の地方自治体領域で構築したdataset「localgovFAQ」です。2つ目は、英語の公開データセット「StackExchange」です。提案手法がこれらのデータセットでベースライン手法を上回ることを実証します。
+        </label>
+        <input type="checkbox" id="Panel174" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Frequently Asked Question (FAQ) retrieval is an important task where the objective is to retrieve an appropriate Question-Answer (QA) pair from a database based on a user's query. We propose a FAQ retrieval system that considers the similarity between a user's query and a question as well as the relevance between the query and an answer. Although a common approach to FAQ retrieval is to construct labeled data for training, it takes annotation costs. Therefore, we use a traditional unsupervised information retrieval system to calculate the similarity between the query and question. On the other hand, the relevance between the query and answer can be learned by using QA pairs in a FAQ database. The recently-proposed BERT model is used for the relevance calculation. Since the number of QA pairs in FAQ page is not enough to train a model, we cope with this issue by leveraging FAQ sets that are similar to the one in question. We evaluate our approach on two datasets. The first one is localgovFAQ, a dataset we construct in a Japanese administrative municipality domain. The second is StackExchange dataset, which is the public dataset in English. We demonstrate that our proposed method outperforms baseline methods on these datasets.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel175">
+        <strong> Argument Search: Assessing Argument Relevance </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Martin+Potthast">Martin Potthast</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lukas+Gienapp">Lukas Gienapp</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Florian+Euchner">Florian Euchner</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nick+Heilenkötter">Nick Heilenkötter</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nico+Weidmann">Nico Weidmann</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Henning+Wachsmuth">Henning Wachsmuth</a> (5), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Benno+Stein">Benno Stein</a> (6), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Matthias+Hagen">Matthias Hagen</a> (7) </u>  <br>
+        1:  Leipzig University, 2:  University of Stuttgart, 3:  University of Bremen, 4:  Karslruhe Institute of Technology, 5:  Paderborn University, 6:  Bauhaus-Universität Weimar, 7:  Martin-Luther-Universität Halle-Wittenberg <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331327">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Argument Search: Assessing Argument Relevance">Google Scholar</a></div>
+        (175)
+        <br>
+        <b>概要:　</b> 本研究は、議論の関連性を評価する初めてのユーザー調査について報告します。30万件以上の議論を対象とした検索に基づき、20の論争のある問題に対して40のトピックで4つの標準検索モデルを比較しました。各問題には偏った立場のトピックと中立的なトピックが含まれています。TRECに従って、各トピックに対する異なるモデルの上位結果をプールし、1名の評価者が各トピックごとに関連性を判断しました。評価者は議論の修辞的、論理的、弁証法的品質も評価し、その結果を関連性判断とクロスリファレンスしました。さらに、評価者自身の意見と、それがトピックの既定の立場と一致しているかどうかも尋ねました。その他の結果として、TerrierのDirichletLMとDPHの実装がTFIDFおよびBM25を大幅に上回ることを発見しました。関連性と品質の判断はほとんど相関せず、関連性だけでなく多様なランキング基準の必要性が示唆されます。また、評価者の立場がトピックの立場と対立している場合においても、評価者の偏見が有意に認められませんでした。
+        </label>
+        <input type="checkbox" id="Panel175" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We report on the first user study on assessing argument relevance. Based on a search among more than 300,000 arguments, four standard retrieval models are compared on 40 topics for 20 controversial issues: every issue has one topic with a biased stance and another neutral one. Following TREC, the top results of the different models on a topic were pooled and relevance-judged by one assessor per topic. The assessors also judged the arguments' rhetorical, logical, and dialectical quality, the results of which were cross-referenced with the relevance judgments. Furthermore, the assessors were asked for their personal opinion, and whether it matched the predefined stance of a topic. Among other results, we find that Terrier's implementations of DirichletLM and DPH are on par, significantly outperforming TFIDF and BM25. The judgments of relevance and quality hardly correlate, giving rise to a more diverse set of ranking criteria than relevance alone. We did not measure a significant bias of assessors when their stance is at odds with a topic's stance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel176">
+        <strong> Order-aware Embedding Neural Network for CTR Prediction </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+Guo">Wei Guo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ruiming+Tang">Ruiming Tang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Huifeng+Guo">Huifeng Guo</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jianhua+Han">Jianhua Han</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wen+Yang">Wen Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yuzhou+Zhang">Yuzhou Zhang</a> (2) </u>  <br>
+        1:  Wuhan University, 2:  Noah's Ark Lab <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331332">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Order-aware Embedding Neural Network for CTR Prediction">Google Scholar</a></div>
+        (176)
+        <br>
+        <b>概要:　</b> マルチフィールドのカテゴリカルデータを特徴の埋め込みベクトルとして表現し、その後、共同埋め込みのベクトル積で特徴の相互作用をモデル化する製品ベースのモデルは、広く研究されており、CTR予測の最も人気のある手法の一つとなっています。しかし、共同埋め込みを適用すると以下の問題が生じます：(1) 異なる次数の特徴相互作用の角度が互いに矛盾する可能性がある、(2) 高次の特徴相互作用の勾配が消失しやすくなり、学習された特徴相互作用が効果的でなくなる。これらの問題を解決するために、順序に敏感な埋め込み技術（すなわち、各特徴に対して複数の埋め込みを学習し、異なる次数の特徴相互作用に対して異なる埋め込みを適用する）を提案します。この技術は様々なモデルに適用可能であり、より効果的に特徴相互作用を生成します。さらに、この埋め込み技術に基づくCTR予測のための新しい順序に敏感な埋め込みニューラルネットワーク（OENN）を提案します。3つの公開されているデータセットでの大規模な実験により、順序に敏感な埋め込みの有効性が示され、我々のOENNが最先端のモデルを上回ることが証明されました。
+        </label>
+        <input type="checkbox" id="Panel176" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Product based models, which represent multi-field categorical data as embedding vectors of features, then model feature interactions in terms of vector product of shared embedding, have been extensively studied and have become one of the most popular techniques for CTR prediction. However, if the shared embedding is applied: (1) the angles of feature interactions of different orders may conflict with each other, (2) the gradients of feature interactions of high-orders may vanish, which result in learned feature interactions less effective. To solve these problems, we propose a novel technique named Order-aware Embedding (i.e., multi-embeddings are learned for each feature, and different embeddings are applied for feature interactions of different orders), which can be applied to various models and generates feature interactions more effectively. We further propose a novel order-aware embedding neural network (OENN) based on this embedding technique for CTR prediction. Extensive experiments on three publicly available datasets demonstrate the effectiveness of Order-aware Embedding and show that our OENN outperforms the state-of-the-art models.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel177">
+        <strong> The Impact of Score Ties on Repeatability in Document Ranking </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimmy+Lin">Jimmy Lin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Peilin+Yang">Peilin Yang</a> (2) </u>  <br>
+        1:  University of Waterloo, 2:  No affiliation <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331339">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=The Impact of Score Ties on Repeatability in Document Ranking">Google Scholar</a></div>
+        (177)
+        <br>
+        <b>概要:　</b> ドキュメントランキング実験は再現可能であるべきです。しかし、マルチスレッドインデックス作成と検索中のスコア同点の相互作用により、ランキングが非決定的になることがあり、再現性を想像するほど簡単ではありません。オープンソースのLucene検索エンジンの文脈では、スコアが同点の場合、内部ドキュメントIDによって順位がされます。この内部ドキュメントIDはインデックス作成時に割り当てられ、マルチスレッドインデックス作成によって、同じコレクションの異なるインデックスインスタンス間で一貫して割り当てられません。そのため、スコア同点の解消が予測不能になります。この短い論文では、そのようなスコア同点が有効性に与える影響を調査し、この現象に起因する変動を定量化します。この非決定性に対する明白な解決策として、ドキュメントのランキングを再現可能にするために、外部コレクションのドキュメントIDを使用してスコア同点を解消する方法があります。しかし、このアプローチには、クエリ評価中に外部識別子を参照する必要があるため、計測可能な効率コストが伴います。
+        </label>
+        <input type="checkbox" id="Panel177" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Document ranking experiments should be repeatable. However, the interaction between multi-threaded indexing and score ties during retrieval may yield non-deterministic rankings, making repeatability not as trivial as one might imagine. In the context of the open-source Lucene search engine, score ties are broken by internal document ids, which are assigned at index time. Due to multi-threaded indexing, which makes experimentation with large modern document collections practical, internal document ids are not assigned consistently between different index instances of the same collection, and thus score ties are broken unpredictably. This short paper examines the effectiveness impact of such score ties, quantifying the variability that can be attributed to this phenomenon. The obvious solution to this non-determinism and to ensure repeatable document ranking is to break score ties using external collection document ids. This approach, however, comes with measurable efficiency costs due to the necessity of consulting external identifiers during query evaluation.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel178">
+        <strong> Critically Examining the "Neural Hype": Weak Baselines and the Additivity of Effectiveness Gains from Neural Ranking Models </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+Yang">Wei Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kuang+Lu">Kuang Lu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Peilin+Yang">Peilin Yang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimmy+Lin">Jimmy Lin</a> (4) </u>  <br>
+        1:  University of Waterloo, 2:  University of Delaware, 3:  No affiliation, 4:  University of Waterloo <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331340">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Critically Examining the "Neural Hype": Weak Baselines and the Additivity of Effectiveness Gains from Neural Ranking Models">Google Scholar</a></div>
+        (178)
+        <br>
+        <b>概要:　</b> ニューラルIR（情報検索）はほとんど誇大広告ではないか？最近のSIGIR Forumの記事で、Linはニューラルランキングモデルが限られたデータシナリオでアドホック検索の効果を実際に向上させているかどうかに懐疑的な見解を示しました。彼はニューラルIR論文の著者たちが弱いベースラインと比較することで「勝利」を示すことが多いとの逸話的な証拠を提供しました。本論文では、これらの主張を厳密に評価するために、二つの方法を取りました。まず、TREC Robust04テストコレクションで実験結果を報告した論文のメタ分析を行いました。効果が時間とともに向上している証拠は見つかりませんでした。実際、最良の結果は10年前のものであり、最近のニューラルアプローチはそれに近づいてもいません。次に、Linが彼の主張を立証するために使った強力なベースラインをランク付けし直すために、5つの最新のニューラルモデルを適用しました。1つのモデルにおいて有意な改善が観察され、効果の追加性が示されました。ニューラルIRアプローチには一定の価値があるようですが、少なくとも文献で報告されている利益の一部は幻想に過ぎないようです。
+        </label>
+        <input type="checkbox" id="Panel178" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Is neural IR mostly hype? In a recent SIGIR Forum article, Lin expressed skepticism that neural ranking models were actually improving ad hoc retrieval effectiveness in limited data scenarios. He provided anecdotal evidence that authors of neural IR papers demonstrate "wins" by comparing against weak baselines. This paper provides a rigorous evaluation of those claims in two ways: First, we conducted a meta-analysis of papers that have reported experimental results on the TREC Robust04 test collection. We do not find evidence of an upward trend in effectiveness over time. In fact, the best reported results are from a decade ago and no recent neural approach comes close. Second, we applied five recent neural models to rerank the strong baselines that Lin used to make his arguments. A significant improvement was observed for one of the models, demonstrating additivity in gains. While there appears to be merit to neural IR approaches, at least some of the gains reported in the literature appear illusory.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel179">
+        <strong> BERT with History Answer Embedding for Conversational Question Answering </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chen+Qu">Chen Qu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Liu+Yang">Liu Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minghui+Qiu">Minghui Qiu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=W.+Bruce+Croft">W. Bruce Croft</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongfeng+Zhang">Yongfeng Zhang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mohit+Iyyer">Mohit Iyyer</a> (1) </u>  <br>
+        1:  University of Massachusetts Amherst, 2:  Alibaba Group, 3:  Rutgers University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331341">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=BERT with History Answer Embedding for Conversational Question Answering">Google Scholar</a></div>
+        (179)
+        <br>
+        <b>概要:　</b> 対話型検索は情報検索コミュニティにおいて新たに注目されているトピックです。マルチターン対話型検索の主要な課題の一つは、会話履歴をモデル化して現在の質問に答えることです。既存の方法では、履歴のターンを現在の質問に追加するか、複雑なアテンションメカニズムを使用して履歴をモデル化しています。我々は、概念的にシンプルでありながら非常に効果的なアプローチ、すなわち履歴回答エンベディングを提案します。これにより、BERT（双方向エンコーダ表現 from Transformers）上に構築された対話型質問応答（ConvQA）モデルに、シームレスに会話履歴を統合することが可能になります。まず、ConvQAが対話型検索の簡略化されたが具体的な設定であるとの見解を説明し、その後にConvQAを解くための一般的なフレームワークを提供します。また、このフレームワークの下で我々のアプローチの有効性を実証します。最後に、異なる設定における異なる数の履歴ターンの影響を分析し、ConvQAにおける会話履歴のモデル化に新たな洞察を提供します。
+        </label>
+        <input type="checkbox" id="Panel179" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Conversational search is an emerging topic in the information retrieval community. One of the major challenges to multi-turn conversational search is to model the conversation history to answer the current question. Existing methods either prepend history turns to the current question or use complicated attention mechanisms to model the history. We propose a conceptually simple yet highly effective approach referred to as history answer embedding. It enables seamless integration of conversation history into a conversational question answering (ConvQA) model built on BERT (Bidirectional Encoder Representations from Transformers). We first explain our view that ConvQA is a simplified but concrete setting of conversational search, and then we provide a general framework to solve ConvQA. We further demonstrate the effectiveness of our approach under this framework. Finally, we analyze the impact of different numbers of history turns under different settings to provide new insights into conversation history modeling in ConvQA.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel180">
+        <strong> On the Effect of Low-Frequency Terms on Neural-IR Models </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sebastian+Hofstätter">Sebastian Hofstätter</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Navid+Rekabsaz">Navid Rekabsaz</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Carsten+Eickhoff">Carsten Eickhoff</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Allan+Hanbury">Allan Hanbury</a> (1) </u>  <br>
+        1:  TU Wien, 2:  Idiap Research Institute, 3:  Brown University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331344">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=On the Effect of Low-Frequency Terms on Neural-IR Models">Google Scholar</a></div>
+        (180)
+        <br>
+        <b>概要:　</b> 低頻度の単語は情報検索モデルにとって繰り返される課題であり、特にニューラルIR（情報検索）フレームワークは、あまり観測されない単語を適切に捉えることが難しいです。効率性の要件に対する譲歩として、これらの単語はしばしばニューラルモデルから除去されますが、従来から情報検索モデルの性能において重要な役割を果たしてきました。本研究では、低頻度の単語がニューラルIRモデルの性能と頑強性に及ぼす影響を分析します。我々は、大規模なパッセージ検索コレクションで訓練された3つの最新のニューラルIRモデルに対して、制御された実験を行います。利用可能なGPUメモリに対する様々な制約を考慮し、それぞれの単語埋め込みの語彙サイズが異なるニューラルIRモデルを評価します。より大きな語彙を使用することの大きな利点がある一方で、語彙間の性能差は、関連するパラメータ（再ランク付けする文書の数）の広範なチューニングによって大幅に緩和されることがわかりました。さらに、ニューラルIRモデルに対するサブワードトークン埋め込みモデル、特にFastTextの使用を検討します。我々の実験は、完全な語彙で訓練されたモデルと比較して、FastTextを使用することにより、ニューラルIRモデルの全体的なパフォーマンスがわずかに向上し、低頻度の単語を含むクエリに対する改善がより顕著になることを示しています。
+        </label>
+        <input type="checkbox" id="Panel180" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Low-frequency terms are a recurring challenge for information retrieval models, especially neural IR frameworks struggle with adequately capturing infrequently observed words. While these terms are often removed from neural models - mainly as a concession to efficiency demands - they traditionally play an important role in the performance of IR models. In this paper, we analyze the effects of low-frequency terms on the performance and robustness of neural IR models. We conduct controlled experiments on three recent neural IR models, trained on a large-scale passage retrieval collection. We evaluate the neural IR models with various vocabulary sizes for their respective word embeddings, considering different levels of constraints on the available GPU memory. We observe that despite the significant benefits of using larger vocabularies, the performance gap between the vocabularies can be, to a great extent, mitigated by extensive tuning of a related parameter: the number of documents to re-rank. We further investigate the use of subword-token embedding models, and in particular FastText, for neural IR models. Our experiments show that using FastText brings slight improvements to the overall performance of the neural IR models in comparison to models trained on the full vocabulary, while the improvement becomes much more pronounced for queries containing low-frequency terms.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel181">
+        <strong> Effective Medical Archives Processing Using Knowledge Graphs </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaoli+Wang">Xiaoli Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rongzhen+Wang">Rongzhen Wang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhifeng+Bao">Zhifeng Bao</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiayin+Liang">Jiayin Liang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+Lu">Wei Lu</a> (4) </u>  <br>
+        1:  Xiamen University, 2:  Quanzhou Medical College, 3:  RMIT University, 4:  Renmin University of China <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331350">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Effective Medical Archives Processing Using Knowledge Graphs">Google Scholar</a></div>
+        (181)
+        <br>
+        <b>概要:　</b> 医療記録処理は医療情報システムにおいて非常に重要なタスクです。一般的には、医療記録の認識、特徴抽出、テキスト分類の3つのステップで構成されます。本論文では、知識グラフを用いて医療記録処理を強化することに焦点を当てます。まず、セマンティックに豊富な医療知識グラフを構築します。次に、複数の一般的な光学式文字認識（OCR）エンジンを用いて医療記録からテキストを認識し、知識グラフベースの特徴抽出アルゴリズムを用いてテキストからキーワードを抽出します。第三に、知識グラフに基づいたセマンティックな測定基準を定義し、医療テキスト間の類似性を評価し、テキスト分類タスクを実行します。この測定基準は医療文書間のセマンティックな関連性を評価し、テキスト分類を強化するために使用されます。検証には、実際の病院から収集した医療記録を用います。結果は、我々のアルゴリズムが単なる用語統計を利用する典型的なベースラインを大幅に上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel181" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Medical archives processing is a very important task in a medical information system. It generally consists of three steps: medical archives recognition, feature extraction and text classification. In this paper, we focus on empowering the medical archives processing with knowledge graphs. We first build a semantic-rich medical knowledge graph. Then, we recognize texts from medical archives using several popular optical character recognition (OCR) engines, and extract keywords from texts using a knowledge graph based feature extraction algorithm. Third, we define a semantic measure based on knowledge graph to evaluate the similarity between medical texts, and perform the text classification task. This measure can value semantic relatedness between medical documents, to enhance the text classification. We use medical archives collected from real hospitals for validation. The results show that our algorithms can significantly outperform typical baselines that employs only term statistics.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel182">
+        <strong> Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chen+Zhang">Chen Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qiuchi+Li">Qiuchi Li</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dawei+Song">Dawei Song</a> (3) </u>  <br>
+        1:  Beijing Institute of Technology & Zhejiang Lab, 2:  University of Padua, 3:  Beijing Institute of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331351">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Syntax-Aware Aspect-Level Sentiment Classification with Proximity-Weighted Convolution Network">Google Scholar</a></div>
+        (182)
+        <br>
+        <b>概要:　</b> 長短期記憶（LSTM）ネットワークは、注意メカニズムやメモリーモジュールと組み合わせることで、アスペクトレベルの感情分類に有用であると広く受け入れられています。しかし、既存の手法は主にアスペクトとその文脈単語の意味的関連性のモデリングに依存しており、文内の構文依存性をある程度無視しています。その結果、アスペクトが他のアスペクトの説明に用いられる文脈単語に注目してしまうという望ましくない結果を招く可能性があります。本論文では、アスペクト固有の構文を考慮した文脈表現を提供するために、近接重み付き畳み込みネットワークを提案します。特に、近接重みを決定するための2つの方法、すなわち位置近接性と依存近接性が探求されています。この表現は主に双方向LSTMアーキテクチャにより化され、その後近接重み付き畳み込みによってさらに強化されます。SemEval 2014ベンチマークで行われた実験により、我々の提案手法が最先端モデルと比較して効果的であることが示されました。詳細はhttps://github.com/GeneZC/PWCNをご覧ください。
+        </label>
+        <input type="checkbox" id="Panel182" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> It has been widely accepted that Long Short-Term Memory (LSTM) network, coupled with attention mechanism and memory module, is useful for aspect-level sentiment classification. However, existing approaches largely rely on the modelling of semantic relatedness of an aspect with its context words, while to some extent ignore their syntactic dependencies within sentences. Consequently, this may lead to an undesirable result that the aspect attends on contextual words that are descriptive of other aspects. In this paper, we propose a proximity-weighted convolution network to offer an aspect-specific syntax-aware representation of contexts. In particular, two ways of determining proximity weight are explored, namely position proximity and dependency proximity. The representation is primarily abstracted by a bidirectional LSTM architecture and further enhanced by a proximity-weighted convolution. Experiments conducted on the SemEval 2014 benchmark demonstrate the effectiveness of our proposed approach compared with a range of state-of-the-art models is available at https://github.com/GeneZC/PWCN.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel183">
+        <strong> A Study on Agreement in PICO Span Annotations </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Grace+E.+Lee">Grace E. Lee</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Aixin+Sun">Aixin Sun</a> (1) </u>  <br>
+        1:  Nanyang Technological University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331352">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Study on Agreement in PICO Span Annotations">Google Scholar</a></div>
+        (183)
+        <br>
+        <b>概要:　</b> エビデンスに基づく医療において、医学文献の関連性は、前もって定められた関連性条件によって決定されます。この条件はPICO要素、すなわち、患者 (Patient)、介入 (Intervention)、比較 (Comparator)、および結果 (Outcome) に基づいて定義されます。したがって、医学文献におけるPICO注釈は、関連文書の自動フィルタリングに不可欠です。しかし、PICO要素のテキスト範囲の境界を定義することは、簡単ではありません。本論文では、専門家と非専門家を含む複数の人間アノテーターによって行われたPICO注釈の一致度を研究します。一致度は標準的な範囲一致度（ラベルとテキスト範囲の境界の両方を一致させる）、および2種類の緩和範囲一致度（範囲の境界を一致させることなくラベルのみを一致させる）によって推定されます。分析に基づき、2つの観察結果を報告します：(i) 個々のアノテーターによるPICO範囲注釈の境界は非常に多様である。(ii) 範囲の境界における不一致にもかかわらず、範囲注釈の一般的な領域はアノテーターによって広く一致しています。我々の結果は、標準の一致度のみを適用することがPICO範囲の一致度を過小評価する可能性があり、標準と緩和の両方の一致度を採用することがPICO範囲の評価により適していることを示唆しています。
+        </label>
+        <input type="checkbox" id="Panel183" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In evidence-based medicine, relevance of medical literature is determined by predefined relevance conditions. The conditions are defined based on PICO elements, namely, Patient, Intervention, Comparator, and Outcome. Hence, PICO annotations in medical literature are essential for automatic relevant document filtering. However, defining boundaries of text spans for PICO elements is not straightforward. In this paper, we study the agreement of PICO annotations made by multiple human annotators, including both experts and non-experts. Agreements are estimated by a standard span agreement (i.e. matching both labels and boundaries of text spans), and two types of relaxed span agreement (i.e. matching labels without guaranteeing matching boundaries of spans). Based on the analysis, we report two observations: (i) Boundaries of PICO span annotations by individual annotators are very diverse. (ii) Despite the disagreement in span boundaries, general areas of the span annotations arebroadly agreed by annotators. Our results suggest that applying a standard agreement alone may undermine the agreement of PICO spans, and adopting both a standard and a relaxed agreements is more suitable for PICO span evaluation.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel184">
+        <strong> Corpus-based Set Expansion with Lexical Features and Distributed Representations </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Puxuan+Yu">Puxuan Yu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhiqi+Huang">Zhiqi Huang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Razieh+Rahimi">Razieh Rahimi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=James+Allan">James Allan</a> (1) </u>  <br>
+        1:  University of Massachusetts Amherst <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331359">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Corpus-based Set Expansion with Lexical Features and Distributed Representations">Google Scholar</a></div>
+        (184)
+        <br>
+        <b>概要:　</b> コーパスベースのセット拡張とは、与えられたシードエンティティから「兄弟」エンティティをコーパスから抽出することを指します。従来の研究は、このタスクを達成するためにテキスト文脈の一致または意味的マッチングのいずれかに限定されていました。いずれのマッチング手法も自由なテキストが持つ豊富な情報を十分に活用していません。私たちは、セット拡張タスクのためにエンティティの語彙的特徴と分散表現の両方を活用する効率的な教師なしコーパスベースのセット拡張フレームワークであるCaSEを提案します。実験によって、CaSEが拡張精度の点で最先端のセット拡張アルゴリズムを上回ることが示されました。
+        </label>
+        <input type="checkbox" id="Panel184" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Corpus-based set expansion refers to mining "sibling" entities of some given seed entities from a corpus. Previous works are limited to using either textual context matching or semantic matching to fulfill this task. Neither matching method takes full advantage of the rich information in free text. We present CaSE, an efficient unsupervised corpus-based set expansion framework that leverages lexical features as well as distributed representations of entities for the set expansion task. Experiments show that CaSE outperforms state-of-the-art set expansion algorithms in terms of expansion accuracy.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel185">
+        <strong> Sparse Tensor Co-clustering as a Tool for Document Categorization </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rafika+Boutalbi">Rafika Boutalbi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lazhar+Labiod">Lazhar Labiod</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mohamed+Nadif">Mohamed Nadif</a> (1) </u>  <br>
+        1:  University of Paris <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331360">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Sparse Tensor Co-clustering as a Tool for Document Categorization">Google Scholar</a></div>
+        (185)
+        <br>
+        <b>概要:　</b> ドキュメントクラスタリングに対処するためには、通常、ドキュメント-単語行列に依存します。しかし、キーワードや共著者、引用などの追加の利用可能な情報から、むしろテンソルの形でデータの再編成を活用するかもしれません。本論文では、Sparse Poisson Latent Block Modelの使用を拡張し、ドキュメントから生じるすべての情報を共同で利用してスパーステンソルデータを処理します。提案されたモデルは、データの特性に合わせた簡便なものです。パラメータを推定するために、適切なテンソルコクラスタリングアルゴリズムを導出しました。いくつかの現実世界のテキストデータセットを用いた実証結果により、提案手法がドキュメントのクラスタリング結果を改善する利点が明らかになりました。
+        </label>
+        <input type="checkbox" id="Panel185" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> To deal with document clustering, we usually rely on document-term matrices. However, from additional available information like keywords, co-authors, citations we might rather exploit a reorganization of the data in the form of a tensor. In this paper, we extend the use of the Sparse Poisson Latent Block Model to deal with sparse tensor data using jointly all information arising from documents. The proposed model is parsimonious and tailored for this kind of data. To estimate the parameters, we derive a suitable tensor co-clustering algorithm. Empirical results on several real-world text datasets highlight the advantages of our proposal which improves the clustering results of documents.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel186">
+        <strong> Numeral Attachment with Auxiliary Tasks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chung-Chi+Chen">Chung-Chi Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hen-Hsen+Huang">Hen-Hsen Huang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hsin-Hsi+Chen">Hsin-Hsi Chen</a> (1) </u>  <br>
+        1:  National Taiwan University, 2:  National Chengchi University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331361">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Numeral Attachment with Auxiliary Tasks">Google Scholar</a></div>
+        (186)
+        <br>
+        <b>概要:　</b> 本論文では、数値の付与対象を検出するためのタスクとして「数値付与」を提案します。他の種類の固有表現と比較して、数値は特定の領域でより豊富で重要な情報を提供します。数値に埋め込まれた情報を詳細に理解することは基本的な課題です。我々は、提案するタスクに基づくパイロットデータセット「NumAttach」をツイートから構築しました。このタスクの主な課題は、ツイートの非公式な文体と数値の表現方法です。これらの課題に対処するために、単語情報と数値情報を同時に考慮するエンベディング技術を提案します。さらに、このタスクを達成するために、カプセルネットワークを用いた統合学習モデルを設計しました。我々は、研究コミュニティへのリソースとして「NumAttach」を公開します。
+        </label>
+        <input type="checkbox" id="Panel186" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In this paper we propose the task of numeral attachment to detect the attached target of a numeral. Compared with other kinds of named entities, numerals provide richer and more crucial information in some domains. Fine-grained understanding of the information embedded in numerals is a fundamental challenge. We develop NumAttach, a pilot dataset for the proposed task based on tweets. Two main challenges of this task include the informal writing style in tweets and the representation of numerals. To address these challenges, we present an embedding technique that considers word and numeral information simultaneously. Furthermore, we design a joint learning model with the capsule network to accomplish the proposed task. We also release NumAttach to the research community as a resource.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel187">
+        <strong> Decoding The Style And Bias of Song Lyrics </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Manash+Pratim+Barman">Manash Pratim Barman</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Amit+Awekar">Amit Awekar</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sambhav+Kothari">Sambhav Kothari</a> (3) </u>  <br>
+        1:  Indian Institute of Information Technology, 2:  Indian Institute of Technology, 3:  Bloomberg LP <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331363">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Decoding The Style And Bias of Song Lyrics">Google Scholar</a></div>
+        (187)
+        <br>
+        <b>概要:　</b> この論文の中心的な考え方は、楽曲の歌詞を計算論的に深く理解することです。我々は、歌詞のスタイルとバイアスの二つの側面に焦点を当てています。これまでの研究は、少数の歌詞コーパスを手動で分析することに限られていました。一方で、我々は過去五十年にわたる50万曲以上の楽曲を分析しました。歌詞のスタイルを語彙、長さ、反復性、速度、可読性といった点で特徴づけました。人気のある楽曲のスタイルが他の楽曲と著しく異なることを観察しました。また、分散表現法とWEATテストを用いて、歌詞における様々なジェンダーや人種のバイアスを測定しました。歌詞のバイアスが人間に対する過去の研究結果と相関していることを観察しました。この相関は、歌詞が社会に存在するバイアスを反映していることを示しています。音楽の消費が増加しており、歌詞が人間の感情に与える影響を考慮すると、この分析は重要です。
+        </label>
+        <input type="checkbox" id="Panel187" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The central idea of this paper is to gain a deeper understanding of song lyrics computationally. We focus on two aspects: style and biases of song lyrics. All prior works to understand these two aspects are limited to manual analysis of a small corpus of song lyrics. In contrast, we analyzed more than half a million songs spread over five decades. We characterize the lyrics style in terms of vocabulary, length, repetitiveness, speed, and readability. We have observed that the style of popular songs significantly differs from other songs. We have used distributed representation methods and WEAT test to measure various gender and racial biases in the song lyrics. We have observed that biases in song lyrics correlate with prior results on human subjects. This correlation indicates that song lyrics reflect the biases that exist in society. Increasing consumption of music and the effect of lyrics on human emotions makes this analysis important.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel188">
+        <strong> Retrieving Multi-Entity Associations: An Evaluation of Combination Modes for Word Embeddings </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gloria+Feher">Gloria Feher</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Andreas+Spitz">Andreas Spitz</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michael+Gertz">Michael Gertz</a> (1) </u>  <br>
+        1:  Heidelberg University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331366">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Retrieving Multi-Entity Associations: An Evaluation of Combination Modes for Word Embeddings">Google Scholar</a></div>
+        (188)
+        <br>
+        <b>概要:　</b> 単語埋め込み（ワードエンベディング）は、単語間の意味関係を学習可能な表現として大きな注目を集めており、従来の単語表現よりも優れた結果を示しています。しかし、ペア関係を超えたエンティティ間の関連性の検索にエンベディングを使用する試みはほとんどなされていません。本論文では、人気のあるエンベディング手法を使用してエンティティが注釈されたニュースコーパスのベクトル表現を学習し、ニュースイベントにおけるエンティティの参加を予測するタスクにおいて、伝統的な単語共起ネットワークをベースラインとして評価します。複数のエンティティが関与するイベントに対するクエリをサポートするために、エンベディングベクトルのさまざまな組み合わせモードをテストします。最も優れたエンベディングの組み合わせモードでも、特に稀なエンティティに関しては、完全な共起ネットワークのパフォーマンスには及ばないことがわかりますが、異なるエンベディング手法が異なる種類の関係をモデル化することを観察し、アンサンブル手法の可能性を示唆しています。
+        </label>
+        <input type="checkbox" id="Panel188" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Word embeddings have gained significant attention as learnable representations of semantic relations between words, and have been shown to improve upon the results of traditional word representations. However, little effort has been devoted to using embeddings for the retrieval of entity associations beyond pairwise relations. In this paper, we use popular embedding methods to train vector representations of an entity-annotated news corpus, and evaluate their performance for the task of predicting entity participation in news events versus a traditional word cooccurrence network as a baseline. To support queries for events with multiple participating entities, we test a number of combination modes for the embedding vectors. While we find that even the best combination modes for word embeddings do not quite reach the performance of the full cooccurrence network, especially for rare entities, we observe that different embedding methods model different types of relations, thereby indicating the potential for ensemble methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel189">
+        <strong> Modeling Transferable Topics for Cross-Target Stance Detection </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Penghui+Wei">Penghui Wei</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wenji+Mao">Wenji Mao</a> (1) </u>  <br>
+        1:  Institution of Automation <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331367">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Modeling Transferable Topics for Cross-Target Stance Detection">Google Scholar</a></div>
+        (189)
+        <br>
+        <b>概要:　</b> ターゲット姿勢検出は、意見を含むテキストの特定のターゲットに対する態度を分類することを目的としています。従来の方法は、主に同じターゲットに特有のデータを用いてモデルを訓練しテストする「ターゲット内設定」に焦点を当てていました。しかし、実際のケースでは、関心のあるターゲットにラベル付きデータがほとんどないか、全くない場合があり、これはターゲット特化モデルの訓練を制約します。本論文では、異なるターゲット間の姿勢検出の問題を研究し、ソースターゲットのラベル付きデータを利用して、目的ターゲットに適応可能なモデルを学習する方法を提案します。この目的のために、我々は有効な方法を提案します。そのコアとなる直感は、2つのターゲット間で共有される潜在トピックを転移可能な知識として利用し、モデルの適応を促進することにあります。我々の方法は、ニューラル変分推論を用いてトピック知識を取得し、更に対立訓練を採用して、モデルがターゲットに依存しない表現を学習することを奨励します。実験結果は、我々の提案した方法が最先端の方法に対して優れていることを確認しています。
+        </label>
+        <input type="checkbox" id="Panel189" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Targeted stance detection aims to classify the attitude of an opinionated text towards a pre-defined target. Previous methods mainly focus on in-target setting that models are trained and tested using data specific to the same target. In practical cases, the target we concern may have few or no labeled data, which restrains us from training a target-specific model. In this paper we study the problem of cross-target stance detection, utilizing labeled data of a source target to learn models that can be adapted to a destination target. To this end, we propose an effective method, the core intuition of which is to leverage shared latent topics between two targets as transferable knowledge to facilitate model adaptation. Our method acquires topic knowledge with neural variational inference, and further adopts adversarial training that encourages the model to learn target-invariant representations. Experimental results verify that our proposed method is superior to the state-of-the-art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel190">
+        <strong> TDP: Personalized Taxi Demand Prediction Based on Heterogeneous Graph Embedding </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhenlong+Zhu">Zhenlong Zhu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ruixuan+Li">Ruixuan Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minghui+Shan">Minghui Shan</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yuhua+Li">Yuhua Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lu+Gao">Lu Gao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fei+Wang">Fei Wang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jixing+Xu">Jixing Xu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiwu+Gu">Xiwu Gu</a> (1) </u>  <br>
+        1:  Huazhong University of Science and Technology, 2:  Didi Chuxing <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331368">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=TDP: Personalized Taxi Demand Prediction Based on Heterogeneous Graph Embedding">Google Scholar</a></div>
+        (190)
+        <br>
+        <b>概要:　</b> 短期間におけるユーザーの不規則な移動を予測することは、インテリジェント交通システムにおいて重要な課題の一つです。この予測があれば、中国のDidi Chuxingのようなタクシー配車サービスは、交通資源を効果的に管理し、より良いサービスを提供することが可能になります。交通シーンには、通勤シーンや娯楽シーンなどいくつかの異なる種類があります。娯楽シーンの出発地と目的地は通勤シーンのそれよりも不確定であるため、出発地と目的地の両方を予測する必要があります。さらに、Didiプラットフォーム上のユーザーの移動は実生活の一部に過ぎないため、これらの交通データは限られた弱いサンプルに過ぎません。これらの課題に対処するために、本論文では、異種グラフ埋め込みと深層ニューラル予測ネットワークに基づいた娯楽シーンにおけるタクシー需要予測（TDP）モデルを提案します。TDPは、娯楽シーンにおいてユーザーごとに過去のデータに現れていない次の可能な移動エッジを予測することを目指しています。実世界のデータセットを使用した実験結果に基づき、TDPは最先端の手法と比べて顕著な改善を達成していることが示されました。
+        </label>
+        <input type="checkbox" id="Panel190" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Predicting users' irregular trips in a short term period is one of the crucial tasks in the intelligent transportation system. With the prediction, the taxi requesting services, such as Didi Chuxing in China, can manage the transportation resources to offer better services. There are several different transportation scenes, such as commuting scene and entertainment scene. The origin and the destination of entertainment scene are more unsure than that of commuting scene, so both origin and destination should be predicted. Moreover, users' trips on Didi platform is only a part of their real life, so these transportation data are only few weak samples. To address these challenges, in this paper, we propose Taxi Demand Prediction (TDP) model in challenging entertainment scene based on heterogeneous graph embedding and deep neural predicting network. TDP aims to predict next possible trip edges that have not appeared in historical data for each user in entertainment scene. Experimental results on the real-world dataset show that TDP achieves significant improvements over the state-of-the-art methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel191">
+        <strong> Uncovering Insurance Fraud Conspiracy with Network Learning </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chen+Liang">Chen Liang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ziqi+Liu">Ziqi Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Bin+Liu">Bin Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Zhou">Jun Zhou</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaolong+Li">Xiaolong Li</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shuang+Yang">Shuang Yang</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yuan+Qi">Yuan Qi</a> (1) </u>  <br>
+        1:  Ant Financial, 2:  Ant Financial, 3:  Ant Financial, 4:  Ant Financial <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331372">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Uncovering Insurance Fraud Conspiracy with Network Learning">Google Scholar</a></div>
+        (191)
+        <br>
+        <b>概要:　</b> 詐欺保険金請求の検出は、保険業界が直面する最大の課題の一つです。アリババの返品送料保険は、ECプラットフォーム上での商品返品に伴う送料補償を提供しており、毎日数千件の潜在的な詐欺請求を受けています。このような故意の保険政策の乱用は、大きな財務損失を引き起こす可能性があります。詐欺保険金請求を検出し防止するために、我々はネットワーク情報を学習することで、財務損失の主要な原因である組織化された詐欺グループを特定する、新しいデータ駆動の手法を開発しました。本論文では、請求者間のデバイス共有ネットワークを導入し、グラフ学習アルゴリズムに基づく詐欺検出の自動化ソリューションを開発し、詐欺師を通常の顧客から分離し、組織化された詐欺グループを発見する手法を紹介します。このソリューションはアリババにおいて適用され、人間の専門家の調査後には、以前に導入されたルールベースの分類器と比較して44％多くの疑わしいアカウントを対象としながら、80％以上の精度を達成しました。我々のアプローチは、他の種類の保険にも容易かつ効果的に一般化することができます。
+        </label>
+        <input type="checkbox" id="Panel191" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Fraudulent claim detection is one of the greatest challenges the insurance industry faces. Alibaba's return-freight insurance, providing return-shipping postage compensations over product return on the e-commerce platform, receives thousands of potentially fraudulent claims everyday. Such deliberate abuse of the insurance policy could lead to heavy financial losses. In order to detect and prevent fraudulent insurance claims, we developed a novel data-driven procedure to identify groups of organized fraudsters, one of the major contributions to financial losses, by learning network information. In this paper, we introduce a device-sharing network among claimants, followed by developing an automated solution for fraud detection based on graph learning algorithms, to separate fraudsters from regular customers and uncover groups of organized fraudsters. This solution applied at Alibaba achieves more than 80% precision while covering 44% more suspicious accounts compared with a previously deployed rule-based classifier after human expert investigations. Our approach can easily and effectively generalizes to other types of insurance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel192">
+        <strong> Training Streaming Factorization Machines with Alternating Least Squares </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xueyu+Mao">Xueyu Mao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Saayan+Mitra">Saayan Mitra</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sheng+Li">Sheng Li</a> (3) </u>  <br>
+        1:  The University of Texas at Austin, 2:  Adobe Research, 3:  University of Georgia <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331374">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Training Streaming Factorization Machines with Alternating Least Squares">Google Scholar</a></div>
+        (192)
+        <br>
+        <b>概要:　</b> ファクトライゼーション・マシン (FM) は、推奨システムの産業アプリケーションに広く用いられています。従来、FMモデルはバッチモードでトレーニングされ、大規模なデータセットを数時間から数日かけてトレーニングする方式が一般的です。このようなトレーニング手法では、リアルタイムで進化するデータのトレンドを捉えることができません。本論文では、交互最小二乗法 (ALS) 技術を用いたFMのオンライントレーニング方式を提案します。この方式は、既存のバッチトレーニングアルゴリズムに匹敵する性能を持っています。我々は小さなキャッシュを保持するコストと引き換えに、モデルパラメータにオンライン更新メカニズムを組み込みました。このメカニズムは、データポイントが次々と追加される際に従来のオンライントレーニング技術である確率的勾配降下法 (SGD) よりもトレーニング誤差を安定させ、リアルタイムアプリケーションにおいて重要な安定性を提供します。大規模データセットを用いた実験により、我々の手法の効率性と堅牢性が検証されました。
+        </label>
+        <input type="checkbox" id="Panel192" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Factorization Machines (FM) have been widely applied in industrial applications for recommendations. Traditionally FM models are trained in batch mode, which entails training the model with large datasets every few hours or days. Such training procedure cannot capture the trends evolving in real time with large volume of streaming data. In this paper, we propose an online training scheme for FM with the alternating least squares (ALS) technique, which has comparable performance with existing batch training algorithms. We incorporate an online update mechanism to the model parameters at the cost of storing a small cache. The mechanism also stabilizes the training error more than a traditional online training technique like stochastic gradient descent (SGD) as data points come in, which is crucial for real-time applications. Experiments on large scale datasets validate the efficiency and robustness of our method.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel193">
+        <strong> Social Attentive Deep Q-network for Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yu+Lei">Yu Lei</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhitao+Wang">Zhitao Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wenjie+Li">Wenjie Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongbin+Pei">Hongbin Pei</a> (2) </u>  <br>
+        1:  The Hong Kong Polytechnic University, 2:  Jilin University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331302">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Social Attentive Deep Q-network for Recommendation">Google Scholar</a></div>
+        (193)
+        <br>
+        <b>概要:　</b> ディープリインフォースメントラーニング（Deep Reinforcement Learning、DRL）がレコメンダーシステムに成功裏に適用されている一方で、広く普及しているソーシャルネットワークを効果的に利用してDRLレコメンダーの性能を向上させることは、依然として挑戦的で未開拓な課題です。本研究では、ユーザーエージェント間のインタラクション中にソーシャルインフルエンスを活用して高品質な推薦を提供することができる、Social Attentive Deep Q-network（SADQN）エージェントを開発しました。具体的には、SADQNは特定のソーシャルアテンションレイヤーを用いることで、ユーザーの個人的な嗜好だけでなく、ソーシャルネイバーの嗜好に基づいてもアクションバリューを推定することが可能です。3つの実世界のデータセットを用いた実験結果は、SADQNがソーシャルインフルエンスを無視するDRLエージェントの性能を大幅に向上させることを示しています。
+        </label>
+        <input type="checkbox" id="Panel193" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> While deep reinforcement learning has been successfully applied to recommender systems, it is challenging and unexplored to improve the performance of deep reinforcement learning recommenders by effectively utilizing the pervasive social networks. In this work, we develop a Social Attentive Deep Q-network (SADQN) agent, which is able to provide high-quality recommendations during user-agent interactions by leveraging social influence among users. Specifically, SADQN is able to estimate action-values not only based on the users' personal preferences, but also based on their social neighbors' preferences by employing a particular social attention layer. The experimental results on three real-world datasets demonstrate that SADQN significantly improves the performance of deep reinforcement learning agents that overlook social influence.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel194">
+        <strong> Cleaned Similarity for Better Memory-Based Recommenders </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Farhan+Khawar">Farhan Khawar</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nevin+L.+Zhang">Nevin L. Zhang</a> (1) </u>  <br>
+        1:  The Hong Kong University of Science and Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331310">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Cleaned Similarity for Better Memory-Based Recommenders">Google Scholar</a></div>
+        (194)
+        <br>
+        <b>概要:　</b> ユーザーやアイテムのk-最近傍法（kNN）のようなメモリベースの協調フィルタリング手法は、レコメンデーション問題に対するシンプルかつ効果的な解決策です。これらの手法の中核は、ユーザーやアイテム間の経験的類似度の推定にあります。本論文では、ピアソンおよびコサイン類似度推定量のスペクトル特性を分析し、ランダム行列理論を用いてこれらがノイズと固有値の広がりに起因する問題を抱えることを主張します。我々は、ピアソン相関とは異なり、コサイン類似度が自然に大きな固有値に対する収縮特性を持つことを示します。しかしながら、そのゼロ平均の仮定により、最大固有値を過大評価することを明らかにします。我々はこの過大評価を定量化し、簡単なスケーリングおよびノイズ除去スキームを提案します。これにより、従来の方法と比較してメモリベースの手法のパフォーマンスが向上する結果が得られます。
+        </label>
+        <input type="checkbox" id="Panel194" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Memory-based collaborative filtering methods like user or item k-nearest neighbors (kNN) are a simple yet effective solution to the recommendation problem. The backbone of these methods is the estimation of the empirical similarity between users/items. In this paper, we analyze the spectral properties of the Pearson and the cosine similarity estimators, and we use tools from random matrix theory to argue that they suffer from noise and eigenvalues spreading. We argue that, unlike the Pearson correlation, the cosine similarity naturally possesses the desirable property of eigenvalue shrinkage for large eigenvalues. However, due to its zero-mean assumption, it overestimates the largest eigenvalues. We quantify this overestimation and present a simple re-scaling and noise cleaning scheme. This results in better performance of the memory-based methods compared to their vanilla counterparts.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel195">
+        <strong> ABCPRec: Adaptively Bridging Consumer and Producer Roles for User-Generated Content Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kosetsu+Tsukuda">Kosetsu Tsukuda</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Satoru+Fukayama">Satoru Fukayama</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Masataka+Goto">Masataka Goto</a> (1) </u>  <br>
+        1:  National Institute of Advanced Industrial Science and Technology (AIST) <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331335">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=ABCPRec: Adaptively Bridging Consumer and Producer Roles for User-Generated Content Recommendation">Google Scholar</a></div>
+        (195)
+        <br>
+        <b>概要:　</b> ユーザー生成コンテンツ（UGC）を扱うWebサービスにおいて、ユーザーは消費者の役割と生産者の役割の2つを持つことができます。ほとんどのアイテム推薦モデルがユーザーの消費者としての役割のみを考慮してきたため、この2つの役割を活用してUGC推薦の精度を向上させる方法は十分に探求されていませんでした。本論文では、最先端のUGC推薦方法であるCPRec（消費者および生産者ベースの推薦）に基づいて、ABCPRec（適応的橋渡しCPRec）を提案します。CPRecがユーザーの2つの役割が常に相互に関連していると仮定するのに対し、ABCPRecは消費者としての特性と生産者としての特性の類似性に応じて両者を適応的に橋渡しします。これにより、モデルはユーザーそれぞれの消費者および生産者としての特性を学習し、より正確にアイテムを推薦することが可能となります。実世界の2つのデータセットを使用して、提案手法がAUCの点で比較手法を大幅に上回ることを示しました。
+        </label>
+        <input type="checkbox" id="Panel195" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In Web services dealing with user-generated content (UGC), a user can have two roles: a role of a consumer and that of a producer. Since most item recommendation models have only considered the role of a user as a consumer, how to leverage the two roles to improve UGC recommendation accuracy has been underexplored. In this paper, based on the state-of-the-art UGC recommendation method called CPRec (consumer and producer based recommendation), we propose ABCPRec (adaptively bridging CPRec). Unlike CPRec, which assumes that the two roles of a user are always related to each other, ABCPRec adaptively bridges the two roles according to the similarity between her nature as a consumer and that as a producer. This enables the model to learn each user's characteristics as both a consumer and a producer and to recommend items to each user more accurately. By using two real-world datasets, we showed that our proposed method significantly outperformed comparative methods in terms of AUC.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel196">
+        <strong> Improving Collaborative Metric Learning with Efficient Negative Sampling </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Viet-Anh+Tran">Viet-Anh Tran</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Romain+Hennequin">Romain Hennequin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimena+Royo-Letelier">Jimena Royo-Letelier</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Manuel+Moussallam">Manuel Moussallam</a> (1) </u>  <br>
+        1:  Deezer Research & Development <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331337">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Improving Collaborative Metric Learning with Efficient Negative Sampling">Google Scholar</a></div>
+        (196)
+        <br>
+        <b>概要:　</b> 距離計量学習は、三重項損失に基づいて様々な応用分野で成功を収めてきました。例えば、顔認識、画像検索、話者変更検出、そして最近ではCollaborative Metric Learning（CML）モデルを用いたレコメンデーションなどです。しかし、本論文では示すように、CMLは非常に単純な均一な負例サンプリング戦略のため、大きなバッチを必要とし、バッチが大きくなるとメモリの制約から高次元のシナリオではスケールが難しくなります。この問題を緩和するために、情報含有量が高い三重項を見つける2段階の負例サンプリング戦略を提案します。我々の戦略により、CMLは精度と人気バイアスの観点から、デフォルトの均一サンプリング戦略が必要とするバッチサイズの1桁小さくても効果的に機能します。我々はこの戦略がレコメンデーションに適していることを実証し、様々なデータセットで一貫したポジティブな結果を示します。
+        </label>
+        <input type="checkbox" id="Panel196" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Distance metric learning based on triplet loss has been applied with success in a wide range of applications such as face recognition, image retrieval, speaker change detection and recently recommendation with the Collaborative Metric Learning (CML) model. However, as we show in this article, CML requires large batches to work reasonably well because of a too simplistic uniform negative sampling strategy for selecting triplets. Due to memory limitations, this makes it difficult to scale in high-dimensional scenarios. To alleviate this problem, we propose here a 2-stage negative sampling strategy which finds triplets that are highly informative for learning. Our strategy allows CML to work effectively in terms of accuracy and popularity bias, even when the batch size is an order of magnitude smaller than what would be needed with the default uniform sampling. We demonstrate the suitability of the proposed strategy for recommendation and exhibit consistent positive results across various datasets.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel197">
+        <strong> SAIN: Self-Attentive Integration Network for Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Seongjun+Yun">Seongjun Yun</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Raehyun+Kim">Raehyun Kim</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Miyoung+Ko">Miyoung Ko</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jaewoo+Kang">Jaewoo Kang</a> (1) </u>  <br>
+        1:  Korea University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331342">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=SAIN: Self-Attentive Integration Network for Recommendation">Google Scholar</a></div>
+        (197)
+        <br>
+        <b>概要:　</b> パーソナライズされたレコメンデーションの重要性が高まる中、最近では多数のレコメンデーションモデルが提案されています。その中でも、マトリックス分解（MF）に基づくモデルは高性能であるため、レコメンデーション分野で最も広く使用されています。しかし、MFベースのモデルは、ユーザーとアイテムのインタラクションが希薄な場合、コールドスタート問題に悩まされます。この問題に対処するために、ユーザーとアイテムの補助的な属性を利用するコンテンツベースのレコメンデーションモデルが提案されています。これらのモデルは補助属性を使用するため、コールドスタートの状況でも効果的です。しかし、提案されたモデルの多くは、複雑な特徴の相互作用を捉えることができなかったり、ユーザーとアイテムのフィードバック情報とコンテンツ情報を適切に組み合わせるように設計されていません。本論文では、レコメンデーションタスクのためにユーザーアイテムのフィードバック情報と補助情報を効果的に統合するモデル「自己注意統合ネットワーク（SAIN）」を提案します。SAINでは、特徴レベルの相互作用層において自己注意メカニズムを使用して複数の特徴間の相互作用を効果的に考慮し、情報統合層ではコンテンツ情報とフィードバック情報を適応的に組み合わせます。2つの公開データセットにおける実験結果は、我々のモデルが最先端のモデルを2.13%上回ることを示しています。
+        </label>
+        <input type="checkbox" id="Panel197" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> With the growing importance of personalized recommendation, numerous recommendation models have been proposed recently. Among them, Matrix Factorization (MF) based models are the most widely used in the recommendation field due to their high performance. However, MF based models suffer from cold start problems where user-item interactions are sparse. To deal with this problem, content based recommendation models which use the auxiliary attributes of users and items have been proposed. Since these models use auxiliary attributes, they are effective in cold start settings. However, most of the proposed models are either unable to capture complex feature interactions or not properly designed to combine user-item feedback information with content information. In this paper, we propose Self-Attentive Integration Network (SAIN) which is a model that effectively combines user-item feedback information and auxiliary information for recommendation task. In SAIN, a self-attention mechanism is used in the feature-level interaction layer to effectively consider interactions between multiple features, while the information integration layer adaptively combines content and feedback information. The experimental results on two public datasets show that our model outperforms the state-of-the-art models by 2.13%
+        </div> </ul> <br>
+
+
+
+        <label for="Panel198">
+        <strong> Towards Context-Aware Evaluation for Image Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yunqiu+Shao">Yunqiu Shao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiaxin+Mao">Jiaxin Mao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yiqun+Liu">Yiqun Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min+Zhang">Min Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shaoping+Ma">Shaoping Ma</a> (1) </u>  <br>
+        1:  Tsinghua University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331343">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Towards Context-Aware Evaluation for Image Search">Google Scholar</a></div>
+        (198)
+        <br>
+        <b>概要:　</b> 一般的なWeb検索と比較して、画像検索エンジンは結果を著しく異なる方法で提示します。この違いはユーザー行動パターンの変化を引き起こし、既存の評価メカニズムにとって課題となります。本論文では、画像検索シナリオにおけるコンテキスト要因に注目します。平均分散分析に基づいて、コンテキストの影響を探り、高分散の画像結果が返される場合に評価指標がユーザー満足度とよりよく一致することを確認しました。さらに、ユーザーが閲覧した画像結果がその後の判断に影響を及ぼす可能性を考慮し、著名なゲイン・ディスカウントフレームワーク内でコンテキスト効果を組み込んだ新しい評価指標であるContext-Aware Gain (CAG)を提案します。実験結果は、適切なディスカウント関数を組み合わせることで、提案するコンテキスト認識評価指標が画像検索評価においてオフライン指標の性能を大幅に向上させ、ユーザー満足度を金標準とすることを示しています。
+        </label>
+        <input type="checkbox" id="Panel198" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Compared to general web search, image search engines present results in a significantly different way, which leads to changes in user behavior patterns, and thus creates challenges for the existing evaluation mechanisms. In this paper, we pay attention to the context factor in the image search scenario. On the basis of a mean-variance analysis, we investigate the effects of context and find that evaluation metrics align with user satisfaction better when the returned image results have high variance. Furthermore, assuming that the image results a user has examined might affect her following judgments, we propose the Context-Aware Gain (CAG), a novel evaluation metric that incorporates the contextual effects within the well-known gain-discount framework. Our experiment results show that, with a proper combination of discount functions, the proposed context-aware evaluation metric can significantly improve the performances of offline metrics for image search evaluation, considering user satisfaction as the golden standard.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel199">
+        <strong> A Horizontal Patent Test Collection </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mihai+Lupu">Mihai Lupu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alexandros+Bampoulidis">Alexandros Bampoulidis</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Luca+Papariello">Luca Papariello</a> (1) </u>  <br>
+        1:  RSA FG <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331346">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Horizontal Patent Test Collection">Google Scholar</a></div>
+        (199)
+        <br>
+        <b>概要:　</b> 私たちは、6つの特許機関からの多媒体および多言語データを網羅した、新しい特許研究コレクションの必要性を動機づけ、その内容について説明します。この新しい特許テストコレクションは、既存の特許テストコレクションを補完します。既存のコレクションは一つのドメインや特定の機関を長期間にわたってカバーする垂直的なものですが、新しいコレクションは水平的です。すなわち、主要な特許機関からのすべての技術分野を、比較的短い期間である2年間にわたって収集しています。現在、異なるテストコレクションに散在している文書を一つにまとめるだけでなく、初めて韓国の文書を含め、ヨーロッパ、アメリカ、日本、中国の文書を補完します。この新しいコレクションは、従来の情報検索を超えた多様なタスクにも使用できます。私たちは、今日特に重要なタスクである匿名解除の例を挙げて解説します。
+        </label>
+        <input type="checkbox" id="Panel199" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We motivate the need for, and describe the contents of a novel patent research collection, publicly available and for free, covering multimodal and multilingual data from six patent authorities. The new patent test collection complements existing patent test collections, which are vertical (one domain or one authority over many years). Instead, the new collection is horizontal: it includes all technical domains from the major patenting authorities over the relatively short time span of two years. In addition to bringing together documents currently scattered across different test collections, the collection provides, for the first time, Korean documents, to complement those from Europe, US, Japan, and China. This new collection can be used on a variety of tasks beyond traditional information retrieval. We exemplify this with a task of high-relevance today: de-anonymisation.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel200">
+        <strong> Dynamic Sampling Meets Pooling </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gordon+V.+Cormack">Gordon V. Cormack</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Haotian+Zhang">Haotian Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nimesh+Ghelani">Nimesh Ghelani</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mustafa+Abualsaud">Mustafa Abualsaud</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mark+D.+Smucker">Mark D. Smucker</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maura+R.+Grossman">Maura R. Grossman</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shahin+Rahbariasl">Shahin Rahbariasl</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Amira+Ghenai">Amira Ghenai</a> (1) </u>  <br>
+        1:  University of Waterloo, 2:  University of Wagterloo <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331354">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Dynamic Sampling Meets Pooling">Google Scholar</a></div>
+        (200)
+        <br>
+        <b>概要:　</b> 6人の評価者のチームが、ダイナミックサンプリング（Cormack and Grossman 2018）と各トピックに対して1時間の評価労力を使用して、プーリングを行わずにTREC 2018 Common Core Trackのテストコレクションを作成しました。その後、NISTはdepth-10プーリングにmove-to-front (MTF) プーリング（Cormack et al. 1998）を追加した方法と、我々のダイナミックサンプリングによって選択されたドキュメントに対して公式の関連性評価を行いました。ダイナミックサンプリング評価でxinfAP統計評価ツールを使用して得られたMAP推定値は、標準的なtrec_evalツールを使用して完全な公式評価から得られたMAP推定値と比較可能です。一方、プーリングによって選択されたドキュメントのみを使用して得られたMAP推定値は大きく異なります。この結果から、プーリングを行わないダイナミックサンプリングの使用は、評価労力を桁違いに減らしつつ、バイアスが少なく、誤差が小さく、システムの効果をランク付けする能力が同等である情報検索効果の推定をもたらすことが示唆されます。
+        </label>
+        <input type="checkbox" id="Panel200" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> A team of six assessors used Dynamic Sampling (Cormack and Grossman 2018) and one hour of assessment effort per topic to form, without pooling, a test collection for the TREC 2018 Common Core Track. Later, official relevance assessments were rendered by NIST for documents selected by depth-10 pooling augmented by move-to-front (MTF) pooling (Cormack et al. 1998), as well as the documents selected by our Dynamic Sampling effort. MAP estimates rendered from dynamically sampled assessments using the xinfAP statistical evaluator are comparable to those rendered from the complete set of official assessments using the standard trec_eval tool. MAP estimates rendered using only documents selected by pooling, on the other hand, differ substantially. The results suggest that the use of Dynamic Sampling without pooling can, for an order of magnitude less assessment effort, yield information-retrieval effectiveness estimates that exhibit lower bias, lower error, and comparable ability to rank system effectiveness.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel201">
+        <strong> Help Me Search: Leveraging User-System Collaboration for Query Construction to Improve Accuracy for Difficult Queries </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Saar+Kuzi">Saar Kuzi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Abhishek+Narwekar">Abhishek Narwekar</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Anusri+Pampari">Anusri Pampari</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=ChengXiang+Zhai">ChengXiang Zhai</a> (1) </u>  <br>
+        1:  University of Illinois at Urbana-Champaign, 2:  Amazon Alexa, 3:  Stanford University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331362">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Help Me Search: Leveraging User-System Collaboration for Query Construction to Improve Accuracy for Difficult Queries">Google Scholar</a></div>
+        (201)
+        <br>
+        <b>概要:　</b> 本論文では、協調的なクエリ構築という新しい戦略を用いて、難しいクエリの問題を解決することを目指します。この戦略では、検索エンジンがユーザーと積極的に連携し、クエリを継続的に修正するための反復プロセスに従事します。このアプローチは、ユーザーが必要に応じてクリックできる「ヘルプミー検索」ボタンを介して、任意の検索エンジンに実装することが可能です。我々は、検索エンジンとユーザーが協力してクエリを反復的に拡張する特定の協力戦略を研究することに焦点を当てます。この戦略の可能な実装として、システムがユーザーとの対話履歴を利用して候補用語を生成する方法を提案します。シミュレートされたユーザー調査による評価は、提案されたアプローチの大きな可能性を示しています。また、3人の実ユーザーによるケーススタディを実施し、アプローチの潜在的な効果をさらに明らかにします。
+        </label>
+        <input type="checkbox" id="Panel201" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In this paper, we address the problem of difficult queries by using a novel strategy of collaborative query construction where the search engine would actively engage users in an iterative process to continuously revise a query. This approach can be implemented in any search engine to provide search support for users via a "Help Me Search" button, which a user can click on as needed. We focus on studying a specific collaboration strategy where the search engine and the user work together to iteratively expand a query. We propose a possible implementation for this strategy in which the system generates candidate terms by utilizing the history of interactions of the user with the system. Evaluation using a simulated user study shows the great promise of the proposed approach. We also perform a case study with three real users which further illustrates the potential effectiveness of the approach.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel202">
+        <strong> On Anonymous Commenting: A Greedy Approach to Balance Utilization and Anonymity for Instagram Users </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Arian+Askari">Arian Askari</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Asal+Jalilvand">Asal Jalilvand</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mahmood+Neshati">Mahmood Neshati</a> (1) </u>  <br>
+        1:  Shahid Beheshti University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331364">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=On Anonymous Commenting: A Greedy Approach to Balance Utilization and Anonymity for Instagram Users">Google Scholar</a></div>
+        (202)
+        <br>
+        <b>概要:　</b> 多くのオンラインサービスにおいて、ユーザーは匿名のコメントを残すことができず、そのため影響を無視して批判的な意見を表現することができません。現時点では、匿名コメントのための単純なアプローチが存在しますが、これらはユーザーコメントの分析サービスに問題を引き起こします。本論文では、匿名コメント手法とその利点および欠点を探求します。また、ユーザーのプライバシーを保護しながらサービス提供者向けの感情分析を可能にする匿名コメント方法を提案します。実験はInstagramのコメントから収集した実データを用いて行い、提案手法がプライバシー保護と感情分析において効果的であることを示しています。提案手法は特定のウェブサイトに依存せず、さまざまな分野で利用できることが示されています。
+        </label>
+        <input type="checkbox" id="Panel202" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In many online services, anonymous commenting is not possible for the users; therefore, the users can not express their critical opinions without disregarding the consequences. As for now, naïve approaches are available for anonymous commenting which cause problems for analytical services on user comments. In this paper, we explore anonymous commenting approaches and their pros and cons. We also propose methods for anonymous commenting where it's possible to protect the user privacy while allowing sentimental analytics for service providers. Our experiments were conducted on a real dataset gathered from Instagram comments which indicate the effectiveness of our proposed methods in privacy protection and sentimental analytics. The proposed methods are independent of a particular website and can be utilized in various domains.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel203">
+        <strong> Neural Compatibility Ranking for Text-based Fashion Matching </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=SUTHEE+CHAIDAROON">SUTHEE CHAIDAROON</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yi+Fang">Yi Fang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min+Xie">Min Xie</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alessandro+Magnani">Alessandro Magnani</a> (2) </u>  <br>
+        1:  Santa Clara University, 2:  Walmart Labs <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331365">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Neural Compatibility Ranking for Text-based Fashion Matching">Google Scholar</a></div>
+        (203)
+        <br>
+        <b>概要:　</b> ファッションの買い物をする際、顧客は現在の装いに合う製品を探すことがよくあります。例えば、顧客はジーンズとスニーカーに合うジャケットを買いたいと考えます。このファッションマッチングの課題に対処するために、我々は入力されたコーディネートとの互換性に基づいてファッション製品をランキングするニューラル互換性モデルを提案します。我々の研究の貢献は二つあります。第一に、製品説明は製品の比較可能性に関する豊富な情報を含んでおり、これはこれまでの研究では十分に活用されていませんでした。第二に、我々はファッションマッチングに重要なセマンティックマッチングとレキシカルマッチングの両方を利用することによって、テキストデータからそのような有用な情報を活用します。提案されたモデルは実世界のファッションコーディネートデータセットで評価され、競合するベースラインと比較して最先端の結果を達成します。将来的な研究では、これまでのファッションマッチングに関する研究で主要なデータソースであった製品画像を取り入れることで、モデルの拡張を計画しています。
+        </label>
+        <input type="checkbox" id="Panel203" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> When shopping for fashion, customers often look for products which can complement their current outfit. For example, customers want to buy a jacket which can go well with their jeans and sneakers. To address the task of fashion matching, we propose a neural compatibility model for ranking fashion products based on the compatibility matching with the input outfit. The contribution of our work is twofold. First, we demonstrate that product descriptions contain rich information about product comparability which has not been fully utilized in the prior work. Secondly, we exploit such useful information from text data by taking advantages of semantic matching and lexical matching both of which are important for fashion matching. The proposed model is evaluated on a real-world fashion outfit dataset and achieves the state-of-the-art results by comparing to the competitive baselines. In the future work, we plan to extend the model by incorporating product images which are the major data source in the prior work on fashion matching.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel204">
+        <strong> NRPA: Neural Recommendation with Personalized Attention </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongtao+Liu">Hongtao Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fangzhao+Wu">Fangzhao Wu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wenjun+Wang">Wenjun Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xianchen+Wang">Xianchen Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pengfei+Jiao">Pengfei Jiao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chuhan+Wu">Chuhan Wu</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xing+Xie">Xing Xie</a> (2) </u>  <br>
+        1:  Tianjin University, 2:  Microsoft Research Asia, 3:  Tsinghua University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331371">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=NRPA: Neural Recommendation with Personalized Attention">Google Scholar</a></div>
+        (204)
+        <br>
+        <b>概要:　</b> 既存のレビューに基づく推薦手法は、通常、共通のモデルを使用して、ユーザーによって投稿されたレビューからすべてのユーザーやアイテムの表現を学習します。しかし、異なるユーザーは異なる嗜好を持ち、異なるアイテムは異なる特性を持ちます。したがって、同じ単語や類似のレビューが、異なるユーザーやアイテムに対して異なる情報量を持つ可能性があります。本論文では、レビューからユーザーおよびアイテムのパーソナライズされた表現を学習するための、パーソナライズドアテンションを用いたニューラル推薦アプローチを提案します。単語からレビューの表現を学習するためのレビューエンコーダと、レビューからユーザーやアイテムの表現を学習するためのユーザー/アイテムエンコーダを使用します。また、パーソナライズドアテンションモデルを提案し、それをレビューエンコーダとユーザー/アイテムエンコーダの両方に適用して、異なるユーザーやアイテムにとって重要な単語やレビューを選択します。5つのデータセットで行った実験により、提案手法がニューラル推薦のパフォーマンスを効果的に向上させることが確認されました。
+        </label>
+        <input type="checkbox" id="Panel204" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Existing review-based recommendation methods usually use the same model to learn the representations of all users/items from reviews posted by users towards items. However, different users have different preference and different items have different characteristics. Thus, the same word or the similar reviews may have different informativeness for different users and items. In this paper we propose a neural recommendation approach with personalized attention to learn personalized representations of users and items from reviews. We use a review encoder to learn representations of reviews from words, and a user/item encoder to learn representations of users or items from reviews. We propose a personalized attention model, and apply it to both review and user/item encoders to select different important words and reviews for different users/items. Experiments on five datasets validate our approach can effectively improve the performance of neural recommendation.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel205">
+        <strong> Vertical Search Blending: A Real-world Counterfactual Dataset </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pavel+Procházka">Pavel Procházka</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Matej+Kocián">Matej Kocián</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jakub+Drdák">Jakub Drdák</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jan+Vršovský">Jan Vršovský</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Vladimír+Kadlec">Vladimír Kadlec</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jaroslav+Kuchar">Jaroslav Kuchar</a> (1) </u>  <br>
+        1:  Seznam.cz, 2:  Seznam.cz <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331345">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Vertical Search Blending: A Real-world Counterfactual Dataset">Google Scholar</a></div>
+        (205)
+        <br>
+        <b>概要:　</b> 複数の垂直ソースからの検索結果をブレンドすることは、ウェブ検索エンジンの間で標準となっています。類似のシナリオは、コンピュータ広告、ニュース推奨、およびその他のインタラクティブシステムにも見られます。このような環境では部分的なフィードバックしか得られないため、新しいポリシーの評価には通常、高価なオンラインA/Bテストが必要です。反事実的アプローチは有望な代替手段ですが、有効なオフポリシー評価を行うには特定の条件が必要です。我々はSeznam.czウェブ検索エンジンによって収集された大規模な実世界の垂直ブレンディングデータセットを公開します。このデータセットには、対応する傾向を伴ったログ付き部分フィードバックが含まれており、反事実的評価に適しています。基本的な妥当性のチェックを行い、いくつかの学習方法を評価します。
+        </label>
+        <input type="checkbox" id="Panel205" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Blending of search results from several vertical sources became standard among web search engines. Similar scenarios appear in computational advertising, news recommendation, and other interactive systems. As such environments give only partial feedback, the evaluation of new policies conventionally requires expensive online A/B tests. Counterfactual approach is a promising alternative, nevertheless, it requires specific conditions for a valid off-policy evaluation. We release a large-scale, real-world vertical-blending dataset gathered bySeznam.cz web search engine. The dataset contains logged partial feedback with the corresponding propensity and is thus suited for counterfactual evaluation. We provide basic checks for validity and evaluate several learning methods.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel206">
+        <strong> Revisiting Approximate Metric Optimization in the Age of Deep Neural Networks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sebastian+Bruch">Sebastian Bruch</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Masrour+Zoghi">Masrour Zoghi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michael+Bendersky">Michael Bendersky</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Marc+Najork">Marc Najork</a> (1) </u>  <br>
+        1:  Google Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331347">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Revisiting Approximate Metric Optimization in the Age of Deep Neural Networks">Google Scholar</a></div>
+        (206)
+        <br>
+        <b>概要:　</b> ランキング学習 (Learning-to-Rank) は、リスト内の項目の順序を決定し、そのランキングリストの有用性を最大化することを目的とした監督機械学習の一分野です。しかし、ほとんどの機械学習技術とは異なり、この目標は勾配降下法を用いて直接最適化することができません。なぜなら、この目的関数は不連続であるか、至る所で平坦であるからです。そのため、ランキング学習の手法は通常、ランキングの有用性に緩やかに関連するか、またはその上限をとる損失関数を最適化します。注目すべき例外は、Qin らによって最初に提案された近似フレームワークであり、ランキングメトリックの最適化により直接的なアプローチを可能にします。本研究では、ニューラルネットワークの最近の進歩を踏まえて、そのフレームワークを約10年後に再検討し、実証的にその優位性を示します。この研究を通じて、そのアイデアが今なお重要であり、深層ニューラルネットワークの時代におけるランキング学習研究の基盤となり得ることを示したいと考えています。
+        </label>
+        <input type="checkbox" id="Panel206" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Learning-to-Rank is a branch of supervised machine learning that seeks to produce an ordering of a list of items such that the utility of the ranked list is maximized. Unlike most machine learning techniques, however, the objective cannot be directly optimized using gradient descent methods as it is either discontinuous or flat everywhere. As such, learning-to-rank methods often optimize a loss function that either is loosely related to or upper-bounds a ranking utility instead. A notable exception is the approximation framework originally proposed by Qin et al. that facilitates a more direct approach to ranking metric optimization. We revisit that framework almost a decade later in light of recent advances in neural networks and demonstrate its superiority empirically. Through this study, we hope to show that the ideas from that work are more relevant than ever and can lay the foundation of learning-to-rank research in the age of deep neural networks.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel207">
+        <strong> Name Entity Recognition with Policy-Value Networks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yadi+Lao">Yadi Lao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Xu">Jun Xu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sheng+Gao">Sheng Gao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Guo">Jun Guo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ji-Rong+Wen">Ji-Rong Wen</a> (2) </u>  <br>
+        1:  Beijing University of Posts and Telecommunications, 2:  Renmin University of China <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331349">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Name Entity Recognition with Policy-Value Networks">Google Scholar</a></div>
+        (207)
+        <br>
+        <b>概要:　</b> 本論文では、新しい強化学習に基づく固有表現認識（NER）モデルであるMM-NERを提案する。AlphaGo Zeroの方法論に触発されたMM-NERは、モンテカルロ・ツリー・サーチ（MCTS）で強化されたマルコフ決定過程（MDP）モデルを用いて固有表現認識の問題を形式化する。このモデルでは時間ステップが文中の単語の位置に対応し、各アクションが単語にNERタグを割り当てることに対応している。過去のタグ割り当てと文中の単語をまとめるために、2つのゲート付きリカレントユニット（GRU）が使用される。GRUの出力に基づいて、タグ割り当てを導くポリシーと、文全体のタグ付けの精度を予測するための価値が生成される。ポリシーと価値は、生成された未加工ポリシーと価値を入力として、後続の位置でのタグ割り当てをシミュレートおよび評価し、より良い検索ポリシーを出力するMCTSにより強化される。モデルパラメータを訓練するための強化学習アルゴリズムが提案されている。経験的に、MCTSが導入した探索的意思決定メカニズムのおかげで、MM-NERが正確にタグを予測できることを示した。また、従来のシーケンスタグ付けのベースラインを上回り、最先端のベースラインであるBLSTM-CRFと同等の性能を発揮した。
+        </label>
+        <input type="checkbox" id="Panel207" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In this paper we propose a novel reinforcement learning based model for named entity recognition (NER), referred to as MM-NER. Inspired by the methodology of the AlphaGo Zero, MM-NER formalizes the problem of named entity recognition with a Monte-Carlo tree search (MCTS) enhanced Markov decision process (MDP) model, in which the time steps correspond to the positions of words in a sentence from left to right, and each action corresponds to assign an NER tag to a word. Two Gated Recurrent Units (GRU) are used to summarize the past tag assignments and words in the sentence. Based on the outputs of GRUs, the policy for guiding the tag assignment and the value for predicting the whole tagging accuracy of the whole sentence are produced. The policy and value are then strengthened with MCTS, which takes the produced raw policy and value as inputs, simulates and evaluates the possible tag assignments at the subsequent positions, and outputs a better search policy for assigning tags. A reinforcement learning algorithm is proposed to train the model parameters. Empirically, we show that MM-NER can accurately predict the tags thanks to the exploratory decision making mechanism introduced by MCTS. It outperformed the conventional sequence tagging baselines and performed equally well with the state-of-the-art baseline BLSTM-CRF.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel208">
+        <strong> Revealing the Role of User Moods in Struggling Search Tasks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Luyan+Xu">Luyan Xu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xuan+Zhou">Xuan Zhou</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ujwal+Gadiraju">Ujwal Gadiraju</a> (3) </u>  <br>
+        1:  Renmin University of China, 2:  East China Normal University, 3:  Leibniz Universität Hannover <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331353">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Revealing the Role of User Moods in Struggling Search Tasks">Google Scholar</a></div>
+        (208)
+        <br>
+        <b>概要:　</b> ユーザ中心のアプローチは、困難な検索の分野において広く研究され、利用されています。関連研究では、ユーザの満足度やフラストレーション、検索の成功または失敗といった主要な側面をターゲットにしており、実験的方法も多岐にわたります。これには、実験室でのユーザ調査、検索者からの現場での明示的なフィードバック、クラウドソーシングを用いる方法が含まれます。これらの研究は、ユーザの視点から検索の難しさを理解する上で貴重であり、検索システムの改善や評価に直接役立つ洞察を生み出します。しかし、ユーザの気分が検索システムとの対話や困難さの認識に与える影響についてはほとんど知られていません。本研究では、ユーザの気分が、情報要求を満たそうとする際の検索システムとの対話や体験に体系的にバイアスをかけることを示します。活性化された（不）快な気分の人々は、非活性化または中立な気分の人々よりも多くのクエリを発行する傾向にあります。不快な気分にある人々は、より高いレベルの困難さを認識します。我々の洞察は、困難な検索タスクに対する理解を拡張し、そのようなタスクをサポートする検索システムの設計と評価に重要な影響を及ぼします。
+        </label>
+        <input type="checkbox" id="Panel208" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> User-centered approaches have been extensively studied and used in the area of struggling search. Related research has targeted key aspects of users such as user satisfaction or frustration, and search success or failure, using a variety of experimental methods including laboratory user studies, in-situ explicit feedback from searchers and by using crowdsourcing. Such studies are valuable in advancing the understanding of search difficulty from a user's perspective, and yield insights that can directly improve search systems and their evaluation. However, little is known about how user moods influence their interactions with a search system or their perception of struggling. In this work, we show that a user's own mood. can systematically bias the user's perception, and experience while interacting with a search system and trying to satisfy an information need. People who are in activated-(un)pleasant moods tend to issue more queries than people in deactivated or neutral moods. Those in an unpleasant mood perceive a higher level of difficulty. Our insights extend the current understanding of struggling search tasks and have important implications on the design and evaluation of search systems supporting such tasks.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel209">
+        <strong> Selecting Discriminative Terms for Relevance Model </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dwaipayan+Roy">Dwaipayan Roy</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sumit+Bhatia">Sumit Bhatia</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mandar+Mitra">Mandar Mitra</a> (1) </u>  <br>
+        1:  Indian Statistical Institute, 2:  IBM Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331357">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Selecting Discriminative Terms for Relevance Model">Google Scholar</a></div>
+        (209)
+        <br>
+        <b>概要:　</b> 関連性モデルに基づく擬似関連性フィードバックは、展開語の選定時に候補語の逆文書頻度を考慮していません。その結果、このモデルで構築された拡張クエリには一般的な用語が頻繁に含まれます。本論文では、この欠点に対処するために、関連性モデルの3つの拡張を提案します。我々の提案する拡張は、計算が簡単であり、基本的な検索モデルに依存しません。いくつかのTRECニュースおよびウェブコレクションに対する実験では、提案された修正が、元の関連性モデルや最近提案された2つの最先端の変種よりも、MAP、精度、NDCG、および再現率の値が有意に向上することが示されました。
+        </label>
+        <input type="checkbox" id="Panel209" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Pseudo-relevance feedback based on the relevance model does not take into account the inverse document frequency of candidate terms when selecting expansion terms. As a result, common terms are often included in the expanded query constructed by this model. We propose three possible extensions of the relevance model that address this drawback. Our proposed extensions are simple to compute and are independent of the base retrieval model. Experiments on several TREC news and web collections show that the proposed modifications yield significantly better MAP, precision, NDCG, and recall values than the original relevance model as well as its two recently proposed state-of-the-art variants.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel210">
+        <strong> A Dataset of Systematic Review Updates </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Amal+Alharbi">Amal Alharbi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mark+Stevenson">Mark Stevenson</a> (2) </u>  <br>
+        1:  King Abdulaziz University, 2:  University of Sheffield <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331358">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Dataset of Systematic Review Updates">Google Scholar</a></div>
+        (210)
+        <br>
+        <b>概要:　</b> システマティック・レビューは、特定の研究質問に関連する証拠を特定し、し、統合することを目的としています。これらのレビューは、医療分野で広く利用されており、専門家および患者の医療選択に情報を提供します。システマティック・レビューを最新の状態に保つことは重要ですが、医療分野のように大量の出版物が日々発表される領域では、これが困難です。レビューの更新を支援する方法を開発することは、必要な労力を削減し、レビューが最新の状態を保つようにするために重要です。本論文では、25のコクラン・レビューを使用して作成された医療分野におけるシステマティック・レビュー更新のデータセットについて説明します。各レビューには、元のバージョンと更新バージョンの両方に対するブールクエリと関連性判断が含まれています。このデータセットは、レビュー更新のための研究識別アプローチの評価に使用できます。
+        </label>
+        <input type="checkbox" id="Panel210" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Systematic reviews identify, summarise and synthesise evidence relevant to specific research questions. They are widely used in the field of medicine where they inform health care choices of both professionals and patients. It is important for systematic reviews to stay up to date as evidence changes but this is challenging in a field such as medicine where a large number of publications appear on a daily basis. Developing methods to support the updating of reviews is important to reduce the workload required and thereby ensure that reviews remain up to date. This paper describes a dataset of systematic review updates in the field of medicine created using 25 Cochrane reviews. Each review includes the Boolean query and relevance judgements for both the original and updated versions. The dataset can be used to evaluate approaches to study identification for review updates.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel211">
+        <strong> Query Performance Prediction for Pseudo-Feedback-Based Retrieval </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Haggai+Roitman">Haggai Roitman</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Oren+Kurland">Oren Kurland</a> (2) </u>  <br>
+        1:  IBM Research, 2:  Technion - Israel Institute of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331369">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Query Performance Prediction for Pseudo-Feedback-Based Retrieval">Google Scholar</a></div>
+        (211)
+        <br>
+        <b>概要:　</b> クエリパフォーマンス予測タスク（QPP）は、関連性評価がない場合の検索効果を推定することです。これまでの研究は、表層レベルのクエリ・ドキュメント類似性（例：クエリ尤度）に基づく検索手法の予測に焦点を当ててきました。本研究では、最初の検索を利用して新しいクエリモデルを生成し、そのクエリモデルを使用して2回目（最終）の検索を行う擬似フィードバックベースの検索手法に対する予測の課題に取り組みます。我々の提案するアプローチは、最初に検索されたリストの推定効果、そのリストと最終的な検索結果リストとの類似性、および後者の特性を考慮します。実証的な評価は、我々のアプローチの明らかな優位性を示しています。
+        </label>
+        <input type="checkbox" id="Panel211" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The query performance prediction task (QPP) is estimating retrieval effectiveness in the absence of relevance judgments. Prior work has focused on prediction for retrieval methods based on surface level query-document similarities (e.g., query likelihood). We address the prediction challenge for pseudo-feedback-based retrieval methods which utilize an initial retrieval to induce a new query model; the query model is then used for a second (final) retrieval. Our suggested approach accounts for the presumed effectiveness of the initially retrieved list, its similarity with the final retrieved list and properties of the latter. Empirical evaluation demonstrates the clear merits of our approach.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel212">
+        <strong> Reinforcement Learning for User Intent Prediction in Customer Service Bots </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Cen+Chen">Cen Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chilin+Fu">Chilin Fu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xu+Hu">Xu Hu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaolu+Zhang">Xiaolu Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Zhou">Jun Zhou</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaolong+Li">Xiaolong Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Forrest+Sheng+Bao">Forrest Sheng Bao</a> (3) </u>  <br>
+        1:  Ant Financial Services Group, 2:  Alibaba Group, 3:  Iowa State University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331370">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Reinforcement Learning for User Intent Prediction in Customer Service Bots">Google Scholar</a></div>
+        (212)
+        <br>
+        <b>概要:　</b> カスタマーサービスボットは、現在のeコマースプラットフォームにおいて不可欠な要素となっています。カスタマーサービスボットの中核モジュールとして、ユーザーの意図予測は、ユーザーが質問する前に彼らの疑問を予測するのに役立ちます。典型的な解決策としては、ユーザーが興味を持ちそうな上位の候補質問を見つけることが挙げられます。しかし、そのような解決策は質問間の相互関係を無視し、しばしばクリックのような直近の報酬を最大化することを目指すため、実際には理想的でない場合があります。したがって、本研究では、この問題を連続的な意思決定プロセスとして捉え、リスト内の各推薦の長期的な影響をより良く捉えることを提案します。直感的には、この問題をマルコフ決定過程として定式化し、強化学習を用いることを考慮します。このアプローチにより、ユーザーに提示される質問は、関連性があり多様性も兼ね備えたものとなります。オフラインの実データセットとオンラインシステムにおける実験により、提案手法の有効性が示されました。
+        </label>
+        <input type="checkbox" id="Panel212" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> A customer service bot is now a necessary component of an e-commerce platform. As a core module of the customer service bot, user intent prediction can help predict user questions before they ask. A typical solution is to find top candidate questions that a user will be interested in. Such solution ignores the inter-relationship between questions and often aims to maximize the immediate reward such as clicks, which may not be ideal in practice. Hence, we propose to view the problem as a sequential decision making process to better capture the long-term effects of each recommendation in the list. Intuitively, we formulate the problem as a Markov decision process and consider using reinforcement learning for the problem. With this approach, questions presented to users are both relevant and diverse. Experiments on offline real-world dataset and online system demonstrate the effectiveness of our proposed approach.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel213">
+        <strong> Enhanced News Retrieval: Passages Lead the Way! </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Matteo+Catena">Matteo Catena</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ophir+Frieder">Ophir Frieder</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Cristina+Ioana+Muntean">Cristina Ioana Muntean</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Franco+Maria+Nardini">Franco Maria Nardini</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Raffaele+Perego">Raffaele Perego</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nicola+Tonellotto">Nicola Tonellotto</a> (1) </u>  <br>
+        1:  ISTI-CNR, 2:  Georgetown University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331373">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Enhanced News Retrieval: Passages Lead the Way!">Google Scholar</a></div>
+        (213)
+        <br>
+        <b>概要:　</b> 非構造化ニュース記事において、最も関連性の高い用語は主に文書の冒頭と末尾に集中していることが観察されました。この観察結果を活用し、クラシカルなBM25重み付けモデルの新しいバージョンとしてBM25 Passage（BM25P）を提案します。このモデルは、ニュース記事の異なる部分における用語統計を線形結合して、クエリ結果をスコアリングします。我々の実験は、3つの公開ニュースデータセットを使用して実施されました。その結果、BM25PはNDCG@5で最大17.44％、NDCG@1で85％の効果向上を示し、BM25を顕著に上回りました。
+        </label>
+        <input type="checkbox" id="Panel213" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We observe that most relevant terms in unstructured news articles are primarily concentrated towards the beginning and the end of the document. Exploiting this observation, we propose a novel version of the classical BM25 weighting model, called BM25 Passage (BM25P), which scores query results by computing a linear combination of term statistics in the different portions of news articles. Our experimentation, conducted using three publicly available news datasets, demonstrates that BM25P markedly outperforms BM25 in term of effectiveness by up to 17.44% in NDCG@5 and 85% in NDCG@1.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel214">
+        <strong> Contextual Dialogue Act Classification for Open-Domain Conversational Agents </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ali+Ahmadvand">Ali Ahmadvand</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jason+Ingyu+Choi">Jason Ingyu Choi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Eugene+Agichtein">Eugene Agichtein</a> (1) </u>  <br>
+        1:  Emory University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331375">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Contextual Dialogue Act Classification for Open-Domain Conversational Agents">Google Scholar</a></div>
+        (214)
+        <br>
+        <b>概要:　</b> 会話におけるユーザー発話の全体的な意図を分類すること、つまり、「対話行為（DA）」の分類（たとえば、オープンエンドの質問、意見の陳述、あるいは意見の要求）は、対話型エージェントにおける自然言語理解（NLU）の重要なステップです。人間同士の会話でのDA分類は広く研究されていますが、新たに登場したオープンドメインの自動対話エージェントに対しては十分に探求されていません。さらに、発話レベルのDA分類に大きな進展がある一方で、対話発話の完全な理解には会話背景（コンテキスト）が必要です。もう一つの課題は、オープンドメインの人間-機械の会話に対するラベル付けデータの不足です。これらの問題に対処するために、我々は新しい手法を提案します。それは、文脈的対話行為分類器（CDAC: Contextual Dialogue Act Classifier）と呼ばれる、文脈を考慮した対話行為分類のためのシンプルだが効果的な深層学習アプローチです。具体的には、人間同士の会話で訓練したモデルを転移学習を通じて人間-機械の対話行為を予測するために適応させます。我々の手法の有効性を調査するために、広く知られているSwitchboard人間同士の対話データセットでモデルを訓練し、Amazon Alexa Prize 2018コンペティションの一部として収集された人間-機械の対話データで微調整しました。その結果、CDACモデルは発話レベルの最新のベースラインをSwitchboardデータセットで8.0％上回り、最新の文脈的DA分類の結果とほぼ同等の性能を示しました。さらに、CDACモデルを手動でラベル付けされた少量の人間-機械対話データで微調整することで、実際のユーザーの会話における対話行為をより正確に予測できることが示され、将来の改良に向けた有望な方向性が示唆されました。
+        </label>
+        <input type="checkbox" id="Panel214" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Classifying the general intent of the user utterance in a conversation, also known as Dialogue Act (DA), e.g., open-ended question, statement of opinion, or request for an opinion, is a key step in Natural Language Understanding (NLU) for conversational agents. While DA classification has been extensively studied in human-human conversations, it has not been sufficiently explored for the emerging open-domain automated conversational agents. Moreover, despite significant advances in utterance-level DA classification, full understanding of dialogue utterances requires conversational context. Another challenge is the lack of available labeled data for open-domain human-machine conversations. To address these problems, we propose a novel method, CDAC (Contextual Dialogue Act Classifier), a simple yet effective deep learning approach for contextual dialogue act classification. Specifically, we use transfer learning to adapt models trained on human-human conversations to predict dialogue acts in human-machine dialogues. To investigate the effectiveness of our method, we train our model on the well-known Switchboard human-human dialogue dataset, and fine-tune it for predicting dialogue acts in human-machine conversation data, collected as part of the Amazon Alexa Prize 2018 competition. The results show that the CDAC model outperforms an utterance-level state of the art baseline by 8.0% on the Switchboard dataset, and is comparable to the latest reported state-of-the-art contextual DA classification results. Furthermore, our results show that fine-tuning the CDAC model on a small sample of manually labeled human-machine conversations allows CDAC to more accurately predict dialogue acts in real users' conversations, suggesting a promising direction for future improvements.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel215">
+        <strong> Accelerating Exact Inner Product Retrieval by CPU-GPU Systems </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Long+Xiang">Long Xiang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Bo+Tang">Bo Tang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chuan+Yang">Chuan Yang</a> (1) </u>  <br>
+        1:  Southern University of Science and Technology & Peng Cheng Laboratory <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331376">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Accelerating Exact Inner Product Retrieval by CPU-GPU Systems">Google Scholar</a></div>
+        (215)
+        <br>
+        <b>概要:　</b> レコメンダーシステムは、例えばソーシャルネットワークや電子商取引など多くのアプリケーションで広く利用されています。マトリックス分解（MF）ベースのレコメンダーシステムにおけるコアサブルーチンは内積検索（IPR）です。IPRは内積計算とトップkアイテムの検索という二つのフェーズで構成されています。既存のソリューションにおける性能ボトルネックは内積計算フェーズにあります。データマイニングや機械学習のコミュニティでは計算負荷の高い作業を高速化するために、グラフィックス処理ユニット（GPU）を活用することが標準となっています。しかし、IPR問題の複雑性のため、CPU-GPUシステムを適用してIPRソリューションの性能を向上させるのは容易ではありません。本研究では、まずIPRソリューションの各フェーズの時間コストを分析します。次に、CPU-GPUシステムの特性を活かして性能を向上させます。具体的には、IPRソリューションの計算タスクをCPU-GPUシステムで異種処理します。最後に、四つの標準的な実データセットを用いて我々の提案の効率性を実証します。
+        </label>
+        <input type="checkbox" id="Panel215" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Recommender systems are widely used in many applications, e.g., social network, e-commerce. Inner product retrieval IPR is the core subroutine in Matrix Factorization (MF) based recommender systems. It consists of two phases: i) inner product computation and ii) top-k items retrieval. The performance bottleneck of existing solutions is inner product computation phase. Exploiting Graphics Processing Units (GPUs) to accelerate the computation intensive workloads is the gold standard in data mining and machine learning communities. However, it is not trivial to apply CPU-GPU systems to boost the performance of IPR solutions due to the nature complex of the IPR problem. In this work, we analyze the time cost of each phase in IPR solutions at first. Second, we exploit the characteristics of CPU-GPU systems to improve performance. Specifically, the computation tasks of IPR solution are heterogeneously processed in CPU-GPU systems. Third, we demonstrate the efficiency of our proposal on four standard real datasets.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel216">
+        <strong> LIRME: Locally Interpretable Ranking Model Explanation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Manisha+Verma">Manisha Verma</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Debasis+Ganguly">Debasis Ganguly</a> (2) </u>  <br>
+        1:  Verizon Media, 2:  IBM Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331377">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=LIRME: Locally Interpretable Ranking Model Explanation">Google Scholar</a></div>
+        (216)
+        <br>
+        <b>概要:　</b> 情報検索（IR）モデルは、クエリ-ドキュメントペアの総合類似度スコアを計算するために、単語の重み付けで複雑なバリエーションを使用することがよくあります。 IRモデルをブラックボックスとして扱うと、特定のドキュメントがクエリに対して上位に検索される理由を理解したり説明したりするのが難しくなります。個々の予測を理解するためのローカル説明モデルが人気を集めていますが、IRモデルの解釈を学習する体系的な調査はありません。この論文の主な貢献は、まさにそこにあります。我々は、説明モデルを訓練するための3つのサンプリング方法を探り、IRモデルに対して生成された説明を評価するための2つのメトリクスを提案します。我々の実験は、いくつかの興味深い観察結果を明らかにしました。すなわち、a）サンプルの多様性がローカル説明モデルの訓練に重要であり、b）モデルの安定性はモデルを説明するのに使用されるパラメータの数に反比例するということです。
+        </label>
+        <input type="checkbox" id="Panel216" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Information retrieval (IR) models often employ complex variations in term weights to compute an aggregated similarity score of a query-document pair. Treating IR models as black-boxes makes it difficult to understand or explain why certain documents are retrieved at top-ranks for a given query. Local explanation models have emerged as a popular means to understand individual predictions of classification models. However, there is no systematic investigation that learns to interpret IR models, which is in fact the core contribution of our work in this paper. We explore three sampling methods to train an explanation model and propose two metrics to evaluate explanations generated for an IR model. Our experiments reveal some interesting observations, namely that a) diversity in samples is important for training local explanation models, and b) the stability of a model is inversely proportional to the number of parameters used to explain the model.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel217">
+        <strong> Solr Integration in the Anserini Information Retrieval Toolkit </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ryan+Clancy">Ryan Clancy</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Toke+Eskildsen">Toke Eskildsen</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nick+Ruest">Nick Ruest</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimmy+Lin">Jimmy Lin</a> (1) </u>  <br>
+        1:  University of Waterloo, 2:  Royal Danish Library, 3:  York University Libraries <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331401">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Solr Integration in the Anserini Information Retrieval Toolkit">Google Scholar</a></div>
+        (217)
+        <br>
+        <b>概要:　</b> Anseriniは、Luceneを基盤として構築されたオープンソースの情報検索ツールキットであり、再現可能な研究を促進することを目的としています。本デモンストレーションでは、システムの現在の2つの制限事項、すなわちインタラクティブな検索インターフェースの欠如および分散検索のサポート不足に対処するために、Solr統合のための異なるアーキテクチャを検討します。二つのアプローチが探求されます。第一のアプローチでは、Anseriniをフロントエンドとして使用し、実行中のSolrインスタンスに直接インデックスを作成します。第二のアプローチでは、Anseriniで直接作成されたLuceneインデックスをSolrインストールにコピーし、その管理下に置きます。各アーキテクチャに伴うトレードオフについて議論し、インデックス作成スループットを比較するパフォーマンス評価の結果を報告します。Anserini/Solr統合によって可能となる追加機能を示すために、オープンソースのBlacklightディスカバリーインターフェースを使用して構築された検索インターフェースを紹介します。
+        </label>
+        <input type="checkbox" id="Panel217" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Anserini is an open-source information retrieval toolkit built around Lucene to facilitate replicable research. In this demonstration, we examine different architectures for Solr integration in order to address two current limitations of the system: the lack of an interactive search interface and support for distributed retrieval. Two architectures are explored: In the first approach, Anserini is used as a frontend to index directly into a running Solr instance. In the second approach, Lucene indexes built directly with Anserini can be copied into a Solr installation and placed under its management. We discuss the tradeoffs associated with each architecture and report the results of a performance evaluation comparing indexing throughput. To illustrate the additional capabilities enabled by Anserini/Solr integration, we present a search interface built using the open-source Blacklight discovery interface.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel218">
+        <strong> Parrot: A Python-based Interactive Platform for Information Retrieval Research </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xinhui+Tu">Xinhui Tu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimmy+Huang">Jimmy Huang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jing+Luo">Jing Luo</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Runjie+Zhu">Runjie Zhu</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tingting+He">Tingting He</a> (1) </u>  <br>
+        1:  Central China Normal University, 2:  York University, 3:  Wuhan University of Science and Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331393">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Parrot: A Python-based Interactive Platform for Information Retrieval Research">Google Scholar</a></div>
+        (218)
+        <br>
+        <b>概要:　</b> オープンソースソフトウェアは、情報検索研究において重要な役割を果たしています。現在存在する多くのオープンソース情報検索システムは、JavaやC++プログラミング言語で実装されています。本論文では、情報検索研究のためのPythonベースのインタラクティブプラットフォームであるParrot1を提案します。本プラットフォームは、既存の検索システムと比較して主に以下の3つの利点があります。(1) データサイエンティストがビッグデータやAIの問題に取り組む際に有効であることが証明されているインタラクティブプログラミングプラットフォームであるJupyter Notebookと統合されています。その結果、ユーザーは検索モデルをインタラクティブに視覚化し診断することができます; (2) Pythonで記述されたアプリケーションとして、TensorFlowやPyTorchといった人気の深層学習フレームワークと簡単に組み合わせて使用することができます; (3) 研究者のために特別に設計されています。そのため、少ないコードで新しい検索モデルを作成したり、既存のモデルを修正したりすることが可能です。私たちの努力は、優れた使いやすさ、インタラクティブプログラミング、そして人気の深層学習フレームワークとの高い互換性という3つの機能性に焦点を当てています。提案システムの性能を確認するために、いくつかの標準テストコレクションで比較実験を実施しました。実験結果は、提案システムが効率的かつ効果的であり、情報検索の研究者にとって実用的なフレームワークを提供することを示しています。
+        </label>
+        <input type="checkbox" id="Panel218" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Open source softwares play an important role in information retrieval research. Most of the existing open source information retrieval systems are implemented in Java or C++ programming language. In this paper, we propose Parrot1, a Python-based interactive platform for information retrieval research. The proposed platform has mainly three advantages in comparison with the existing retrieval systems: (1) It is integrated with Jupyter Notebook, an interactive programming platform which has proved to be effective for data scientists to tackle big data and AI problems. As a result, users can interactively visualize and diagnose a retrieval model; (2) As an application written in Python, it can be easily used in combination with the popular deep learning frameworks such as Tersorflow and Pytorch; (3) It is designed especially for researchers. Less code is needed to create a new retrieval model or to modify an existing one. Our efforts have focused on three functionalists: good usability, interactive programming, and good interoperability with the popular deep learning frameworks. To confirm the performance of the proposed system, we conduct comparative experiments on a number of standard test collections. The experimental results show that the proposed system is both efficient and effective, providing a practical framework for researchers in information retrieval.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel219">
+        <strong> An Open-Access Platform for Transparent and Reproducible Structured Searching </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tony+Russell-Rose">Tony Russell-Rose</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jon+Chamberlain">Jon Chamberlain</a> (2) </u>  <br>
+        1:  UXLabs Ltd., 2:  University of Essex <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331394">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=An Open-Access Platform for Transparent and Reproducible Structured Searching">Google Scholar</a></div>
+        (219)
+        <br>
+        <b>概要:　</b> 特許代理人、リクルーター、法務研究者などの知識労働者は、検索がその職務の中心となる作業を行います。これらの場合、検索タスクはしばしば複雑なブーリアン文字列で表現されるクエリの作成を含みます。しかし、効果的なブーリアンクエリの作成は依然として課題であり、エラーや非効率によって損なわれることが多々あります。本論文では、概念を2次元キャンバス上のオブジェクトとして表現する新しい構造化検索のアプローチを示します。対話型のクエリ提案はNLPサービスAPIを介して提供され、検索戦略の最適化、、および共有をサポートする実行可能なアーティファクトとして提供します。これにより、多くのエラーの原因が排除され、クエリの意味がより透明になり、再現可能な検索戦略とベストプラクティスを共有するためのオープンアクセスプラットフォームを提供します。
+        </label>
+        <input type="checkbox" id="Panel219" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Knowledge workers such as patent agents, recruiters and legal researchers undertake work tasks in which search forms a core part of their duties. In these instances, the search task often involves formulation of complex queries expressed as Boolean strings. However, creating effective Boolean queries remains an ongoing challenge, often compromised by errors and inefficiencies. In this paper, we demonstrate a new approach to structured searching in which concepts are expressed as objects on a two-dimensional canvas. Interactive query suggestions are provided via an NLP services API, and support is offered for optimising, translating and sharing search strategies as executable artefacts. This eliminates many sources of error, makes the query semantics more transparent, and offers an open-access platform for sharing reproducible search strategies and best practices.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel220">
+        <strong> MatchZoo: A Learning, Practicing, and Developing System for Neural Text Matching </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiafeng+Guo">Jiafeng Guo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yixing+Fan">Yixing Fan</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiang+Ji">Xiang Ji</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xueqi+Cheng">Xueqi Cheng</a> (1) </u>  <br>
+        1:  Chinese Academy of Sciences, 2:  Beijing Institute of Technology University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331403">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=MatchZoo: A Learning, Practicing, and Developing System for Neural Text Matching">Google Scholar</a></div>
+        (220)
+        <br>
+        <b>概要:　</b> テキストマッチングは、情報検索、質問応答、対話など、多くの自然言語処理（NLP）タスクの中心的な問題です。近年、深層学習技術がテキストマッチングに広く採用されるようになり、ニューラルテキストマッチングが新たで活発な研究分野となっています。急速に多くのニューラルマッチングモデルが登場する中で、特に初心者の研究者にとってこれらの新しいモデルを学び、理解することはますます困難になっています。さらに、これらのモデルを試すこと自体が、多くのデータ前処理、複雑なパラメーター設定、大量の最適化トリックなどの煩雑な作業のために難しい場合が多く、時には公開されているコードが存在しないこともあります。最後に、新しいモデルを開発したい研究者にとって、ニューラルテキストマッチングモデルをゼロから実装し、多数の既存モデルと比較することは一筋縄ではいきません。したがって、本論文では、研究者がニューラルテキストマッチングモデルの学習、実践、設計を円滑に行えるようにするための新しいシステム、namely MatchZoo を紹介します。このシステムは、強力なマッチングライブラリとユーザーフレンドリーでインタラクティブなスタジオで構成されており、研究者が以下のことを行うのに役立ちます: 1) 最新のニューラルテキストマッチングモデルを系統的に学ぶ、2) 簡単な設定手順でこれらのモデルをトレーニング、テスト、適用する、3) 豊富なAPIと支援を利用して独自のモデルを開発する。
+        </label>
+        <input type="checkbox" id="Panel220" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Text matching is the core problem in many natural language processing (NLP) tasks, such as information retrieval, question answering, and conversation. Recently, deep leaning technology has been widely adopted for text matching, making neural text matching a new and active research domain. With a large number of neural matching models emerging rapidly, it becomes more and more difficult for researchers, especially those newcomers, to learn and understand these new models. Moreover, it is usually difficult to try these models due to the tedious data pre-processing, complicated parameter configuration, and massive optimization tricks, not to mention the unavailability of public codes sometimes. Finally, for researchers who want to develop new models, it is also not an easy task to implement a neural text matching model from scratch, and to compare with a bunch of existing models. In this paper, therefore, we present a novel system, namely MatchZoo, to facilitate the learning, practicing and designing of neural text matching models. The system consists of a powerful matching library and a user-friendly and interactive studio, which can help researchers: 1) to learn state-of-the-art neural text matching models systematically, 2) to train, test and apply these models with simple configurable steps; and 3) to develop their own models with rich APIs and assistance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel221">
+        <strong> AgentBuddy: an IR System based on Bandit Algorithms to Reduce Cognitive Load for Customer Care Agents </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hrishikesh+Ganu">Hrishikesh Ganu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mithun+Ghosh">Mithun Ghosh</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Freddy+Jose">Freddy Jose</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shashi+Roshan">Shashi Roshan</a> (1) </u>  <br>
+        1:  Intuit <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331408">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=AgentBuddy: an IR System based on Bandit Algorithms to Reduce Cognitive Load for Customer Care Agents">Google Scholar</a></div>
+        (221)
+        <br>
+        <b>概要:　</b> 我々は、人間を介在させたシステムである「AgentBuddy」を紹介します。このシステムは、Intuit社の内部カスタマーケアエージェント（CCAs）に提供される検索品質を向上させるために役立っています。AgentBuddyの目的は、CCAsの認知的負荷を軽減すると同時に、従来のフェデレーテッド検索システムの品質を向上させることです。内部的には、バンディットアルゴリズムを活用してフェデレーテッド検索を改善し、LDAやSiameseネットワークなどの他の機械学習モデルを使用して、CCAsが高品質の検索結果に迅速にたどり着けるよう支援します。直感的なユーザーインターフェースも重要な特徴であり、CCAsと協力しながら一から設計されました。AgentBuddyは内部で導入されており、ユーザー受け入れ試験の初期結果によれば、従来のシステムと比較してハイライトの品質が4倍向上しています。
+        </label>
+        <input type="checkbox" id="Panel221" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We describe a human-in-the loop system - AgentBuddy, that is helping Intuit improve the quality of search it offers to its internal Customer Care Agents (CCAs). AgentBuddy aims to reduce the cognitive effort on part of the CCAs while at the same time boosting the quality of our legacy federated search system. Under the hood, it leverages bandit algorithms to improve federated search and other ML models like LDA, Siamese networks to help CCAs zero in on high quality search results. An intuitive UI designed ground up working with the users (CCAs) is another key feature of the system. AgentBuddy has been deployed internally and initial results from User Acceptance Trials indicate a 4x lift in quality of highlights compared to the incumbent system.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel222">
+        <strong> AliISA: Creating an Interactive Search Experience in E-commerce Platforms </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fei+Xiao">Fei Xiao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhen+Wang">Zhen Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Haikuan+Huang">Haikuan Huang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Huang">Jun Huang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xi+Chen">Xi Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hongbo+Deng">Hongbo Deng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minghui+Qiu">Minghui Qiu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiaoli+Gong">Xiaoli Gong</a> (2) </u>  <br>
+        1:  Alibaba Group, 2:  Nankai University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331409">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=AliISA: Creating an Interactive Search Experience in E-commerce Platforms">Google Scholar</a></div>
+        (222)
+        <br>
+        <b>概要:　</b> オンラインショッピングがますます多くの人々の習慣となっている一方で、大多数のユーザーは有益なクエリを作成することができず、その結果、購入の意図を満たすために長い検索セッションが必要となることがよくあります。我々は、検索セッション中にユーザーがクエリをさらに具体化するためのヒントを提供するショッピングアシスタント「AliISA」を紹介します。このインタラクティブな検索により、ユーザーはより少ないページリクエストで目的のアイテムを見つけやすくなり、これによりユーザーエクスペリエンスが向上することが多いです。現在、AliISAは1日に数千万人以上のユーザーをサポートし、既存のシステムよりも多く利用され、その結果CVRが5％改善されています。本論文では、当システムを紹介し、その基盤となる技術を説明し、Eコマース環境下での強化学習の安定化に関する我々の経験について論じます。
+        </label>
+        <input type="checkbox" id="Panel222" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Online shopping has been a habit of more and more people, while most users are unable to craft an informative query, and thus it often takes a long search session to satisfy their purchase intents. We present AliISA - a shopping assistant which offers users some tips to further specify their queries during a search session. With such an interactive search, users tend to find targeted items with fewer page requests, which often means a better user experience. Currently, AliISA assists tens of millions of users per day, earns more usage than existing systems, and consequently brings in a 5% improvement in CVR. In this paper, we present our system, describe the underlying techniques, and discuss our experience in stabilizing reinforcement learning under an E-commerce environment.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel223">
+        <strong> SCSS-LIE: A Novel Synchronous Collaborative Search System with a Live Interactive Engine </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Junyan+Wang">Junyan Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Peng+Zhang">Peng Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Cheng+Zhang">Cheng Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dawei+Song">Dawei Song</a> (2) </u>  <br>
+        1:  Tianjin University, 2:  Beijing Institute of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331407">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=SCSS-LIE: A Novel Synchronous Collaborative Search System with a Live Interactive Engine">Google Scholar</a></div>
+        (223)
+        <br>
+        <b>概要:　</b> 同期協力型検索システム（SCSS）とは、類似の情報ニーズを持つ二人以上のユーザーが同時に一緒に検索を行うことを支援するシステムを指します。一般に、SCSSはユーザーがコミュニケーションを取るためのソーシャルエンジンを提供します。しかし、ソーシャルエンジン内のユーザー数が検索タスクの協力に不足している場合、ソーシャルエンジンはコールドスタート問題に直面し、協力検索をうまく行うことができません。本論文では、新しいライブインタラクティブエンジンを備えた同期協力型検索システム（SCSS-LIE）を提案します。SCSS-LIEでは、リングトポロジーを適用して、インテリジェントな補助ロボット「Infobot」をソーシャルエンジンに追加し、ユーザーと検索エンジン間のリアルタイムな対話をサポートし、ソーシャルエンジンのコールドスタート問題を解決します。Infobotは検索エンジンとの対話において、BiDAF（双方向注意フロー）という読解モデルを採用し、情報取得を促進するための回答を得るプロセスを含みます。SCSS-LIEは、類似の情報ニーズを持つユーザーを一つのチャットチャンネルにまとめてコミュニケーションを取らせるだけでなく、リアルタイムで検索エンジンと対話させることで検索効率を向上させることができます。
+        </label>
+        <input type="checkbox" id="Panel223" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Synchronous collaborative search systems (SCSS) refer to systems which support two or more users with similar information need to search together simultaneously. Generally, SCSS provide a social engine to enable users to communicate. However, when the number of users in the social engine is insufficient to collaborate on the search task, the social engine will encounter the cold start problem and can not perform collaborative search well. In this paper, we present a novel Synchronous Collaborative Search System with a Live Interactive Engine (SCSS-LIE). SCSS-LIE proposes to apply a ring topology to add an intelligent auxiliary robot, Infobot, into the social engine to support real-time interaction between users and the search engine to address the cold start problem of the social engine. The reading comprehension model BiDAF (Bi-Directional Attention Flow) is employed in the Infobot in the process of interacting with the search engine to obtain answers to facilitate the acquisition of information. SCSS-LIE can not only allow users with similar information need to be grouped into one chat channel to communicate, but also enable them to conduct real-time interaction with the search engine to improve search efficiency.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel224">
+        <strong> Information Retrieval Meets Scalable Text Analytics: Solr Integration with Spark </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ryan+Clancy">Ryan Clancy</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jaejun+Lee">Jaejun Lee</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zeynep+Akkalyoncu+Yilmaz">Zeynep Akkalyoncu Yilmaz</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimmy+Lin">Jimmy Lin</a> (1) </u>  <br>
+        1:  University of Waterloo <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331395">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Information Retrieval Meets Scalable Text Analytics: Solr Integration with Spark">Google Scholar</a></div>
+        (224)
+        <br>
+        <b>概要:　</b> Apache SparkとApache Solrの両方が広く採用されているにもかかわらず、スケーラブルなエンドツーエンドのテキスト分析をサポートするための統合はほとんど行われていません。これは大きな機会損失であると私たちは考えています。なぜなら、複雑なファセットクエリの結果を下流のテキスト処理コンポーネントに供給する分析パイプラインを構築することで、大きなシナジーが生まれるからです。このデモンストレーションでは、まさにそのような統合を検討します。異なる分析シナリオにおけるパフォーマンスを評価し、SparkをSolrにシームレスに接続することで可能となる分析の範囲を示す3つの簡単なケーススタディを紹介します。
+        </label>
+        <input type="checkbox" id="Panel224" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Despite the broad adoption of both Apache Spark and Apache Solr, there is little integration between these two platforms to support scalable, end-to-end text analytics. We believe this is a missed opportunity, as there is substantial synergy in building analytical pipelines where the results of potentially complex faceted queries feed downstream text processing components. This demonstration explores exactly such an integration: we evaluate performance under different analytical scenarios and present three simple case studies that illustrate the range of possible analyses enabled by seamlessly connecting Spark to Solr.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel225">
+        <strong> Social Knowledge Graph Explorer </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Omar+Alonso">Omar Alonso</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Vasileios+Kandylas">Vasileios Kandylas</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Serge-Eric+Tremblay">Serge-Eric Tremblay</a> (1) </u>  <br>
+        1:  Microsoft <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331410">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Social Knowledge Graph Explorer">Google Scholar</a></div>
+        (225)
+        <br>
+        <b>概要:　</b> 本論文では、Twitterから派生したソーシャルナレッジグラフをクエリおよび閲覧するためのアプリケーション「SKG Explorer」を紹介します。このナレッジグラフには、エンティティ間の関係、リンク、およびトピックが含まれています。また、有名なイベントのタイムラインを生成するための時間的な次元も追加されており、Wiki風のスタイルでストーリーの構築が可能です。本論文では、システムの主要なコンポーネントを説明し、いくつかの事例を紹介します。
+        </label>
+        <input type="checkbox" id="Panel225" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We present SKG Explorer, an application for querying and browsing a social knowledge graph derived from Twitter that contains relationships between entities, links, and topics. A temporal dimension is also added for generating timelines for well-known events that allows the construction of stories in a wiki-like style. In this paper we describe the main components of the system and showcase some examples.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel226">
+        <strong> cwl_eval: An Evaluation Tool for Information Retrieval </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Leif+Azzopardi">Leif Azzopardi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Paul+Thomas">Paul Thomas</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alistair+Moffat">Alistair Moffat</a> (3) </u>  <br>
+        1:  University of Strathclyde, 2:  Microsoft, 3:  University of Melbourne <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331398">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=cwl_eval: An Evaluation Tool for Information Retrieval">Google Scholar</a></div>
+        (226)
+        <br>
+        <b>概要:　</b> 本論文では、テストコレクションを用いて情報検索システムを評価する際に一般的に使用される多くの指標を統一するツール「cwl_eval」を紹介します。CWLフレームワークでは、指標が単一の関数を介して指定され、これにより以下の関連する測定値を導き出すことができます：アイテムごとの期待効用、合計期待効用、アイテムごとの期待コスト、合計期待コスト、および期待深度。CWLフレームワークは、ランキングリストの品質を測定するためのいくつかの独立したアプローチを統合し、効用（利益）とコストに基づく指標を開発するための一貫したユーザーモデルベースのフレームワークを提供します。本論文では、CWL測定フレームワークのを説明し、cwl_evalのアーキテクチャを記述し、その使用方法の例をいくつか示します。最近の指標である時間バイアス・ゲイン（Time Biased Gain）、U-Measure、Bejewelled Measure、および情報フォーレイジングベース・メジャー（Information Foraging Based Measure）ならびに従来の指標である精度（Precision）、平均精度（Average Precision）、割引累積ゲイン（Discounted Cumulative Gain）、ランクバイアス精度（Rank-Biased Precision）、およびINSTの実装を提供します。同一フレームワーク内で最先端および従来の指標を提供することで、検索有効性の評価に対する標準化されたアプローチを促進します。
+        </label>
+        <input type="checkbox" id="Panel226" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We present a tool ("cwl_eval") which unifies many metrics typically used to evaluate information retrieval systems using test collections. In the CWL framework metrics are specified via a single function which can be used to derive a number of related measurements: Expected Utility per item, Expected Total Utility, Expected Cost per item, Expected Total Cost, and Expected Depth. The CWL framework brings together several independent approaches for measuring the quality of a ranked list, and provides a coherent user model-based framework for developing measures based on utility (gain) and cost. Here we outline the CWL measurement framework; describe the cwl_eval architecture; and provide examples of how to use it. We provide implementations of a number of recent metrics, including Time Biased Gain, U-Measure, Bejewelled Measure, and the Information Foraging Based Measure, as well as previous metrics such as Precision, Average Precision, Discounted Cumulative Gain, Rank-Biased Precision, and INST. By providing state-of-the-art and traditional metrics within the same framework, we promote a standardised approach to evaluating search effectiveness.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel227">
+        <strong> TrecTools: an Open-source Python Library for Information Retrieval Practitioners Involved in TREC-like Campaigns </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=João+Palotti">João Palotti</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Harrisen+Scells">Harrisen Scells</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Guido+Zuccon">Guido Zuccon</a> (2) </u>  <br>
+        1:  Qatar Computing Research Institute, 2:  The University of Queensland <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331399">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=TrecTools: an Open-source Python Library for Information Retrieval Practitioners Involved in TREC-like Campaigns">Google Scholar</a></div>
+        (227)
+        <br>
+        <b>概要:　</b> 本論文では、TRECに似たキャンペーンの支援を目的としたPythonライブラリ、TrecToolsを紹介します。情報検索（IR）専門家が、テストコレクションの構築、システムの評価、実験結果の分析などの活動を行う際、通常は個々の機能を実行する多数の異なるソフトウェアツールやスクリプトを使用しなければならず、時には独自のアドホックなスクリプトを実装する必要さえあります。TrecToolsは、これらの一般的な活動を実行するための統一された環境を提供することを目指しています。データサイエンスで最も人気のあるプログラミング言語であるPythonで記述されたTrecToolsは、オブジェクト指向かつ容易に拡張可能なライブラリです。<br><br>既存のシステム、例えば、trec_evalは、その修正や拡張に際してかなりの参入障壁を有しています。さらに、多くの既存IR指標やツールは、異なるプログラミング言語でお互いに独立して実装されています。TrecToolsは参入障壁を下げ、既存のツール、フレームワーク、および活動を1つの共通の傘の下に統一することを求めています。<br><br>TRECに似たキャンペーンの開発、評価、分析のための中央集権的なソリューションの広範な採用は、主催者の負担を軽減し、参加者やユーザーには一般的なIR実験活動のための標準的な環境を提供するでしょう。TrecToolsはMITライセンスの下でオープンソースライブラリとしてhttps://github.com/joaopalotti/trectoolsにて配布されています。
+        </label>
+        <input type="checkbox" id="Panel227" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This paper introduces TrecTools, a Python library for assisting Information Retrieval (IR) practitioners with TREC-like campaigns. IR practitioners tasked with activities like building test collections, evaluating systems, or analysing results from empirical experiments commonly have to resort to use a number of different software tools and scripts that each perform an individual functionality - and at times they even have to implement ad-hoc scripts of their own. TrecTools aims to provide a unified environment for performing these common activities. Written in the most popular programming language for Data Science, Python, TrecTools offers an object-oriented, easily extensible library. Existing systems, e.g., trec_eval, have considerable barrier to entry when it comes to modify or extend them. Furthermore, many existing IR measures and tools are implemented independently of each other, in different programming languages. TrecTools seeks to lower the barrier to entry and to unify existing tools, frameworks and activities into one common umbrella. Widespread adoption of a centralised solution for developing, evaluating, and analysing TREC-like campaigns will ease the burden on organisers and provide participants and users with a standard environment for common IR experimental activities. TrecTools is distributed as an open source library under the MIT license at https://github.com/joaopalotti/trectools
+        </div> </ul> <br>
+
+
+
+        <label for="Panel228">
+        <strong> Automatic Curation of Content Tables for Educational Videos </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Arpan+Mukherjee">Arpan Mukherjee</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shubhi+Tiwari">Shubhi Tiwari</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tanya+Chowdhury">Tanya Chowdhury</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tanmoy+Chakraborty">Tanmoy Chakraborty</a> (1) </u>  <br>
+        1:  Indraprastha Institute of Information Technology Delhi <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331400">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Automatic Curation of Content Tables for Educational Videos">Google Scholar</a></div>
+        (228)
+        <br>
+        <b>概要:　</b> 従来の教育形態は、オンライン学習への移行が進んでいます。多くの学位が同じ場所に集まることなく授与される現在、オンライン学習インターフェースを強化するツールの構築が必要です。オンライン教育動画はしばしば長く、十分なメタデータを含んでいません。そのため、特定のトピックを学ぼうとする視聴者は、適切な内容を見つけるためにビデオ全体を視聴しなければならない場合があります。本研究では、教育動画の内容表をキュレートするための新しいアーキテクチャを提案します。我々は動画のテキストおよび音響特性を活用し、教科書の目次に似た階層型の内容表を形成します。これにより、ユーザーはビデオ全体を見るのではなく、特定の部分にスキップしてスマートにビデオを閲覧することができます。我々は他のテキストベースのアプローチをベースラインとして考慮し、我々のアプローチがマクロF1スコアおよびマイクロF1スコアのベースラインをそれぞれ39.45％および35.76％上回ることを発見しました。我々は、ユーザーがビデオのURLを貼り付けることで生成された階層型の内容表を取得し、必要なコンテンツにナビゲートできる独立したウェブページとしてデモを提供します。再現性の精神に則り、コードをhttps://goo.gl/Qzku9dで公開し、画面録画をhttps://goo.gl/4HSV1vで視聴できるようにします。
+        </label>
+        <input type="checkbox" id="Panel228" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Traditional forms of education are increasingly being replaced by online forms of learning. With many degrees being awarded without the requirement of co-location, it becomes necessary to build tools to enhance online learning interfaces. Online educational videos are often long and do not have enough metadata. Viewers trying to learn about a particular topic have to go through the entire video to find suitable content. We present a novel architecture to curate content tables for educational videos. We harvest text and acoustic properties of the videos to form a hierarchical content table (similar to a table of contents available in a textbook). We allow users to browse the video smartly by skipping to a particular portion rather than going through the entire video. We consider other text-based approaches as our baselines. We find that our approach beats the macro F1-score and micro F1-score of baseline by 39.45% and 35.76% respectively. We present our demo as an independent web page where the user can paste the URL of the video to obtain a generated hierarchical table of contents and navigate to the required content. In the spirit of reproducibility, we make our code public at https://goo.gl/Qzku9d and provide a screen cast to be viewed at https://goo.gl/4HSV1v.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel229">
+        <strong> Explanatory and Actionable Debugging for Machine Learning: A TableQA Demonstration </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Minseok+Cho">Minseok Cho</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gyeongbok+Lee">Gyeongbok Lee</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Seung-won+Hwang">Seung-won Hwang</a> (1) </u>  <br>
+        1:  Yonsei University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331404">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Explanatory and Actionable Debugging for Machine Learning: A TableQA Demonstration">Google Scholar</a></div>
+        (229)
+        <br>
+        <b>概要:　</b> 表への質問応答（TableQA）は、自然言語で与えられた質問から表内の回答を抽出する技術であり、活発に研究されています。既存のモデルは主にWikiSQLのような公共のベンチマークデータセットを用いて、回答の正確性に基づいて訓練および評価されています。本デモンストレーションの目的は、これらのモデルのデバッグツールを示し、人間に回答を説明する、いわゆる説明的デバッグ（explanatory debugging）を提供することです。我々の主要な特徴は、説明後にユーザーが直接モデルを修正できるようにする「実行可能性」を持たせる点です。具体的には、我々のツールはユーザーが修正できるようにアノテーションやモデルのエラーを表面化し、実行可能なインサイトを提供します。
+        </label>
+        <input type="checkbox" id="Panel229" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Question answering from tables (TableQA) extracting answers from tables from the question given in natural language, has been actively studied. Existing models have been trained and evaluated mostly with respect to answer accuracy using public benchmark datasets such as WikiSQL. The goal of this demonstration is to show a debugging tool for such models, explaining answers to humans, known as explanatory debugging. Our key distinction is making it "actionable" to allow users to directly correct models upon explanation. Specifically, our tool surfaces annotation and models errors for users to correct, and provides actionable insights.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel230">
+        <strong> A Pipeline for Disaster Response and Relief Coordination </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pranav+Maneriker">Pranav Maneriker</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nikhita+Vedula">Nikhita Vedula</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hussein+S.+Al-Olimat">Hussein S. Al-Olimat</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiayong+Liang">Jiayong Liang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Omar+El-Khoury">Omar El-Khoury</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ethan+Kubatko">Ethan Kubatko</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Desheng+Liu">Desheng Liu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Krishnaprasad+Thirunarayan">Krishnaprasad Thirunarayan</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Valerie+Shalin">Valerie Shalin</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Amit+Sheth">Amit Sheth</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Srinivasan+Parthasarathy">Srinivasan Parthasarathy</a> (1) </u>  <br>
+        1:  Ohio State University, 2:  Wright State University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331405">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Pipeline for Disaster Response and Relief Coordination">Google Scholar</a></div>
+        (230)
+        <br>
+        <b>概要:　</b> 洪水、森林火災、ハリケーンなどの自然災害は、人命やインフラに壊滅的な被害をもたらす可能性があります。本研究では、河川の氾濫と高潮によるハリケーンへの対応に焦点を当てています。高潮シミュレーションと氾濫範囲予測のためのモデルを使用して、災害によって大きな影響を受ける可能性のある地域についての予測を生成します。さらに、シミュレーション結果を交通事故の情報と重ね合わせることによって、交通事故と他のデータモダリティとの相関性を分析します。これらの結果をモジュール化されたインタラクティブな地図ベースの可視化で提供することで、緊急対応者が災害対応の計画と調整をより効果的に行えるよう支援します。
+        </label>
+        <input type="checkbox" id="Panel230" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Natural disasters such as floods, forest fires, and hurricanes can cause catastrophic damage to human life and infrastructure. We focus on response to hurricanes caused by both river water flooding and storm surge. Using models for storm surge simulation and flood extent prediction, we generate forecasts about areas likely to be highly affected by the disaster. Further, we overlay the simulation results with information about traffic incidents to correlate traffic incidents with other data modality. We present these results in a modularized, interactive map-based visualization, which can help emergency responders to better plan and coordinate disaster response.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel231">
+        <strong> Event Tracker: A Text Analytics Platform for Use During Disasters </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Charles+Thomas">Charles Thomas</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Richard+McCreadie">Richard McCreadie</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Iadh+Ounis">Iadh Ounis</a> (1) </u>  <br>
+        1:  University of Glasgow <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331406">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Event Tracker: A Text Analytics Platform for Use During Disasters">Google Scholar</a></div>
+        (231)
+        <br>
+        <b>概要:　</b> 現在、緊急事態管理組織は、危機状況におけるイベントの監視と管理を支援するために、多岐にわたるツールや技術に依存しています。これには、新しいスタッフの訓練時間、外部サービスへの依存、およびそれらのサービス間での統合の欠如（したがって情報の移転効率の低下）といういくつかのデメリットがあります。一方、「イベントトラッカー」は、緊急対応担当者、公衆（ソーシャルメディアを通じて）、および世界中のボランティアからの情報を統合し、イベントの統一されたビューを提供する新しいソリューションです。特に、イベントトラッカーはこの統一ビューを実現するための一連の革新的な機能を提供しており、具体的には、重要な情報のリアルタイム識別、対応担当者の情報ニーズに基づくコンテンツの自動グループ化、ならびにリアルタイムのボランティア管理および通信です。これは、高容量のリアルタイムストリーミングデータを低レイテンシーで取り込みおよび処理するために設計された効率的かつスケーラブルなバックエンドインフラストラクチャによってサポートされています。
+        </label>
+        <input type="checkbox" id="Panel231" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Emergency management organisations currently rely on a wide range of disparate tools and technologies to support the monitoring and management of events during crisis situations. This has a number of disadvantages, in terms of training time for new staff members, reliance on external services, and a lack of integration (and hence poor transfer of information) between those services. On the other hand, Event Tracker is a new solution that aims to provide a unified view of an event, integrating information from emergency response officers, the public (via social media) and also volunteers from around the world. In particular, Event Tracker provides a series of novel functionalities to realise this unified view of the event, namely: real-time identification of critical information, automatic grouping of content by the information needs of response officers, as well as real-time volunteers management and communication. This is supported by an efficient and scalable back-end infrastructure designed to ingest and process high-volumes of real-time streaming data with low latency.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel232">
+        <strong> KANDINSKY: Abstract Art-Inspired Visualization of Social Discussions </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Christina+Lui">Christina Lui</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sourav+S.+Bhowmick">Sourav S. Bhowmick</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Adam+Jatowt">Adam Jatowt</a> (2) </u>  <br>
+        1:  Nanyang Technological University, 2:  Kyoto University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331411">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=KANDINSKY: Abstract Art-Inspired Visualization of Social Discussions">Google Scholar</a></div>
+        (232)
+        <br>
+        <b>概要:　</b> 多くのソーシャルメディアサイトでは、ユーザーがテキスト、画像、動画（これらを総称してアンカーポストと呼びます）を公開することができます。これらの投稿は多くのユーザーから数百件のコメントを引き寄せ、社会的な会話（つまり、議論）を引き起こすことがあります。アンカーポストに関連する大量のコメントの効果的な理解と分析を支援するツールは、個人や組織にとって大きな利益となるでしょう。本デモンストレーションでは、アンカーポストに関連する社会的議論の多面的な視覚化をサポートする、新しいエンドツーエンドの視覚化システム「Kandinsky」を紹介します。Kandinskyでは、社会的議論の風景がカラフルな円と同心円のコレクションを用いて視覚化されます。これは、ロシアの画家ワシリー・カンディンスキー（1866-1944）の有名な絵画「同心円のある正方形」と「複数の円」にインスパイアされたものです。直感的に、円と同心円はそれぞれ、社会的コメントと議論スレッド内のコメントの集まりを表します。Kandinskyのさまざまな革新的な機能について議論し、その有効性を実証します。
+        </label>
+        <input type="checkbox" id="Panel232" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Many social media sites allow users to upload text, images, and videos (collectively referred to asanchor post) for public consumption. These posts may attract hundreds of comments from many social users leading to social conversations (ie discussions). Tools that can facilitate user-friendly and effective understanding and analysis of large volumes of comments associated with anchor posts can be of great benefit to individuals and organizations. In this demonstration, we present a novel end-to-end visualization system called Kandinsky to supportmulti-faceted visualization of social discussions associated with an anchor post. In Kandinsky, the social discussion landscape is visualized using a collection of colorfulcircles andconcentric circles, which are inspired from the famous abstract arts called"Squares with Concentric Circles" and"Several Circles" by Russian painter Wassily Kandinsky (1866-1944). Intuitively, a circle and a concentric circle represent a social comment and a collection of comments in a discussion thread, respectively. We discuss various innovative features of Kandinsky and demonstrate its effectiveness.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel233">
+        <strong> EXACT: Attributed Entity Extraction By Annotating Texts </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ke+Chen">Ke Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lei+Feng">Lei Feng</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qingkuang+Chen">Qingkuang Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gang+Chen">Gang Chen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lidan+Shou">Lidan Shou</a> (1) </u>  <br>
+        1:  Zhejiang University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331391">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=EXACT: Attributed Entity Extraction By Annotating Texts">Google Scholar</a></div>
+        (233)
+        <br>
+        <b>概要:　</b> 属性付きエンティティは、その構造属性によって定義されるエンティティです。テキストドキュメントから属性付きエンティティを抽出することは、多くのビッグデータアプリケーションにとって重要な問題です。我々は、属性を作成し、それらをタグ値に結びつける探索的注釈タスクを実行することにより、テキストドキュメントから属性付きエンティティを抽出するシステム「EXACT」を提案します。効率的な注釈を支援するために、非常に少数の人間が注釈付けしたサンプルを基に、新しい注釈タスクに対してタグを提案できる新しい少数ショット学習方式に基づいたタグ推薦技術を提案します。また、ユーザーにリアルタイムの文脈を提供するためのドキュメント推薦方式も提案します。この新しい属性インデックスを使用することで、システムはタスク関連の属性付きエンティティをオンザフライで生成することができます。我々は、これらの技術を新しいユーザーインターフェースの背後に統合し、人間の注釈にかかるコストを最小限に抑えつつ、生産的かつ効率的に属性付きエンティティを抽出できる方法を示します。
+        </label>
+        <input type="checkbox" id="Panel233" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Attributed entity is an entity defined by its structural attributes. Extracting attributed entities from textual documents is an important problem for a variety of big-data applications. We propose a system called EXACT for extracting attributed entities from textual documents by performing explorative annotation tasks, which create attributes and bind them to tag values. To support efficient annotation, we propose a novel tag recommendation technique based on a few-shot learning scheme which can suggest tags for new annotation tasks given very few human-annotated samples. We also propose a document recommendation scheme to provide run-time context for the user. Using a novel attribute index, the system can generate the task-relevant attributed entities on-the-fly. We demonstrate how these techniques can be integrated behind a novel user interface to enable productive and efficient extraction of attributed entities at limited cost in human annotation.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel234">
+        <strong> Expert-Guided Entity Extraction using Expressive Rules </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Mayank+Kejriwal">Mayank Kejriwal</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Runqi+Shao">Runqi Shao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pedro+Szekely">Pedro Szekely</a> (1) </u>  <br>
+        1:  University of Southern California <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331392">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Expert-Guided Entity Extraction using Expressive Rules">Google Scholar</a></div>
+        (234)
+        <br>
+        <b>概要:　</b> ナレッジグラフ構築（Knowledge Graph Construction、KGC）は、セマンティック検索や予測分析など、多くのドメイン特化型アプリケーションにおいて重要な課題です。高度なKGCアルゴリズムが次々と提案される中、技術的なバックグラウンドをあまり持たないドメイン専門家が高い忠実度で解釈可能なナレッジグラフを構築できるようにする重要なユースケースが見過ごされています。ドメイン専門家は、その分野の公式および経験的な知識を持つため、貴重なインプット源となりえます。本デモ論文では、ドメイン専門家が最小限のトレーニングで高度なルールベースのエンティティ抽出器を記述できる、GUIベースのエディタを用いたシステムを提案します。このシステムは、複雑な機能を幅広く提供し、ナレッジグラフの構築を支援します。
+        </label>
+        <input type="checkbox" id="Panel234" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Knowledge Graph Construction (KGC) is an important problem that has many domain-specific applications, including semantic search and predictive analytics. As sophisticated KGC algorithms continue to be proposed, an important, neglected use case is to empower domain experts who do not have much technical background to construct high-fidelity, interpretable knowledge graphs. Such domain experts are a valuable source of input because of their (both formal and learned) knowledge of the domain. In this demonstration paper, we present a system that allows domain experts to construct knowledge graphs by writing sophisticated rule-based entity extractors with minimal training, using a GUI-based editor that offers a range of complex facilities.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel235">
+        <strong> An Experimentation Platform for Precision Medicine </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Vincent+Nguyen">Vincent Nguyen</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sarvnaz+Karimi">Sarvnaz Karimi</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Brian+Jin">Brian Jin</a> (2) </u>  <br>
+        1:  CSIRO Data61 & Australian National University, 2:  CSIRO Data61 <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331396">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=An Experimentation Platform for Precision Medicine">Google Scholar</a></div>
+        (235)
+        <br>
+        <b>概要:　</b> 精密医療とは、患者のデータ、遺伝子、生活習慣、および利用可能な治療法とそれらの組み合わせを考慮して最適な治療法を見つけることを指し、そのために患者の情報を用いて生物医学文献や臨床試験などのリソースを検索する必要があります。検索された情報は、その後、臨床医が意思決定を行うためのデータをキュレーションするのに使用されます。本研究では、TREC精密医療（PM）トラックが提供する枠組み内で、精密医療の検索実験を可能にするオンラインシステムを情報検索研究者に紹介します。いくつかのクエリおよびドキュメント処理とランク付けのアプローチが提供されています。これらには、最も有望な遺伝子言及拡張方法のいくつか、ならびにニューラルネットワークを用いたランク学習が含まれます。
+        </label>
+        <input type="checkbox" id="Panel235" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Precision medicine - where data from patients, their genes, their lifestyles and the available treatments and their combination are taken into account for finding a suitable treatment - requires searching the biomedical literature and other resources such as clinical trials with the patients' information. The retrieved information could then be used in curating data for clinicians for decision-making. We present information retrieval researchers with an on-line system which enables experimentation in search for precision medicine within the framework provided by the TREC Precision Medicine (PM) track. A number of query and document processing and ranking approaches are provided. These include some ofthe most promising gene mention expansion methods, as well as learning-to-rank using neural networks.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel236">
+        <strong> WestSearch Plus: A Non-factoid Question-Answering System for the Legal Domain </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gayle+McElvain">Gayle McElvain</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=George+Sanchez">George Sanchez</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sean+Matthews">Sean Matthews</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Don+Teo">Don Teo</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Filippo+Pompili">Filippo Pompili</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tonya+Custis">Tonya Custis</a> (2) </u>  <br>
+        1:  Capital One, 2:  Thomson Reuters, 3:  Thomson Reuters <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331397">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=WestSearch Plus: A Non-factoid Question-Answering System for the Legal Domain">Google Scholar</a></div>
+        (236)
+        <br>
+        <b>概要:　</b> 本研究では、法領域においてユーザーが入力した質問に対して、法的に正確で管轄上関連性があり、かつ対話的な回答を提供する非事実型QAシステムを紹介します。この商業利用可能なシステムは、完全にNLP（自然言語処理）およびIR（情報検索）に基づいており、構造化された知識ベースには依存していません。WestSearch Plusは、法律に関する基本的な質問に対して、簡潔な一文の回答を提供することを目的としています。その対象範囲は特定のトピックや管轄に限定されていません。潜在的な回答のコーパスは約2200万件の文書を含み、120,000件以上の法的トピックに分類されています。
+        </label>
+        <input type="checkbox" id="Panel236" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We present a non-factoid QA system that provides legally accurate, jurisdictionally relevant, and conversationally responsive answers to user-entered questions in the legal domain. This commercially available system is entirely based on NLP and IR, and does not rely on a structured knowledge base. WestSearch Plus aims to provide concise one sentence answers for basic questions about the law. It is not restricted in scope to particular topics or jurisdictions. The corpus of potential answers contains approximately 22M documents classified to over 120K legal topics.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel237">
+        <strong> Demonstrating Requirement Search on a University Degree Search Application </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nicholas+Mendez">Nicholas Mendez</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kyle+De+Freitas">Kyle De Freitas</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Inzamam+Rahaman">Inzamam Rahaman</a> (1) </u>  <br>
+        1:  The University of the West Indies <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331402">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Demonstrating Requirement Search on a University Degree Search Application">Google Scholar</a></div>
+        (237)
+        <br>
+        <b>概要:　</b> 情報検索の多くの分野では、あらかじめ定義された用語セットに関する要求を記述する文書を検索することが求められます。要求とは、用語のセットと文書との間の関係です。要求がオプション、代替、および用語の組み合わせを考慮することでより複雑になるにつれて、指数関数的な検索空間のサイズのために文書を効率的に検索することがますます困難になります。本論文では、要求の表現力を犠牲にすることなく要求に基づく文書を検索するために、修正されたブールモデルを利用するRevBoMIRを提案します。私たちの提案するアプローチは、必須、代替、または失格用語によって満たされる基準を文書内に埋め込むドメインにおいて特に有用です。最後に、文書の要求を表現するためのグラフモデルを示し、大学の学位検索アプリケーションを通じた要求検索を実証します。
+        </label>
+        <input type="checkbox" id="Panel237" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In many domains of information retrieval, we are required to retrieve documents that describe requirements on a predefined set of terms. A requirement is a relationship between a set of terms and the document. As requirements become more complex by catering for optional, alternative, and combinations of terms, efficiently retrieving documents becomes more challenging due to the exponential size of the search space. In this paper, we propose RevBoMIR, which utilizes a modified Boolean Model for Information Retrieval to retrieve requirements-based documents without sacrificing the expressiveness of requirements. Our proposed approach is particularly useful in domains where documents embed criteria that can be satisfied by mandatory, alternative or disqualifying terms to determine its retrieval. Finally, we present a graph model for representing document requirements, and demonstrate Requirement Search via a university degree search application.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel238">
+        <strong> Alexa, Can You Help Me Shop? </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yoelle+Maarek">Yoelle Maarek</a> (1) </u>  <br>
+        1:  Amazon <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331443">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Alexa, Can You Help Me Shop?">Google Scholar</a></div>
+        (238)
+        <br>
+        <b>概要:　</b> 以前の基調講演[1]では、音声対応インテリジェントアシスタントが人間と機械の相互作用の方法をどのように革命的に変えているか、そしてそれらの普及が家庭、車、オフィスなどでどのように存在し、アンビエントコンピューティングという昔からの夢に近づいているかを述べました。また、AmazonのインテリジェントアシスタントであるAlexaが顧客のショッピングジャーニーを総合的に考慮し、音声ショッピングの分野で先駆的な役割を果たしていることも説明しました。本講演では、顧客のニーズに対応するために必要な重要なステージについて詳述します。具体的には、(1) 顧客の理解、(2) ニーズの満たし方、(3) ニーズの予測です。さらに、顧客のニーズを情報的、取引的、ナビゲーション的なものとして詳細に分析します[2]。最後に、関連する研究課題を紹介し、音声対応型製品発見の未開の領域を探求するようコミュニティに呼びかけます。<br><br>References:<br>[1] キーノートタイトル（発表者名, 年）<br>[2] 資料タイトル（著者名, 年）
+        </label>
+        <input type="checkbox" id="Panel238" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In a previous keynote address [1], we have described how voice-enabled intelligent assistants are revolutionizing the way humans interact with machines and how their ubiquitous presence in homes, cars, offices are taking us closer to the old dream of ambient computing. We also explained how Alexa, Amazon's intelligent assistant, is pioneering the domain of voice shopping, considering the customer's shopping journey in a holistic manner. In this talk, we will discuss in more details the key stages required in addressing customer's needs, namely (1) understanding customers, (2) satisfying their needs, and (3) predicting them. We will also provide a finer analysis of customers' needs, be they informational, transactional or navigational needs [2]. We will conclude by presenting some associated research challenges and encouraging the community to explore the unchartered area of voice-enabled product discovery.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel239">
+        <strong> Challenges in Search on Streaming Services: Netflix Case Study </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sudarshan+Lamkhede">Sudarshan Lamkhede</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sudeep+Das">Sudeep Das</a> (1) </u>  <br>
+        1:  Netflix Inc <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331440">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Challenges in Search on Streaming Services: Netflix Case Study">Google Scholar</a></div>
+        (239)
+        <br>
+        <b>概要:　</b> 本稿では、Netflixのようなストリーミングメディアサービスにおける検索体験の構築についての主要な課題を議論します。検索コンテキスト内で推奨システムが果たす役割について概観し、コンテンツ発見を支援し、カタログ外のエンティティの検索をサポートする方法を紹介します。また、キーストロークレベルでのインスタントサーチ体験の重要性と、それを様々なデバイスや言語でグローバルな視聴者向けに実装する際の技術的課題についても強調します。
+        </label>
+        <input type="checkbox" id="Panel239" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We discuss salient challenges of building a search experience for a streaming media service such as Netflix. We provide an overview of the role of recommendations within the search context to aid content discovery and support searches for unavailable (out-of-catalog) entities. We also stress the importance of keystroke-level Instant Search experience, and the technical challenges associated with implementing it across different devices and languages for a global audience.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel240">
+        <strong> Challenges and Opportunities in Understanding Spoken Queries Directed at Modern Entertainment Platforms </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ferhan+Ture">Ferhan Ture</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jinfeng+Rao">Jinfeng Rao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Raphael+Tang">Raphael Tang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimmy+Lin">Jimmy Lin</a> (2) </u>  <br>
+        1:  Comcast Applied AI Research Lab, 2:  University of Waterloo <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331433">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Challenges and Opportunities in Understanding Spoken Queries Directed at Modern Entertainment Platforms">Google Scholar</a></div>
+        (240)
+        <br>
+        <b>概要:　</b> 【】<br>現代の家庭用エンターテインメントプラットフォームは、かつての一般的なテレビの進化形として、多数の機能とコンテンツを備えています。これらのプラットフォームは、数百のチャンネルにわたる多彩なプログラムのほか、数万もの選択肢を提供するオンデマンドプログラムのカタログも提供しています。さらに、エンターテインメントプラットフォームは家庭内のハブとして機能し、音楽の再生からホームセキュリティシステムの制御まで、さまざまな機能を提供することができます。私たちの高次の目標は、リモコンの物理的なボタン入力に代わる方法として、自然な音声ベースのアクセスをこれらの多様な機能に提供することです。
+        </label>
+        <input type="checkbox" id="Panel240" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Modern in-home entertainment platforms---representing the evolution of the humble television of yesteryear---are packed with features and content: they offer a dizzying array of programs spanning hundreds of channels as well as a catalog of on-demand programs offering tens of thousands of options. Furthermore, the entertainment platform may serve as an in-home hub, providing capabilities ranging from playing music to controlling the home security system. At a high level, our goal is to provide natural speech-based access to these myriad features as an alternative to physical button entry on a remote control.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel241">
+        <strong> Ghosting: Contextualized Query Auto-Completion on Amazon Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Lakshmi+Ramachandran">Lakshmi Ramachandran</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Uma+Murthy">Uma Murthy</a> (1) </u>  <br>
+        1:  Amazon Search <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331432">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Ghosting: Contextualized Query Auto-Completion on Amazon Search">Google Scholar</a></div>
+        (241)
+        <br>
+        <b>概要:　</b> クエリ自動補完は、ユーザーが入力したプレフィックスに対してサジェストされた検索クエリのランク付けリストを提示するプロセスです。ゴースティングは、検索ボックス内でサジェストされたテキストをインラインでハイライトすることによって検索推奨を自動補完する方法です。我々は、ユーザーの検索コンテキストを利用して高信頼度クエリにゴーストを適用する行動推薦モデルを提案します。我々は、1億4千万以上の検索セッションでゴースティングをテストしました。セッションコンテキストに基づくゴースティングは、提案されたサジェストの受け入れ率を6.18%増加させ、スペルミス検索を4.42%削減し、純売上を0.14%向上させました。
+        </label>
+        <input type="checkbox" id="Panel241" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Query auto-completion presents a ranked list of search queries as suggestions for a customer-entered prefix. Ghosting is the process of auto-completing a search recommendation by highlighting the suggested text inline i.e., within the search box. We present a behavioral recommendation model that uses customer search context to ghost on high-confidence queries. We tested ghosting on over 140 million search sessions. Session-context ghosting increased the acceptance of offered suggestions by 6.18%, reduced misspelled searches by 4.42% and improved net sales by 0.14%.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel242">
+        <strong> Simulacra and Selection: Clothing Set Recommendation at Stitch Fix </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Kevin+Zielnicki">Kevin Zielnicki</a> (1) </u>  <br>
+        1:  Stitch Fix <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331442">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Simulacra and Selection: Clothing Set Recommendation at Stitch Fix">Google Scholar</a></div>
+        (242)
+        <br>
+        <b>概要:　</b> 小売業者の顧客が在庫から商品を選択することは、ほぼすべての小売店で直面する一般的な問題です。現代の小売業者は、レコメンダーシステムや市場バスケット分析といった技術を駆使して、お客様にパーソナライズされた文脈に応じたアイテムの提案を行い、顧客の意思決定を支援し、影響を与えています。これらの方法は通常、伝統的なブラウジング体験を補完するだけにとどまりますが、Stitch Fixはさらに一歩進み、アルゴリズムを用いたスタイリストの推薦により、完全にキュレーションされた商品を提供しています。この選択過程における人間の役割の理解は、スタイリストがパーソナライズされた商品を提供するための効果的なツールを構築する上で重要です。Stitch Fixのスタイリストがクライアントのために衣服を選ぶ際、彼らはアイテム間およびクライアントとの間の多くの微妙な関係を考慮しています。たとえば、スタイリストはクライアントからの仕事用衣装のリクエストを、よく合うパンツとブラウスを選ぶことで満たし、さらに、クライアントの明示された好みや推測されるスタイルを反映させます。これは文脈に依存した部分集合選択問題として説明でき、在庫制約と文脈を考慮して条件的に最適なアイテムセットを構成することを目指します。本研究では、非線形因子分解アプローチを論じます。
+        </label>
+        <input type="checkbox" id="Panel242" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Choosing a set of items from an inventory is a common problem faced by customers of nearly any retailer. Modern retailers aid and influence customer decisions, using techniques like recommender systems and market basket analysis to deliver personalized and contextual item suggestions. While such methods typically just augment a traditional browsing experience, Stitch Fix goes a step further by exclusively delivering curated selections of items, via algorithmically-assisted stylist recommendations. Our understanding of the human-in-the-loop element in this selection process is crucial to building effective tools to assist stylists in delivering personalized items. When stylists at Stitch Fix select an assortment of clothing for a client, they consider many nuanced relationships between the items, as well as with the client. For example, a stylist may fill a client's request for a work outfit by choosing pants and a blouse that pair well together, as well as fitting the client's stated preferences and her inferred sense of style. This can be described as a contextual subset selection problem, where the goal is to assemble a conditionally optimal set of items, given inventory constraints and context. I will discuss our nonlinear factorization approach
+        </div> </ul> <br>
+
+
+
+        <label for="Panel243">
+        <strong> Searching for Communities: a Facebook Way </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Viet+Ha-Thuc">Viet Ha-Thuc</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Srinath+Aaleti">Srinath Aaleti</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rongda+Zhu">Rongda Zhu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nade+Sritanyaratana">Nade Sritanyaratana</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Corey+Chen">Corey Chen</a> (1) </u>  <br>
+        1:  Facebook Inc. <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331426">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Searching for Communities: a Facebook Way">Google Scholar</a></div>
+        (243)
+        <br>
+        <b>概要:　</b> Facebookの使命において、コミュニティを構築する力を人々に与えることは極めて重要です。技術的には、コミュニティの検索は標準的な情報検索（IR）問題とは非常に異なる課題を提起します。まず、コミュニティの大部分のコンテンツが非公開であるため、言葉の不一致問題が存在します。次に、コミュニティの公開コンテンツが限られているため、人間の評価やクリックに基づく一般的なラベリング戦略がうまく機能しません。最後に、コミュニティ検索には、検索者の満足とアクティブなコミュニティ数の増加という二重の目的があります。前者を評価するためのA/Bテストは良く知られたアプローチですが、後者の進捗をどのように測定するかは未解決の問題です。本発表では、これらの課題を詳述し、私たちの解決策を紹介します。
+        </label>
+        <input type="checkbox" id="Panel243" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Giving people the power to build community is central to Facebook's mission. Technically, searching for communities poses very different challenges compared to the standard IR problems. First, there is a vocabulary mismatch problem since most of the content of the communities is private. Second, the common labeling strategies based on human ratings and clicks do not work well due to limited public content available to third-party raters and users at search time. Finally, community search has a dual objective of satisfying searchers and growing the number of active communities. While A/B testing is a well known approach for assessing the former, it is an open question on how to measure progress on the latter. This talk discusses these challenges in depth and describes our solution.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel244">
+        <strong> From Semantic Retrieval to Pairwise Ranking: Applying Deep Learning in E-commerce Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rui+Li">Rui Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yunjiang+Jiang">Yunjiang Jiang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wenyun+Yang">Wenyun Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Guoyu+Tang">Guoyu Tang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Songlin+Wang">Songlin Wang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chaoyi+Ma">Chaoyi Ma</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+He">Wei He</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xi+Xiong">Xi Xiong</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yun+Xiao">Yun Xiao</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Eric+Yihong+Zhao">Eric Yihong Zhao</a> (2) </u>  <br>
+        1:  JD.com, 2:  JD.com, 3:  JD.com <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331434">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=From Semantic Retrieval to Pairwise Ranking: Applying Deep Learning in E-commerce Search">Google Scholar</a></div>
+        (244)
+        <br>
+        <b>概要:　</b> 本稿では、世界最大級の電子商取引プラットフォームの一つであるJD.comにおける商品検索の最も重要な二つの段階に、ディープラーニングモデルを導入する方法について紹介します。具体的には、クエリに対してセマンティックに関連するアイテムをミリ秒単位で検索するディープラーニングシステムの設計と、微妙なユーザー嗜好を学習するペアワイズディープリランキングシステムについて概説します。従来の検索システムと比較して、提案したアプローチはセマンティックな検索やパーソナライズされたランキングにおいて優れており、顕著な改善を達成しています。
+        </label>
+        <input type="checkbox" id="Panel244" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We introduce deep learning models to the two most important stages in product search at JD.com, one of the largest e-commerce platforms in the world. Specifically, we outline the design of a deep learning system that retrieves semantically relevant items to a query within milliseconds, and a pairwise deep re-ranking system, which learns subtle user preferences. Compared to traditional search systems, the proposed approaches are better at semantic retrieval and personalized ranking, achieving significant improvements.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel245">
+        <strong> Beyond Keyword Targeting: An End-to-End Ad Retrieval Framework for Sponsored Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xiao+Yang">Xiao Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zhi+Guo">Zhi Guo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Zongyao+Ding">Zongyao Ding</a> (1) </u>  <br>
+        1:  Baidu <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331429">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Beyond Keyword Targeting: An End-to-End Ad Retrieval Framework for Sponsored Search">Google Scholar</a></div>
+        (245)
+        <br>
+        <b>概要:　</b> 検索エンジンにとって主要な収益源であるスポンサードサーチシステムは、広告を検索結果ページに表示するために広告を取得して配分します。キーワードターゲティングは、広告主のビジネスを表現し、関連広告を取得する基本モデルとして、ほとんどのスポンサードサーチシステムで広く採用されています。このターゲティングモデルでは、広告主はキャンペーンを最適化するために、自身のビジネスに関連する多数のキーワードを慎重に選ぶ必要があります。そして、スポンサードサーチシステムは、クエリとキーワードの関連性に基づいて広告を取得します。しかし、可能なクエリのインベントリが膨大であり、新しいクエリが劇的に増加しているため、広告主が広告に適した多数の関連キーワードを見つけて収集することは、大きな課題となっています。さらに、高品質なキーワードの選定や適切なマッチタイプの設定には多大な労力がかかります。同時に、キーワードターゲティングは、クエリとキーワードの一致とキーワードと広告の一致を含む多段階の検索アーキテクチャをもたらします。このキーワードターゲティングに基づく検索ファネルは、検索クエリと広告の間の明確かつ最適なマッチングを達成することができません。その結果、従来のキーワードターゲティング手法は、広告主のキャンペーンの最適化や検索広告の収益化の向上において徐々にボトルネックとなっています。本論文では、スポンサードサーチ向けのエンドツーエンド広告検索フレームワークを提案します。このフレームワークはキーワードターゲティングの制約を打破し、クエリから関連広告への直接的なマッチングを実現できます。このフレームワークはBaiduのスポンサードサーチシステムに導入され、その有効性は実験結果によって確認されています。本論文では、このフレームワークの設計とアーキテクチャについて説明します。このフレームワークがスポンサードサーチ業界に何らかのインスピレーションを与えることを期待しています。
+        </label>
+        <input type="checkbox" id="Panel245" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> As the main revenue source for search engines, sponsored search system retrieves and allocates ads to display on the search result pages. Keyword targeting is widely adopted by most sponsored search systems as the basic model for expressing the advertiser's business and retrieving related ads. In this targeting model, the advertiser should cautiously select lots of keywords relevant to their business to optimize their campaigns, and the sponsored search system retrieves ads based on the relevance between queries and keywords. However, since there is a huge inventory of possible queries and the new queries grow dramatically, it is a great challenge for advertisers to identify and collect lots of relevant bid keywords for their ads, and it also takes great effort to select and maintain high-quality keywords and set corresponding match types for them. In the meantime, the keyword targeting leads to a multi-stage retrieval architecture as it contains the matching between query and keywords and the matching between keywords and ads. The retrieval funnel based on keyword targeting cannot achieve straightforward and optimal matching between search queries and ads. Consequently, traditional keyword targeting method gradually becomes the bottleneck of optimizing advertisers' campaigns and improving the monetization of search ads. In this paper, we present an end-to-end ad retrieval framework for sponsored search. This framework can break the limits of keyword targeting and can achieve direct matching from query to related ads. The framework has been deployed at Baidu's sponsored search system and the experimental result validates its effectiveness. We will describe the design and architecture of this framework, and hope that this framework can give some inspiration for the sponsored search industry.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel246">
+        <strong> Nobody Said it Would be Easy: A Decade of R&D Projects in Information Access from Thomson over Reuters to Refinitiv </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jochen+L.+Leidner">Jochen L. Leidner</a> (1) </u>  <br>
+        1:  Refinitiv Ltd. & University of Sheffield <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331444">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Nobody Said it Would be Easy: A Decade of R&D Projects in Information Access from Thomson over Reuters to Refinitiv">Google Scholar</a></div>
+        (246)
+        <br>
+        <b>概要:　</b> 本講演では、トムソン・ロイター系列企業の一環として、10年以上にわたる情報アクセスに関する研究プロジェクトの小規模な非ランダムサンプルを調査します。これらのプロジェクトが学術研究と比較してどのように類似し、また異なるかを分析し、学術界が産業界のためにできること、そして産業界が研究のためにできることに関するR&D活動の観点から、批判的（かつ個人的であり、そのため確かに主観的な）評価を試みます。最後に、法務、金融、製薬、規制/コンプライアンス、さらにはニュースなどの垂直情報サービスのいくつかの分野における学術と産業の協力イニシアチブに関するアドバイスを提供します。
+        </label>
+        <input type="checkbox" id="Panel246" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> In this talk, I survey a small, non-random sample of research projects in information access carried out as part of the Thomson Reuters family of companies over the course of a 10+-year period. I analyse into how these projects are similar and different when compared to academic research efforts and attempt a critical (and personal, so certainly subjective) assessment of what academia can do for industry, and what industry can do for research in terms of R&D efforts. I will conclude with some advice for academic-industry collaboration initiatives in several areas of vertical information services (legal, finance, pharma and regulatory/compliance) as well as news.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel247">
+        <strong> Family History Discovery through Search at Ancestry </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Peng+Jiang">Peng Jiang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yingrui+Yang">Yingrui Yang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gann+Bierner">Gann Bierner</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fengjie+Alex+Li">Fengjie Alex Li</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ruhan+Wang">Ruhan Wang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Azadeh+Moghtaderi">Azadeh Moghtaderi</a> (1) </u>  <br>
+        1:  Ancestry <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331430">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Family History Discovery through Search at Ancestry">Google Scholar</a></div>
+        (247)
+        <br>
+        <b>概要:　</b> Ancestryにおいて、私たちは学習順位付けアルゴリズムを新しい分野に適用し、顧客が家族の歴史をより深く理解できるよう支援しています。当サービスの基盤は、数十億件に及ぶ歴史記録をデジタル化し、インデックス化した広範で独自のコレクションです。現在、我々の収集コンテンツには200億件の歴史記録が含まれています。この記録データは出生記録、死亡記録、結婚記録、養子縁組記録、国勢調査記録、死亡記事記録など多岐にわたります。顧客が家族の歴史をよりよく理解するためには、多様な記録タイプから関連する記録を返すことが重要です。
+        </label>
+        <input type="checkbox" id="Panel247" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> At Ancestry, we apply learning to rank algorithms to a new area to assist our customers in better understanding their family history. The foundation of our service is an extensive and unique collection of billions of historical records that we have digitized and indexed. Currently, our content collection includes 20 billion historical records. The record data consists of birth records, death records, marriage records, adoption records, census records, obituary records, among many others types. It is important for us to return relevant records from diversified record types in order to assist our customers to better understand their family history.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel248">
+        <strong> USEing Transfer Learning in Retrieval of Statistical Data </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Anton+Firsov">Anton Firsov</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Vladimir+Bugay">Vladimir Bugay</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Anton+Karpenko">Anton Karpenko</a> (1) </u>  <br>
+        1:  Knoema Corporation <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331427">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=USEing Transfer Learning in Retrieval of Statistical Data">Google Scholar</a></div>
+        (248)
+        <br>
+        <b>概要:　</b> DSSM（深層構造的意味モデル）に類似したモデルは、クエリと意味的に一致する短文書の情報検索において良好な結果を示しました。しかし、これらのモデルは大量のクリックスルーデータを必要とし、特定のドメインではそのようなデータが利用できません。一方、自然言語処理（NLP）の最近の進歩により、一つのタスクセットで訓練された言語モデルやその他のモデルを微調整することで、他の多くのタスクにおいて最先端の結果を達成したり、はるかに少ない訓練セットで競争力のある結果を得る可能性が示されています。このトレンドに従って、我々はDSSMに類似したアーキテクチャとUSE（Universal Sentence Encoder）およびBERT（Bidirectional Encoder Representations from Transformers）モデルを組み合わせることで、少量のクリックスルーデータで微調整し、情報検索に使用できるようにしました。このアプローチにより、統計データの検索エンジンを大幅に改善することができました。
+        </label>
+        <input type="checkbox" id="Panel248" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> DSSM-like models showed good results in retrieval of short documents that semantically match the query. However, these models require large collections of click-through data that are not available in some domains. On the other hand, the recent advances in NLP demonstrated the possibility to fine-tune language models and models trained on one set of tasks to achieve a state of the art results on a multitude of other tasks or to get competitive results using much smaller training sets. Following this trend, we combined DSSM-like architecture with USE (Universal Sentence Encoder) and BERT (Bidirectional Encoder Representations from Transformers) models in order to be able to fine-tune them on a small amount of click-through data and use them for information retrieval. This approach allowed us to significantly improve our search engine for statistical data.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel249">
+        <strong> Find Relevant Cases in All Cases: Your Journey at Doctrine </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nicolas+Fiorini">Nicolas Fiorini</a> (1) </u>  <br>
+        1:  Doctrine <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331441">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Find Relevant Cases in All Cases: Your Journey at Doctrine">Google Scholar</a></div>
+        (249)
+        <br>
+        <b>概要:　</b> 特定領域における情報検索（IR）は、データセットやベンチマークの稀少性、専門用語の特異性、および文献のカバレッジが限られていることから、一般的に困難とされています。法的情報検索も例外ではなく、他の障害も存在するため、イノベーションや時にはパラダイムシフトの必要性が強調されます。ヨーロッパ最大のLegaltech企業の一つであるDoctrineは、これらの問題を解決し、新たな機会を見出すために、専任のデータサイエンスチームを設けています。本プレゼンテーションでは、法的情報検索の特異性（例えば、関連性とは何か？）に関する直感を提供し、doctrine.frで現在使用されているいくつかの解決策を紹介します。特に、当社がホストする様々な形式のコンテンツで固有表現抽出をどのように利用し、それが検索エンジンをどのように向上させるかを示します。文書から抽出された知識を活用することで、十分に大規模なデータセットを構築し、ランキング学習アルゴリズムを訓練することができます。これにより、特定の専門用語の追加による再現率の向上と相まって、ユーザーの検索体験が飛躍的に向上します。
+        </label>
+        <input type="checkbox" id="Panel249" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Domain-specific Information Retrieval (IR) is generally challenging because of the rare datasets or benchmarks, niche vocabularies and more limited literature coverage. Legal IR is no exception and presents other obstacles, reinforcing the need for innovation and, sometimes, paradigm shifts. Doctrine, one of the largest Legaltech companies in Europe, dedicates an entire data science team to advance on these problems and identify new opportunities. In this presentation, we provide some intuition regarding the specificities of legal IR (e.g., what is relevance?), and we introduce some of the solutions currently used on doctrine.fr. Particularly, we show how we use named entity recognition in the various forms of contents we host, and how it enhances the search engine. With knowledge extracted from documents, we may built large enough datasets and train learning-to-rank algorithms. This, combined with several specific-domain vocabulary enrichments to increase recall, dramatically improves the search experience for our users.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel250">
+        <strong> Non-factoid Question Answering in the Legal Domain </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gayle+McElvain">Gayle McElvain</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=George+Sanchez">George Sanchez</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Don+Teo">Don Teo</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tonya+Custis">Tonya Custis</a> (2) </u>  <br>
+        1:  Capital One, 2:  Thomson Reuters, 3:  Thomson Reuters <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331431">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Non-factoid Question Answering in the Legal Domain">Google Scholar</a></div>
+        (250)
+        <br>
+        <b>概要:　</b> 法律分野における非ファクトイド質問応答は、法的に正確で、地域的に関連性があり、対話的に応答性の高い回答をユーザが入力した質問に対して提供する必要があります。私たちは、IR（情報検索）とNLP（自然言語処理）に完全に基づくQAシステムに取り組み、その成果を発表します。私たちのシステムは、特定の知識ベースに依存することなく、法律に関する基本的な質問に対して簡潔な一文の回答を検索します。このシステムは、特定のトピックや法域に限定されることはありません。潜在的な回答のコーパスには、約2200万件の文書があり、それらは12万以上の法律トピックに分類されています。
+        </label>
+        <input type="checkbox" id="Panel250" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Non-factoid question answering in the legal domain must provide legally correct, jurisdictionally relevant, and conversationally responsive answers to user-entered questions. We present work done on a QA system that is entirely based on IR and NLP, and does not rely on a structured knowledge base. Our system retrieves concise one-sentence answers for basic questions about the law. It is not restricted in scope to particular topics or jurisdictions. The corpus of potential answers contains approximately 22M documents classified to over 120K legal topics.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel251">
+        <strong> Looking for Opportunities: Challenges in Procurement Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Stuart+Mackie">Stuart Mackie</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=David+Macdonald">David Macdonald</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Leif+Azzopardi">Leif Azzopardi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yashar+Moshfeghi">Yashar Moshfeghi</a> (1) </u>  <br>
+        1:  University of Strathclyde, 2:  BiP Solutions <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331428">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Looking for Opportunities: Challenges in Procurement Search">Google Scholar</a></div>
+        (251)
+        <br>
+        <b>概要:　</b> 調達法では、税金で賄われる公共機関が購入を希望する物品やサービス、または工事に関する情報を調達契約通知として公開することを規定しています。しかし、こうした競争的な機会に入札を希望する企業にとって、関連する調達契約通知を見つけることは、非常に難しい専門的な検索タスクとなります。本講演では、調達検索のを提供し、関連する検索および推薦タスクに取り組む際の課題について説明します。
+        </label>
+        <input type="checkbox" id="Panel251" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Procurement legislation stipulates that information about the goods, services, or works, that tax-funded authorities wish to purchase are made publicly available in a procurement contract notice. However, for businesses wishing to tender for such competitive opportunities, finding relevant procurement contract notices presents a challenging professional search task. In this talk, we will provide an overview of procurement search and then describe the challenges in addressing the related search and recommendation tasks.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel252">
+        <strong> Effective Online Evaluation for Web Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alexey+Drutsa">Alexey Drutsa</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gleb+Gusev">Gleb Gusev</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Eugene+Kharitonov">Eugene Kharitonov</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Denis+Kulemyakin">Denis Kulemyakin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Pavel+Serdyukov">Pavel Serdyukov</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Igor+Yashkov">Igor Yashkov</a> (1) </u>  <br>
+        1:  Yandex, 2:  Facebook AI Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331378">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Effective Online Evaluation for Web Search">Google Scholar</a></div>
+        (252)
+        <br>
+        <b>概要:　</b> 本稿では、オンライン評価分野における学術的成果の概観と、グローバルなインターネット企業の主要研究者およびエンジニアによる独自の実践的な産業経験を均衡よく組み合わせたプログラムを紹介します。まず、数学的統計から基礎的な知識を提供し、続いてA/Bテスト、インターリーブ、観察研究といった主要な評価手法の基礎を解説します。その後、実験プロセスの構築と評価指標に関する豊富な産業経験を共有し、ベストプラクティスや一般的な落とし穴に重点を置きます。我々のチュートリアルの大部分は、最新の技術（機械学習に基づく手法を含む）による効率的なオンライン実験の実施に焦点を当てています。ソフトウェアエンジニア、デザイナー、アナリスト、ウェブサービスおよびソフトウェア製品のマネージャー、ならびに初心者から上級の専門家、研究者まで、データ駆動型のウェブサービス開発を効果的に行う方法を学びたい方々をお招きします。
+        </label>
+        <input type="checkbox" id="Panel252" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> We present you a program of a balanced mix between an overview of academic achievements in the field of online evaluation and a portion of unique industrial practical experience shared by both the leading researchers and engineers from global Internet companies. First, we give basic knowledge from mathematical statistics. This is followed by foundations of main evaluation methods such as A/B testing, interleaving, and observational studies. Then, we share rich industrial experiences on constructing of an experimentation pipeline and evaluation metrics (emphasizing best practices and common pitfalls). A large part of our tutorial is devoted to modern and state-of-the-art techniques (including the ones based on machine learning) that allow to conduct online experimentation efficiently. We invite software engineers, designers, analysts, and managers of web services and software products, as well as beginners, advanced specialists, and researchers to learn how to make web service development effectively data-driven.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel253">
+        <strong> Building Economic Models and Measures of Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Leif+Azzopardi">Leif Azzopardi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alistair+Moffat">Alistair Moffat</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Paul+Thomas">Paul Thomas</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Guido+Zuccon">Guido Zuccon</a> (4) </u>  <br>
+        1:  University of Strathclyde, 2:  The University of Melbourne, 3:  Microsoft, 4:  The University of Queensland <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331379">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Building Economic Models and Measures of Search">Google Scholar</a></div>
+        (253)
+        <br>
+        <b>概要:　</b> 経済学は、アプリケーション、インターフェース、デバイスとの相互作用に伴うコストと利益を直感的かつ自然に公式化する方法を提供します。経済モデルを使用することで、相互作用について論理的に考察し、システムの変更が行動にどのように影響するかを予測し、人々のシステムとの相互作用のパフォーマンスを測定することが可能です。本チュートリアルでは、まず関連する経済理論のを提供し、それらをどのように適用してユーザーに最適なランキングを提供するためのさまざまなランキング原則を策定できるかを示します。次に、経済学が人々の検索システムとの相互作用をどのようにモデル化できるか、そしてこれらのモデルを使用してユーザー行動についての仮説を生成する方法について説明します。第3セッションでは、CWLフレームワーク（期待効用、期待総効用、期待総コストなどを報告）を使用して情報検索システムとアプリケーションの測定を支えるために経済学がどのように使用されてきたかと、ユーザーの相互作用の異なるモデルがどのように異なる指標をもたらすかに焦点を当てます。その後、情報探索理論を使用して情報検索システムのパフォーマンスを測定する方法について説明し、人々がどのように検索するかの理論と、どのようにそれを測定するかを結び付けます。最後のセッションでは、経済モデルと検索の測定方法を構築することに費やします。ここでは、参加者に挑戦するためのサンプル問題が提供されるか、参加者自身が問題を持ち込むことができます。
+        </label>
+        <input type="checkbox" id="Panel253" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Economics provides an intuitive and natural way to formally represent the costs and benefits of interacting with applications, interfaces and devices. By using economic models it is possible to reason about interaction, make predictions about how changes to the system will affect behavior, and measure the performance of people's interactions with the system. In this tutorial, we first provide an overview of relevant economic theories, before showing how they can be applied to formulate different ranking principles to provide the optimal ranking to users. This is followed by a session showing how economics can be used to model how people interact with search systems, and how to use these models to generate hypotheses about user behavior. The third session focuses on how economics has been used to underpin the measurement of information retrieval systems and applications using the CWL framework (which reports the expected utility, expected total utility, expected total cost, and so on) -- and how different models of user interaction lead to different metrics. We then show how information foraging theory can be used to measure the performance of an information retrieval system -- connecting the theory of how people search with how we measure it. The final session of the day will be spent building economic models and measures of search. Here sample problems will be provided to challenge participants, or participants can bring their own.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel254">
+        <strong> Fairness and Discrimination in Retrieval and Recommendation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michael+D.+Ekstrand">Michael D. Ekstrand</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Robin+Burke">Robin Burke</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fernando+Diaz">Fernando Diaz</a> (3) </u>  <br>
+        1:  Boise State University, 2:  University of Colorado, 3:  Microsoft Research <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331380">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Fairness and Discrimination in Retrieval and Recommendation">Google Scholar</a></div>
+        (254)
+        <br>
+        <b>概要:　</b> フェアネス（公平性）とそれに関連する問題は、さまざまなAIおよび機械学習の文脈でますます重要性を増しています。これらは情報検索やレコメンデーションといった関連問題においても非常に関連しており、SIGIR、FAT、RecSysなどの文献や、FATRECワークショップやTREC 2019のフェアネストラックといった特別セッションでその重要性が示されています。しかしながら、分類、スコアリング、さらには多くのランキング設定からアルゴリズムのフェアネスの構成を情報検索およびレコメンデーションのシナリオにすることは容易ではありません。本チュートリアルは、情報検索研究者に対してアルゴリズムのフェアネスを理解し、他の設定からの概念がどのように（あるいはどのようにしていない）されるかを理解し、このトピックに関する増え続ける文献の導入を提供するものです。
+        </label>
+        <input type="checkbox" id="Panel254" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Fairness and related concerns have become of increasing importance in a variety of AI and machine learning contexts. They are also highly relevant to information retrieval and related problems such as recommendation, as evidenced by the growing literature in SIGIR, FAT, RecSys, and special sessions such as the FATREC workshop and the Fairness track at TREC 2019; however, translating algorithmic fairness constructs from classification, scoring, and even many ranking settings into information retrieval and recommendation scenarios is not a straightforward task. This tutorial will help to orient IR researchers to algorithmic fairness, understand how concepts do and do not translate from other settings, and provide an introduction to the growing literature on this topic.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel255">
+        <strong> Deep Natural Language Processing for Search Systems </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Weiwei+Guo">Weiwei Guo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Huiji+Gao">Huiji Gao</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jun+Shi">Jun Shi</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Bo+Long">Bo Long</a> (1) </u>  <br>
+        1:  LinkedIn, 2:  linkedIn <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331381">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Deep Natural Language Processing for Search Systems">Google Scholar</a></div>
+        (255)
+        <br>
+        <b>概要:　</b> ディープラーニングモデルは、多くの自然言語処理タスクにおいて非常に成功を収めています。検索エンジンは、クエリやドキュメントなどの豊富な自然言語データを扱うため、このようなデータに対してディープな自然言語処理を適用することで、検索性能の向上が期待されます。さらに、これにより、会話型検索やチャットボットといった先進的な検索体験を探求する前例のない機会が生まれます。本チュートリアルは、産業の観点から、検索システムにおけるディープラーニングベースの自然言語処理のを提供します。我々は、実際にディープな自然言語処理がどのように検索システムを支えるかに焦点を当てます。チュートリアルでは、基本概念の紹介、関連する課題の詳細、最新アプローチのレビュー、検索システムにおけるエンドツーエンドタスクの例をカバーし、今後のトレンドについても議論します。
+        </label>
+        <input type="checkbox" id="Panel255" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Deep learning models have been very successful in many natural language processing tasks. Search engine works with rich natural language data, e.g., queries and documents, which implies great potential of applying deep natural language processing on such data to improve search performance. Furthermore, it opens an unprecedented opportunity to explore more advanced search experience, such as conversational search and chatbot. This tutorial offers an overview on deep learning based natural language processing for search systems from an industry perspective. We focus on how deep natural language processing powers search systems in practice. The tutorial introduces basic concepts, elaborates associated challenges, reviews the state-of-the-art approaches, covers end-to-end tasks in search systems with examples, and discusses the future trend.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel256">
+        <strong> Extracting, Mining and Predicting Users' Interests from Social Networks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fattane+Zarrinkalam">Fattane Zarrinkalam</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hossein+Fani">Hossein Fani</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ebrahim+Bagheri">Ebrahim Bagheri</a> (1) </u>  <br>
+        1:  Ryerson University, 2:  University of New Brunswick <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331383">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Extracting, Mining and Predicting Users' Interests from Social Networks">Google Scholar</a></div>
+        (256)
+        <br>
+        <b>概要:　</b> 英文から日本語への対象ジャーナル: Machine Learning<br>目的: わかりやすく、明瞭な文章<br>対象読者: 専門家<br>スタイル: 分析的、博士課程レベル<br>本文:ソーシャルネットワーク上のユーザー生成コンテンツの豊富さにより、ユーザーの関心を正確かつ効果的に抽出、分析、予測するモデルを構築する機会が増しています。これにより、ユーザーとの効果的なエンゲージメント、適切なサービスの高品質な提供、ユーザー満足度の向上が期待されています。従来のユーザープロファイル構築方法は、ユーザーにとって侵入的で望ましくないと見なされることのあったAIベースの嗜好推定技術に依存していましたが、最近の進展は非侵入的でありながら正確なユーザーの関心や嗜好を特定する方法に焦点を当てています。本チュートリアルでは、ユーザーの関心を効果的に抽出するために関連する5つの重要な側面を取り上げます:<br><br>1. ユーザーの関心を抽出するために使用される情報源の紹介<br>2. 文献に提案されている様々なタイプのユーザー関心プロファイル<br>3. ユーザーの関心を抽出するために採用または提案されている技術<br>4. 最先端の方法のスケーラビリティとリソース要件<br>5. 抽出されたユーザー関心プロファイルの適切性を検証するために採用されている評価方法<br><br>また、既存の課題、未解決の研究課題、さらなる研究のためのエキサイティングな機会についても紹介します。
+        </label>
+        <input type="checkbox" id="Panel256" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The abundance of user generated content on social networks provides the opportunity to build models that are able to accurately and effectively extract, mine and predict users' interests with the hopes of enabling more effective user engagement, better quality delivery of appropriate services and higher user satisfaction. While traditional methods for building user profiles relied on AI-based preference elicitation techniques that could have been considered to be intrusive and undesirable by the users, more recent advances are focused on a non-intrusive yet accurate way of determining users' interests and preferences. In this tutorial, we cover five important aspects related to the effective mining of user interests: (1) we introduce the information sources that are used for extracting user interests, (2) various types of user interest profiles that have been proposed in the literature, (3) techniques that have been adopted or proposed for mining user interests, (4) the scalability and resource requirements of the state of the art methods, and finally (5) the evaluation methodologies that are adopted in the literature for validating the appropriateness of the mined user interest profiles. We also introduce existing challenges, open research question and exciting opportunities for further work.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel257">
+        <strong> Web Table Extraction, Retrieval and Augmentation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shuo+Zhang">Shuo Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Krisztian+Balog">Krisztian Balog</a> (1) </u>  <br>
+        1:  University of Stavanger <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331385">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Web Table Extraction, Retrieval and Augmentation">Google Scholar</a></div>
+        (257)
+        <br>
+        <b>概要:　</b> 本チュートリアルは、過去20年間にわたるウェブテーブルに関する研究を合成し、提示します。我々はタスクを情報アクセスの主要な6カテゴリに分類しました：(i) テーブル抽出、(ii) テーブル解釈、(iii) テーブル検索、(iv) テーブルに対する質問応答、(v) ナレッジベースの補完、および(vi) テーブルの完成。それぞれのカテゴリについて、重要なアプローチを特定し紹介し、関連するリソースを提示し、異なるタスク間の相互依存関係を指摘します。
+        </label>
+        <input type="checkbox" id="Panel257" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This tutorial synthesizes and presents research on web tables over the past two decades. We group the tasks into six main categories of information access tasks: (i) table extraction, (ii) table interpretation, (iii) table search, (iv) question answering on tables, (v) knowledge base augmentation, and (vi) table completion. For each category, we identify and introduce seminal approaches, present relevant resources, and point out interdependencies among the different tasks.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel258">
+        <strong> Example-based Search: a New Frontier for Exploratory Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Matteo+Lissandrini">Matteo Lissandrini</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Davide+Mottin">Davide Mottin</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Themis+Palpanas">Themis Palpanas</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yannis+Velegrakis">Yannis Velegrakis</a> (4) </u>  <br>
+        1:  Aalborg University, 2:  Aarhus University, 3:  Paris Descartes University, 4:  Utrecht University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331387">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Example-based Search: a New Frontier for Exploratory Search">Google Scholar</a></div>
+        (258)
+        <br>
+        <b>概要:　</b> 探索は、世界とその本質について知識を蓄積するための基本的な方法の一つです。前例のない量と速度でデータをほぼ自動的に収集するにつれて、私たちのデータセットは複雑で理解しにくくなっています。この文脈において、探索的検索は、仮のクエリから始めて次のクエリへの手がかりを提供することで、必要な知識を段階的に集めるための便利なツールとなります。探索的クエリは、SQLなどの複雑な宣言型言語や複雑なメカニズムを避けるために十分にシンプルであるべきであり、同時に複雑な情報ニーズを表現するために必要な柔軟性と表現力を維持する必要があります。最近、例ベースの手法の再発見が見られました。この手法では、ユーザーやアナリストが例を入力として使用することでクエリ言語を回避します。この意味論の変化により、クエリとして回答セットの例メンバーの一部を受け取る方法がいくつか登場しました。検索システムは、与えられた例と基盤となるデータベースによって提供された追加情報に基づいて、全体の回答セットを推測します。このチュートリアルでは、探索的分析のための主要な例ベースの手法について説明します。異なるデータタイプには異なる技術が必要であることを示し、リレーショナルデータ、テキストデータ、およびグラフデータに特化したアルゴリズムを紹介します。最後に、このクエリパラダイムの統一的な見解を提供し、新しい興味深い研究方向を特定します。
+        </label>
+        <input type="checkbox" id="Panel258" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Exploration is one of the primordial ways to accrue knowledge about the world and its nature. As we accumulate, mostly automatically, data at unprecedented volumes and speed, our datasets have become complex and hard to understand. In this context, exploratory search provides a handy tool for progressively gather the necessary knowledge by starting from a tentative query that can provide cues about the next queries to issue. An exploratory query should be simple enough to avoid complicate declarative languages (such as SQL) and convoluted mechanism, and at the same time retain the flexibility and expressiveness required to express complex information needs. Recently, we have witnessed a rediscovery of the so called example-based methods, in which the user, or the analyst circumvent query languages by using examples as input. This shift in semantics has led to a number of methods receiving as query a set of example members of the answer set. The search system then infers the entire answer set based on the given examples and any additional information provided by the underlying database. In this tutorial, we present an excursus over the main example-based methods for exploratory analysis. We show how different data types require different techniques, and present algorithms that are specifically designed for relational, textual, and graph data. We conclude by providing a unifying view of this query-paradigm and identify new exciting research directions.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel259">
+        <strong> Deep Chit-Chat: Deep Learning for Chatbots </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Wei+Wu">Wei Wu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rui+Yan">Rui Yan</a> (2) </u>  <br>
+        1:  Microsoft Corporation, 2:  Peking University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331388">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Deep Chit-Chat: Deep Learning for Chatbots">Google Scholar</a></div>
+        (259)
+        <br>
+        <b>概要:　</b> 本チュートリアルは、オープンドメイン会話に関する当社の長期的な研究、Microsoft XiaoIceの開発における豊富な実践経験、およびEMNLP 2018とWeb Conference 2019での以前のチュートリアルに基づいています。まず、学術界と産業界がチャットボットにおいて達成した最近の成果をまとめ、その後、オープンドメイン会話モデリングの最新手法について、検索ベースの方法と生成ベースの方法の両方を徹底的かつ体系的に紹介します。これらに加えて、モデル設計からモデル学習への移行、知識に依存しない会話から知識に基づく会話への移行、単一モーダル会話からマルチモーダル会話への移行など、両方のグループの方法に関する新しい進展も取り上げます。最後に、非タスク指向の対話システムとタスク指向の対話システムを組み合わせる方法や、チャットボットで言語学習を強化する方法といった将来的に有望な方向性についても言及します。
+        </label>
+        <input type="checkbox" id="Panel259" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The tutorial is based on our long-term research on open domain conversation, rich hands-on experience on development of Microsoft XiaoIce, and our previous tutorials on EMNLP 2018 and the Web Conference 2019. It starts from a summary of recent achievement made by both academia and industry on chatbots, and then performs a thorough and systematic introduction to state-of-the-art methods for open domain conversation modeling including both retrieval-based methods and generation-based methods. In addition to these, the tutorial also covers some new progress on both groups of methods, such as transition from model design to model learning, transition from knowledge agnostic conversation to knowledge aware conversation, and transition from single-modal conversation to multi-modal conversation. The tutorial is ended by some promising future directions such as how to combine non-task-oriented dialogue systems with task-oriented dialogue systems and how to enhance language learning with chatbots.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel260">
+        <strong> Learning to Quantify: Estimating Class Prevalence via Supervised Learning </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alejandro+Moreo">Alejandro Moreo</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Fabrizio+Sebastiani">Fabrizio Sebastiani</a> (1) </u>  <br>
+        1:  Consiglio Nazionale delle Ricerche <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331389">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Learning to Quantify: Estimating Class Prevalence via Supervised Learning">Google Scholar</a></div>
+        (260)
+        <br>
+        <b>概要:　</b> 量的推定（「有監督の有病率推定」[2]や「クラス事前確率推定」[7]とも呼ばれる）は、未ラベルの項目群σとクラス群C = c1, ..., c|C| が与えられたとき、各クラスci ∈ Cの相対頻度（または「有病率」）p(ci)を推定するタスクです。各項目が正確に1つのクラスに属する場合、0 ≤ p(ci) ≤ 1であり、∑ci ∈ C p(ci) = 1であることから、pはクラス群Cに対するσ内の項目の分布（真の分布）を表し、したがって量的推定はpの推定（すなわち、予測分布p?の計算）に相当します。量的推定は、市場調査、政治学、社会科学、疫学など、多くの分野で重要であり、これらの分野は通常、個々のデータではなく集計データを扱います。この文脈では、個々の未ラベルインスタンスを分類することが主目的ではなく、データ内の関心クラスの有病率を推定することが重要です。たとえば、特定の人物（例：政治候補者）に関するツイートをポジティブまたはネガティブな態度として分類する場合、通常、特定のツイートのクラスにはあまり関心がなく、むしろこれらのツイートのうちどのくらいの割合がそのクラスに属するかを知りたいのです[14]。
+        </label>
+        <input type="checkbox" id="Panel260" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Quantification (also known as "supervised prevalence estimation" [2], or "class prior estimation" [7]) is the task of estimating, given a set σ of unlabelled items and a set of classes C = c1, . . . , c |C| , the relative frequency (or "prevalence") p(ci ) of each class ci C, i.e., the fraction of items in σ that belong to ci . When each item belongs to exactly one class, since 0 ≤ p(ci ) ≤ 1 and Í ci C p(ci ) = 1, p is a distribution of the items in σ across the classes in C (the true distribution), and quantification thus amounts to estimating p (i.e., to computing a predicted distribution p?). Quantification is important in many disciplines (such as e.g., market research, political science, the social sciences, and epidemiology) which usually deal with aggregate (as opposed to individual) data. In these contexts, classifying individual unlabelled instances is usually not a primary goal, while estimating the prevalence of the classes of interest in the data is. For instance, when classifying the tweets about a certain entity (e.g., a political candidate) as displaying either a Positive or a Negative stance towards the entity, we are usually not much interested in the class of a specific tweet: instead, we usually want to know the fraction of these tweets that belong to the class [14].
+        </div> </ul> <br>
+
+
+
+        <label for="Panel261">
+        <strong> SIGIR 2019 Tutorial on Explainable Recommendation and Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongfeng+Zhang">Yongfeng Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiaxin+Mao">Jiaxin Mao</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qingyao+Ai">Qingyao Ai</a> (3) </u>  <br>
+        1:  Rutgers University, 2:  Tsinghua University, 3:  University of Massachusetts Amherst <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331390">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=SIGIR 2019 Tutorial on Explainable Recommendation and Search">Google Scholar</a></div>
+        (261)
+        <br>
+        <b>概要:　</b> 説明可能なレコメンドや検索は、高品質なレコメンドや検索結果を生成するだけでなく、システムの透明性、説得力、信頼性、有効性などを向上させるためにユーザーやシステム設計者に直感的な結果説明も提供するモデルや方法の開発を試みています。これは特に個人化された検索やレコメンドのシナリオにおいて重要であり、ユーザーは自身の検索およびレコメンドリストに特定の製品、ウェブページ、ニュース記事、または友人の提案がなぜ含まれているのかを知りたいと考えます。このチュートリアルでは、説明可能なレコメンドや検索アルゴリズムの研究とその応用、ならびに検索エンジン、電子商取引、ソーシャルネットワークなどの実世界のシステムにおける応用に焦点を当てます。このチュートリアルの目的は、コミュニティに説明可能なレコメンドや検索方法を紹介し、その方向性に興味を持つ研究者や実務家を集めて議論やアイデアの交流、研究の推進を図ることです。
+        </label>
+        <input type="checkbox" id="Panel261" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Explainable recommendation and search attempt to develop models or methods that not only generate high-quality recommendation or search results, but also intuitive explanations of the results for users or system designers, which can help to improve the system transparency, persuasiveness, trustworthiness, and effectiveness, etc. This is even more important in personalized search and recommendation scenarios, where users would like to know why a particular product, web page, news report, or friend suggestion exists in his or her own search and recommendation lists. The tutorial focuses on the research and application of explainable recommendation and search algorithms, as well as their application in real-world systems such as search engine, e-commerce and social networks. The tutorial aims at introducing and communicating explainable recommendation and search methods to the community, as well as gathering researchers and practitioners interested in this research direction for discussions, idea communications, and research promotions.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel262">
+        <strong> Learning to Rank in Theory and Practice: From Gradient Boosting to Neural Networks and Unbiased Learning </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Claudio+Lucchese">Claudio Lucchese</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Franco+Maria+Nardini">Franco Maria Nardini</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rama+Kumar+Pasumarthi">Rama Kumar Pasumarthi</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sebastian+Bruch">Sebastian Bruch</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michael+Bendersky">Michael Bendersky</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Xuanhui+Wang">Xuanhui Wang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Harrie+Oosterhuis">Harrie Oosterhuis</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rolf+Jagerman">Rolf Jagerman</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maarten+de+Rijke">Maarten de Rijke</a> (4) </u>  <br>
+        1:  Ca' Foscari University & ISTI-CNR, 2:  Ca' Foscari University & ISTI-CNR, 3:  Google Research, 4:  University of Amsterdam <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3334824">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Learning to Rank in Theory and Practice: From Gradient Boosting to Neural Networks and Unbiased Learning">Google Scholar</a></div>
+        (262)
+        <br>
+        <b>概要:　</b> 本チュートリアルは、現代のLearning to Rank (LtR)研究の多様な分野を結びつけ、統一された一日のフルデーチュートリアルとして提供することを目指しています。まず、LtRの基本概念とその様々なサブフィールドのを紹介します。その後、効率性と効果のトレードオフや最適化に焦点を当て、LambdaMARTのような勾配ブースティング法の最近の進展について議論します。次に、新しいオープンソースのTensorFlowパッケージであるTF-Rankingを紹介し、スパースなテキスト特徴をモデル化するためのその利用方法を説明します。最後に、バイアスのかかった暗黙のユーザーフィードバックから学ぶことを目指している新しい研究分野であるバイアスフリーのLtRについて説明します。このチュートリアルは、上述の各トピックに焦点を当てた二時間のセッション三回で構成されます。理論と実践のセッションを組み合わせて提供し、LtRの最新技術についてさらに学びたい学術関係者や、アプリケーションでLtR技術を使用したい実務者の双方に有益な内容となることを目指しています。
+        </label>
+        <input type="checkbox" id="Panel262" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This tutorial aims to weave together diverse strands of modern Learning to Rank (LtR) research, and present them in a unified full-day tutorial. First, we will introduce the fundamentals of LtR, and an overview of its various sub-fields. Then, we will discuss some recent advances in gradient boosting methods such as LambdaMART by focusing on their efficiency/effectiveness trade-offs and optimizations. Subsequently, we will then present TF-Ranking, a new open source TensorFlow package for neural LtR models, and how it can be used for modeling sparse textual features. Finally, we will conclude the tutorial by covering unbiased LtR -- a new research field aiming at learning from biased implicit user feedback. The tutorial will consist of three two-hour sessions, each focusing on one of the topics described above. It will provide a mix of theoretical and hands-on sessions, and should benefit both academics interested in learning more about the current state-of-the-art in LtR, as well as practitioners who want to use LtR techniques in their applications.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel263">
+        <strong> ECOM'19: The SIGIR 2019 Workshop on eCommerce </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jon+Degenhardt">Jon Degenhardt</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Surya+Kallumadi">Surya Kallumadi</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Utkarsh+Porwal">Utkarsh Porwal</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Andrew+Trotman">Andrew Trotman</a> (3) </u>  <br>
+        1:  eBay Inc., 2:  Home Depot, 3:  University of Otago <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331643">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=ECOM'19: The SIGIR 2019 Workshop on eCommerce">Google Scholar</a></div>
+        (263)
+        <br>
+        <b>概要:　</b> eCommerceにおける情報検索（IR）は、学術文献でますます注目を集めており、eBay、Amazon、Airbnb、Alibaba、Taobao、Target、Facebook、Home Depotなどの最大級のウェブサイトにとって重要なコンポーネントです。こうした組織は、情報検索に関する研究の重要性を明確に評価しています。本ワークショップの目的は、eCommerce IRの研究者と実務者を集め、この分野に特有のトピックを議論し、研究課題を設定し、データセットの構築方法やアルゴリズムの評価方法を検討することです。eCommerce IRは研究に対して豊かな可能性を持ち、独自の問題セットを抱えています。例えば、eCommerce検索では文書（製品）間のハイパーテキストリンクが存在しない場合が多く、クリックストリームだけでなく、購買ストリームも重要です。eCommerceにおける問題は広範囲にわたり、ユーザーインタラクションの形式からオークションサイト上の急速に変化するコレクションの動的更新、Airbnbの予約など、体験的な製品にまで及びます。本ワークショップは、SIGIR 2017およびSIGIR 2018で開催された非常に成功したワークショップの続編です。今年は、以前のワークショップで議論された複数の側面（特に決定的なランク順序とその評価方法）を追跡するために、eBayがスポンサーを務めるデータチャレンジを実施します。
+        </label>
+        <input type="checkbox" id="Panel263" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> eCommerce Information Retrieval is receiving increasing attention in the academic literature, and is an essential component of some of the largest web sites (such as eBay, Amazon, Airbnb, Alibaba, Taobao, Target, Facebook, Home Depot, and others). These kinds of organisations clearly value the importance of research into Information Retrieval. The purpose of this workshop is to bring together researchers and practitioners of eCommerce IR to discuss topics unique to it, to set a research agenda, to examine how to build data sets, and how evaluate algorithms for research into this fascinating topic. eCommerce IR is ripe for research and has a unique set of problems. For example, in eCommerce search there may be no hypertext links between documents (products); there is a click stream, but more importantly, there is often a buy stream. eCommerce problems are wide in scope and range from user interaction modalities through to dynamic updates of a rapidly changing collection on auction sites, and the experienceness of some products (such as Airbnb bookings). This workshop is a follow up to very successful workshops held at SIGIR 2017 and SIGIR 2018. This year we will be running a data challenge (sponsored by eBay) which will allow us to follow up on multiple aspects that were discussed in the previous workshops (in particular, deterministic rank orders and how to evaluate these).
+        </div> </ul> <br>
+
+
+
+        <label for="Panel264">
+        <strong> Workshop on Fairness, Accountability, Confidentiality, Transparency, and Safety in Information Retrieval (FACTS-IR) </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alexandra+Olteanu">Alexandra Olteanu</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jean+Garcia-Gathright">Jean Garcia-Gathright</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Maarten+de+Rijke">Maarten de Rijke</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michael+D.+Ekstrand">Michael D. Ekstrand</a> (4) </u>  <br>
+        1:  Microsoft Research, 2:  Spotify, 3:  University of Amsterdam, 4:  Boise State University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331644">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Workshop on Fairness, Accountability, Confidentiality, Transparency, and Safety in Information Retrieval (FACTS-IR)">Google Scholar</a></div>
+        (264)
+        <br>
+        <b>概要:　</b> 本ワークショップでは、責任ある情報検索システムの開発と展開における課題を探ります。特に、公正性、責任性、機密性、透明性、安全性という5つの重要な側面に関する実行可能な研究課題の特定に焦点を当てます。本ワークショップは単なるミニカンファレンスではなく、参加者が実際に取り組むことが期待されるイベントです。ワークショップでは、責任ある情報検索のための技術研究アジェンダの作成に貢献したいと考える多様な研究者や実務者が一堂に会します。
+        </label>
+        <input type="checkbox" id="Panel264" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This workshop explores challenges in responsible information retrieval system development and deployment. The focus is on determining actionable research agendas on five key dimensions of responsible information retrieval: fairness, accountability, confidentiality, transparency, and safety. Rather than just a mini-conference, this workshop is an event during which participants are expected to work. The workshop brings together a diverse set of researchers and practitioners interested in contributing to the development of a technical research agenda for responsible information retrieval.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel265">
+        <strong> ROME 2019: Workshop on Reducing Online Misinformation Exposure </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Guillaume+Bouchard">Guillaume Bouchard</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Guido+Caldarelli">Guido Caldarelli</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Vassilis+Plachouras">Vassilis Plachouras</a> (1) </u>  <br>
+        1:  Facebook, 2:  IMT School for Advanced Studies Lucca <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331645">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=ROME 2019: Workshop on Reducing Online Misinformation Exposure">Google Scholar</a></div>
+        (265)
+        <br>
+        <b>概要:　</b> オンライン上の誤情報の拡散は、政治や公共の健康などの分野で人々の信頼を損ない、誤解を招くことで社会に影響を与える可能性がある課題です。ファクトチェックは誤情報を特定するひとつの方法ですが、これは時間がかかり、かなりの労力を要します。ファクトチェックの効率を向上させるためには、プロセスの一部を自動化したり、主張を検証するための新しいプロセスを定義したりすることが必要です。このような課題を解決するには、複数の分野からの専門知識が必要です。ROME 2019の目的は、情報検索、自然言語処理、セマンティックウェブ、複雑ネットワークなどの様々な分野の研究者を集め、これらの問題について話し合い、自動化ファクトチェックの新しい方向性を定義することです。
+        </label>
+        <input type="checkbox" id="Panel265" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The spread of misinformation online is a challenge that may have an impact on society by misleading and undermining the trust of people in domains such as politics or public health. While fact-checking is one way to identify misinformation, it is a slow process and requires significant effort. Improving the efficiency of fact-checking by automating parts of the process or defining new processes to validate claims is a challenging task with a need for expertise from multiple disciplines. The aim of ROME 2019 is to bring together researchers from various fields such as Information Retrieval, Natural Language Processing, Semantic Web and Complex Networks to discuss these problems and define new directions in the area of automated fact-checking.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel266">
+        <strong> Third International Workshop on Recent Trends in News Information Retrieval (NewsIR'19) </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dyaa+Albakour">Dyaa Albakour</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Miguel+Martinez">Miguel Martinez</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Sylvia+Tippmann">Sylvia Tippmann</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ahmet+Aker">Ahmet Aker</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jonathan+Stray">Jonathan Stray</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Shiri+Dori-Hacohen">Shiri Dori-Hacohen</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alberto+Barrón-Cedeño">Alberto Barrón-Cedeño</a> (5) </u>  <br>
+        1:  Signal AI, 2:  University of Duisburg-Essen, 3:  Columbia University, 4:  AuCoDe, 5:  DIT Università di Bologna <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331646">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Third International Workshop on Recent Trends in News Information Retrieval (NewsIR'19)">Google Scholar</a></div>
+        (266)
+        <br>
+        <b>概要:　</b> 過去10年間にわたり、ジャーナリズム業界は革命的な変化を遂げ、新たな機会と課題が生じました。ニュースの消費、制作、および配信のすべてが技術によって影響を受け、変革されました。読者はニュースイベントについて情報を得るために、膨大な量の情報に対応する新しいメカニズムを必要としています。記者は調査作業に自然言語処理（NLP）や情報検索（IR）技術を使用し始めました。出版社やアグリゲーターは、新しいビジネスモデルや、オーディエンスにリーチし続ける新しい方法を模索しています。ビジネスモデルの変化は、ページビューを増やそうとする試みに伴って、ジャーナリズムのスタイルの漸進的な変化をもたらしました。また、より懸念すべきことに、本物のニュース媒体の自由と誠実さを脅かす偽情報や誤情報、さらには「フェイクニュース」との批判が増えています。ソーシャルメディアプラットフォームは視聴者を惹きつけ、フィルターバブルと読者の極端な二極化をもたらします。ニュースドキュメントは、情報アクセスおよび検索手法の研究の一部であり続けてきました。過去数年間、IRコミュニティはジャーナリズムにおけるこれらの課題をますます認識し、解決方法についての議論を始めました。その認識の証拠として、2016年と2018年にECIRで開催されたNewsIRワークショップの2つの以前のエディションへの参加があります。これらのワークショップの最も重要な成果の1つは、ジャーナリズムの変化する性質とそれに伴うIRの課題に対するコミュニティの認識が高まったことです。さらにもう一歩前進するために、第3回ワークショップの目標は、技術とジャーナリズムの両方からニュースの専門家を集める学際的な場を作ることです。これにより、NewsIRを主にIR研究者を対象とするヨーロッパのフォーラムから、より包括的で影響力のある国際フォーラムへと発展させます。この新しい形式が、ニュースプロフェッショナルとIR研究者の相互理解を深め、ニュース消費者にとってより良い成果をもたらすことを期待しています。我々は、技術がジャーナリストに提供する可能性と課題、ジャーナリズムの新しい発展がIR研究者にもたらす課題、およびニュース読者に対する情報アクセスタスクの複雑性に取り組みます。
+        </label>
+        <input type="checkbox" id="Panel266" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The journalism industry has undergone a revolution in the past decade, leading to new opportunities as well as challenges. News consumption, production and delivery have all been affected and transformed by technology Readers require new mechanisms to cope with the vast volume of information in order to be informed about news events. Reporters have begun to use natural language processing (NLP) and (IR) techniques for investigative work. Publishers and aggregators are seeking new business models, and new ways to reach and retain their audience. A shift in business models has led to a gradual shift in styles of journalism in attempts to increase page views; and, far more concerning, to real mis- and dis-information, alongside allegations of "fake news" threatening the journalistic freedom and integrity of legitimate news outlets. Social media platforms drive viewership, creating filter bubbles and an increasingly polarized readership. News documents have always been a part of research on information access and retrieval methods. Over the last few years, the IR community has increasingly recognized these challenges in journalism and opened a conversation about how we might begin to address them. Evidence of this recognition is the participation in the two previous editions of our NewsIR workshop, held in ECIR 2016 and 2018. One of the most important outcomes of those workshops is an increasing awareness in the community about the changing nature of journalism and the IR challenges it entails. To move yet another step forward, the goal of the third edition of our workshop will be to create a multidisciplinary venue that brings together news experts from both technology and journalism. This would take NewsIR from a European forum targeting mainly IR researchers, into a more inclusive and influential international forum. We hope that this new format will foster further understanding for both news professionals and IR researchers, as well as producing better outcomes for news consumers. We will address the possibilities and challenges that technology offers to the journalists, the challenges that new developments in journalism create for IR researchers, and the complexity of information access tasks for news readers.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel267">
+        <strong> The SIGIR 2019 Open-Source IR Replicability Challenge (OSIRRC 2019) </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ryan+Clancy">Ryan Clancy</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Nicola+Ferro">Nicola Ferro</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Claudia+Hauff">Claudia Hauff</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jimmy+Lin">Jimmy Lin</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Tetsuya+Sakai">Tetsuya Sakai</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Ze+Zhong+Wu">Ze Zhong Wu</a> (1) </u>  <br>
+        1:  University of Waterloo, 2:  University of Padua, 3:  TU Delft, 4:  Waseda University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331647">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=The SIGIR 2019 Open-Source IR Replicability Challenge (OSIRRC 2019)">Google Scholar</a></div>
+        (267)
+        <br>
+        <b>概要:　</b> 繰り返し可能性、再現可能性、及び再現性の重要性は、望ましい科学的手法の支援および経験的進歩の維持の両面で、計算科学において広く認識されています。本ワークショップでは、標準的なテストコレクション上でアドホックなドキュメント検索実験を実行するシステムをキャプチャするイメージをサポートする、共通のDockerインターフェース仕様を通じて、アドホックなドキュメント検索における再現性の課題に取り組みます。
+        </label>
+        <input type="checkbox" id="Panel267" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The importance of repeatability, replicability, and reproducibility is broadly recognized in the computational sciences, both in supporting desirable scientific methodology as well as sustaining empirical progress. This workshop tackles the replicability challenge for ad hoc document retrieval, via a common Docker interface specification to support images that capture systems performing ad hoc retrieval experiments on standard test collections.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel268">
+        <strong> WCIS 2019: 1st Workshop on Conversational Interaction Systems </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Abhinav+Rastogi">Abhinav Rastogi</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alexandros+Papangelis">Alexandros Papangelis</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rahul+Goel">Rahul Goel</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chandra+Khatri">Chandra Khatri</a> (2) </u>  <br>
+        1:  Google Research, 2:  Uber AI, 3:  Amazon Alexa AI <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331648">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=WCIS 2019: 1st Workshop on Conversational Interaction Systems">Google Scholar</a></div>
+        (268)
+        <br>
+        <b>概要:　</b> 2019年7月25日、フランスのパリで会話型インタラクションシステムに関する初のワークショップが開催されました。このワークショップは、情報検索のACM特別興味グループ（SIGIR）との共催で行われました。ワークショップの目的は、学界および産業界からの研究者を集め、会話エージェントとインタラクティブシステムの課題と将来について議論することです。ワークショップのプログラムは、多様なサブエリアをカバーしており、マルチモーダルな会話インターフェイス、対話のアクセシビリティ、これらのシステムのスケーリングなどが含まれます。プログラムには、8つの招待講演、注目される話題に関する活発なパネルディスカッション、そしてオリジナル研究論文の発表が含まれています。
+        </label>
+        <input type="checkbox" id="Panel268" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The first workshop on Conversational Interaction Systems is held in Paris, France on July 25th, 2019, co-located with the ACM Special Interest Group on Information Retrieval (SIGIR). The goal of the workshop is to bring together researchers from academia and industry to discuss the challenges and future of conversational agents and interactive systems. The workshop has an exciting program that spans a number of subareas including: multi-modal conversational interfaces, dialogue accessibility, and scaling such systems. The program includes eight invited talks, a lively panel discussion on emerging topics, and presentation of original research papers.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel269">
+        <strong> EARS 2019: The 2nd International Workshop on ExplainAble Recommendation and Search </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yongfeng+Zhang">Yongfeng Zhang</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Yi+Zhang">Yi Zhang</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min+Zhang">Min Zhang</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Chirag+Shah">Chirag Shah</a> (1) </u>  <br>
+        1:  Rutgers University, 2:  University of California Santa Cruz, 3:  Tsinghua University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331649">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=EARS 2019: The 2nd International Workshop on ExplainAble Recommendation and Search">Google Scholar</a></div>
+        (269)
+        <br>
+        <b>概要:　</b> 説明可能なレコメンデーションと検索は、高品質なレコメンデーションや検索結果を生成するだけでなく、モデルの解釈性や結果に関する説明をユーザーやシステム設計者に提供するモデルや方法を開発することを目指しています。これにより、システムの透明性、説得力、信頼性、効果性などを向上させることができます。特に、パーソナライズされた検索やレコメンデーションのシナリオにおいて、ユーザーが特定の製品、ウェブページ、ニュース記事、または友人の推薦がなぜ自分の検索やレコメンデーションリストに存在するのかを知りたい場合に、これが一層重要となります。本ワークショップは、説明可能なレコメンデーション、検索、およびより広い範囲の情報検索（IR）タスクの研究と応用に焦点を当てています。研究者や実務家を集め、議論、アイデアの交流、および研究推進の場を提供します。また、AIの解釈性に関する最近の規制について、IR、機械学習、AI、データサイエンス、およびその他のコミュニティに向けた洞察に満ちた議論を生み出すことを目指しています。
+        </label>
+        <input type="checkbox" id="Panel269" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Explainable recommendation and search attempt to develop models or methods that not only generate high-quality recommendation or search results, but also interpretability of the models or explanations of the results for users or system designers, which can help to improve the system transparency, persuasiveness, trustworthiness, and effectiveness, etc. This is even more important in personalized search and recommendation scenarios, where users would like to know why a particular product, web page, news report, or friend suggestion exists in his or her own search and recommendation lists. The workshop focuses on the research and application of explainable recommendation, search, and a broader scope of IR tasks. It will gather researchers as well as practitioners in the field for discussions, idea communications, and research promotions. It will also generate insightful debates about the recent regulations regarding AI interpretability, to a broader community including but not limited to IR, machine learning, AI, Data Science, and beyond.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel270">
+        <strong> Joint Workshop on Bibliometric-enhanced Information Retrieval and Natural Language Processing for Digital Libraries (BIRNDL 2019) </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Muthu+Kumar+Chandrasekaran">Muthu Kumar Chandrasekaran</a> (1), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Philipp+Mayr">Philipp Mayr</a> (2), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Michihiro+Yasunaga">Michihiro Yasunaga</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dayne+Freitag">Dayne Freitag</a> (4), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Dragomir+Radev">Dragomir Radev</a> (3), <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Min-Yen+Kan">Min-Yen Kan</a> (5) </u>  <br>
+        1:  SRI International, 2:  GESIS -- Leibniz Institute for the Social Sciences, 3:  Yale University, 4:  SRI International, 5:  National University of Singapore <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331650">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Joint Workshop on Bibliometric-enhanced Information Retrieval and Natural Language Processing for Digital Libraries (BIRNDL 2019)">Google Scholar</a></div>
+        (270)
+        <br>
+        <b>概要:　</b> 学術論文の氾濫は、研究者が関連する研究を見つけ、政策立案者が詳細な情報を求め、研究の影響を理解する上での課題となっています。情報検索（IR）、自然言語処理（NLP）、およびビブリオメトリクスは、学術的な検索、取得、およびユーザーエクスペリエンスを向上させる可能性がありますが、それらのデジタルライブラリへの利用は広範ではありません。この課題に対処するために、我々は第4回BIRNDL合同ワークショップと第5回CL-SciSumm共有タスクを提案します。我々は、NLP、IR、およびデジタルライブラリ（DL）の研究者間の協力を促進し、学術文書の理解、分析、規模での取得を改善するための新しい方法の開発を刺激することを目指しています。
+        </label>
+        <input type="checkbox" id="Panel270" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The deluge of scholarly publication poses a challenge for scholars find relevant research and policy makers to seek in-depth information and understand research impact. Information retrieval (IR), natural language processing (NLP) and bibliometrics could enhance scholarly search, retrieval and user experience, but their use in digital libraries is not widespread. To address this gap, we propose the 4th Joint Workshop on BIRNDL and the 5th CL-SciSumm Shared Task. We seek to foster collaboration among researchers in NLP, IR and Digital Libraries (DL), and to stimulate the development of new methods in NLP, IR, recommendation systems and scientometrics toward improved scholarly document understanding, analysis, and retrieval at scale.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel271">
+        <strong> Dynamic Content Monitoring and Exploration using Vector Spaces </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Benyou+Wang">Benyou Wang</a> (1) </u>  <br>
+        1:  University of Padova <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331412">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Dynamic Content Monitoring and Exploration using Vector Spaces">Google Scholar</a></div>
+        (271)
+        <br>
+        <b>概要:　</b> 本博士研究プロジェクトは、言語を表現するために量子論（QT）を使用することを調査し、特に動的コーパスやインタラクティブなタスクを扱う際などの動的シナリオにおいてその有用性を検討します。著者は、言語問題に対する量子状態駆動のフレームワークを提案し、それを高次元テンソル空間に一般化することを計画しています。動的な変化は、量子状態の更新を支配する量子進化の形式主義によってモデル化されます。著者は、この提案が新しいパラダイムへの道を開き、言語とその進化を動的シナリオでどのように表現するかについて新たな洞察を提供する可能性があると主張します。
+        </label>
+        <input type="checkbox" id="Panel271" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> This doctoral research project investigates using Quantum Theory (QT) to represent language, especially in some dynamic scenarios, e.g. when dealing with dynamic corpora or interactive tasks. The author plans to propose a quantum state driven framework for language problems and generalize it in a high-dimensional tensor space. Dynamics will be modeled by the formalism thereof of quantum evolution governing the update of quantum states. The author argues that this proposal will pave the way towards a new paradigm which may provide some novel insights about how to represent the language and its evolution in dynamic scenarios.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel272">
+        <strong> Characterizing the Stages of Complex Tasks </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Jiqun+Liu">Jiqun Liu</a> (1) </u>  <br>
+        1:  Rutgers University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331413">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Characterizing the Stages of Complex Tasks">Google Scholar</a></div>
+        (272)
+        <br>
+        <b>概要:　</b> タスクの段階は、重要な側面である。検索の異なる段階で、ユーザーの検索戦略は、さまざまな検索意図、直面する問題、および知識状態によってしばしば影響を受ける。先行研究において、情報探索とインタラクティブ情報検索の研究者たちは、さまざまなタスクの側面や特徴を説明するためのいくつかのフレームワークを開発し、検証してきた。しかし、複雑な検索タスクの異なる段階や状態を包括的かつ多次元的に描写および区別する方法を探る研究はほとんどない。既存の検索プロセスの理論モデルは、異なる状態にあるユーザーの検索経路評価やシステム推奨の設計に対して限定的な貢献しかしていない。この問題に理論的および実証的なレベルで対処するため、私の博士論文は、複雑な検索タスクの段階や状態を多次元に特徴付ける説明可能なフレームワークを構築し、そのフレームワークを積極的な検索経路評価と推奨に応用することを目的としている。
+        </label>
+        <input type="checkbox" id="Panel272" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Stage is an essential facet of task. At different stages of search, users' search strategies are often influenced by different search intentions, encountered problems, as well as knowledge states. In previous studies, information seeking and interactive IR researchers have developed and validated some frameworks for describing various task facets and features. However, few studies have explored how to depict and differentiate different stages or states of complex search tasks in a comprehensive, multidimensional manner. The existing theoretical models of search process offer limited contributions to search path evaluation and the design of system recommendations for users at different states. To address this issue at both theoretical and empirical levels, my dissertation aims to construct an explainable framework that can characterize the stages or states of complex search tasks over multiple dimensions and to apply the framework in proactive search path evaluation and recommendation.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel273">
+        <strong> Ranking Robustness In Adversarial Retrieval Settings </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Gregory+Goren">Gregory Goren</a> (1) </u>  <br>
+        1:  Technion - Israel Institute of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331414">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Ranking Robustness In Adversarial Retrieval Settings">Google Scholar</a></div>
+        (273)
+        <br>
+        <b>概要:　</b> ウェブ上での対立的情報検索設定には多くの課題があります。その一部は、文書の作成者が関心のあるクエリに対するランキングに応じて文書を変更し、自分の文書を上位にランク付けしようとするランキング競争に起因します。その結果、文書のほんのわずかな、ほとんど識別できない変更によってランキングが急激に変動するという望ましくない結果が生じます。最近の研究では、特徴ベースの学習によるランキングアプローチに対する（敵対的な）文書操作下でのランキングの堅牢性の問題に取り組みました。我々は、いくつかの理論的な発見をもたらす異なるランキングの堅牢性の概念の形式化を発表しました。実証的な評価はこれらの発見を支持しました。次の目標は、関連性と堅牢性を同時に最適化するための学習によるランキング技術を考案し、ランキングの堅牢性と公平性の関係を研究し、ランキングの堅牢性を評価するための追加のテストベッドを考案することです。
+        </label>
+        <input type="checkbox" id="Panel273" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The adversarial retrieval setting over the Web entails many challenges. Some of these are due to, essentially, ranking competitions between document authors who modify them in response to rankings induced for queries of interest so as to rank-promote the documents. One unwarranted consequence is that rankings can rapidly change due to small, almost indiscernible changes, of documents. In recent work, we addressed the issue of ranking robustness under (adversarial) document manipulations for feature-based learning-to-rank approaches. We presented a formalism of different notions of ranking robustness that gave rise to a few theoretical findings. Empirical evaluation provided support to these findings. Our next goals are to devise learning-to-rank techniques for optimizing relevance and robustness simultaneously, study the connections between ranking robustness and fairness, and to devise additional testbeds for evaluating ranking robustness.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel274">
+        <strong> Event Information Retrieval from Text </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rashmi+Sankepally">Rashmi Sankepally</a> (1) </u>  <br>
+        1:  University of Maryland <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331415">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Event Information Retrieval from Text">Google Scholar</a></div>
+        (274)
+        <br>
+        <b>概要:　</b> イベントは、私たちの日常的な検索ニーズに不可欠な要素です。ユーザーは、政治的イベント、組織の発表、政策変更、個人的なイベント、犯罪活動などさまざまな種類のイベントを検索します。言語学において、イベントは複雑な構造と属性を伴う談話実体と見なされることがよくあります。多くの専門家は、イベントの発生に関連するパターンを探します。ジャーナリスト、金融アナリスト、情報アナリスト、調査を行う弁護士、企業記録を検査する監査人などは、このような情報を見つけ、それを意味のある分析に役立つ方法で整理することを望む例です。本研究の目的は、ユーザーがイベント関連の情報ニーズを満たすのに役立つ効果的な情報検索システムを開発することです。特に、予測可能な方法でサブイベントに分解可能なイベントに関心があります。分解可能なイベントのモデリングとサブイベントに対する自動認識を行うことで、関連する文書の検索および多様な結果のユーザーへの提示を支援することに興味があります。この広範な目標を三段階で追求する予定であり、各段階ではテストコレクションの作成を含みます。まず、ニュースの情報検索テストコレクションを開発し、Text Analysis Conference (TAC) および Topic Detection and Tracking Evaluations [1] の既存のニュースストーリーコレクションを基にしました。次に、電子メール用の新しいイベントオントロジーを構築し、そのオントロジーを基にAvocado Emailコレクションから情報検索コレクションを作成する予定です。最後に、イベントの影響を特定する研究をサポートするために、これらのテストコレクションのいずれか一方または両方を拡張する予定です。各段階において、新しいテストコレクションは新しい研究を可能にします。第一段階では、自動的に検出されたサブイベントがランキング効果に与える影響を研究中です。TAC イベントトラック [5] の Rich Entities, Relations and Events (ERE) オントロジーおよび既存の自動イベント検出システムを使用し、自動的に検出されたイベントタイプ情報を使用するシンプルなバッグオブワード・イベント検索システムを開発しました。また、イベントベースのトピックが存在するTopic Detection and Tracking (TDT) コレクションから情報検索テストコレクションも作成しました。評価結果は、ベースラインアプローチと比較して有望です。この研究をさらに発展させ、高レベルなイベントを自動的にその構成要素に分解する方法を特定する予定です。イベント検索の作業を組織的な設定に拡張するために、第二段階の研究では、Avocado 電子メールコレクション [3] を使用する予定です。ニュースワイヤーテキストや他のウェブページは誰でも簡単に閲覧できますが、電子メールの内容は、組織的および個人的なイベントを含むことがあり、それらはニュースで見つかるものとは異なり、完全には文脈化されていない方法で言及されることがあるため、興味深いです。この研究では、個人的および組織的な内容のジャンルにおけるイベントの検索システムを構築することを目指します。検索システムは、利用可能な情報の全範囲のサブイベントをカバーする多様なランキングを提供します。これを実現するには、イベント関連のトピックを含む再利用可能なテストコレクションが必要であり、その文書内のイベントナゲットが関連性について注釈されます。このイベントナゲットレベルでの注釈は、α-nDCG [2] のような指標の計算をサポートし、ゲインは部分的に文書内の異なるイベントナゲットの数を反映します。研究の第三段階では、イベントのインパクトを概念化する方法は多々あるため、より探索的になります。私の初期のアプローチは、異なるタイプの影響に対する代替指標を探ることです。例えば、ニュースストーリーの社会的影響は読者数で特徴付けられ、電子メールの個人的影響は返信が受信されるまでの時間で特徴付けられるかもしれません。特に、公開されているユーザー生成コンテンツを参照して、感情分析をどのように使用してイベントの影響を特徴付けるかに関心があります。
+        </label>
+        <input type="checkbox" id="Panel274" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Events are an integral part of our day-to-day search needs. Users search for various kinds of events such as political events, organizational announcements, policy changes, personal events, criminal activity and so on. In linguistics, events are often thought of as discourse entities with associated complex structure and attributes. Many professionals look for patterns that involve event occurrences. Journalists, financial analysts, intelligence analysts, attorneys conducting investigations, auditors examining corporate records are examples of users who may want to find such information and to arrange it in ways that can help to produce meaningful analyses. The goal of this work is to develop effective information retrieval systems that can help users to satisfy event-related information needs. My particular interest is in events that are decomposable into subevents in ways that can be anticipated. I am interested in modeling decomposable events, and in automatically recognizing references to subevents, both to help with finding relevant documents and to help with presenting diverse results to the user. I plan to pursue this broader goal in three stages, each of which involves creating a test collection. I have started by developing information retrieval test collections for news, building on existing collections of news stories from the Text Analysis Conference (TAC) and the Topic Detection and Tracking Evaluations [1]. Next, I plan to build a new event ontology for email, and use that ontology as a basis for building an information retrieval collection from the Avocado Email collection. Finally, I plan to extend one or both of these test collections to support research on characterizing event impact, thus perhaps providing an additional basis for ranking. In each stage of my work, new test collection(s) will enable new research. In my first stage, which is in progress, I have studied the effect of automatically detected subevents on ranking effectiveness. Using the Rich Entities, Relations and Events (ERE) ontology of event types and subtypes from the TAC Event track [5], and two existing automated event detection systems, I have developed a simple bag of words-and-events search system that uses the automatically detected event type information. I also built an information retrieval test collection from a Topic Detection and Tracking (TDT) collection, for which event-based topics exist. Evaluation results show promise when compared to baseline approaches. I plan to further develop this line of work to identify ways to automatically decompose high level events into their components. With the goal of extending the event retrieval work to an organizational setting, in my second line of research I plan to work with the Avocado email collection [3]. While newswire text and other Web pages are easily available for everyone's perusal, email content is interesting because it may contain organizational and personal events that differ from those found in news, and those events may be referred to in less fully contextualized ways. In this line of research, I want to build a retrieval system for events in this genre of personal and organizational content. The retrieval system will provide a diverse ranking covering the full range of subevents for which information is available. To do this, I will need a reusable test collection containing event-related topics, with the event nuggets within those documents annotated for relevance. This annotation at the event nugget level will support computing measures like α-nDCG [2] in which the gain reflects in part the number of different event nuggets in a document. The third stage of my work will be more exploratory, since there are many ways in which one might conceptualize event impact. My initial approach will be to explore alternative indicators for different types of impact. For example, the societal impact of news stories might be characterized by the number of readers, whereas the personal impact of an email might be characterized by the time before a reply is received. I am particularly interested in how sentiment analysis might be used to characterize event impact, particularly with reference to publicly available user-generated content.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel275">
+        <strong> Implicit Entity Recognition, Classification and Linking in Tweets </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hawre+Hosseini">Hawre Hosseini</a> (1) </u>  <br>
+        1:  Ryerson University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331416">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Implicit Entity Recognition, Classification and Linking in Tweets">Google Scholar</a></div>
+        (275)
+        <br>
+        <b>概要:　</b> フレーズを知識ベースのエンティティにリンクするプロセスはエンティティリンクと呼ばれ、ツイートなど様々なコンテンツタイプに対して広く研究されています。エンティティリンクの主要なステップの一つは、曖昧さを解消し、知識ベースのエンティティにリンクできるフレーズを認識および分類すること、すなわち固有表現認識と分類です。しかし、一般的なエンティティ認識およびリンクシステムとは異なり、我々は表層形式を欠くために暗黙的に言及されたエンティティを認識、分類し、適切な知識ベースのエントリにリンクすることを目指しています。言い換えれば、本研究の目的は、ツイート内の主要なエンティティが明示的に言及されていない場合でも、それらを認識および特定することです。このプロセスは暗黙的固有表現認識およびリンクと呼ばれます。
+        </label>
+        <input type="checkbox" id="Panel275" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Linking phrases to knowledge base entities is a process known as entity linking and has already been widely explored for various content types such as tweets. A major step in entity linking is to recognize and/or classify phrases that can be disambiguated and linked to knowledge base entities, i.e., Named Entity Recognition and Classification. Unlike common entity recognition and linking systems, however, we aim to recognize, classify, and link entities which are implicitly mentioned, and hence lack a surface form, to appropriate knowledge base entries. In other words, the objective of our work is to recognize and identify core entities of a tweet when those entities are not explicitly mentioned; this process is referred to as Implicit Named Entity Recognition and Linking.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel276">
+        <strong> Biomedical Heterogeneous Data Integration and Rank Retrieval using Data Bridges </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Priya+Deshpande">Priya Deshpande</a> (1) </u>  <br>
+        1:  DePaul University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331417">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Biomedical Heterogeneous Data Integration and Rank Retrieval using Data Bridges">Google Scholar</a></div>
+        (276)
+        <br>
+        <b>概要:　</b> デジタル化が進む現代社会では、複数のデータ源からのデータを統合するシステムが必要とされています。臨床および生物医学研究のデータは、医学研究の進展と医療提供の効率化を促進するためのデータ駆動型研究を可能にする主要な力と見なされています。データ駆動型研究は、診断プロセスの改善、新しい生物医学的発見、疫学研究、教育など、多岐にわたる目標を持ち得ます。しかし、関連するデータを見つけてアクセスすることは依然として難しい課題です。私たちはこれらの課題を特定し、データ駆動型研究を支援するための一歩として、統合型放射線画像検索（IRIS）フレームワークを開発しました。統合されたリポジトリからランク付けされた関連ドキュメントを検索するための「データブリッジ」を構築することを提案します。私の研究は、生物医学データ統合およびインデックスシステムに焦点を当てており、統合リポジトリからランク付けされたドキュメントを提供します。現在は生物医学データソース（医療専門家向け）の統合に焦点を当てていますが、提案するフレームワークと方法論は他の分野でも応用可能であると確信しています。
+        </label>
+        <input type="checkbox" id="Panel276" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Digitized world demands data integration systems that combine data repositories from multiple data sources. Vast amounts of clinical and biomedical research data are considered a primary force enabling data-driven research toward advancing health research and for introducing efficiencies in healthcare delivery. Data-driven research may have many goals, including but not limited to improved diagnostics processes, novel biomedical discoveries, epidemiology, and education. However, finding and gaining access to relevant data remains an elusive goal. We identified these challenges and developed an Integrated Radiology Image Search (IRIS) framework that could be a step toward aiding data-driven research. We propose building data bridges to support retrieving ranked relevant documents from integrated repository. My research focuses on biomedical data integration and indexing systems and provide ranked document retrieval from an integrated repository. Though we currently focus on integrating biomedical data sources (for medical professionals), we believe that our proposed framework and methodologies can be used in other domains as well.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel277">
+        <strong> From Query Variations To Learned Relevance Modeling </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Binsheng+Liu">Binsheng Liu</a> (1) </u>  <br>
+        1:  RMIT University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331418">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=From Query Variations To Learned Relevance Modeling">Google Scholar</a></div>
+        (277)
+        <br>
+        <b>概要:　</b> 単なるクエリではなく情報ニーズという観点で考えることは、検索の有効性を向上させるための新たな機会を提供します[6]。一つの情報ニーズに対してユーザーのクエリは大きく異なることが多く[3, 9]、クエリはしばしば不完全です。単一のクエリを充実させるために、多くの手法が提案されてきました。例えば、関連性モデル[8]があります。これらの手法はシステム全体のパフォーマンス向上に焦点を当てていますが、場合によっては失敗することもあります。単一のクエリの最適化ではなく、情報ニーズを表現するために複数のクエリ変種を使用する方向性もあります。融合技術を用いることで、クエリ変種はシステムのパフォーマンスを向上させ、より少ないクエリを失敗させることができます[2, 6]。クエリ変種を使用することは、シンプルで魅力的なアイデアですが、それを収集することは手作業で大変です。既存の高品質なクエリ変種は、クラウドソーシングの労働者やドメイン専門家から収集されています[1]。したがって、このプロセスは自動化されておらず、実際のシステムに展開することはできません。研究者たちは、クリックグラフ上のランダムウォーク[5]や関連性モデル[4]を調査して自動的にクエリ変種を生成しようとしていますが、実験では自動生成された変種と人間が生成したものとの間には依然として大きなギャップがあることが示されています。この博士課程プロジェクトでは、自動クエリ変種生成に焦点を当て、人間が生成した変種とのギャップを減らすことを目指します。転移学習の進歩と古典的な関連性モデルを活用し、高品質なクエリ変種を生成してシステムパフォーマンスを向上させる計画です。
+        </label>
+        <input type="checkbox" id="Panel277" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Thinking in terms of an information need instead of simply queries provides a rich set of new opportunities in improving the effectiveness of search [6]. User queries may vary a lot for a single information need [3, 9], as a query is often under-specified. Many techniques have been proposed to enrich a single query, for example relevance modeling [8]. These techniques focus on improving overall system performance but may fail in some occasions. Instead of optimizing for a single query, another direction is to use multiple query variations to represent an information need. With fusion techniques, query variations can improve system performance while failing fewer queries [2, 6]. Using query variations is a simple and appealing idea, but collecting them is a manually intensive task. Existing high quality query variations are collected from crowd-sourcing workers and domain experts [1]. Therefore the process cannot be automated and deployed in a production system. Researchers have investigated random walks on click graphs [5] and relevance models [4] to automatically generate query variations, but experiments show that there is still a big gap between automatic variations and human generated ones. In this PhD project,we focus on automatic query variation generation and try to reduce the gap to human generated variations.We plan to leverage advances of transfer learning and classic relevance modeling to generate high quality query variations to improve system performance.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel278">
+        <strong> Multimodal Data Fusion with Quantum Inspiration </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Qiuchi+Li">Qiuchi Li</a> (1) </u>  <br>
+        1:  University of Padua <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331419">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Multimodal Data Fusion with Quantum Inspiration">Google Scholar</a></div>
+        (278)
+        <br>
+        <b>概要:　</b> 言語理解はマルチモーダルです。人間のコミュニケーションにおいて、メッセージは文章形式の単語だけでなく、話者の音声パターン、ジェスチャー、表情を通じても伝達されます。したがって、異なるモダリティからの情報を統合して共同理解を達成することが重要です。ディープラーニング分野の急速な進歩により、ニューラルネットワークはマルチモーダルデータ融合を扱う最も一般的なアプローチとして浮上しました[1, 6, 7, 12]。これらのモデルはデータから学習することでマルチモーダル特徴を効果的に統合できますが、ニューラルネットワーク自体の解釈性の低さゆえに、異なるモダリティがどのように関連しているかを明確に示すことはできません[2]。一方で、量子理論（QT）は、テキスト特徴間の相互作用を包括的なテキスト表現に組み込むための原則的アプローチを生み出しました[3, 5, 8, 10]。ここでは、重ね合わせと絡み合いの概念が普遍的に利用されて相互作用が定式化されています。テキスト特徴間の複雑な相関を捉える上で、これらのモデルの利点が観察されています。そこで、本研究では量子インスパイアードマルチモーダルデータ融合を提案し、量子駆動モデルによってマルチモーダルデータ融合の制約が克服できることを主張します。具体的には、重ね合わせを用いてモーダリティ内の相互作用を定式化し、異なるモダリティ間の相互作用は絡み合いの測定によって捉えることを目指します。こうすることで、マルチモーダルデータ内の相互作用が統一された量子形式で明示され、具体的なマルチモーダルタスクに対するパフォーマンスと解釈性が向上します。また、量子理論の適用領域が、初歩的な取り組みが行われているマルチモーダルタスクへと拡大されます[11]。したがって、以下の研究質問に答えることを目的とします。研究質問（RQ）: 量子インスパイアードモデルでマルチモーダルデータを融合できるか？この質問に答えるために、ニューラルネットワークと量子理論の理論的関連性[4]および複素値ニューラルネットワークの進展[9]に基づき、複素値ニューラルネットワークを用いてマルチモーダルデータを融合することを提案します。我々のモデルは、既存の研究[5, 10]に基づいて各ユニモーダルデータに対して学習された別個の複素値埋め込みから始まり、モーダリティ内の特徴間の重ね合わせを仮定しています。その後、マルチモーダルデータに対して絡み合った状態の多体系を構築し、異なるモダリティ間の相互作用が絡み合いの測定によって自然に反映されます。具体的なマルチモーダルタスクに対処するために、絡み合い状態に量子測定演算子を適用します。全プロセスは複素値ニューラルネットワークによって構成され、データからマルチモーダル特徴がどのように組み合わされるかを学習し、同時に量子重ね合わせと絡み合いの測定手段でその組み合わせを説明します。我々の提案モデルを、ベンチマークとなるマルチモーダル感情分析データセットであるCMU-MOSI[12]およびCMU-MOSEI[1]で検証する予定です。このデータセットは、テキスト、ビジュアル、および音響特徴を入力として、感情を2クラス、5クラス、または7クラスに分類することを目的としています。我々は、最先端モデルに匹敵する効果を期待し、モーダリティ間の相互作用をよりよく理解するために、重ね合わせおよび絡み合いの測定を探求します。
+        </label>
+        <input type="checkbox" id="Panel278" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Language understanding is multimodal. During human communication, messages are conveyed not only by words in textual form, but also through speech patterns, gestures or facial emotions of the speakers. Therefore, it is crucial to fuse information from different modalities to achieve a joint comprehension. With the rapid progress in the deep learning field, neural networks have emerged as the most popular approach for addressing multimodal data fusion [1, 6, 7, 12]. While these models can effectively combine multimodal features by learning from data, they nevertheless lack an explicit exhibition of how different modalities are related to each other, due to the inherent low interpretability of neural networks [2]. In the meantime, Quantum Theory (QT) has given rise to principled approaches for incorporating interactions between textual features into a holistic textual representation [3, 5, 8, 10], where the concepts of superposition andentanglement have been universally exploited to formulate interactions. The advantages of those models in capturing complicated correlations between textual features have been observed. We hereby propose the research on quantum-inspired multimodal data fusion, claiming that the limitation of multimodal data fusion can be tackled by quantum-driven models. In particular, we propose to employ superposition to formulate intra-modal interactions while the interplay between different modalities is expected to be captured by entanglement measures. By doing so, the interactions within multimodal data may be rendered explicitly in a unified quantum formalism, increasing the performance and interpretability for concrete multimodal tasks. It will also expand the application domains of quantum theory to multimodal tasks where only preliminary efforts have been made [11]. We therefore aim at answering the following research question: RQ. Can we fuse multimodal data with quantum-inspired models? To answer this question, we propose to fuse multimodal data with complex-valued neural networks, motivated by the theoretical link between neural networks and quantum theory [4] and advances in complex-valued neural networks [9]. Our model begins with a separate complex-valued embedding learned for each unimodal data based on the existing works [5, 10] which inherently assumes superposition between intra-modal features. Then we construct a many-body system in entangled state for multimodal data, where cross-modality interactions are naturally reflected by entanglement measures. Quantum measurement operators are applied to the entanglement state to address a concrete multimodal task at hand. The whole process is instrumented by a complex-valued neural network, which is able to learn how multimodal features are combined from data, and at the same time explain the combination by means of quantum superposition and entanglement measures. We plan to examine our proposed models on CMU-MOSI [12] and CMU-MOSEI [1] which are benchmarking multimodal sentiment analysis datasets. The dataset targets at classifying sentiment into 2, 5 or 7 classes with the input of textual, visual and acoustic features. We expect to see comparable effectiveness to state-of-the-art models, and we will explore superposition and entanglement measures to better understand the inter-modal interactions.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel279">
+        <strong> Document Distance Metric Learning in an Interactive Exploration Process </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Marco+Wrzalik">Marco Wrzalik</a> (1) </u>  <br>
+        1:  RheinMain University of Applied Sciences <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331420">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Document Distance Metric Learning in an Interactive Exploration Process">Google Scholar</a></div>
+        (279)
+        <br>
+        <b>概要:　</b> 文書間の類似性の視覚化は、文書コレクションの探査やインタラクティブな検索に広く用いられています。しかし、文書間の類似性関係は多面的であり、特定のメトリックに基づいた距離計測はしばしば人間が感じる類似性と一致しません。さらに、類似性に対するユーザーの概念は、探査の目的や進行中のタスクによって劇的に変化することがあります。したがって、本研究では、探査や探索的検索中に生成されるフィードバックを用いて、類似性モデルのオンライン調整を調査することを提案しています。この過程において、豊かな視覚化とインタラクションがユーザーの貴重なフィードバックを支援します。これに基づいて、探索体験を向上させるために類似性モデルを調整するためのメトリック学習手法が適用されます。同時に、訓練されたモデルは、クエリ・バイ・エグザンプルによる検索や分類などの類似性に基づくタスクに対する利益が検証される価値のある成果と見なされます。
+        </label>
+        <input type="checkbox" id="Panel279" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Visualization of inter-document similarities is widely used for the exploration of document collections and interactive retrieval. However, similarity relationships between documents are multifaceted and measured distances by a given metric often do not match the perceived similarity of human beings. Furthermore, the user's notion of similarity can drastically change with the exploration objective or task at hand. Therefore, this research proposes to investigate online adjustments to the similarity model using feedback generated during exploration or exploratory search. In this course, rich visualizations and interactions will support users to give valuable feedback. Based on this, metric learning methodologies will be applied to adjust a similarity model in order to improve the exploration experience. At the same time, trained models are considered as valuable outcomes whose benefits for similarity-based tasks such as query-by-example retrieval or classification will be tested.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel280">
+        <strong> Measuring Job Search Effectiveness </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Alfan+Farizki+Wicaksono">Alfan Farizki Wicaksono</a> (1) </u>  <br>
+        1:  The University of Melbourne <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331421">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Measuring Job Search Effectiveness">Google Scholar</a></div>
+        (280)
+        <br>
+        <b>概要:　</b> オンライン求人検索サイトのユーザーは、クエリに対して生成された求人のランク付けリストと対話し、一つ以上の興味のある求人を見つけようとします。したがって、求人検索ランク付けの品質はユーザーの満足度に大きく影響する主要な要素となります。本研究では、ユーザーモデリングの視点から求人検索ランク付けの品質を評価するための方法論および指標を提案します。まず、オーストラリアおよびニュージーランド地域における著名な求人検索サイトであるSeek.comの求人検索インタラクションログを活用し、生成されたランキングと対話する求職者の行動を調査します。この調査の結果として、効果測定指標に組み込まれる正確な求職者モデルが得られます。最近の求人検索ランク付けモデルの提案では、モデルによって生成されたランキングの品質を評価するために、以下の二種類の指標が使用されます。(1) オフライン指標、たとえばNDCG@k（kは最初のページに表示される求人の数）、Prec@1、またはMean Reciprocal Rank（MRR）; そして (2) オンライン指標、たとえばクリック率および求人応募率 [3, 6]です。<br><br>---ターゲットジャーナル: 機械学習目的: わかりやすく、明確に書くことオーディエンス: 専門知識を持った専門家スタイル: 分析的、博士課程レベル
+        </label>
+        <input type="checkbox" id="Panel280" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Users of online job search websites interact with ranked lists of job summaries generated in response to queries, hoping to identify one or more jobs of interest. Hence, the quality of job search rankings becomes a primary factor that affects user satisfaction. In this work, we propose methodologies and measures for evaluating the quality of job search rankings from a user modeling perspective. We start by investigating job seekers' behavior when they are interacting with the generated rankings, leveraging job search interaction logs from Seek.com, a well-known Australasian job search website. The output of this investigation will be an accurate model of job seekers that will be incorporated into an effectiveness metric. Recent proposals for job search ranking models used using two types of metrics to evaluate the quality of the ranking generated by the models: (1) offline metrics, such as NDCG@k (k is set to the number of job summaries shown in the first page), Prec@1, or Mean Reciprocal Rank (MRR); and (2) online metrics, such as click-through rate and job application rate [3, 6].
+        </div> </ul> <br>
+
+
+
+        <label for="Panel281">
+        <strong> Informing the Design of Conversational IR Systems: Framework and Result Presentation </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Souvick+Ghosh">Souvick Ghosh</a> (1) </u>  <br>
+        1:  Rutgers University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331422">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Informing the Design of Conversational IR Systems: Framework and Result Presentation">Google Scholar</a></div>
+        (281)
+        <br>
+        <b>概要:　</b> 対話型情報検索（IR）の最近の発展は、ユーザーとシステムの間で発生するインタラクションの性質と、これらのシステムに期待される認知能力についての疑問を提起しています。本研究では、対話型検索データを説明するための既存の理論的枠組みの完全性を調査し、システムの修正を提案します。音声の線形かつ一時的な性質は、大量の情報を処理することをユーザーにとって認知的に挑戦的なものにします。私たちは、対話型検索システムを使用する際のユーザーのモダリティの好みを評価する研究を提案します。この研究は、対話型検索システムで結果をどのように提示すべきかを理解する助けになります。ユーザーが音声クエリを使用して検索し、中間体と対話し、提示された結果を処理する様子を観察することで、対話型検索設定でより効率的に結果を提示する方法について洞察を得ることを目指します。また、対話型検索設定における異なるメディアの有効性と一貫性も探求する計画です。我々の観察は、今後の設計に情報を提供し、これらのシステムへの理解を深めるのに役立ちます。
+        </label>
+        <input type="checkbox" id="Panel281" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Recent developments in conversational IR have raised questions about the nature of interactions which occur between the user and the system and the cognitive capabilities expected of such systems. In our research, we investigate the completeness of existing theoretical frameworks in explaining conversational search data propose modifications to such systems. The linear and transient nature of speech makes it cognitively challenging for the user to process a large amount of information. We propose a study to evaluate the users' preference of modalities when using conversational search systems. The study will help us to understand how results should be presented in a conversational search system. As we observe how users search using audio queries, interact with the intermediary, and process the results presented, we aim to develop an insight on how to present results more efficiently in a conversational search setting. We also plan on exploring the effectiveness and consistency of different media in a conversational search setting. Our observations will inform future designs and help to create a better understanding of such systems.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel282">
+        <strong> Evaluating Risk-Sensitive Text Retrieval </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Rodger+Benham">Rodger Benham</a> (1) </u>  <br>
+        1:  RMIT University <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331423">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Evaluating Risk-Sensitive Text Retrieval">Google Scholar</a></div>
+        (282)
+        <br>
+        <b>概要:　</b> 忠実なユーザーベースを持つ検索エンジンは、既存のワークフローの質を維持しながら、全体的な効果を向上させるという難しい課題に直面しています。リスク感応型の評価ツールは、この課題に対処するために設計されていますが、現在では複数のベースラインに対する推論をサポートしていません。我々の研究目的は次の通りです: 1) リスク評価を調査し、従来の頻度主義およびベイズ推論アプローチを考慮して複数のベースラインと比較する; 2) その新しいアプローチを適用し、以前に実行されたクエリを活用して新しいユーザークエリの効果を向上させる新しいウェブ検索技術を評価する; 3) 検索パイプラインにおけるリスク感応型コンポーネントの相互作用がエンドツーエンドの効果にどのように影響するかを探る。
+        </label>
+        <input type="checkbox" id="Panel282" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Search engines with a loyal user-base face the difficult task of improving overall effectiveness while maintaining the quality of existing work-flows. Risk-sensitive evaluation tools are designed to address that task, but, they currently do not support inference over multiple baselines. Our research objectives are to: 1) Survey and revisit risk evaluation, taking into account frequentist and Bayesian inference approaches for comparing against multiple baselines; 2) Apply that new approach, evaluating a novel web search technique that leverages previously run queries to improve the effectiveness of a new user query; and 3) Explore how risk-sensitive component interactions affect end-to-end effectiveness in a search pipeline.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel283">
+        <strong> Efficient and Effective Text-Annotation through Active Learning </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Markus+Zlabinger">Markus Zlabinger</a> (1) </u>  <br>
+        1:  Vienna University of Technology <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331424">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=Efficient and Effective Text-Annotation through Active Learning">Google Scholar</a></div>
+        (283)
+        <br>
+        <b>概要:　</b> 最も一般的に使用されるアクティブ・ラーニングの基準は不確実性サンプリングです。この方法では、教師ありモデルを使用して、次に人間のアノテーターがラベルを付けるべき不確実なサンプルを予測します。アクティブ・ラーニングを使用する際には、二つの問題が発生します。まず、初期のアクティブ・ラーニングのプロセスにおいて、教師ありモデルにはコールドスタート問題が生じます。次に、人間のアノテーターがラベリングミスを犯す可能性があります。私の博士課程研究では、情報価値のあるサンプルを計算するための教師なし方法の開発により、これら二つの問題に対処します。情報価値のあるサンプルはまず手動でラベル付けされ、次に以下の二つの目的で使用されます：一つ目は初期のアクティブ・ラーニングモデルの訓練、二つ目は人間のアノテーターの「実践を通じた学習」セッションにおける訓練です。計画されている教師なし方法は、単語埋め込みに基づいて構築される予定であり、テキスト分類の領域に限定されます。
+        </label>
+        <input type="checkbox" id="Panel283" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> The most commonly used active learning criterion is uncertainty sampling, where a supervised model is used to predict uncertain samples that should be labeled next by a human annotator. When using active learning, two problems are encountered: First, the supervised model has a cold-start problem in the beginning of the active learning process, and second, the human annotators might make labeling mistakes. In my Ph.D. research, I address the two problems with the development of an unsupervised method for the computation of informative samples. The informative samples are first manually labeled and then used for both: The training of the initial active learning model and the training of the human annotators in form of a learning-by-doing session. The planned unsupervised method will be based on word-embeddings and it will be limited to the area of text classification.
+        </div> </ul> <br>
+
+
+
+        <label for="Panel284">
+        <strong> A Domain-Independent and Multilingual Approach for Crisis Event Detection and Understanding </strong> <br>
+        <u> <b> Authors: </b> <a href="https://scholar.google.co.jp/citations?view_op=search_authors&mauthors=Hernan+Sarmiento">Hernan Sarmiento</a> (1) </u>  <br>
+        1:  University of Chile <br>
+        <div class="mybtn3"><a href="https://dl.acm.org/doi/10.1145/3331184.3331425">ACM DL</a></div>
+        <div class="mybtn3"><a href="https://scholar.google.co.jp/scholar?q=A Domain-Independent and Multilingual Approach for Crisis Event Detection and Understanding">Google Scholar</a></div>
+        (284)
+        <br>
+        <b>概要:　</b> 既存のソーシャルメディアを利用した新たな危機状況の検出および特性評価のアプローチの多くは、事前に決められたキーワードセットを使用してソーシャルプラットフォームから得られるメッセージの分析に基づいています[2, 3]。キーワードフィルターに加えて、メッセージが現実の危機状況を指しているかどうかを判断するために、監督付き分類モデルを使用して事後処理する必要があります。しかし、キーワードベースのアプローチにはいくつかの欠点があります。一方では、新たな危機状況に関連するデータをフィルタリングするキーワードセットを決定するための特定のドメイン知識が必要です。他方では、特定されたデータが実際に新たなリアルタイムの危機イベントに対応しているかどうかを判断するために監督付き手法が必要です。このために、キーワードに依存しない方法の構築は、異なる言語や文化が同じイベントを指すのに独自の用語を持つため、既存のアプローチを一般化し、多言語間イベントに使用できるようにすることにも役立ちます。これらの研究の多くは、英語のメッセージのみを対象として現象を説明しており、この制約により、緊急事態が頻繁に発生する他の言語や国での方法論の再現が難しくなっています。このため、最近の研究者たちは、危機発生時にソーシャルメディアメッセージを検出および分類するためのドメインに依存せず、多言語対応のアプローチの作成に注力しています[1, 4]。これらのアプローチは、異なる危機イベントや言語間でのドメイン転送を達成することを目指して、低レベルの語彙的特徴を活用しています。それにもかかわらず、多くの研究は危機関連のメッセージに焦点を当てており、スポーツイベントや音楽フェスティバルなど、危機に関連しないメッセージをテストしていません。本研究の主な目的は、ソーシャルメディアプラットフォーム上での予期せぬ高インパクトの現実世界イベントに関連する集団活動から生成されたソーシャルメディアメッセージを検出および特性評価するために、言語を超えたドメインに依存しないパターンを研究および活用することです。期待される貢献として、多言語およびドメインに依存しない緊急事態の検出と特性評価を提供する新しい手法を開発することです。このような手法は、危機発生地域におけるソーシャルメディアの行動を、言語、ドメイン、イベントの種類に関係なく、よりよく理解するのに役立つと考えられます。これらのパターンの一部は、危機イベントの特定の種類やドメインに関係なく、ユーザーの所在地、言語、文化にかかわらず発生します。したがって、私たちの仮説は、物理的な世界で危機状況が展開し始めるとき、ウェブやソーシャルメディアユーザーの自己組織化された活動にパターンが存在するということです。これらのパターンの一部は、危機イベントの特定の種類やドメインに関係なく、ユーザーの所在地、言語、文化にかかわらず発生します。そこで、以下の研究質問を提案します：RQ1：非テキストおよび低レベルの語彙的特徴に基づいて、言語およびドメインに関係なく、危機状況中の集団的パターンを特性評価できるか? RQ2：これらのイベント中に投稿されたソーシャルメディアメッセージに関連する緊急事態の種類（瞬間的、進行的、集中、および拡散）間で違いはあるか? RQ3：非テキストおよび低レベルの語彙的特徴は、ウェブおよびソーシャルメディア上で危機として検出された非関連緊急事態の数を減らすのに十分か?
+        </label>
+        <input type="checkbox" id="Panel284" class="on-off"/>
+        <ul> <div class="abst"> <b>Abstract:　</b> Most existing approaches that use social media for detecting and characterizing emerging crisis events are based on the analysis of messages obtained from social platforms using a predetermined set of keywords [2, 3]. In addition to keyword filters, messages must commonly be post-processed using supervised classification models to determine if messages are referring to a real-time crisis situation or not. However, keyword-based approaches have certain shortcomings; on the one hand they require specific domain knowledge of different crisis events to determine a set of keywords to filter relevant data about an emerging crisis situation; on the other hand, they require supervised methods to determine if the identified data actually corresponds to a new real-time crisis event. Hence, the creation of keyword-independent methods could also help generalize existing approaches so they can be used for cross-lingual events, since each language and culture can have its own particular terms to refer to a same event. The majority of these works also explain phenomenons just for English messages. This limitation avoids replication of methodologies in other languages and countries where emergency events often occur. For this reason, researchers recently have focused on creating domain-independent and multi-lingual approaches for detecting and classifying social media messages during crisis events [1, 4]. These approaches have exploited low-level lexical features with the goal of reaching domain-transfer among different crisis events and languages. Nonetheless, most studies focused on crisis-related messages without testing non related crisis messages such as sporting events or music festivals. The main objective of this work is to study and exploit cross-lingual domain-independent patterns for detecting and characterizing social media messages generated in collective activity related to unexpected high-impact real-world events in social media platforms, and specifically on emergency situations. The expected contribution is to develop novel techniques in order to provide multi-lingual and domain-independent detections, and characterizations of emergency situations. Such techniques should help us better understand the social media behavior during crises in affected locations around the world, independent of their language, domain and type of event. Some of these patterns arise independently of the particular type or domain of the crisis event, as well as independent of the location, language and culture of the users that participate. Hence, our hypothesis is that there are patterns in the self-organized activity of the Web and social media users that emerge when a crisis situation starts to unfold in the physical world. Some of these patterns arise independently of the particular type or domain of the crisis event, as well as independent of the location, language and culture of the users that participate. We then propose the following research questions: RQ1: Can we characterize collective patterns during crisis situations independently of their language and domain based on non-textual and low-level lexical features? RQ2: Are there differences among types of emergency situations (instantaneous, progressives, focalized and diffused) related to social media messages posted during these events? RQ3: Are non-textual and low-level lexical features sufficient at reducing the number of non-related emergency situations detected as crises in the Web and social media?
+        </div> </ul> <br>
+
+
+    </dib>

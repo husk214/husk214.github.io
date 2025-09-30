@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations) &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)" href="byol.html" />
+    <link rel="prev" title="Self Supervised Learning (SSL)" href="../ssl.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#algorithm">Algorithm</a></li>
+<li><a class="reference internal" href="#moco">先行研究: MoCo</a><ul>
+<li><a class="reference internal" href="#id1">Algorithm</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simclrcontribution">SimCLRのContributionって何だったのか</a><ul>
+<li><a class="reference internal" href="#id2">感想</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../ssl.html" title="Previous Chapter: Self Supervised Learning (SSL)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Self Supervis...</span>
+    </a>
+  </li>
+  <li>
+    <a href="byol.html" title="Next Chapter: Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Grill NIPS’20... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a><ul>
+<li><a class="reference internal" href="#abstract">Abstract</a></li>
+<li><a class="reference internal" href="#algorithm">Algorithm</a></li>
+<li><a class="reference internal" href="#moco">先行研究: MoCo</a><ul>
+<li><a class="reference internal" href="#id1">Algorithm</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#simclrcontribution">SimCLRのContributionって何だったのか</a><ul>
+<li><a class="reference internal" href="#id2">感想</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="../ssl.html" title="Previous Chapter: Self Supervised Learning (SSL)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Self Supervis...</span>
+    </a>
+  </li>
+  <li>
+    <a href="byol.html" title="Next Chapter: Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Grill NIPS’20... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/ssl/simclr.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="chen-icml-20-simclr-a-simple-framework-for-contrastive-learning-of-visual-representations">
+<h1>Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)<a class="headerlink" href="#chen-icml-20-simclr-a-simple-framework-for-contrastive-learning-of-visual-representations" title="Link to this heading">¶</a></h1>
+<ul class="simple">
+<li><p>著者 Ting Chen, Simon Kornblith, Mohammad Norouzi, Geoffrey Hinton (Google Research)</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2002.05709.pdf">https://arxiv.org/pdf/2002.05709.pdf</a></p></li>
+</ul>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>既存のSelf-Supervised Learning(SSL)の手法(CPC, AMDIM, CMC, MoCo)は複雑だった</p></li>
+<li><p>SimCLRはとてもシンプルで、SSL及び半教師付き学習の精度を大幅に更新した</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/simclr_fig1.png"><img alt="../_images/simclr_fig1.png" class="align-center" src="../_images/simclr_fig1.png" style="width: 407.4px; height: 393.59999999999997px;" />
+</a>
+<ul class="simple">
+<li><p>図1: それぞれの手法でSSL後、モデルの出力を特徴量に線形モデルを学習し、その精度を比較 (Linear Evaluation)</p></li>
+</ul>
+</section>
+<section id="algorithm">
+<h2>Algorithm<a class="headerlink" href="#algorithm" title="Link to this heading">¶</a></h2>
+<p>ざっくりいうと、以下のような contrastive learning をやっている</p>
+<ul class="simple">
+<li><p>同じ画像に対して augmentation (どこをクロップするかなどの乱数がある) を2回行い、それをpositive pairにする</p></li>
+<li><p>ミニバッチにある、別の画像(をaugmentationしたもの)をnegativeにする</p></li>
+<li><p>positive pairの距離は小さくなるように、negative pairの距離は大きくなるようにモデルを学習する</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/simclr_fig2.png"><img alt="../_images/simclr_fig2.png" class="align-center" src="../_images/simclr_fig2.png" style="width: 404.4px; height: 408.59999999999997px;" />
+</a>
+<p>augmentationの種類</p>
+<a class="reference internal image-reference" href="../_images/simclr_fig4.png"><img alt="../_images/simclr_fig4.png" class="align-center" src="../_images/simclr_fig4.png" style="width: 814.1999999999999px; height: 411.59999999999997px;" />
+</a>
+<p>少量の教師データを使ったfine tuneタスクでも強い</p>
+<a class="reference internal image-reference" href="../_images/simclr_tab7.png"><img alt="../_images/simclr_tab7.png" class="align-center" src="../_images/simclr_tab7.png" style="width: 374.40000000000003px; height: 353.6px;" />
+</a>
+<p>同じクラスの画像をnegativeとして学習しちゃうのはどうなの</p>
+<ul class="simple">
+<li><p>クラスタリングを使ってその課題を緩和する手法はある: 例えば SwAV (<a class="reference external" href="https://arxiv.org/pdf/2006.09882.pdf">https://arxiv.org/pdf/2006.09882.pdf</a>)</p></li>
+</ul>
+</section>
+<section id="moco">
+<h2>先行研究: MoCo<a class="headerlink" href="#moco" title="Link to this heading">¶</a></h2>
+<p>Momentum Contrast for Unsupervised Visual Representation Learning</p>
+<ul class="simple">
+<li><p>Kaiming He, Haoqi Fan, Yuxin Wu, Saining Xie, Ross Girshick (Facebook AI Research (FAIR))</p></li>
+<li><p>CVPR’20 <a class="reference external" href="https://arxiv.org/pdf/1911.05722.pdf">https://arxiv.org/pdf/1911.05722.pdf</a></p></li>
+<li><p>End-to-End (SimCLRのようなやつ)はメモリを使うのでミニバッチサイズ大きくできない</p></li>
+</ul>
+<section id="id1">
+<h3>Algorithm<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>初期値が一緒の　encoder(f_q)　と momentum encoder (f_k) を用意する</p></li>
+</ul>
+<p>以下繰り返し</p>
+<ul class="simple">
+<li><p>同じ画像に対して 別々のaugmentationを2回行い、それぞれをencoderとmometum encoderに通す</p>
+<ul>
+<li><p>momentum encoder を通したほうをqueueに入れておく</p></li>
+</ul>
+</li>
+<li><p>それらをpositive pair、 encoderに入れたものとqueueに入っているものをnegative pairにして metric learningする</p>
+<ul>
+<li><p>ただし、momentum encoder の方はstop gradientしておく (勾配を伝搬させない (optimizerの更新対象から外す))</p></li>
+<li><p>momentum encoderのパラメータは momentum updateする (m * f_k.params + (1-m) * f_q.params で更新)</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/moco_fig2.png"><img alt="../_images/moco_fig2.png" class="align-center" src="../_images/moco_fig2.png" style="width: 739.8px; height: 289.2px;" />
+</a>
+<ul class="simple">
+<li><p>stop gradientするからminibatch sizeを大きくできる</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/moco_fig3.png"><img alt="../_images/moco_fig3.png" class="align-center" src="../_images/moco_fig3.png" style="width: 427.7px; height: 333.2px;" />
+</a>
+<p>あれSimCLRってだたのEnd-to-Endってじゃないか?</p>
+</section>
+</section>
+<section id="simclrcontribution">
+<h2>SimCLRのContributionって何だったのか<a class="headerlink" href="#simclrcontribution" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>augmentationの組み合わせが非常に重要だという知見</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/simclr_fig5.png"><img alt="../_images/simclr_fig5.png" class="align-center" src="../_images/simclr_fig5.png" style="width: 563.5px; height: 487.9px;" />
+</a>
+<ul class="simple">
+<li><p>行: 1回目のaugmentation, 列: ２回目のaugmentation, 色: Linear Evaluationの精度</p></li>
+<li><p>cropとcolorの組み合わせが際立って強い</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/simclr_tab1.png"><img alt="../_images/simclr_tab1.png" class="align-center" src="../_images/simclr_tab1.png" style="width: 340.9px; height: 159.6px;" />
+</a>
+<ul class="simple">
+<li><p>color distortion strengthも重要</p></li>
+<li><p>supervised learningだとそうではない、supervisedで強いAutoAugmentationもSSLでは強くない</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Non linear projection</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/simclr_fig8.png"><img alt="../_images/simclr_fig8.png" class="align-center" src="../_images/simclr_fig8.png" style="width: 607.5999999999999px; height: 373.79999999999995px;" />
+</a>
+<ul class="simple">
+<li><p>Non linear projection (MLP: 全結合→BN-&gt;ReLU→全結合-&gt;BN) が強い</p></li>
+</ul>
+<p>他にもBatch size、損失関数、損失関数の温度パラメータ、epoch数とかいろいろ実験している</p>
+<section id="id2">
+<h3>感想<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>何か新しいことをやったという気はしない</p>
+<ul>
+<li><p>SSLの火付け役的なイメージだった(なんかAlgorithm自体が今までに無いものだと思っていた)</p></li>
+<li><p>先行研究の論文も読んでみるとSimCLRの貢献はすでにある手法の組み合わせでSSLの強さを引き出したこと</p></li>
+</ul>
+</li>
+<li><p>Augmentation がとても重要ということを教えてくれた (自然言語でもいけるぜとはぜんぜん思えない)</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

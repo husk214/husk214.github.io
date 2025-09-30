@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Metric Learning &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=13a9ecda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/jquery-1.11.0.min.js"></script>
+    <script src="_static/js/jquery-fix.js"></script>
+    <script src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Musgrave ECCV’20 A Metric Learning Reality Check" href="metriclearning/reality_check.html" />
+    <link rel="prev" title="Atsushi Shibagaki (柴垣篤志)" href="index.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Metric Learning</a><ul>
+<li><a class="reference internal" href="#papers">Papers</a></li>
+<li><a class="reference internal" href="#id1">Metric Learningとは</a><ul>
+<li><a class="reference internal" href="#id2">応用先</a></li>
+<li><a class="reference internal" href="#id3">ロス関数</a><ul>
+<li><a class="reference internal" href="#embedding-losses">Embedding losses</a></li>
+<li><a class="reference internal" href="#classification-losses">Classification losses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Atsushi Shibagaki (柴垣篤志)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Atsushi Shiba...</span>
+    </a>
+  </li>
+  <li>
+    <a href="metriclearning/reality_check.html" title="Next Chapter: Musgrave ECCV’20 A Metric Learning Reality Check"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Musgrave ECCV... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Metric Learning</a><ul>
+<li><a class="reference internal" href="#papers">Papers</a></li>
+<li><a class="reference internal" href="#id1">Metric Learningとは</a><ul>
+<li><a class="reference internal" href="#id2">応用先</a></li>
+<li><a class="reference internal" href="#id3">ロス関数</a><ul>
+<li><a class="reference internal" href="#embedding-losses">Embedding losses</a></li>
+<li><a class="reference internal" href="#classification-losses">Classification losses</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id18">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="index.html" title="Previous Chapter: Atsushi Shibagaki (柴垣篤志)"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Atsushi Shiba...</span>
+    </a>
+  </li>
+  <li>
+    <a href="metriclearning/reality_check.html" title="Next Chapter: Musgrave ECCV’20 A Metric Learning Reality Check"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Musgrave ECCV... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="_sources/metriclearning.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="metric-learning">
+<h1>Metric Learning<a class="headerlink" href="#metric-learning" title="Link to this heading">¶</a></h1>
+<section id="papers">
+<h2>Papers<a class="headerlink" href="#papers" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</div>
+</section>
+<section id="id1">
+<h2>Metric Learningとは<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>一般的に記述できる枠組みはよくわからない</p>
+<ul>
+<li><p>ふんわりしすぎている印象 (なんでもMetric Learningと言ってしまえるような感じがする)</p></li>
+<li><p>応用先によって問題設定が異なるので何とも言えないと思っている</p></li>
+</ul>
+</li>
+<li><p>雰囲気は、いい感じにデータを変換する関数を学習することをMetric Learningと呼んでいる気がする</p></li>
+</ul>
+<section id="id2">
+<h3>応用先<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>顔認証</p>
+<ul>
+<li><p>同一人物の画像どうしの距離を小さく、違う人物どうしの距離を遠くするように関数を学習する</p></li>
+</ul>
+</li>
+<li><p>情報検索(例えば画像検索)</p>
+<ul>
+<li><p>同じような画像どうしの距離を小さく、違う感じの画像どうしの距離を遠くするように関数を学習する</p></li>
+</ul>
+</li>
+<li><p>異常検知</p></li>
+<li><p>Learning to Rank</p></li>
+<li><p>etc…</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>ロス関数<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>分類問題のロス(Cross Entropy)から派生したロス(Classification losses)とそうでないもの(Embedding losses)がある by <a class="reference internal" href="#musgrave20" id="id4"><span>[Musgrave20]</span></a></p></li>
+<li><p><a class="reference internal" href="#musgrave20" id="id5"><span>[Musgrave20]</span></a> によると、Proxy族は Classification losses になっているが、Embedding lossesだと思う</p></li>
+</ul>
+<p><strong>Notation</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S_{ij} := s(x_{i}, x_{j})\)</span>, サンプルiとサンプルjの類似度</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(x_{i}\)</span> : サンプルiのembedding</p></li>
+<li><p><span class="math notranslate nohighlight">\(s(\cdot, \cdot)\)</span> : 2つのサンプルの類似度を測る関数 (例: 内積, cosine類似度)</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\([x]_+ := \max(x, 0)\)</span></p></li>
+</ul>
+<section id="embedding-losses">
+<h4>Embedding losses<a class="headerlink" href="#embedding-losses" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p><strong>Contrastive loss</strong> <a class="reference internal" href="#hadsel06" id="id6"><span>[Hadsel06]</span></a> - 同じラベルなら類似度が高く、違うラベルなら低くなるように学習する</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(I_{ij} := 1 ~~\text{if}~~ y_i = y_j ~~\text{else}~~ 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y_i\)</span> : サンプルiのラベル</p></li>
+<li><p><span class="math notranslate nohighlight">\(m_p, m_n\)</span> : positive pairのマージン(例: 1.0), negative pairのマージン (例: 0.5)</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  L_{constract}(x_i, x_j) := I_{ij} [m_p - s(x_i, x_j) ]_+ + (1-I_{ij}) [s(x_i, x_j) - m_n]_+
+\end{align}</div><ul class="simple">
+<li><p><strong>Triplet loss</strong> <a class="reference internal" href="#hoffer15" id="id7"><span>[Hoffer15]</span></a> - aとpの類似度より、aとnの類似度が低くなるように学習する</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(a, n, p\)</span> : a=anchorサンプル, n=aのnegative pair, p=aのpositive pair</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  L_{triplet}(x_a, x_p, x_n) := [s(x_a, x_n) - s(x_a, x_p) + m ]_+
+\end{align}</div><ul class="simple">
+<li><p><strong>N-pair loss</strong> <a class="reference internal" href="#sohn16" id="id8"><span>[Sohn16]</span></a> - N-pairに拡張したもの</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  L_{N-pair-mc} (\{x_i, x^+_i\}_{i=1}^N) &amp;:= \cfrac{1}{N} \sum_{i=1}^{N}
+    \log \left(1 + \sum_{j \neq i } \exp(s(x_i, x_j^+) - s(x_i, x^+_i) ) \right) \\
+  L_{N-pair-ovo} (\{x_i, x^+_i\}_{i=1}^N) &amp;:= \cfrac{1}{N} \sum_{i=1}^{N}
+    \sum_{j \neq i } \log \left(1 + \exp (s(x_i, x_j^+) - s(x_i, x^+_i) ) \right)
+\end{align}</div><ul class="simple">
+<li><p><strong>Lifted Structure loss</strong> <a class="reference internal" href="#song16" id="id9"><span>[Song16]</span></a> <a class="reference internal" href="metriclearning/lifted_structured.html"><span class="doc">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</span></a></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{X}\)</span> : ミニバッチ (embeddingの集合)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{X}^+_{x_i}\)</span> : ミニバッチ内の <span class="math notranslate nohighlight">\(x_i\)</span> と同じクラスのembeddingの集合</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{X}^-_p\)</span> : ミニバッチ内の <span class="math notranslate nohighlight">\(x_i\)</span> とは違うクラスのembeddingの集合</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  L_{lifted} (\mathcal{X}) &amp;:= \sum_{x_i \in \mathcal{X}}
+    \left( \log \sum_{x_k \in \mathcal{X}_{x_i}^+} \exp(m - s(x_i, x_k)) + \log \sum_{x_k \in \mathcal{X}_{x_i}^-} \exp( s(x_i, x_k)) \right)
+\end{align}</div><ul class="simple">
+<li><p><strong>Multi Similarity loss</strong> <a class="reference internal" href="#wang19" id="id10"><span>[Wang19]</span></a> <a class="reference internal" href="metriclearning/multi_similarity.html"><span class="doc">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</span></a></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\alpha, \beta\)</span> : スケーリングパラメータ(ハイパーパラメータ)</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  L_{MS} (\mathcal{X}) &amp;:= \cfrac{1}{|\mathcal{X}|} \left\{
+  \cfrac{1}{\alpha} \log \left(1+ \sum_{x_k \in \mathcal{X}_{x_i}^+} \exp(-\alpha (s(x_i, x_k) - m)) \right)
+  + \cfrac{1}{\beta} \log \left(1+ \sum_{x_k \in \mathcal{X}_{x_i}^-} \exp(\beta (s(x_i, x_k) - m)) \right) \right\}
+\end{align}</div><p><strong>Proxy族: 各クラスを代表するProxiesを使ったロス</strong></p>
+<ul class="simple">
+<li><p><strong>Proxy NCA</strong> <a class="reference internal" href="#movshovitz17" id="id11"><span>[Movshovitz17]</span></a> <a class="reference internal" href="metriclearning/proxy_nca.html"><span class="doc">Movshovitz ICCV’17 No fuss distance metric learning using proxies</span></a></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{P} = \{p_1, \ldots, p_L \}\)</span>, proxies (trainableな変数として、backpropの対象にして学習していく, L=クラス数)</p></li>
+<li><p><span class="math notranslate nohighlight">\(d\)</span> : 距離関数 (例: L2距離)</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  L_{NCA}(x) := -
+  \log \cfrac{\exp(-d(x, p_y ))}
+  {\sum_{p \in \mathcal{P} \setminus \{p_y\} } \exp( -d(x, p))}
+\end{align}</div><ul class="simple">
+<li><p><strong>SoftTriplet</strong> <a class="reference internal" href="#qian19" id="id12"><span>[Qian19]</span></a></p>
+<ul>
+<li><p>ProxyNCA like</p></li>
+<li><p>proxyを各クラスK個用意して、relaxed similarityを導入している</p></li>
+<li><p>softmax lossがsmoothedなtriplet lossであるとか言っていて興味深いが、詳しく読めていない</p></li>
+</ul>
+</li>
+<li><p><strong>Proxy Anchor</strong> <a class="reference internal" href="#kim20" id="id13"><span>[Kim20]</span></a> <a class="reference internal" href="metriclearning/proxy_anchor.html"><span class="doc">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</span></a></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{P}^+, \mathcal{P}^-\)</span> : ミニバッチ内のデータのクラスのproxyの集合, ミニバッチ内のデータには存在しないクラスのproxyの集合</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{X}^+_p, \mathcal{X}^-_p\)</span> : ミニバッチ内のproxy pと同じクラスのembeddingの集合, ミニバッチ内のproxy pとは違うクラスのembeddingの集合</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> : スケーリングパラメータ (ハイパーパラメータ)</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\begin{align}
+  L_{PA}(\mathcal{X}) := \cfrac{1}{|\mathcal{P}^+|}
+  \sum_{p \in \mathcal{P}^+}
+  \log \left(1 + \sum_{x \in \mathcal{X}^+_p} \exp(-\alpha (s(p, x) - m )) \right)
+  + \frac{1}{|\mathcal{P}^-|}
+  \sum_{p \in \mathcal{P}^-}
+  \log \left(1 + \sum_{x \in \mathcal{X}^-_p} \exp(\alpha (s(p, x) + m )) \right)
+\end{align}</div></section>
+<section id="classification-losses">
+<h4>Classification losses<a class="headerlink" href="#classification-losses" title="Link to this heading">¶</a></h4>
+<ul class="simple">
+<li><p>Center loss <a class="reference internal" href="#wen16" id="id14"><span>[Wen16]</span></a></p></li>
+<li><p>SphereFace <a class="reference internal" href="#liu17" id="id15"><span>[Liu17]</span></a></p></li>
+<li><p>CosFace <a class="reference internal" href="#wang18" id="id16"><span>[Wang18]</span></a></p></li>
+<li><p>ArcFace <a class="reference internal" href="#deng19" id="id17"><span>[Deng19]</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="id18">
+<h3>参考文献<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h3>
+<div role="list" class="citation-list">
+<div class="citation" id="hadsel06" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">Hadsel06</a><span class="fn-bracket">]</span></span>
+<ol class="upperalpha simple" start="18">
+<li><p>Hadsell, S. Chopra, and Y. LeCun. Dimensionality reduction by learning an invariant mapping. In CVPR, 2006.</p></li>
+</ol>
+</div>
+<div class="citation" id="hoffer15" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">Hoffer15</a><span class="fn-bracket">]</span></span>
+<ol class="upperalpha simple" start="5">
+<li><p>Hoffer and N. Ailon. Deep metric learning using triplet network. In SIMBAD, 2015.</p></li>
+</ol>
+</div>
+<div class="citation" id="sohn16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">Sohn16</a><span class="fn-bracket">]</span></span>
+<ol class="upperalpha simple" start="11">
+<li><p>Sohn. Improved deep metric learning with multi-class n-pair loss objective. In NIPS 2016.</p></li>
+</ol>
+</div>
+<div class="citation" id="song16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">Song16</a><span class="fn-bracket">]</span></span>
+<ol class="upperalpha simple" start="8">
+<li><p>Oh Song, Y. Xiang, S. Jegelka, and S. Savarese. Deep metric learning via lifted structured feature embedding. In CVPR, 2016.</p></li>
+</ol>
+</div>
+<div class="citation" id="wang19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">Wang19</a><span class="fn-bracket">]</span></span>
+<ol class="upperalpha simple" start="24">
+<li><p>Wang, X. Han, W. Huang, D. Dong, and M.R. Scott. Multi-similarity loss with general pair weighting for deep metric learning. In CVPR 2019.</p></li>
+</ol>
+</div>
+<div class="citation" id="movshovitz17" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">Movshovitz17</a><span class="fn-bracket">]</span></span>
+<ol class="upperalpha simple" start="25">
+<li><p>Movshovitz-Attias, A. Toshev, T. K. Leung, S. Ioffe, and S. Singh. No fuss distance metric learning using proxies. In ICCV 2017.</p></li>
+</ol>
+</div>
+<div class="citation" id="qian19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">Qian19</a><span class="fn-bracket">]</span></span>
+<p>Qi Qian, Lei Shang, Baigui Sun, Juhua Hu, Hao Li, Rong Jin. SoftTriple Loss: Deep Metric Learning Without Triplet Sampling. In ICCV, 2019.</p>
+</div>
+<div class="citation" id="kim20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">Kim20</a><span class="fn-bracket">]</span></span>
+<ol class="upperalpha simple" start="19">
+<li><p>Kim, D. Kim, M. Cho, and S. Kwak. Proxy Anchor Loss for Deep Metric Learning. In CVPR 2020.</p></li>
+</ol>
+</div>
+<div class="citation" id="wen16" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">Wen16</a><span class="fn-bracket">]</span></span>
+<p>Yandong Wen, Kaipeng Zhang, Zhifeng Li, Yu Qiao. A Discriminative Feature Learning Approach for Deep Face Recognition. In ECCV 2016.</p>
+</div>
+<div class="citation" id="liu17" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">Liu17</a><span class="fn-bracket">]</span></span>
+<p>Weiyang Liu, Yandong Wen, Zhiding Yu, Ming Li, Bhiksha Raj, Le Song. SphereFace: Deep Hypersphere Embedding for Face Recognition. In CVPR 2017.</p>
+</div>
+<div class="citation" id="wang18" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">Wang18</a><span class="fn-bracket">]</span></span>
+<p>Hao Wang, Yitong Wang, Zheng Zhou, Xing Ji, Dihong Gong, Jingchao Zhou, Zhifeng Li, Wei Liu. CosFace: Large Margin Cosine Loss for Deep Face Recognition. In CVPR 2018.</p>
+</div>
+<div class="citation" id="deng19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">Deng19</a><span class="fn-bracket">]</span></span>
+<p>Jiankang Deng, Jia Guo, Niannan Xue, Stefanos Zafeiriou. ArcFace: Additive Angular Margin Loss for Deep Face Recognition. In CVPR 2019.</p>
+</div>
+<div class="citation" id="musgrave20" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Musgrave20<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id4">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
+<p>Kevin Musgrave, Serge Belongie, Ser-Nam Lim. A Metric Learning Reality Check. In ECCV 2020.</p>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

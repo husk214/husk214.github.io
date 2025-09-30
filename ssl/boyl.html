@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Gril ICLR’22 Bootstrap Your Own Latent A New Approach to Self-Supervised Learning &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../static/basic.css" />
+    <link rel="stylesheet" href="../static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../static/bootstrap-sphinx.css" type="text/css" />
+    <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../static/js/jquery-1.11.0.min.js"></script>
+    <script src="../static/js/jquery-fix.js"></script>
+    <script src="../static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<link rel="stylesheet" href="static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../work.html">Work</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../work/hotel_spot_search.html">ホテルスポット検索</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning.html#papers">Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning.html#id1">Metric Learningとは</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel.html#papers">Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel.html#id1">Learning from Noisy Labels</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl.html#simclr">SimCLR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl.html#boyl">BOYL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl.html#simsiam">SimSiam</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl.html#how-does-simsiam-avoid-collapse-without-negative-samples">How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other.html#papers">Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other.html#memo">Memo</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr.html#papers">Papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr.html#id1">Learning to Rank (ランク学習)とは</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Gril ICLR’22 Bootstrap Your Own Latent A New Approach to Self-Supervised Learning</a><ul>
+<li><a class="reference internal" href="#introduction">1. Introduction</a></li>
+<li><a class="reference internal" href="#framework">2. Framework</a></li>
+<li><a class="reference internal" href="#cl-methods">3. CL Methods</a><ul>
+<li><a class="reference internal" href="#c-tilde-y-y"><span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span> の計算</a></li>
+<li><a class="reference internal" href="#hat-q-tilde-y-y"><span class="math notranslate nohighlight">\(\hat{Q}_{\tilde{y}, y^*}\)</span> の計算</a></li>
+<li><a class="reference internal" href="#id1">ラベルエラーの決め方</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#theory">4. Theory</a><ul>
+<li><a class="reference internal" href="#noiseless-predicted-probabilities">4.1 Noiseless Predicted Probabilities</a></li>
+<li><a class="reference internal" href="#noisy-predicted-probabilities">4.2 Noisy Predicted Probabilities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments">5. Experiments</a><ul>
+<li><a class="reference internal" href="#asymmetric-label-noise-on-cifar-10-dataset">5.1 Asymmetric Label Noise on CIFAR-10 dataset</a></li>
+<li><a class="reference internal" href="#real-world-noise-with-imagenet">5.2. Real-world Noise with ImageNet</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#related-work">6. Related work</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Gril ICLR’22 Bootstrap Your Own Latent A New Approach to Self-Supervised Learning</a><ul>
+<li><a class="reference internal" href="#introduction">1. Introduction</a></li>
+<li><a class="reference internal" href="#framework">2. Framework</a></li>
+<li><a class="reference internal" href="#cl-methods">3. CL Methods</a><ul>
+<li><a class="reference internal" href="#c-tilde-y-y"><span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span> の計算</a></li>
+<li><a class="reference internal" href="#hat-q-tilde-y-y"><span class="math notranslate nohighlight">\(\hat{Q}_{\tilde{y}, y^*}\)</span> の計算</a></li>
+<li><a class="reference internal" href="#id1">ラベルエラーの決め方</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#theory">4. Theory</a><ul>
+<li><a class="reference internal" href="#noiseless-predicted-probabilities">4.1 Noiseless Predicted Probabilities</a></li>
+<li><a class="reference internal" href="#noisy-predicted-probabilities">4.2 Noisy Predicted Probabilities</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#experiments">5. Experiments</a><ul>
+<li><a class="reference internal" href="#asymmetric-label-noise-on-cifar-10-dataset">5.1 Asymmetric Label Noise on CIFAR-10 dataset</a></li>
+<li><a class="reference internal" href="#real-world-noise-with-imagenet">5.2. Real-world Noise with ImageNet</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#related-work">6. Related work</a></li>
+</ul>
+</li>
+</ul>
+
+<div id="sourcelink">
+  <a href="../sources/ssl/boyl.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="gril-iclr-22-bootstrap-your-own-latent-a-new-approach-to-self-supervised-learning">
+<h1>Gril ICLR’22 Bootstrap Your Own Latent A New Approach to Self-Supervised Learning<a class="headerlink" href="#gril-iclr-22-bootstrap-your-own-latent-a-new-approach-to-self-supervised-learning" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://arxiv.org/pdf/2006.07733.pdf">https://arxiv.org/pdf/2006.07733.pdf</a></p>
+<p>著者</p>
+<p>Jean-Bastien Grill∗,(1) Florian Strub∗,(1) Florent Altché∗,(1) Corentin Tallec∗,(1) Pierre H. Richemond∗,(1,2)
+Elena Buchatskaya(1) Carl Doersch(1) Bernardo Avila Pires(1) Zhaohan Daniel Guo(1)
+Mohammad Gheshlaghi Azar(1) Bilal Piot(1) Koray Kavukcuoglu(1) Rémi Munos(1) Michal Valko(1)</p>
+<ol class="arabic simple">
+<li><p>DeepMind</p></li>
+<li><p>Imperial College</p></li>
+</ol>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ノイジーラベルにおける学習は通常、新しいモデルや損失関数を導入する</p></li>
+<li><p>しかし、このようなアプローチは、「どのデータが誤ってラベル付けされているのか」という真の問題を曖昧にすることがある</p></li>
+<li><p>この論文ではデータ中のラベルノイズを正確に発見するというアプローチを取る</p></li>
+</ul>
+<p>本論文では、3つの貢献をしている</p>
+<ul class="simple">
+<li><p>CLはラベルエラーを正確に見つけながら、現実的な仮定のもとでjoint distribution of noisy and true labels　を正確に推定できることを証明する</p></li>
+<li><p>CLが3つのタスク(a)ラベルノイズ推定、(b)ラベルエラー推定、(c)ノイズのあるラベルを用いた学習において実験的に性能が高いことを示し、ノイズのあるラベルの学習において比較手法を上回る性能を持つことを示す</p></li>
+<li><p>全ての結果を再現し、今後の研究を支援するためにcleanlabをPythonパッケージとして公開した</p></li>
+</ul>
+</section>
+<section id="framework">
+<h2>2. Framework<a class="headerlink" href="#framework" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ノイズを含む可能性のあるラベルを用いた標準的な多クラス分類を考える</p></li>
+</ul>
+<p><strong>Assumptions</strong></p>
+<ul class="simple">
+<li><p>class-conditional classification noise process (CNP)(Angluin &amp; Laird, 1988) を仮定する。</p></li>
+<li><p>CNP : クラスjのラベルは、独立に確率 <span class="math notranslate nohighlight">\(p(\tilde{y}=i | y^*=j)\)</span> でクラスiとして誤ラベルされるという仮定　(データに依存しない)</p></li>
+<li><p>この仮定は合理的であり(?)、先行研究（Goldberger &amp; BenReuven, 2017; Sukhbaatar et al, 2015）でも使われている</p></li>
+</ul>
+<p><strong>Notation</strong></p>
+<a class="reference internal image-reference" href="../images/northcutt20_nt.png"><img alt="../images/northcutt20_nt.png" class="align-center" src="../images/northcutt20_nt.png" style="width: 812.7px; height: 789.3000000000001px;" /></a>
+<p><strong>Goal</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q_{\tilde{y}, y^*}\)</span> (The m × m joint distribution matrix for <span class="math notranslate nohighlight">\(p(\tilde{y}=i, y^*=j)\)</span>) を推定して、ノイズラベルを判定すること</p></li>
+</ul>
+</section>
+<section id="cl-methods">
+<h2>3. CL Methods<a class="headerlink" href="#cl-methods" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../images/northcutt20_f1.png"><img alt="../images/northcutt20_f1.png" class="align-center" src="../images/northcutt20_f1.png" style="width: 602.6999999999999px; height: 445.2px;" /></a>
+<p>イラストにするとCLは上のような工程、文章にすると以下</p>
+<ol class="arabic simple">
+<li><p>ノイズまじりのラベルとそのノイズまじりのデータで学習したモデルを使った予測値を用意する</p>
+<ul class="simple">
+<li><p>予測値を計算するモデルは予測対象が訓練データに入らないように、CV的に複数モデルを作って予測する</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\hat{Q}_{\tilde{y}, y^*}\)</span>, <span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span> (後述) を使って削除するサンプルを決める</p></li>
+<li><p>2で決めたサンプルを削除して、学習する</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\cfrac{1}{\hat{p}(\tilde{y}=i | y^*=i) } = \cfrac{\hat{Q}_{y^*}[i]}{\hat{Q}_{\tilde{y}, y^*}[i][i]}\)</span> で各クラス <span class="math notranslate nohighlight">\(i \in [m]\)</span> を重み付けする</p></li>
+</ul>
+</li>
+</ol>
+<section id="c-tilde-y-y">
+<h3><span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span> の計算<a class="headerlink" href="#c-tilde-y-y" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../images/northcutt20_eq1.png"><img alt="../images/northcutt20_eq1.png" class="align-center" src="../images/northcutt20_eq1.png" style="width: 737.8px; height: 125.99999999999999px;" /></a>
+<a class="reference internal image-reference" href="../images/northcutt20_eq2.png"><img alt="../images/northcutt20_eq2.png" class="align-center" src="../images/northcutt20_eq2.png" style="width: 660.8px; height: 91.0px;" /></a>
+<p>文章にすると <span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span> は、
+「クラスjがモデルが推論する確率を(t以上の値をもつなかで)最大化するクラスでかつ、クラスiとラベル付けされているサンプルに対して
+モデルがクラスjと推論した確率が <span class="math notranslate nohighlight">\(t_j\)</span> 以上の個数」</p>
+<p><span class="math notranslate nohighlight">\(t_j\)</span> はクラスjとラベル付けされているサンプルに対してモデルがクラスjと推論した確率の平均。</p>
+<p>この定義はある状況下でいくつかの良い特性をもつ</p>
+<ol class="arabic simple">
+<li><p>あるサンプルがほぼ一様に低い予測確率を持つ場合、それはどの:math:<cite>C_{tilde{y}, y^*}</cite>　にもカウントされないので、<span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span>　は純粋なノイズやデータセットにない異質なクラスなサンプルに対してロバストである可能性がある</p></li>
+<li><p>クラスjに属するサンプルの期待確率よりも高い確率もつサンプルは、たぶんクラスjに属するだろうという直感を具現化している</p></li>
+<li><p>閾値は必ずしも平均値を使う必要がない。より高い信用度でエラーを見つけるために平均の代わりに例えば90percentileを使えとか。(しかし平均はSec4で示す理論的な正当性を持っているのでこの論文では平均を使う)</p></li>
+</ol>
+</section>
+<section id="hat-q-tilde-y-y">
+<h3><span class="math notranslate nohighlight">\(\hat{Q}_{\tilde{y}, y^*}\)</span> の計算<a class="headerlink" href="#hat-q-tilde-y-y" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../images/northcutt20_eq3.png"><img alt="../images/northcutt20_eq3.png" class="align-center" src="../images/northcutt20_eq3.png" style="width: 861.6999999999999px; height: 128.1px;" /></a>
+<ul class="simple">
+<li><p>クラスのサンプル数でcaribrateして</p></li>
+<li><p>全部足して1になるようにしている</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>ラベルエラーの決め方<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>いくつか提案している</p>
+<p>Approach : Use off-diagonals of <span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span> to estimate <span class="math notranslate nohighlight">\(\hat{X}_{\tilde{y}=i, y^*=j}\)</span></p>
+<ol class="arabic simple">
+<li><p>(baseline) <span class="math notranslate nohighlight">\(C_{confusion}\)</span> : boolean vector <span class="math notranslate nohighlight">\(\tilde{y}_k ~!= \arg \max_{j \in [m]} \hat{p}(\tilde{y}=j; x_k, \theta) ~ \forall x_k \in X\)</span> がtrueならラベルエラー、falseならクリーン</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span> : <span class="math notranslate nohighlight">\(\{x \in \hat{X}_{\tilde{y}=i, y^*=j} : i \neq j\}\)</span> をラベルエラーとして扱う</p></li>
+</ol>
+<p>Approach : Use <span class="math notranslate nohighlight">\(n \cdot \hat{Q}_{\tilde{y}=i, y^*=j}\)</span> to estimate <span class="math notranslate nohighlight">\(|\hat{X}_{\tilde{y}=i, y^*=j}|\)</span>, prune by probability ranking</p>
+<ol class="arabic simple" start="3">
+<li><p>Prune by Class (PBC): 各クラス <span class="math notranslate nohighlight">\(i \in [m]\)</span> で <span class="math notranslate nohighlight">\(\hat{p}(\tilde{y}=i; x\in X_i, \theta)\)</span> が低いものから <span class="math notranslate nohighlight">\(n \cdot \sum_{j \in [m]: j \neq i} (\hat{Q}_{\tilde{y}=i, y^*=j} [i])\)</span> 個 選ぶ</p></li>
+<li><p>Prune by Noise Rate (PBNR) : 各off-diagonal <span class="math notranslate nohighlight">\(\hat{Q}_{\tilde{y}=i, y^*=j}, ~i\neq j\)</span> に対して、margin (<span class="math notranslate nohighlight">\(\hat{p}_{x,\tilde{y}=j}-\hat{p}_{x,\tilde{y}=i}\)</span> ) の大きいものから <span class="math notranslate nohighlight">\(n \cdot \hat{Q}_{\tilde{y}=i, y^*=j}\)</span> 個選ぶ</p></li>
+<li><p>C+NR: PBCとPBNRを組み合わせて、両方の手法どちらも選んだものを選択する</p></li>
+</ol>
+</section>
+</section>
+<section id="theory">
+<h2>4. Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h2>
+<section id="noiseless-predicted-probabilities">
+<h3>4.1 Noiseless Predicted Probabilities<a class="headerlink" href="#noiseless-predicted-probabilities" title="Permalink to this headline">¶</a></h3>
+<div class="topic">
+<p class="topic-title">Condition 1 (Ideal)</p>
+<p><span class="math notranslate nohighlight">\(\forall x_k \in X_{y^*=j}, ~i \in [m], j \in [m]\)</span> に対して、<span class="math notranslate nohighlight">\(\hat{p}(\tilde{y}=i; x_k \in X_{y^*=j}, \theta) = p^*(\tilde{y}=i|y^*=j)\)</span>
+が成り立つとき、
+モデル <span class="math notranslate nohighlight">\(\theta\)</span> が idealであるという。</p>
+</div>
+<div class="topic">
+<p class="topic-title">Theorem 1 (Exact Label Errors)</p>
+<p>モデル <span class="math notranslate nohighlight">\(\theta\)</span> が idealで
+<span class="math notranslate nohighlight">\(Q_{\tilde{y}|y^*}\)</span> の対角成分がそれに対応する行、列の中で最大値であれば、
+<span class="math notranslate nohighlight">\(\hat{X}_{\tilde{y}=i, y^*=j}  = {X}_{\tilde{y}=i, y^*=j}\)</span> と
+<span class="math notranslate nohighlight">\(\hat{Q}_{\tilde{y}=i, y^*=j}  \simeq {Q}_{\tilde{y}=i, y^*=j}\)</span> が成り立つ。</p>
+</div>
+<p>証明のところに書いてあるのだが、<span class="math notranslate nohighlight">\(\hat{Q}_{\tilde{y}=i, y^*=j}  \simeq {Q}_{\tilde{y}=i, y^*=j}\)</span> となっているのは、 <span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span> から <span class="math notranslate nohighlight">\(\hat{Q}_{\tilde{y}, y^*}\)</span>  を計算するときに離散化エラーがあるから。
+たとえば、noise rateが0.39だとして、そのクラスのサンプルは5つしかないとき、<span class="math notranslate nohighlight">\(\hat{Q}\)</span> は2/5=0.4になってしまうため。</p>
+</section>
+<section id="noisy-predicted-probabilities">
+<h3>4.2 Noisy Predicted Probabilities<a class="headerlink" href="#noisy-predicted-probabilities" title="Permalink to this headline">¶</a></h3>
+<div class="topic">
+<p class="topic-title">Condition 3 (Per-Example Diffracted)</p>
+<a class="reference internal image-reference" href="../images/northcutt20_eq4.png"><img alt="../images/northcutt20_eq4.png" class="align-center" src="../images/northcutt20_eq4.png" style="width: 869.4px; height: 116.89999999999999px;" /></a>
+<p><span class="math notranslate nohighlight">\(\epsilon_j = \mathbb{E}_{x \in X} [\epsilon_{x, \tilde{y}=j}]\)</span> 、<span class="math notranslate nohighlight">\(\mathcal{U}\)</span> は正規分布として、<span class="math notranslate nohighlight">\(\hat{p}_{x, \tilde{y}=j} = p^*_{x, \tilde{y}=j} + \epsilon_{x, \tilde{y}=j}\)</span> が成り立つとき、 <span class="math notranslate nohighlight">\(\hat{p}_{x, \tilde{y}=j}\)</span> は per-example diffracted であるという。</p>
+</div>
+<div class="topic">
+<p class="topic-title">Theorem 2 (Per-Example Robustness)</p>
+<p>noisy dataset <span class="math notranslate nohighlight">\(X := (x, \tilde{y})^n\)</span> とモデル <span class="math notranslate nohighlight">\(\theta\)</span> に対して, label collisions がなくて <span class="math notranslate nohighlight">\(\hat{p}_{x,\tilde{y}=j}\)</span> が per-example diffractedで
+<span class="math notranslate nohighlight">\(Q_{\tilde{y}|y^*}\)</span> の対角成分がそれに対応する行の中で最大であれば、
+<span class="math notranslate nohighlight">\(\hat{X}_{\tilde{y}=i, y^*=j} \simeq {X}_{\tilde{y}=i, y^*=j}\)</span> と <span class="math notranslate nohighlight">\(\hat{Q}_{\tilde{y}=i, y^*=j}  \simeq {Q}_{\tilde{y}=i, y^*=j}\)</span> が成り立つ。</p>
+</div>
+<p>label collisions の定義がなかったのだが、証明を見てみると
+<span class="math notranslate nohighlight">\(\{ x \in X_{\tilde{y}=i} : \hat{p}(\tilde{y}=j; x, \theta) \ge t_j, j = \arg \max_{l \in [m]: \hat{p}(\tilde{y}=l) \ge t_l} \hat{p}(\tilde{y}=l; x, \theta) \} = \{ x \in X_{\tilde{y}=i} : \hat{p}(\tilde{y}=j; x, \theta) \ge t_j \}\)</span> が成り立つ状況のことのようだった
+つまり <span class="math notranslate nohighlight">\(\hat{p}(\tilde{y}=j; x, \theta) \ge t_j\)</span> を満たすクラスjっていうのは、他のクラスでその条件を満たすものの中では最大になっていないといけないという条件</p>
+<ul class="simple">
+<li><p>なにが言いたいのかというと、予測確率にちょっと誤差乗っていてもCLはちゃんと <span class="math notranslate nohighlight">\({Q}_{\tilde{y}=i, y^*=j}\)</span> が推定できるということ。</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{U}\)</span> の表記について理解できず・・・ (引数は平均分散じゃないの・・・)</p></li>
+<li><p>証明のところに書いてあるのだが、 <span class="math notranslate nohighlight">\(\hat{X}_{\tilde{y}=i, y^*=j} \simeq {X}_{\tilde{y}=i, y^*=j}\)</span> となっているのは、 <span class="math notranslate nohighlight">\(n \rightarrow \infty\)</span> にすれば=になるが、現実的にそうはならんので <span class="math notranslate nohighlight">\(\simeq\)</span> になっている。</p></li>
+</ul>
+</section>
+</section>
+<section id="experiments">
+<h2>5. Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h2>
+<p>以下の2つのデータセットでCLを実験的に評価する</p>
+<ul class="simple">
+<li><p>CIFAR (Krizhevsky &amp; Hinton, 2009)</p></li>
+<li><p>ImageNet (Russakovsky et al., 2015)</p></li>
+</ul>
+<p>Sec.5.1では、真のラベルが既知である CIFAR に人工的にラベルノイズを追加して実験する。</p>
+<p>Sec.5.2 では ImageNet を用いた実環境のノイズ識別と、CL で学習した場合の性能向上を示す。</p>
+<section id="asymmetric-label-noise-on-cifar-10-dataset">
+<h3>5.1 Asymmetric Label Noise on CIFAR-10 dataset<a class="headerlink" href="#asymmetric-label-noise-on-cifar-10-dataset" title="Permalink to this headline">¶</a></h3>
+<p>ノイズの生成</p>
+<ul class="simple">
+<li><p>先行研究（Sukhbaatar et al., 2015; Goldberger &amp; Ben-Reuven, 2017）に従い、実世界のノイズに似せるため、非一様で非対称なラベルノイズに対するCLパフォーマンスを検証する</p></li>
+<li><p>ランダムに生成したノイズ確率にしたがって、訓練サンプルのラベルを非一様に異なるクラスにランダムに切り替えることで、クリーンデータからノイズデータを生成する</p></li>
+<li><p>評価はノイズを加えていないテストセットで行う</p></li>
+</ul>
+<p>比較手法</p>
+<ul class="simple">
+<li><p>INCV (Chen et al., 2019): 複数回のクロスバリデーションでクリーンデータを見つけ出し、クリーンセットで学習</p></li>
+<li><p>SCE-loss(Wang et al., 2019): ロス補正のためにreverse cross entropy termをロス関数を追加</p></li>
+<li><p>Mixup (Zhang et al, 2018）: サンプルとラベルを線形結合してデータを増強する</p></li>
+<li><p>MentorNet（Jiang et al., 2018): カリキュラム学習を用いて学習時にノイズデータを回避する</p></li>
+<li><p>Co-Teaching (Han et al., 2018): クリーンデータから学習するために2つのモデルを並行して学習する</p></li>
+<li><p>S-Model (Goldberger &amp; Ben-Reuven, 2017: ソフトマックス層を追加して学習時のノイズをモデル化</p></li>
+<li><p>Reed（Reed et al., 2015): loss-reweighting</p></li>
+</ul>
+<p>設定</p>
+<ul class="simple">
+<li><p>モデルはResNet-50</p></li>
+<li><p>ハイパーパラメータをもっている比較手法は、一番精度が良かったものを採用</p></li>
+</ul>
+<a class="reference internal image-reference" href="../images/northcutt20_t1.png"><img alt="../images/northcutt20_t1.png" class="align-center" src="../images/northcutt20_t1.png" style="width: 810.1500000000001px; height: 315.15000000000003px;" /></a>
+<ul class="simple">
+<li><p>CLは全てのnoise rate と sparsity において他の先行技術に勝つ</p></li>
+<li><p>高ノイズ領域では有意な改善、低ノイズ領域では中程度の改善</p>
+<ul>
+<li><p>他の手法と比べてCLは現実的な高いスパース性を持つノイズに対しても精度が低下しない</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../images/northcutt20_f2.png"><img alt="../images/northcutt20_f2.png" class="align-center" src="../images/northcutt20_f2.png" style="width: 812.35px; height: 274.45000000000005px;" /></a>
+<p>Figure 2 は、CIFARの高ノイズ（40%）、高スパース（60%）の領域におけるCLの品質を示したもの</p>
+<ul class="simple">
+<li><p>(a): <span class="math notranslate nohighlight">\({Q}_{\tilde{y}=i, y^*=j}\)</span> (True joint)</p></li>
+<li><p>(b), (c)を見るとCLは <span class="math notranslate nohighlight">\({Q}_{\tilde{y}=i, y^*=j}\)</span> の80%以上の要素を絶対差0.005以内で推定している</p></li>
+</ul>
+<a class="reference internal image-reference" href="../images/northcutt20_t2.png"><img alt="../images/northcutt20_t2.png" class="align-center" src="../images/northcutt20_t2.png" style="width: 800.2500000000001px; height: 201.3px;" /></a>
+<p>表2は、真のラベルをrecoverするための精度、再現率、F1を載せている。</p>
+<p>CLは高い再現率と適切なF1でラベルの誤りを発見できる。</p>
+</section>
+<section id="real-world-noise-with-imagenet">
+<h3>5.2. Real-world Noise with ImageNet<a class="headerlink" href="#real-world-noise-with-imagenet" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal image-reference" href="../images/northcutt20_f3.png"><img alt="../images/northcutt20_f3.png" class="align-center" src="../images/northcutt20_f3.png" style="width: 769.45px; height: 431.75000000000006px;" /></a>
+<p><strong>Ontological discovery via label noise characterization</strong></p>
+<ul class="simple">
+<li><p>ImageNetは単一クラスデータセットなのでクラスは相互に排他的でないといけない</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{\tilde{y}, y^*}\)</span> の非対角成分をみてオントロジー問題を見つけた</p>
+<ul>
+<li><p>maillotというクラスが2回出現すること</p></li>
+<li><p>bathtubがthubであるようなis-a関係のクラスが存在する</p></li>
+<li><p>projectileとmissileのような誤称</p></li>
+<li><p>cornとearのように複数の意味を持つ単語による予期せぬ問題</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Training ResNet on ImageNet with label issues removed</strong></p>
+<a class="reference internal image-reference" href="../images/northcutt20_f4.png"><img alt="../images/northcutt20_f4.png" class="align-center" src="../images/northcutt20_f4.png" style="width: 766.1500000000001px; height: 303.6px;" /></a>
+<ul class="simple">
+<li><p>ResNet50（図4b）とResNet18（図4a）を用いて、ImageNetの学習データからノイズとなる事例を徐々に削除し、性能を計測</p></li>
+<li><p>他のベースラインはラベルエラーを識別できない可能性があるため、比較対象としていない</p></li>
+</ul>
+</section>
+</section>
+<section id="related-work">
+<h2>6. Related work<a class="headerlink" href="#related-work" title="Permalink to this headline">¶</a></h2>
+<p>割愛</p>
+<p><strong>INCVとの比較</strong></p>
+<ul class="simple">
+<li><p>INCV(Chen et al., 2019)とCLは、どちらもクリーンデータを推定する。</p></li>
+<li><p>どちらもクロスバリデーションを用い、ラベルエラーを見つけるために混同行列を利用する</p></li>
+</ul>
+<p>CLはINCVに対して3つの重要な利点がある</p>
+<ul class="simple">
+<li><p>INCVは、クリーンなデータと自信がないデータで繰り返し再トレーニングを行うことで、ラベルエラーを発見する。INCVはCo-Teachingを修正し、まずクリーンセットで学習し、その後、クリーンセットと候補セットを組み合わせて学習するのに対し、CLは修正されていない標準的なCo-Teachingを用いるだけで、良好な結果が得られる</p></li>
+<li><p>INCVは各反復において、2回クロスバリデーションが実行されるので学習に時間がかかる。CLは反復しない。</p></li>
+<li><p>argmax予測と異なるラベルを与えられた例は、ラベルエラーとみなすアプローチは効果的であるが、クラスの不均衡や、あるモデルが他のクラスより確信度が高い（平均して確率が大きいか小さい）場合の誤差を適切にカウントすることに失敗する。このクラスレベルでの予測確率の偏りを考慮し、頑健性を持たせるために、CLでは理論的に妥当な閾値を用いながら推定を行う。</p></li>
+</ul>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2021, ashibaga.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.3.2.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Musgrave ECCV’20 A Metric Learning Reality Check &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding" href="lifted_structured.html" />
+    <link rel="prev" title="Metric Learning" href="../metriclearning.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Musgrave ECCV’20 A Metric Learning Reality Check</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">なぜこんなことが起きているのか</a></li>
+<li><a class="reference internal" href="#id3">著者らの実験設定</a><ul>
+<li><a class="reference internal" href="#id4">ハイパーパラメータチューニング</a></li>
+<li><a class="reference internal" href="#id5">評価手法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">実験結果</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../metriclearning.html" title="Previous Chapter: Metric Learning"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Metric Learning</span>
+    </a>
+  </li>
+  <li>
+    <a href="lifted_structured.html" title="Next Chapter: Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Song CVPR’16 ... &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Musgrave ECCV’20 A Metric Learning Reality Check</a><ul>
+<li><a class="reference internal" href="#id1">概要</a></li>
+<li><a class="reference internal" href="#id2">なぜこんなことが起きているのか</a></li>
+<li><a class="reference internal" href="#id3">著者らの実験設定</a><ul>
+<li><a class="reference internal" href="#id4">ハイパーパラメータチューニング</a></li>
+<li><a class="reference internal" href="#id5">評価手法</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id6">実験結果</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="../metriclearning.html" title="Previous Chapter: Metric Learning"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Metric Learning</span>
+    </a>
+  </li>
+  <li>
+    <a href="lifted_structured.html" title="Next Chapter: Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Song CVPR’16 ... &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/metriclearning/reality_check.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="musgrave-eccv-20-a-metric-learning-reality-check">
+<h1>Musgrave ECCV’20 A Metric Learning Reality Check<a class="headerlink" href="#musgrave-eccv-20-a-metric-learning-reality-check" title="Link to this heading">¶</a></h1>
+<p><a class="reference external" href="https://arxiv.org/abs/2003.08505">https://arxiv.org/abs/2003.08505</a></p>
+<p>著者</p>
+<ul class="simple">
+<li><p>Kevin Musgrave (Cornell Tech)</p></li>
+<li><p>Serge Belongie (Cornell Tech)</p></li>
+<li><p>Ser-Nam Lim (Facebook AI)</p></li>
+</ul>
+<section id="id1">
+<h2>概要<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Metric Learningは、Constructive Lossから精度の意味で大して進歩してないのでは?と言っている論文</p></li>
+<li><p>実装が参考になる <a class="reference external" href="https://github.com/KevinMusgrave/pytorch-metric-learning">https://github.com/KevinMusgrave/pytorch-metric-learning</a></p></li>
+<li><p>Metric Learning論文でよく使われる3つの画像データセット(CUB200, Cars196, SOP) を使う</p></li>
+<li><p>クエリの画像と同じクラスの画像をTOP1に持ってこれるか (Precision&#64;1) を評価したもの</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/cars196.png"><img alt="../_images/cars196.png" class="align-center" src="../_images/cars196.png" style="width: 455.20000000000005px; height: 375.20000000000005px;" />
+</a>
+<ul class="simple">
+<li><p>Fig. (a)は、各々の論文中で報告されているP&#64;1</p>
+<ul>
+<li><p>Constractive, Triplet, Semihard Miningについては、すべての論文の平均を取っている</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/f2a.png"><img alt="../_images/f2a.png" class="align-center" src="../_images/f2a.png" style="width: 633.6px; height: 560.8000000000001px;" />
+</a>
+<ul class="simple">
+<li><p>Fig. (b)は、著者らが実験した結果</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/f2b.png"><img alt="../_images/f2b.png" class="align-center" src="../_images/f2b.png" style="width: 619.2px; height: 566.4px;" />
+</a>
+</section>
+<section id="id2">
+<h2>なぜこんなことが起きているのか<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>ハイパーパラメータチューニングがされていない/不十分</p></li>
+<li><p>実験設定が揃っていない</p>
+<ul>
+<li><p>Network Achitecure</p>
+<ul>
+<li><p>GoogleNet &lt; ResNet50なのに既存法はGoogleNet使っていたりとか</p></li>
+</ul>
+</li>
+<li><p>Optimizer choice (SCD, Adam, RMSprop,…) and learning rate</p></li>
+<li><p>Data augmentationなどの細かいテクニック</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>著者らの実験設定<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>ImageNetで事前学習したBN-Inception network (embedding dim=128)</p></li>
+<li><p>batchsize = 32</p>
+<ul>
+<li><p>embedding lossでは、8クラスごとに4sample</p></li>
+<li><p>classification lossでは、32クラスごとに1sample</p></li>
+</ul>
+</li>
+<li><p>学習中、画像はrandom resized cropping strategyを使って augmentationされる</p>
+<ul>
+<li><p>短辺の長さが256になるようにリサイズして</p></li>
+<li><p>40~256の間のサイズ、3/4 ~ 4/3の間のアスペクト比になるようにランダムなクロップをする</p></li>
+<li><p>このクロップは227 × 227 にリサイズされ、50%の確率で左右反転する</p></li>
+</ul>
+</li>
+<li><p>OptimizerにはRMSpropを使う (学習率1e-6)</p>
+<ul>
+<li><p>SGDより収束がはやく、Adamより精度がよかった</p></li>
+</ul>
+</li>
+<li><p>Embeddingはロス計算と評価の前にL2正規化する</p></li>
+</ul>
+<section id="id4">
+<h3>ハイパーパラメータチューニング<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>各クラス前半のデータをcross validation用に、後半のデータをtest用に使う</p>
+<ul>
+<li><p>cross validation用のデータを4つにわけて、そのうちの3つをtraining、1つをvalidationに使う</p></li>
+<li><p>validation dataのaccucaryが停滞したら、学習をストップする</p></li>
+</ul>
+</li>
+<li><p>Bayesian Optimization (50 iterations) でbestなやつを探す</p>
+<ul>
+<li><p>validation accuracyの平均が一番高いやつを採用する</p></li>
+<li><p>BOの具体的な手法のことは書いてない</p></li>
+<li><p><a class="reference external" href="https://kevinmusgrave.github.io/powerful-benchmarker/papers/mlrc/#optimization-plots">https://kevinmusgrave.github.io/powerful-benchmarker/papers/mlrc/#optimization-plots</a> からplotが見れる</p>
+<ul>
+<li><p><a class="reference external" href="https://kevinmusgrave.github.io/powerful-benchmarker/papers/mlrc_plots/cub_contrastive.html">https://kevinmusgrave.github.io/powerful-benchmarker/papers/mlrc_plots/cub_contrastive.html</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h3>評価手法<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<p>cross validation用のデータを4つに分割するので、4つのモデル(Embedding)ができるので、次の2つのやり方で性能評価する</p>
+<ol class="arabic simple">
+<li><p>Concatened (512dim) 4つのモデルのEmbedding(128dim)を結合して、512次元として使う</p></li>
+<li><p>Separated (128dim) 4つのモデルそれぞれで評価して、平均を取る</p></li>
+</ol>
+</section>
+</section>
+<section id="id6">
+<h2>実験結果<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p><strong>CUB200</strong></p>
+<ul class="simple">
+<li><p>200種類の鳥の画像 (ほとんどが北米に生息)</p></li>
+<li><p>サンプル数: 6,033</p></li>
+<li><p><a class="reference external" href="http://www.vision.caltech.edu/visipedia/CUB-200.html">http://www.vision.caltech.edu/visipedia/CUB-200.html</a></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/t4.png"><img alt="../_images/t4.png" class="align-center" src="../_images/t4.png" style="width: 930.4000000000001px; height: 452.0px;" />
+</a>
+<p><strong>Cars196</strong></p>
+<ul class="simple">
+<li><p>196クラス(車種)の車の画像</p></li>
+<li><p>サンプル数: 16185</p></li>
+<li><p><a class="reference external" href="https://ai.stanford.edu/~jkrause/cars/car_dataset.html">https://ai.stanford.edu/~jkrause/cars/car_dataset.html</a></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/t5.png"><img alt="../_images/t5.png" class="align-center" src="../_images/t5.png" style="width: 924.8000000000001px; height: 464.8px;" />
+</a>
+<p><strong>Stanford Online Products(SOP)</strong></p>
+<ul class="simple">
+<li><p>22634クラスのオンラインショッピングの商品画像</p></li>
+<li><p>サンプル数: 120k</p></li>
+<li><p><a class="reference external" href="https://cvgl.stanford.edu/projects/lifted_struct/">https://cvgl.stanford.edu/projects/lifted_struct/</a></p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/t6.png"><img alt="../_images/t6.png" class="align-center" src="../_images/t6.png" style="width: 921.6px; height: 461.6px;" />
+</a>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
