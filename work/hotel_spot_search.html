@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>ホテルスポット検索 &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Metric Learning" href="../metriclearning.html" />
+    <link rel="prev" title="Work" href="../work.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../work.html">Work</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ホテルスポット検索</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">ホテルスポット検索</a><ul>
+<li><a class="reference internal" href="#id2">モチベーション</a></li>
+<li><a class="reference internal" href="#id3">問題設定</a><ul>
+<li><a class="reference internal" href="#id4">正解データの作り方</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">現行モデル</a></li>
+<li><a class="reference internal" href="#id6">学習の枠組み</a><ul>
+<li><a class="reference internal" href="#id7">コード例</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">精度比較</a><ul>
+<li><a class="reference internal" href="#id10">住所の扱い方それでいいの?</a></li>
+<li><a class="reference internal" href="#vs">クエリとスポットでモデル別々 vs 共通</a></li>
+<li><a class="reference internal" href="#id11">全スポット損失のマージンを最初緩めておいて、途中で厳しくする意味あるの?</a></li>
+<li><a class="reference internal" href="#epoch-vs">全スポット損失計算 5epoch目から(水色) vs 最初から(緑色)</a></li>
+<li><a class="reference internal" href="#proxyembeddingproxy">proxy系ロスに影響を受けて、全スポットのEmbeddingをProxyで代替してみた (オレンジ色)</a></li>
+<li><a class="reference internal" href="#id12">学習率スケジューリング</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">アプライ</a></li>
+<li><a class="reference internal" href="#id14">参考文献</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../work.html" title="Previous Chapter: Work"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Work</span>
+    </a>
+  </li>
+  <li>
+    <a href="../metriclearning.html" title="Next Chapter: Metric Learning"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Metric Learning &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">ホテルスポット検索</a><ul>
+<li><a class="reference internal" href="#id2">モチベーション</a></li>
+<li><a class="reference internal" href="#id3">問題設定</a><ul>
+<li><a class="reference internal" href="#id4">正解データの作り方</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">現行モデル</a></li>
+<li><a class="reference internal" href="#id6">学習の枠組み</a><ul>
+<li><a class="reference internal" href="#id7">コード例</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id8">精度比較</a><ul>
+<li><a class="reference internal" href="#id10">住所の扱い方それでいいの?</a></li>
+<li><a class="reference internal" href="#vs">クエリとスポットでモデル別々 vs 共通</a></li>
+<li><a class="reference internal" href="#id11">全スポット損失のマージンを最初緩めておいて、途中で厳しくする意味あるの?</a></li>
+<li><a class="reference internal" href="#epoch-vs">全スポット損失計算 5epoch目から(水色) vs 最初から(緑色)</a></li>
+<li><a class="reference internal" href="#proxyembeddingproxy">proxy系ロスに影響を受けて、全スポットのEmbeddingをProxyで代替してみた (オレンジ色)</a></li>
+<li><a class="reference internal" href="#id12">学習率スケジューリング</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id13">アプライ</a></li>
+<li><a class="reference internal" href="#id14">参考文献</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="../work.html" title="Previous Chapter: Work"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Work</span>
+    </a>
+  </li>
+  <li>
+    <a href="../metriclearning.html" title="Next Chapter: Metric Learning"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">Metric Learning &raquo;</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/work/hotel_spot_search.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="id1">
+<h1>ホテルスポット検索<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<p>イメージ</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>google</p></td>
+<td><p>yahoo(現行)</p></td>
+<td><p>yahoo(テスト)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../_images/g_dd.png"><img alt="g_dd" src="../_images/g_dd.png" style="width: 187.5px; height: 260.5px;" /></a></p></td>
+<td><p><a class="reference internal" href="../_images/y_dd_ctrl.png"><img alt="y_dd_ctrl" src="../_images/y_dd_ctrl.png" style="width: 187.5px; height: 210.5px;" /></a></p></td>
+<td><p><a class="reference internal" href="../_images/y_dd_test.png"><img alt="y_dd_test" src="../_images/y_dd_test.png" style="width: 187.5px; height: 322.0px;" /></a></p></td>
+</tr>
+</tbody>
+</table>
+<section id="id2">
+<h2>モチベーション<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<p>検索クエリからホテルを当てるのが難しいクエリでも、google並にDD出したい</p>
+<ul class="simple">
+<li><p>例: クエリ = 「名古屋本の読めるホテル」</p></li>
+<li><p>「名古屋本の読めるホテル」から「ランプライトブックスホテル名古屋」を当てるのは難しい</p></li>
+</ul>
+<p><strong>Q: なぜ現行で出せないのか?</strong></p>
+<p>→ A: 検索エンジンが当てられないから (現行では大阪ベイプラザホテルを引いてくる)</p>
+<p>資料</p>
+<ul class="simple">
+<li><p>【SOOM】トラベルスポット検索エンジン改善検討 <a class="reference external" href="https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2433816897">https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2433816897</a></p></li>
+<li><p>【SOOM】トラベルスポット 検索エンジンが不正解なクエリ分析 <a class="reference external" href="https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2545627820">https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2545627820</a></p></li>
+<li><p>【SOOM】トラベルスポット googleとの差の原因調査・伸びしろ内訳 <a class="reference external" href="https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2527930454">https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2527930454</a></p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>問題設定<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Input: 検索クエリと正解スポット(名前,住所)のペアが1,400万件クエリくらい</p>
+<ul>
+<li><p>スポットの数は17,000件くらい</p></li>
+<li><p>学習データ: 過去2年間のクエリで既存モデルが正解できるもの + 過去1ヶ月でimpsのあったクエリ</p></li>
+<li><p>評価データ: 過去1ヶ月でimpsのあったクエリ (学習データにサブ集合になっていますが、overfitしてしまってもよいという認識でやっています)</p></li>
+</ul>
+</li>
+<li><p>検索の設定: 検索クエリの分散表現とスポットの分散表現の内積でランキングする</p></li>
+<li><p>目標: すべてのクエリで正解ホテルがTOP1にランキングできること</p></li>
+</ul>
+<section id="id4">
+<h3>正解データの作り方<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ghe.corp.yahoo.co.jp/trans-modeling/docker_travel_spot_intent_query_updater/blob/master/docs/overview.md">https://ghe.corp.yahoo.co.jp/trans-modeling/docker_travel_spot_intent_query_updater/blob/master/docs/overview.md</a></p></li>
+<li><p>googleの検索エンジンの結果と特定のホテルページ(じゃらん、一休、楽天、Yトラベル)をユーザーがクリックしたという情報を使う</p></li>
+<li><p>(クエリ, URL(spot id)) と (拠点名, gid (Yの拠点DBのid)) を クエリと拠点名でjoinして、spot idとgidを結びつける</p></li>
+<li><p>spot idとgidの対応表を使って、クエリとgidを紐付ける</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/collect_data.png"><img alt="../_images/collect_data.png" class="align-center" src="../_images/collect_data.png" style="width: 591.2px; height: 338.40000000000003px;" />
+</a>
+<p><strong>Q: クエリと正解gidが分かっているなら、クエリとgidをKVSにいれておけばいいのは?</strong></p>
+<ul class="simple">
+<li><p>googleへの依存度が大きいのでNGということになりました</p></li>
+<li><p>クリックログのない超テールクエリでも、スポット検索したい</p></li>
+</ul>
+</section>
+</section>
+<section id="id5">
+<h2>現行モデル<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ghe.corp.yahoo.co.jp/trans-modeling/travel_spot_modeling/blob/master/docs/background/supplement.md">https://ghe.corp.yahoo.co.jp/trans-modeling/travel_spot_modeling/blob/master/docs/background/supplement.md</a></p></li>
+<li><p>lightgbmのLabmdaRankで学習している</p>
+<ul>
+<li><p>ラベル1: 正解ホテル</p></li>
+<li><p>ラベル0: ランダムサンプリング30件 (1st phaseがsolrデフォルトで、2nd phaseがランダム)</p></li>
+</ul>
+</li>
+<li><p>特徴量</p>
+<ul>
+<li><p>クエリと各フィールド(名前、住所、名前読み、表記ゆれリスト etc…)のスコア(tfIdf, bm25, cosine類似度…)</p></li>
+</ul>
+</li>
+</ul>
+<p>feature importance</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tfIcf</span><span class="p">(</span><span class="n">namelist_bigram4ranking</span><span class="p">)</span>  <span class="o">=</span>  <span class="mf">1.0</span>
+<span class="n">bm25f</span><span class="p">(</span><span class="mf">1.2</span><span class="n">__namelist_kana_webma4ranking__1__0</span><span class="mf">.75</span><span class="p">)</span>  <span class="o">=</span>  <span class="mf">0.47981938893423953</span>
+<span class="n">tfIcf</span><span class="p">(</span><span class="n">nameyomi_trigram4ranking</span><span class="p">)</span>  <span class="o">=</span>  <span class="mf">0.11000939962088585</span>
+<span class="n">tfIcf</span><span class="p">(</span><span class="n">nameyomi_bigram4ranking</span><span class="p">)</span>  <span class="o">=</span>  <span class="mf">0.06630568280495444</span>
+<span class="n">fieldMatch</span><span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="o">.</span><span class="n">significance</span>  <span class="o">=</span>  <span class="mf">0.054585215879550245</span>
+<span class="n">bm25f</span><span class="p">(</span><span class="mf">1.2</span><span class="n">__default__1__0</span><span class="mf">.75</span><span class="p">)</span>  <span class="o">=</span>  <span class="mf">0.049802860960983075</span>
+<span class="n">fieldMatch</span><span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="o">.</span><span class="n">queryCompleteness</span>  <span class="o">=</span>  <span class="mf">0.04369201406793663</span>
+<span class="n">tfIcf</span><span class="p">(</span><span class="n">namelist_kana_webma4ranking</span><span class="p">)</span>  <span class="o">=</span>  <span class="mf">0.031924958440552986</span>
+<span class="n">fieldMatch</span><span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="o">.</span><span class="n">matches</span>  <span class="o">=</span>  <span class="mf">0.023469369066949495</span>
+<span class="n">tfIcf</span><span class="p">(</span><span class="n">default</span><span class="p">)</span>  <span class="o">=</span>  <span class="mf">0.023205421553969804</span>
+<span class="n">fieldMatch</span><span class="p">(</span><span class="n">default</span><span class="p">)</span><span class="o">.</span><span class="n">weight</span>  <span class="o">=</span>  <span class="mf">0.015138581004767455</span>
+<span class="n">tfIdf</span><span class="p">(</span><span class="n">address4ranking</span><span class="p">)</span>  <span class="o">=</span>  <span class="mf">0.014289061473458832</span>
+<span class="n">fieldMatch</span><span class="p">(</span><span class="n">nameyomi_bigram4ranking</span><span class="p">)</span><span class="o">.</span><span class="n">significance</span>  <span class="o">=</span>  <span class="mf">0.01370967390336565</span>
+<span class="p">(</span><span class="n">以下省略</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>スペラーがいるので、それがクエリ訂正できるところは当てられるので表記ゆれにも対応できている</p>
+<ul>
+<li><p>らこーはなのい → rako華乃井</p></li>
+<li><p>らこー花野井 → rako華乃井</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h2>学習の枠組み<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>学習データは 検索クエリと正解スポット(名前, 住所)のペアで持っている</p></li>
+<li><p>検索クエリは正規化後、<a class="reference internal" href="../other/sentencepiece.html"><span class="doc">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</span></a> によって、token id化しておく</p>
+<ul>
+<li><p>例: 「名古屋本の読めるホテル」→ [‘名古屋’, ‘本の’, ‘読’, ‘める’, ‘ホテル’] → [173, 12512,  7805, 9356, 3]</p></li>
+</ul>
+</li>
+<li><p>スポットの方も、名前と住所をsentencepieceによってtoken id化しておいて、住所のtoken id + 名前のtoken idとしておく</p></li>
+<li><p>クエリとスポットのペアをM個(ミニバッチ)与えて、<a class="reference internal" href="../metriclearning.html"><span class="doc">Metric Learning</span></a> の損失関数を使って損失を計算する</p>
+<ul>
+<li><p>損失関数内でミニバッチ内のサンプルの組み合わせを自由に決めてロスを計算する</p></li>
+</ul>
+</li>
+</ul>
+<section id="id7">
+<h3>コード例<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h3>
+<p>constructive lossを使って、損失計算して、最適化しているコード</p>
+<ul class="simple">
+<li><p>以下のコードは3つ (クエリ&amp;スポット、クエリ&amp;クエリ、スポット&amp;スポット)のロスを計算している</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_step</span><span class="p">(</span><span class="n">model_query</span><span class="p">,</span> <span class="n">model_spot</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span>
+               <span class="n">query_ids</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">spot_ids</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">margin</span>
+<span class="p">):</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">query_embs</span> <span class="o">=</span> <span class="n">model_query</span><span class="p">(</span><span class="n">query_ids</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">spot_embs</span> <span class="o">=</span> <span class="n">model_spot</span><span class="p">(</span><span class="n">spot_ids</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">qs_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">qq_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">ss_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">qs_loss</span> <span class="o">+</span> <span class="n">qq_loss</span> <span class="o">+</span> <span class="n">ss_loss</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">model_query</span><span class="o">.</span><span class="n">trainable_variables</span> <span class="o">+</span> <span class="n">model_spot</span><span class="o">.</span><span class="n">trainable_variables</span>
+    <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="n">variables</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">loss</span>
+</pre></div>
+</div>
+<p>constructive lossのコード</p>
+<ul class="simple">
+<li><p>与えられたペア(inputs_col, inputs_row)のすべての組み合わせの損失を計算する</p></li>
+<li><p>同じラベル(targets)を持つものは損失=1-内積、違うラベルを持つものは損失=max(0, 内積-マージン)</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">contrastive_loss</span><span class="p">(</span>
+    <span class="n">inputs_col</span><span class="p">,</span> <span class="n">targets_col</span><span class="p">,</span> <span class="n">inputs_row</span><span class="p">,</span> <span class="n">targets_row</span><span class="p">,</span> <span class="n">margin</span>
+<span class="p">):</span>
+    <span class="n">sim_mat</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">inputs_col</span><span class="p">,</span> <span class="n">inputs_row</span><span class="p">,</span> <span class="n">transpose_b</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">targets_col</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">targets_row</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">targets_col_expaned</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="n">targets_col</span><span class="p">],</span> <span class="n">repeats</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">targets_row_expaned</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">repeat</span><span class="p">([</span><span class="n">targets_row</span><span class="p">],</span> <span class="n">repeats</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">pos_mask</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">equal</span><span class="p">(</span><span class="n">targets_col_expaned</span><span class="p">,</span> <span class="n">targets_row_expaned</span><span class="p">)</span>
+    <span class="n">neg_mask</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">pos_mask</span><span class="p">),</span> <span class="n">tf</span><span class="o">.</span><span class="n">greater</span><span class="p">(</span><span class="n">sim_mat</span><span class="p">,</span> <span class="n">margin</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">tf</span><span class="o">.</span><span class="n">boolean_mask</span><span class="p">(</span><span class="n">sim_mat</span><span class="p">,</span> <span class="n">pos_mask</span><span class="p">))</span>
+        <span class="o">+</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">boolean_mask</span><span class="p">(</span><span class="n">sim_mat</span><span class="p">,</span> <span class="n">neg_mask</span><span class="p">))</span>
+    <span class="p">)</span> <span class="o">/</span> <span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2>精度比較<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>モデル</p>
+<ul class="simple">
+<li><p>SimpleEncoder: Embedding足し上げるだけ</p></li>
+<li><p>Lstms: 多層LSTM (最終隠れベクトル利用)</p></li>
+<li><p>TransfomerEncoder: Transfomerのencodeする部分 + average pooling + FFN</p></li>
+<li><p>AttentionLstms: LSTM + Transfomer(pos-encodingなし) (最終隠れベクトル利用)</p></li>
+<li><p>AttentionBDLstms: Bidirectional LSTM + Transfomer(pos-encodingなし) + average pooling + FFN</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleEncoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">mask_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Lambda</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean_layer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Lstms</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_layer</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">mask_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_layer</span><span class="p">)]</span>
+        <span class="p">)</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm_layer</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">EncoderLayer</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">d_ff</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">,</span> <span class="n">rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mha</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span> <span class="o">=</span> <span class="n">point_wise_feed_forward_network</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_ff</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layernorm1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LayerNormalization</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layernorm2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LayerNormalization</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="p">):</span>
+        <span class="n">attn_output</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mha</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>  <span class="c1"># (batch_size, input_seq_len, d_model)</span>
+        <span class="n">out1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layernorm1</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">attn_output</span><span class="p">)</span>  <span class="c1"># (batch_size, input_seq_len, d_model)</span>
+        <span class="n">ffn_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span><span class="p">(</span><span class="n">out1</span><span class="p">)</span>  <span class="c1"># (batch_size, input_seq_len, d_model)</span>
+        <span class="n">out2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layernorm2</span><span class="p">(</span><span class="n">out1</span> <span class="o">+</span> <span class="n">ffn_output</span><span class="p">)</span>  <span class="c1"># (batch_size, input_seq_len, d_model)</span>
+        <span class="k">return</span> <span class="n">out2</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">TransformerEncoder</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_vocab_size</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">num_layers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                 <span class="n">aggregate_type</span><span class="o">=</span><span class="s2">&quot;avg&quot;</span><span class="p">,</span> <span class="n">maximum_position_encoding</span><span class="o">=</span><span class="mi">30</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span> <span class="o">=</span> <span class="n">d_model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_vocab_size</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pos_encoding</span> <span class="o">=</span> <span class="n">positional_encoding</span><span class="p">(</span><span class="n">maximum_position_encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">d_model</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enc_layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">EncoderLayer</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">num_heads</span><span class="p">)</span>  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_layers</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="n">aggregate_type</span> <span class="o">==</span> <span class="s2">&quot;avg&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">GlobalAveragePooling1D</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">GlobalMaxPooling1D</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span> <span class="o">=</span> <span class="n">point_wise_feed_forward_network</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">d_model</span><span class="p">)</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">seq_len</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">*=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">d_model</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pos_encoding</span><span class="p">[:,</span> <span class="p">:</span><span class="n">seq_len</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">enc_layers</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AttentionLstmEncoderLayer</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="n">bidirectional_lstm</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">bidirectional_lstm</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Bidirectional</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LSTM</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+            <span class="n">embedding_dim</span> <span class="o">*=</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mha</span> <span class="o">=</span> <span class="n">MultiHeadAttention</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layernorm1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LayerNormalization</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layernorm2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">LayerNormalization</span><span class="p">(</span><span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span> <span class="o">=</span> <span class="n">point_wise_feed_forward_network</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">embedding_dim</span><span class="p">)</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lstm</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">attn_output</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mha</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+        <span class="n">out1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layernorm1</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">attn_output</span><span class="p">)</span>
+        <span class="n">ffn_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span><span class="p">(</span><span class="n">out1</span><span class="p">)</span>
+        <span class="n">out2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layernorm2</span><span class="p">(</span><span class="n">out1</span> <span class="o">+</span> <span class="n">ffn_output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out2</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AttentionLstms</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="n">n_layer</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sqrt_embedding_dim</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">mask_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enc_layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">AttentionLstmEncoderLayer</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">)</span>  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_layer</span><span class="p">)])</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sqrt_embedding_dim</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">enc_layers</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AttentionBDLstms</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="n">n_layer</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">aggregate_type</span><span class="o">=</span><span class="s2">&quot;avg&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sqrt_embedding_dim</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">mask_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">enc_layers</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span><span class="n">AttentionLstmEncoderLayer</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_layer</span><span class="p">)])</span>
+        <span class="k">if</span> <span class="n">aggregate_type</span> <span class="o">==</span> <span class="s2">&quot;avg&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">GlobalAveragePooling1D</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">GlobalMaxPooling1D</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span> <span class="o">=</span> <span class="n">point_wise_feed_forward_network</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">embedding_dim</span><span class="p">)</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">*=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sqrt_embedding_dim</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">enc_layers</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>model</p></th>
+<th class="head"><p>train acc. (%)</p></th>
+<th class="head"><p>valid acc. (%)</p></th>
+<th class="head"><p>valid imps weighted acc. (%)</p></th>
+<th class="head"><p>time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SimpleEncoder</p></td>
+<td><p>89.87</p></td>
+<td><p>80.51</p></td>
+<td><p>80.72</p></td>
+<td><p>1d0h</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lstms(1-1)</p></td>
+<td><p>93.04</p></td>
+<td><p>84.39</p></td>
+<td><p>84.41</p></td>
+<td><p>1d15h</p></td>
+</tr>
+<tr class="row-even"><td><p>Lstms(2-1)</p></td>
+<td><p>94.31</p></td>
+<td><p>86.55</p></td>
+<td><p>86.53</p></td>
+<td><p>1d17h</p></td>
+</tr>
+<tr class="row-odd"><td><p>Lstms(3-1)</p></td>
+<td><p>94.77</p></td>
+<td><p>87.29</p></td>
+<td><p>87.17</p></td>
+<td><p>1d18h</p></td>
+</tr>
+<tr class="row-even"><td><p>BdLstms(1-1)</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>0.0</p></td>
+<td><p>n.a.</p></td>
+</tr>
+<tr class="row-odd"><td><p>TransformerEncoder(2-2)</p></td>
+<td><p>96.05</p></td>
+<td><p>89.4</p></td>
+<td><p>89.13</p></td>
+<td><p>1d19h</p></td>
+</tr>
+<tr class="row-even"><td><p>TransformerEncoder(4-2)</p></td>
+<td><p>96.74</p></td>
+<td><p>90.21</p></td>
+<td><p>89.89</p></td>
+<td><p>1d21h</p></td>
+</tr>
+<tr class="row-odd"><td><p>TransformerEncoder(6-2)</p></td>
+<td><p>96.35</p></td>
+<td><p>89.54</p></td>
+<td><p>89.29</p></td>
+<td><p>2d7h</p></td>
+</tr>
+<tr class="row-even"><td><p>AttentionLstms(1-1)</p></td>
+<td><p>94.54</p></td>
+<td><p>87.15</p></td>
+<td><p>87.12</p></td>
+<td><p>1d20h</p></td>
+</tr>
+<tr class="row-odd"><td><p>AttentionLstms(2-2)</p></td>
+<td><p>96.07</p></td>
+<td><p>89.45</p></td>
+<td><p>89.26</p></td>
+<td><p>2d16h</p></td>
+</tr>
+<tr class="row-even"><td><p>AttentionLstms(2-1)</p></td>
+<td><p>96.08</p></td>
+<td><p>89.42</p></td>
+<td><p>89.21</p></td>
+<td><p>1d21h</p></td>
+</tr>
+<tr class="row-odd"><td><p>AttentionLstms(3-1)</p></td>
+<td><p>95.74</p></td>
+<td><p>88.91</p></td>
+<td><p>88.75</p></td>
+<td><p>1d22h</p></td>
+</tr>
+<tr class="row-even"><td><p>AttentionBDLstms(1-1)</p></td>
+<td><p>96.81</p></td>
+<td><p>90.23</p></td>
+<td><p>89.93</p></td>
+<td><p>2d1h</p></td>
+</tr>
+<tr class="row-odd"><td><p>AttentionBDLstms(2-1)</p></td>
+<td><p><strong>97.82</strong></p></td>
+<td><p><strong>92.04</strong></p></td>
+<td><p><strong>91.75</strong></p></td>
+<td><p>2d5h</p></td>
+</tr>
+<tr class="row-even"><td><p>AttentionBDLstms(3-1)</p></td>
+<td><p>97.46</p></td>
+<td><p>91.32</p></td>
+<td><p>91.11</p></td>
+<td><p>2d13h</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>モデルについての説明</p>
+<ul>
+<li><p>モデル(重み含めて)は、クエリとスポットで別々 (siamese networkではない)</p></li>
+<li><p>カッコ内の数字は(クエリ側のlayer数, スポット側のlayer数)</p></li>
+<li><p>AttentionBDLstms系は、クエリのみそれ、スポット側はAttentionLstms</p></li>
+<li><p>BdLstmsは双方向LSTMだが、なぜか学習に失敗した</p></li>
+</ul>
+</li>
+<li><p>パラメータ</p>
+<ul>
+<li><p>embeddingの次元数=256</p></li>
+<li><p>transformerのMultiheadAttentionのヘッド数=8, AttentionLstms系は4</p></li>
+<li><p>minibatch size=4096</p></li>
+<li><p>constructiveのマージン=0.7 (magin_xbm=0.8で30epoch目から0.7)</p></li>
+</ul>
+</li>
+<li><p>Optimizer</p>
+<ul>
+<li><p>Adam ( <span class="math notranslate nohighlight">\(\beta_1=0.9, \beta_2=0.99, \epsilon=1e-9\)</span> )</p></li>
+<li><p>最初の3500iteration(1epochくらい)まで、0から1e-3まで線形に学習率を上げていく</p>
+<ul>
+<li><p><a class="reference internal" href="#vaswani17" id="id9"><span>[Vaswani17]</span></a> を意識</p></li>
+<li><p><a class="reference external" href="https://qiita.com/T-STAR/items/b9593d64a1ccfb2e775f">普通のAdamをRAdam相当にグレードアップする方法 Qiita</a></p></li>
+</ul>
+</li>
+<li><p>その後はstepごとに学習率を0.99998倍していく (最小の学習率は1e-5)</p></li>
+<li><p><a class="reference internal" href="../other/optimizer_benchmark.html"><span class="doc">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</span></a></p></li>
+</ul>
+</li>
+<li><p>5epoch目からクエリと全スポットの損失を計算している (xbm_idsが全スポットのtoken ids)</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_step_xbm</span><span class="p">(</span><span class="n">model_query</span><span class="p">,</span> <span class="n">model_spot</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span>
+               <span class="n">query_ids</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">spot_ids</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span>
+               <span class="n">xbm_ids</span><span class="p">,</span> <span class="n">xbm_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin_xbm</span>
+<span class="p">):</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">query_embs</span> <span class="o">=</span> <span class="n">model_query</span><span class="p">(</span><span class="n">query_ids</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">spot_embs</span> <span class="o">=</span> <span class="n">model_spot</span><span class="p">(</span><span class="n">spot_ids</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">xbm_embs</span> <span class="o">=</span> <span class="n">model_spot</span><span class="p">(</span><span class="n">xbm_ids</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">qs_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">qq_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">ss_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">qx_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">xbm_embs</span><span class="p">,</span> <span class="n">xbm_labels</span><span class="p">,</span> <span class="n">margin_xbm</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">qs_loss</span> <span class="o">+</span> <span class="n">qq_loss</span> <span class="o">+</span> <span class="n">ss_loss</span> <span class="o">+</span> <span class="n">qx_loss</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">model_query</span><span class="o">.</span><span class="n">trainable_variables</span> <span class="o">+</span> <span class="n">model_spot</span><span class="o">.</span><span class="n">trainable_variables</span>
+    <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="n">variables</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">loss</span>
+</pre></div>
+</div>
+<section id="id10">
+<h3>住所の扱い方それでいいの?<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h3>
+<p>以下のような感じで、名前と住所を別々にencodeして、concatしてFFNに突っ込んでみた</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">AttentionLstmsMultiInput</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="n">n_layer</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder1</span> <span class="o">=</span> <span class="n">AttentionLstms</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="n">n_layer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder2</span> <span class="o">=</span> <span class="n">AttentionLstms</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">,</span> <span class="n">n_layer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span> <span class="o">=</span> <span class="n">point_wise_feed_forward_network</span><span class="p">(</span><span class="n">embedding_dim</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">embedding_dim</span><span class="p">)</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs1</span><span class="p">,</span> <span class="n">inputs2</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder1</span><span class="p">(</span><span class="n">inputs1</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">x2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder2</span><span class="p">(</span><span class="n">inputs2</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ffn</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">l2_normalize</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>結論: 大差ないが、別々encode+concat+FFN のほうが微妙によい (パラメータ数は多いので・・・)</p></li>
+<li><p>緑: 住所+名前でencode (今まで通り)</p></li>
+<li><p>ピンク: 別々encode+concat+FFN</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/sepaddr.png"><img alt="../_images/sepaddr.png" class="align-center" src="../_images/sepaddr.png" style="width: 498.40000000000003px; height: 180.0px;" />
+</a>
+</section>
+<section id="vs">
+<h3>クエリとスポットでモデル別々 vs 共通<a class="headerlink" href="#vs" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>結論: 別々にしたほうが強い</p></li>
+<li><p>モデル: TransfomerEncoder(2-2)</p>
+<ul>
+<li><p>オレンジ: 別々</p></li>
+<li><p>青: 共通</p></li>
+<li><p>赤: スポット側の入力を住所+名前ではなく、名前のみにしたもの</p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../_images/sep_vs_siamese.png"><img alt="../_images/sep_vs_siamese.png" class="align-center" src="../_images/sep_vs_siamese.png" style="width: 496.0px; height: 182.4px;" />
+</a>
+</section>
+<section id="id11">
+<h3>全スポット損失のマージンを最初緩めておいて、途中で厳しくする意味あるの?<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>結論: あんまり意味ないが、途中で厳しくしたほうが微妙に良い</p></li>
+<li><p>緑: 最初margin_xbm=0.8, 30epoch目移行=0.7</p></li>
+<li><p>ピンク: 最初から0.7</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/margin_vs_inithard.png"><img alt="../_images/margin_vs_inithard.png" class="align-center" src="../_images/margin_vs_inithard.png" style="width: 495.20000000000005px; height: 179.20000000000002px;" />
+</a>
+</section>
+<section id="epoch-vs">
+<h3>全スポット損失計算 5epoch目から(水色) vs 最初から(緑色)<a class="headerlink" href="#epoch-vs" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>結論: 最初からやったほうがよい</p></li>
+<li><p>最初から全スポットとの損失を計算せずに、ちょっと経ってからやったほうがよいと思って5epoch目からやっていました</p></li>
+<li><p>最初からやると学習失敗した記憶があったので・・・(そんなことなかったですが)</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/initxbm_vs_5xbm.png"><img alt="../_images/initxbm_vs_5xbm.png" class="align-center" src="../_images/initxbm_vs_5xbm.png" style="width: 492.8px; height: 179.20000000000002px;" />
+</a>
+</section>
+<section id="proxyembeddingproxy">
+<h3>proxy系ロスに影響を受けて、全スポットのEmbeddingをProxyで代替してみた (オレンジ色)<a class="headerlink" href="#proxyembeddingproxy" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>モチベーション: 全スポットで損失計算して、backpropするのが重たい (ホテル数がすくないので何とかなっているが…)</p></li>
+<li><p>結論: ダメだった</p></li>
+<li><p>proxyは学習可能な変数で、毎epochごとに model_spotを使って計算しなおす設定 (2epoch目からスタート)</p></li>
+<li><p>感想: 学習不可能な設定にしたほうがよかったかもしれない (proxyの方を動かして損失下がっても嬉しくない)</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/proxy_xbm.png"><img alt="../_images/proxy_xbm.png" class="align-center" src="../_images/proxy_xbm.png" style="width: 495.20000000000005px; height: 180.0px;" />
+</a>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Proxy</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">embedding_dim</span><span class="p">,</span> <span class="n">mask_zero</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_embedding_weights</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="o">.</span><span class="n">set_weights</span><span class="p">([</span><span class="n">weights</span><span class="p">])</span>
+
+<span class="nd">@tf</span><span class="o">.</span><span class="n">function</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_step_proxy</span><span class="p">(</span><span class="n">model_query</span><span class="p">,</span> <span class="n">model_spot</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span>
+               <span class="n">query_ids</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">spot_ids</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span>
+               <span class="n">model_proxy</span><span class="p">,</span> <span class="n">proxy_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">,</span> <span class="n">margin_xbm</span>
+<span class="p">):</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">query_embs</span> <span class="o">=</span> <span class="n">model_query</span><span class="p">(</span><span class="n">query_ids</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">spot_embs</span> <span class="o">=</span> <span class="n">model_spot</span><span class="p">(</span><span class="n">spot_ids</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">proxy_embs</span> <span class="o">=</span> <span class="n">model_proxy</span><span class="p">(</span><span class="n">proxy_labels</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">qs_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">qq_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">ss_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">qp_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">query_embs</span><span class="p">,</span> <span class="n">query_labels</span><span class="p">,</span> <span class="n">proxy_embs</span><span class="p">,</span> <span class="n">proxy_labels</span><span class="p">,</span> <span class="n">margin_xbm</span><span class="p">)</span>
+        <span class="n">sp_loss</span> <span class="o">=</span> <span class="n">contrastive_loss</span><span class="p">(</span><span class="n">spot_embs</span><span class="p">,</span> <span class="n">spot_labels</span><span class="p">,</span> <span class="n">proxy_embs</span><span class="p">,</span> <span class="n">proxy_labels</span><span class="p">,</span> <span class="n">margin</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">qs_loss</span> <span class="o">+</span> <span class="n">qq_loss</span> <span class="o">+</span> <span class="n">ss_loss</span> <span class="o">+</span> <span class="n">qp_loss</span> <span class="o">+</span> <span class="n">sp_loss</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="n">model_query</span><span class="o">.</span><span class="n">trainable_variables</span> <span class="o">+</span> <span class="n">model_spot</span><span class="o">.</span><span class="n">trainable_variables</span> <span class="o">+</span> <span class="n">model_proxy</span><span class="o">.</span><span class="n">trainable_variables</span>
+    <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">variables</span><span class="p">)</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="n">variables</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">loss</span>
+</pre></div>
+</div>
+</section>
+<section id="id12">
+<h3>学習率スケジューリング<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>一番上の緑: 7000step (約2epoch) までの間0から1e-3まで線形にあげていって、 その後はstepごとに学習率を0.99998倍していく (最小の学習率は1e-5)</p></li>
+<li><p>水色:  1e-3からはじめてstepごとに学習率を0.99998倍していく (最小の学習率は1e-5) (warmupなし)</p></li>
+<li><p>一番下の緑: 学習率 1e-4で固定</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/lr_scheduler.png"><img alt="../_images/lr_scheduler.png" class="align-center" src="../_images/lr_scheduler.png" style="width: 493.6px; height: 179.20000000000002px;" />
+</a>
+<p>感想</p>
+<ul class="simple">
+<li><p>warmupはしたほうがよいのでは</p></li>
+<li><p>1e-4固定は、後半まだ微妙に伸びそうではあるので、最小1e-5は小さすぎたかもしれない</p></li>
+</ul>
+</section>
+</section>
+<section id="id13">
+<h2>アプライ<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Tensorflow Servingのすばらしさを伝えたい <a class="reference internal" href="../other/tensorflow_serving.html"><span class="doc">Tensorflow Serving</span></a></p>
+<ul>
+<li><p>負荷試験: <a class="reference external" href="https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2541112305">https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2541112305</a></p></li>
+</ul>
+</li>
+<li><p>システム構成: <a class="reference external" href="https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2487465858">https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2487465858</a></p>
+<ul>
+<li><p>負荷試験: <a class="reference external" href="https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2541112441">https://cptl.corp.yahoo.co.jp/pages/viewpage.action?pageId=2541112441</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id14">
+<h2>参考文献<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../metriclearning.html"><span class="doc">Metric Learning</span></a> のpapers</p></li>
+</ul>
+<div role="list" class="citation-list">
+<div class="citation" id="vaswani17" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">Vaswani17</a><span class="fn-bracket">]</span></span>
+<p>Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, Illia Polosukhin. Attention Is All You Need. In NIPS 2017.</p>
+</div>
+</div>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

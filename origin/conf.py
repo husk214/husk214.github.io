@@ -27,7 +27,7 @@ author = 'ashibaga'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [ "myst_nb", "sphinxcontrib.pseudocode" ]
+extensions = [ "myst_nb", "sphinxcontrib.pseudocode", "sphinx.ext.githubpages"]
 
 # sphinx_to_github = True
 # sphinx_to_github_verbose = True
