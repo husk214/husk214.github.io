@@ -17,11 +17,12 @@ reference: http://uokada.hatenablog.jp/entry/2018/05/28/005924
 
 ```
 cd origin
-sphinx-build -E -a . html or sphinx-build -nW --keep-going -b html . html
+sphinx-build -nW --keep-going -b html . html
 ```
 
 ## mv　(bashで実行)
 ```
 cd origin
 cp -r -f html/* ../
+(windows powershell) cp -r -Force html/* ../
 ```

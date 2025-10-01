@@ -166,7 +166,6 @@ Memo
 .. toctree::
   :titlesonly:
 
-  work
   metriclearning
   noisylabel
   ssl
@@ -174,5 +173,6 @@ Memo
   other
   proceedings
   ltr
+  agri
 
 
