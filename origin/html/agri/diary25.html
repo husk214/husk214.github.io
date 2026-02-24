@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Diary25 &#8212; papers  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=13a9ecda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
+    <script src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../_static/js/jquery-fix.js"></script>
+    <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="畑" href="../agri.html" />
+<link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74773673-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html">
+          ashibaga</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../metriclearning.html">Metric Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/reality_check.html">Musgrave ECCV’20 A Metric Learning Reality Check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lifted_structured.html">Song CVPR’16 Deep Metric Learning via Lifted Structured Feature Embedding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html">Wang CVPR19 Multi-Similarity Loss with General Pair Weighting for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/multi_similarity.html#wang-cvpr-20-cross-batch-memory-for-embedding-learning">Wang CVPR’20 Cross-Batch Memory for Embedding Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_nca.html">Movshovitz ICCV’17 No fuss distance metric learning using proxies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/proxy_anchor.html">Kim CVPR’20 Proxy Anchor Loss for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/s2sd.html">Roth ICML’21 Simultaneous Similarity-based Self-Distillation for Deep Metric Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/clip.html">Radford ICML’21 CLIP (Learning Transferable Visual Models From Natural Language Supervision)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../metriclearning/lang_guide.html">Roth CVPR’22 Integrating Language Guidance into Vision-based Deep Metric Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../noisylabel.html">Learning from Noisy Labels</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/confident_learning.html">Northcutt ICML’20 Confident Learning: Estimating Uncertainty in Dataset Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../noisylabel/pervasive_label_errors.html">Northcutt NeurIPS’21 Pervasive Label Errors in Test Sets Destabilize Machine Learning Benchmarks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssl.html">Self Supervised Learning (SSL)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simclr.html">Chen ICML’20 SimCLR (A Simple Framework for Contrastive Learning of Visual Representations)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/byol.html">Grill NIPS’20 BYOL (Bootstrap Your Own Latent A New Approach to Self-Supervised Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/simsiam.html">Chen CVPR’21 SimSiam (Exploring Simple Siamese Representation Learning)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssl/how_avoid.html">Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../representation.html">Representation Learning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../representation/understaing_crl.html">Wang ICML’20 Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../other.html">Other</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../other/sentencepiece.html">Kudo EMNLP’18 SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/optimizer_benchmark.html">Teja ICML’20 Optimizer Benchmarking Needs to Account for Hyperparameter Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/user_centric_ranking.html">Zhao (KDD’23) Breaking the Curse of Quality Saturation with User-Centric Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir23_abst.html">SIGIR’23 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir22_abst.html">SIGIR’22 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir21_abst.html">SIGIR’21 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir20_abst.html">SIGIR’20 ABSTRACT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../proceedings/sigir19_abst.html">SIGIR’19 ABSTRACT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ltr.html">Learning to Rank</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/dasalc.html">Zhen ICLR’21 Are Neural Rankers still Outperformed by Gradient Boosted Decision Trees?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/mixture_transformation.html">Zhuang SIGIR’20 Feature Transformation for Neural Ranking Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/neuralsort.html">Grover ICLR’19 Stochastic Optimization of Sorting Networks via Continuous Relaxations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/otsort.html">Cuturi NeurIPS’19 Differentiable Ranks and Sorting using Optimal Transport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/fastsort.html">Blondel ICML’20 Fast Differentiable Sorting and Ranking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/diffsortnet.html">Petersen ICML’21 Differentiable Sorting Networks for Scalable Sorting and Ranking Supervision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../agri.html">畑</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Diary25</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">Diary25</a><ul>
+<li><a class="reference internal" href="#id1">20251213</a></li>
+<li><a class="reference internal" href="#id2">20251208</a></li>
+<li><a class="reference internal" href="#id3">20251129</a></li>
+<li><a class="reference internal" href="#id4">20251122</a></li>
+<li><a class="reference internal" href="#id5">20251115</a></li>
+<li><a class="reference internal" href="#id6">20251108</a></li>
+<li><a class="reference internal" href="#id7">20251022</a></li>
+<li><a class="reference internal" href="#id8">20251018</a></li>
+<li><a class="reference internal" href="#id9">20251001</a></li>
+<li><a class="reference internal" href="#id10">20250928</a></li>
+<li><a class="reference internal" href="#id11">20250927</a></li>
+<li><a class="reference internal" href="#id12">20250926</a></li>
+<li><a class="reference internal" href="#id13">20250925</a></li>
+<li><a class="reference internal" href="#id14">20250920</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="../agri.html" title="Previous Chapter: 畑"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 畑</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">Diary25</a><ul>
+<li><a class="reference internal" href="#id1">20251213</a></li>
+<li><a class="reference internal" href="#id2">20251208</a></li>
+<li><a class="reference internal" href="#id3">20251129</a></li>
+<li><a class="reference internal" href="#id4">20251122</a></li>
+<li><a class="reference internal" href="#id5">20251115</a></li>
+<li><a class="reference internal" href="#id6">20251108</a></li>
+<li><a class="reference internal" href="#id7">20251022</a></li>
+<li><a class="reference internal" href="#id8">20251018</a></li>
+<li><a class="reference internal" href="#id9">20251001</a></li>
+<li><a class="reference internal" href="#id10">20250928</a></li>
+<li><a class="reference internal" href="#id11">20250927</a></li>
+<li><a class="reference internal" href="#id12">20250926</a></li>
+<li><a class="reference internal" href="#id13">20250925</a></li>
+<li><a class="reference internal" href="#id14">20250920</a></li>
+</ul>
+</li>
+</ul>
+
+  <li>
+    <a href="../agri.html" title="Previous Chapter: 畑"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; 畑</span>
+    </a>
+  </li>
+<div id="sourcelink">
+  <a href="../_sources/agri/diary25.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+<form action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <section id="diary25">
+<h1>Diary25<a class="headerlink" href="#diary25" title="Link to this heading">¶</a></h1>
+<section id="id1">
+<h2>20251213<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="../_images/251213_o.JPG"><img alt="pic28" src="../_images/251213_o.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251213_n.JPG"><img alt="pic29" src="../_images/251213_n.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251213_t.JPG"><img alt="pic30" src="../_images/251213_t.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251213_h.JPG"><img alt="pic31" src="../_images/251213_h.JPG" style="width: 20%;" /></a></p>
+</section>
+<section id="id2">
+<h2>20251208<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="../_images/251208_h2.JPG"><img alt="../_images/251208_h2.JPG" class="align-center" src="../_images/251208_h2.JPG" style="width: 357.0px; height: 268.79999999999995px;" />
+</a>
+<p>ほうれん草を収穫して食べた。普通にほうれん草でうれしかった。</p>
+<p><a class="reference internal" href="../_images/251208_o.JPG"><img alt="pic24" src="../_images/251208_o.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251208_n.JPG"><img alt="pic25" src="../_images/251208_n.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251208_t.JPG"><img alt="pic26" src="../_images/251208_t.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251208_h.JPG"><img alt="pic27" src="../_images/251208_h.JPG" style="width: 20%;" /></a></p>
+</section>
+<section id="id3">
+<h2>20251129<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="../_images/251129_o.JPG"><img alt="pic20" src="../_images/251129_o.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251129_t.JPG"><img alt="pic22" src="../_images/251129_t.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251129_h.JPG"><img alt="pic23" src="../_images/251129_h.JPG" style="width: 20%;" /></a></p>
+</section>
+<section id="id4">
+<h2>20251122<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="../_images/251122_o.JPG"><img alt="pic16" src="../_images/251122_o.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251122_n.JPG"><img alt="pic17" src="../_images/251122_n.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251122_t.JPG"><img alt="pic18" src="../_images/251122_t.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251122_h.JPG"><img alt="pic19" src="../_images/251122_h.JPG" style="width: 20%;" /></a></p>
+</section>
+<section id="id5">
+<h2>20251115<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="../_images/251115_o.JPG"><img alt="pic12" src="../_images/251115_o.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251115_n.JPG"><img alt="pic13" src="../_images/251115_n.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251115_t.JPG"><img alt="pic14" src="../_images/251115_t.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251115_h.JPG"><img alt="pic15" src="../_images/251115_h.JPG" style="width: 20%;" /></a></p>
+</section>
+<section id="id6">
+<h2>20251108<a class="headerlink" href="#id6" title="Link to this heading">¶</a></h2>
+<p><a class="reference internal" href="../_images/251108_o.JPG"><img alt="pic10" src="../_images/251108_o.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251108_h.JPG"><img alt="pic11" src="../_images/251108_h.JPG" style="width: 20%;" /></a></p>
+</section>
+<section id="id7">
+<h2>20251022<a class="headerlink" href="#id7" title="Link to this heading">¶</a></h2>
+<p>簡易土壌分析結果がメールで届いた。youtubeでほうれん草栽培についての動画を見たところ、苦土石灰を大量に入れろとのことだったが、土壌分析結果では多めとのことだったの加えてpHが6.5あったので、入れないことにした。
+ECも低めだったがECとは何か分からなかったので調べたところ、Electric Conductivity(電気伝導度)のことで土壌中にどれだけの水溶性肥料(窒素、リン酸、カリなど)が含まれているかを示しているらしい。
+L型肥料とはリン酸、カリの成分が低く窒素が主体となった肥料とのこと。L型肥料が見つからなかったのでコメリで売っていた窒素が多く含まれていてリン酸カリが少ない「根の力」(液肥)を購入した。</p>
+<a class="reference internal image-reference" href="../_images/251022_1.png"><img alt="../_images/251022_1.png" class="align-center" src="../_images/251022_1.png" style="width: 443.3px; height: 302.25px;" />
+</a>
+</section>
+<section id="id8">
+<h2>20251018<a class="headerlink" href="#id8" title="Link to this heading">¶</a></h2>
+<p>畑にタネを撒いたにんにく、ねぎ、たまねぎ、ほうれん草がすこし大きくなっていた。</p>
+<p><a class="reference internal" href="../_images/251018_o.JPG"><img alt="pic7" src="../_images/251018_o.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251018_n.JPG"><img alt="pic8" src="../_images/251018_n.JPG" style="width: 20%;" /></a> 　 <a class="reference internal" href="../_images/251018_h.JPG"><img alt="pic9" src="../_images/251018_h.JPG" style="width: 20%;" /></a></p>
+</section>
+<section id="id9">
+<h2>20251001<a class="headerlink" href="#id9" title="Link to this heading">¶</a></h2>
+<p>コメリで注文した簡易土壌分析キットが届いた。土はあらかじめ採取してあったので、土を詰めてコンビニから発送した。</p>
+<a class="reference internal image-reference" href="../_images/251001_1.JPG"><img alt="../_images/251001_1.JPG" class="align-center" src="../_images/251001_1.JPG" style="width: 459.0px; height: 345.6px;" />
+</a>
+</section>
+<section id="id10">
+<h2>20250928<a class="headerlink" href="#id10" title="Link to this heading">¶</a></h2>
+<p>もう時期的に遅そうだが、まあうまく育たなくてもいいかという気持ちで玉ねぎとネギのタネを牛乳パックで作ったプランターに植えた。種まき培土はコメリで買った。14Lで400円いかないくらいだった。画像は牛乳パックプランターと玉ねぎのタネ。</p>
+<p><a class="reference internal" href="../_images/250928_1.JPG"><img alt="pic5" src="../_images/250928_1.JPG" style="width: 35%;" /></a> 　 <a class="reference internal" href="../_images/250928_2.JPG"><img alt="pic6" src="../_images/250928_2.JPG" style="width: 35%;" /></a></p>
+</section>
+<section id="id11">
+<h2>20250927<a class="headerlink" href="#id11" title="Link to this heading">¶</a></h2>
+<p>ほうれん草を植えてみようと思い、育て方をyoutubeで学んだ。苦土石灰を多く入れろ、とのことだったのだがphが分からなかったのでph測定器で測定した結果、7.0だったり6.5だったり6.0だったりした。思ったよりも酸性ではなく苦土石灰を入れてこれ以上phを上げていいのかよくわからなかったので、とりあえず牛糞堆肥だけを入れることにした。youtubeで調べてみて土壌分析しないと始まらないという結論に達した。コメリの土壌分析はネットで申し込めて、簡易分析なら3980円だったのでこれを利用してみることにした。この日は牛糞堆肥を25L入れて混ぜて終了。</p>
+<p><a class="reference internal" href="../_images/250927_1.JPG"><img alt="pic3" src="../_images/250927_1.JPG" style="width: 35%;" /></a> 　 <a class="reference internal" href="../_images/250927_2.JPG"><img alt="pic4" src="../_images/250927_2.JPG" style="width: 45%;" /></a></p>
+</section>
+<section id="id12">
+<h2>20250926<a class="headerlink" href="#id12" title="Link to this heading">¶</a></h2>
+<p>借りた市民農園に行った。耕す前の土はグランドよりも気持ち柔らかいかなと感じる硬さだった。
+農機具を借りることができて、スコップを借りた。天地返しをして、この日は終了。背抜き手袋を買って準備していたが忘れてしまって素手で作業していたら手の皮がむけて痛かった。</p>
+<p><a class="reference internal" href="../_images/250926_1.JPG"><img alt="pic1" src="../_images/250926_1.JPG" style="width: 45%;" /></a> 　 <a class="reference internal" href="../_images/250926_2.JPG"><img alt="pic2" src="../_images/250926_2.JPG" style="width: 45%;" /></a></p>
+</section>
+<section id="id13">
+<h2>20250925<a class="headerlink" href="#id13" title="Link to this heading">¶</a></h2>
+<p>市役所に行き、市民農園を借りた。15平方メートル。月500円。農具は借りれる。</p>
+</section>
+<section id="id14">
+<h2>20250920<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<p>野菜を作ってみたくて市民農園を借りようと思ったので、市民農園を見に行ってみた。</p>
+</section>
+</section>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

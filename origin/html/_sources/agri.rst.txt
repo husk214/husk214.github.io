@@ -5,7 +5,9 @@
 メモ
 ========
 
+
 .. toctree::
   :maxdepth: 1
 
-  agri/diary
+  agri/diary26  
+  agri/diary25
