@@ -21,3 +21,4 @@ Memo
 
   other/tensorflow_serving
   other/search_engine_qu
+  other/brownian_motion

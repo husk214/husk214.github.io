@@ -8,17 +8,19 @@
     <title>Does ICLR’22 How Does SimSiam Avoid Collapse Without Negative Samples? &#8212; papers  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eab45d89" />
     <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
     <script src="../_static/doctools.js?v=13a9ecda"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.11.1/katex.min.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"loader": {"load": ["[tex]/physics"]}, "tex": {"packages": {"[+]": ["physics"]}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <script src="../_static/js/jquery-1.11.0.min.js"></script>
     <script src="../_static/js/jquery-fix.js"></script>
     <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
@@ -103,6 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/brownian_motion.html">Brownian Motion</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
@@ -123,6 +126,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../ltr/monodiffsort.html">Petersen ICLR’22 Monotonic Differentiable Sorting Networks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ltr/algorithm.html">Algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ltr/metric.html">Metric</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../agri.html">畑</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../agri/diary26.html">Diary26</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../agri/diary25.html">Diary25</a></li>
 </ul>
 </li>
 </ul>
@@ -287,12 +295,12 @@
 <li><p><span class="math notranslate nohighlight">\(Z\)</span> : zを正規化したもの (<span class="math notranslate nohighlight">\(Z=z/\|z\|\)</span>)</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-how1">
-<span class="eqno">(1)<a class="headerlink" href="#equation-how1" title="Link to this equation">¶</a></span>\[\mathcal{L}_{MSE} = (Z_a - Z_b)^2 / 2 = -Z_a \cdot Z_b = L_{cosine}\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-how1" title="Link to this equation">¶</a></span>\[\mathcal{L}_{MSE} = (Z_a - Z_b)^2 / 2 = -Z_a \cdot Z_b = L_{cosine}\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P\)</span> : normalized output of predictor ( <span class="math notranslate nohighlight">\(P = p / \|p\|\)</span> )</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-how2">
-<span class="eqno">(2)<a class="headerlink" href="#equation-how2" title="Link to this equation">¶</a></span>\[\mathcal{L}_{SimSiam} = - (P_a \cdot sg(Z_b) + P_b \cdot sg(Z_a))\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-how2" title="Link to this equation">¶</a></span>\[\mathcal{L}_{SimSiam} = - (P_a \cdot sg(Z_b) + P_b \cdot sg(Z_a))\]</div>
 <p><span class="math notranslate nohighlight">\(Z\)</span> を <span class="math notranslate nohighlight">\(Z = o + r\)</span> と2つのベクトルに分ける</p>
 <ul class="simple">
 <li><p>center vector <span class="math notranslate nohighlight">\(o\)</span> : Zの期待値 (<span class="math notranslate nohighlight">\(o_z  = \mathbb{E}[Z]\)</span> )だが、minibatch内の標本平均で近似する <span class="math notranslate nohighlight">\(o_z = \frac{1}{M}\sum_{m=1}^M Z_m\)</span></p></li>
@@ -310,9 +318,9 @@
 <p><strong>Extra gradient component for alleviating collapse</strong></p>
 <p>ロス関数の negative gradient</p>
 <div class="math notranslate nohighlight" id="equation-how3">
-<span class="eqno">(3)<a class="headerlink" href="#equation-how3" title="Link to this equation">¶</a></span>\[- \frac{\partial \mathcal{L}_{MSE}}{\partial Z_a} = Z_b - Z_a \Leftrightarrow -\frac{\partial \mathcal{L}_{cosine}}{\partial Z_a} = Z_b\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-how3" title="Link to this equation">¶</a></span>\[- \frac{\partial \mathcal{L}_{MSE}}{\partial Z_a} = Z_b - Z_a \Leftrightarrow -\frac{\partial \mathcal{L}_{cosine}}{\partial Z_a} = Z_b\]</div>
 <p>, where the gradient component <span class="math notranslate nohighlight">\(Z_a\)</span> is a dummy term because the loss <span class="math notranslate nohighlight">\(- Z_a \cdot Z_a = -1\)</span> is a constant having zero gradient on the encoder <span class="math notranslate nohighlight">\(f\)</span>.</p>
-<p>式 <a class="reference internal" href="#equation-how3">(3)</a> はtwo equivalent formsとして解釈でき <span class="math notranslate nohighlight">\(Z_b - Z_a\)</span> を選ぶと (???)、
+<p>式 <a class="reference internal" href="#equation-how3">(6)</a> はtwo equivalent formsとして解釈でき <span class="math notranslate nohighlight">\(Z_b - Z_a\)</span> を選ぶと (???)、
 <span class="math notranslate nohighlight">\(Z_b - Z_a = (o_z + r_b) - (o_z + r_a) = r_b - r_a\)</span> になる。
 <span class="math notranslate nohighlight">\(r_b\)</span> は <span class="math notranslate nohighlight">\(r_a\)</span> と同じpositive sampleから来ているので、<span class="math notranslate nohighlight">\(r_b\)</span> も同じく <span class="math notranslate nohighlight">\(m_r\)</span> を増加させることが期待されるが、その効果は <span class="math notranslate nohighlight">\(r_a\)</span> より小さいので (???)、崩壊の原因になる.</p>
 <p>よくわかんないポイント</p>
@@ -350,7 +358,7 @@
 </a>
 <p>triplet lossの実験では <span class="math notranslate nohighlight">\(r_e\)</span> を維持すると精度下がったが、SimSiamでは <span class="math notranslate nohighlight">\(r_e\)</span> だけでも崩壊を防いで <span class="math notranslate nohighlight">\(G_e\)</span> と同等の性能を達成している。これは次で説明する dimensional de-correlation の観点から説明できる。</p>
 <p><strong>推論2</strong> dimensional de-correlation が <span class="math notranslate nohighlight">\(m_r\)</span> を増加させると考える。動機は単純で、次元の相関が最小になるのは、1つの次元だけが個々のクラスに対して非常に高い値を持ち、異なるクラスに対して次元が変化する場合であるから．</p>
-<p>上記の推測を検証するため、SimSiamの損失 <a class="reference internal" href="#equation-how2">(2)</a> で訓練し、式 <a class="reference internal" href="#equation-how1">(1)</a> の損失で意図的に <span class="math notranslate nohighlight">\(m_r\)</span> を0に近づけて数エポック訓練する。次に、付録A.6で詳述する相関正則化項のみを用いて損失を学習させる。図5(b)の結果から、この正則化項が非常に速い速度で <span class="math notranslate nohighlight">\(m_r\)</span> を増加させていることがわかる。</p>
+<p>上記の推測を検証するため、SimSiamの損失 <a class="reference internal" href="#equation-how2">(5)</a> で訓練し、式 <a class="reference internal" href="#equation-how1">(4)</a> の損失で意図的に <span class="math notranslate nohighlight">\(m_r\)</span> を0に近づけて数エポック訓練する。次に、付録A.6で詳述する相関正則化項のみを用いて損失を学習させる。図5(b)の結果から、この正則化項が非常に速い速度で <span class="math notranslate nohighlight">\(m_r\)</span> を増加させていることがわかる。</p>
 <a class="reference internal image-reference" href="../_images/how_alg6.png"><img alt="../_images/how_alg6.png" class="align-center" src="../_images/how_alg6.png" style="width: 752.8000000000001px; height: 208.8px;" />
 </a>
 <p><span class="math notranslate nohighlight">\(h\)</span> が <span class="math notranslate nohighlight">\(o_e\)</span> の影響を排除するためにFC層を一つしか持たないと仮定すると、FCの重みはエンコーダ出力の異なる次元間の相関を学習することが期待される。本質的に、 <span class="math notranslate nohighlight">\(h\)</span> は <span class="math notranslate nohighlight">\(h(Z_a)\)</span> と <span class="math notranslate nohighlight">\(I(Z_b)\)</span> の間のコサイン類似度を最小化するように学習される（Iは同一性写像)。したがって、相関を学習する <span class="math notranslate nohighlight">\(h\)</span> は <span class="math notranslate nohighlight">\(I\)</span> に近づくように最適化され、これは概念的には <span class="math notranslate nohighlight">\(Z\)</span> に対して脱相関を目標に最適化することと等しい。表4に示すように、SimSiamでは <span class="math notranslate nohighlight">\(r_e\)</span> のみでも崩壊を防ぐことができ、 <span class="math notranslate nohighlight">\(r_e\)</span> には脱中心化の効果がないため、脱相関効果に起因するものであると考えられる。図6からは最初の数エポックを除き、SimSiamは共分散を減少させている。</p>
@@ -372,7 +380,7 @@
       
     </p>
     <p>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.2.3.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 9.1.0.<br/>
     </p>
   </div>
 </footer>
