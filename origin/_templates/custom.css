@@ -1,9 +1,39 @@
- .top_float{
+h2 {
+  border-bottom: 1px #bbb solid;
+}
+
+@font-face {
+  font-family: "Custom Yu Gothic";
+  src: local("Yu Gothic");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Custom Yu Gothic";
+  src: local("Yu Gothic");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Custom Yu Gothic";
+  src: local("Yu Gothic");
+  font-weight: bold;
+}
+selector {
+  font-family: YuGothic, "Custom Yu Gothic", "Yu Gothic", sans-serif;
+}
+
+::selection {background: #add658; color: #555;}
+::-moz-selection {background: #add658; color: #555;}
+
+.top_float{
   margin: 0;
   float:right;
 }
 
 @import "octicons/octicons.css";
+
+.contact{
+  margin:5px 0 5px 35px;
+}
 
 .pubs{
   font-size:120%;
@@ -15,19 +45,30 @@
     padding-left: 1em;
 }
 
+.paperli a{
+    color: #555;
+}
+
+
 .paperli li{
   list-style-type: none;
   padding:0.2em 0.5em;
-  border:1px solid #7ca428;
+  border:1px solid #555;
   background:#fff;
-  margin:5px 0;
+  margin:5px 10px 0px 10px;
   border-radius:5px;
   transform-origin:top left;
 }
 
 .paperli:hover li{
-  background: #ebf5d6
+  background: #ebf5d6;
+  border:1px solid #7ca428;
 }
+
+.paperli:hover li a{
+    color: #7ca428;
+}
+
 
 .actli{
     padding-left: 1em;
@@ -38,7 +79,7 @@
   padding:0.2em 0.5em;
   border-bottom:1px solid #505050;
   background:#fff;
-  margin:5px 0;
+  margin:5px 20px 0px 20px;
   transform-origin:top left;
 }
 
@@ -48,8 +89,18 @@
 }
 
 .mybtn{display:inline-block;text-align:center;padding:.3em 1em;cursor:pointer;line-height:1;font-size:100%;font-weight: bold; -moz-border-radius:0.3em;-webkit-border-radius:0.3em;border-radius:0.3em;overflow:hidden;text-decoration:none;border:1px solid #7ca428;color:#7ca428;-webkit-transition:all .3s;transition:all .3s}
+.mybtn2{display:inline-block;text-align:center;padding:.3em 1em;cursor:pointer;line-height:1;font-size:100%;font-weight: bold; -moz-border-radius:0.3em;-webkit-border-radius:0.3em;border-radius:0.3em;overflow:hidden;text-decoration:none;border:1px solid #555;color:#555;-webkit-transition:all .3s;transition:all .3s
+}
+.mybtn2 a{color: #555}
+.mybtn2:hover {text-decoration:none;background-color:#fff; color:#7ca428; border:1px solid #7ca428;}
+.mybtn2:hover a:hover{text-decoration:none;color:#7ca428}
+.mybtn3{display:inline-block;text-align:center;padding:.3em 1em;cursor:pointer;line-height:1;font-size:100%;font-weight: bold; overflow:hidden;text-decoration:none;border:1px solid #555;color:#555;-webkit-transition:all .3s;transition:all .3s
+}
+.mybtn3 a{color: #555}
+.mybtn3:hover {text-decoration:none;background-color:#fff; color:#7ca428; border:1px solid #7ca428;}
+.mybtn3:hover a:hover{text-decoration:none;color:#7ca428}
+.paperli:hover li mybtn2{border:1px solid #7ca428;}
 .mybtn:hover{text-decoration:none;background-color:#fff;color:#fff}
-.mybtn:focus{text-decoration:none;background-color:#fff;color:#fff}
 /*.btn img{vertical-align:middle}*/
 /*.btn-primary{background-color:#7ca428;color:#fff;border:1px solid #7ca428}
 .btn-primary:hover{background-color:#ccbd9f;color:#fff !important;border-color:#ccbd9f}
@@ -64,31 +115,90 @@
 .btn.btn-b:hover{background-color:#0075b5;color:#fff}
 .btn-inner{margin-bottom:1em}@media (max-width: 767px)*/
 
-
-.menu {
-  height: 500px;
-  width: 500px;
-  margin: 100px auto;
-  padding: 50px;
-  background: #fff;
+.abst{
+  list-style-type: none;
+  padding:0.2em 0.5em;
+  border:1px solid #555;
+  border-top: none;
+  background:#fff;
+  margin:5px 20px 0px 20px;
+  /*border-radius:5px;*/
+  transform-origin:top left;
 }
 
-label {
-  background: #333;
-  color: #fff;
+.menu {
+/*  height: 500px;
+  width: 500px;*/
+  margin: 20px auto;
   padding: 10px;
+  list-style-type: none;
+/*  background: #fff;*/
+  margin:5px 0px 3px 0px;
+  transform-origin:top left;
   display: block;
-  margin: 0;
-  border: 1px solid #fff;
-  cursor: pointer;
+}
+
+.papercard {
+  list-style-type: none;
+  padding:0.2em 0.5em;
+  border:1px solid #555;
+  background:#fff;
+  margin:10px 20px 15px 20px;
+  /*border-radius:5px;*/
+  transform-origin:top left;
+  display: block;
+  padding-bottom: 5px;
+}
+
+blockquote, blockquote div, blockquote p {
+    font-size: 0.99em !important;
+}
+
+table.docutils {
+    width: 80% !important;       /* 画面幅の80%に縮小 */
+    max-width: 700px !important; /* 最大幅を700pxに制限 */
+    font-size: 0.85em !important;/* フォントサイズを小さく */
+    margin: 1em auto !important; /* 上下に余白をとり中央寄せ */
+    border-collapse: collapse !important; /* 枠線をスッキリ */
+}
+
+/* セルのパディングを小さく */
+table.docutils th,
+table.docutils td {
+    padding: 0.25em 0.5em !important;
+    border: 1px solid #ccc !important;
+    word-break: break-word !important; /* 長いテキストの折返し */
+    overflow-wrap: break-word !important;
+}
+
+/* キャプションのフォントサイズと余白調整 */
+table.docutils caption {
+    font-size: 0.9em !important;
+    font-weight: bold;
+    margin-bottom: 0.5em !important;
+}
+label {
+  list-style-type: none;
+  padding:0.2em 0.5em;
+  border:1px solid #555;
+  background:#fff;
+  margin:5px 5px 0px 5px;
+  /*border-radius:5px;*/
+  transform-origin:top left;
+  display: block;
+  padding-bottom: 5px;
 }
 
 label:hover {
-  background: #555;
+  background: #f7faeb;
+  border:1px solid #7ca428;
+  border-bottom: none;
+  display: block;
 }
 
 input[type="checkbox"].on-off{
   display: none;
+  border-bottom: none;
 }
 
 .menu ul {
@@ -97,13 +207,13 @@ input[type="checkbox"].on-off{
   -ms-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
-  margin: 0 0 20px;
+  margin: 0 0 0px;
   padding: 0;
   list-style: none;
 }
 
 .menu li {
-  padding: 5px;
+  padding: 1px;
 }
 
 input[type="checkbox"].on-off + ul{
@@ -111,10 +221,229 @@ input[type="checkbox"].on-off + ul{
 }
 
 input[type="checkbox"].on-off:checked + ul{
+  border-bottom: none;
   display: block;
 }
 
-blockquote {
-    font-size:50%;  /* 元のサイズの90%に設定 */
-    /* 必要に応じて他のスタイルも調整可能 */
+/*********************************************
+* Variables *
+*********************************************/
+:root {
+  --theorem-border-color: rgba(68,138,255,.1);
+  --axiom-border-color: #ffc107;
+  --criterion-border-color: #fd7e14;
+  --lemma-border-color: #36cf03;
+  --definition-border-color: #007bff;
+  --remark-border-color: #79ff6f;
+  --conjecture-border-color: #775f15;
+  --corollary-border-color: #c500c1;
+  --example-border-color: #f9377b;
+  --property-border-color: #fdf914;
+  --obseration-border-color: #7707ff;
+  --proposition-border-color: #4f7aa8;
+  --assumption-border-color: #07fffb;
+
+  /* --note-title-color: rgba(68,138,255,.1);
+  --note-border-color: #007bff;
+  --warning-title-color: rgba(220,53,69,.1);
+  --warning-border-color: #dc3545;
+  --hint-title-color: rgba(255,193,7,.2);
+  --hint-border-color: #ffc107;
+  --caution-title-color: rgba(253,126,20,.1);
+  --caution-border-color: #fd7e14; */
+
+  --grey-title-color: rgba(204,204,204,.2);
+  --grey-border-color: #ccc;
+}
+
+/*********************************************
+* Main body *
+*********************************************/
+
+/* Remove content box */
+div.proof p.admonition-title::before {
+	content: none;
+}
+
+/*********************************************
+* Proof *
+*********************************************/
+div#proof{
+	padding: .4rem .6rem .4rem 2rem !important;
+	border-color: var(--grey-border-color);
+	background-color: none;
+}
+
+/*********************************************
+* Theorem *
+*********************************************/
+div.theorem {
+	border-color: var(--theorem-border-color);
+	background-color: none;
+}
+
+div.theorem p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Axiom *
+*********************************************/
+div.axiom {
+	border-color: var(--axiom-border-color);
+	background-color: none;
+}
+
+div.axiom p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Criterion *
+*********************************************/
+div.criterion {
+	border-color: var(--criterion-border-color);
+	background-color: none;
+}
+
+div.criterion p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Lemma *
+*********************************************/
+div.lemma {
+	border-color: var(--lemma-border-color);
+	background-color: none;
+}
+
+div.lemma p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Definition *
+*********************************************/
+div.definition {
+	border-color: var(--definition-border-color);
+	background-color: none;
+}
+
+div.definition p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Remark *
+*********************************************/
+div.remark {
+	border-color: var(--remark-border-color);
+	background-color: none;
+}
+
+div.remark p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Conjecture *
+*********************************************/
+div.conjecture {
+	border-color: var(--conjecture-border-color);
+	background-color: none;
+}
+
+div.conjecture p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Corollary *
+*********************************************/
+div.corollary {
+	border-color: var(--corollary-border-color);
+	background-color: none;
+}
+
+div.corollary p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Algorithm *
+*********************************************/
+div.algorithm {
+	border: none;
+	background-color: none;
+}
+
+div.algorithm p.admonition-title {
+	background-color: transparent;
+	border-top: .15rem solid var(--grey-border-color);
+	border-bottom: .15rem solid var(--grey-border-color);
+}
+
+div.algorithm div.section {
+	font-family: SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+	font-size: .85rem;
+}
+
+/*********************************************
+* Example *
+*********************************************/
+div.example {
+	border-color: var(--example-border-color);
+	background-color: none;
+}
+
+div.example p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Property *
+*********************************************/
+div.property {
+	border-color: var(--property-border-color);
+	background-color: none;
+}
+
+div.property p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Observation *
+*********************************************/
+div.observation {
+	border-color: var(--observation-border-color);
+	background-color: none;
+}
+
+div.observation p.admonition-title {
+	background-color: transparent;
+}
+
+/*********************************************
+* Proposition *
+*********************************************/
+div.proposition {
+	border-color: var(--proposition-border-color);
+	background-color: none;
+}
+
+div.proposition p.admonition-title {
+	background-color: transparent;
+}
+/*********************************************
+* Assumption *
+*********************************************/
+div.assumption {
+	border-color: var(--assumption-border-color);
+	background-color: none;
+}
+
+div.assumption p.admonition-title {
+	background-color: transparent;
 }
