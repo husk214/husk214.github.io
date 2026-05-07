@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=628eaaa2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a03d301c" />
     <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
@@ -25,19 +25,20 @@
     <script src="../_static/js/jquery-fix.js"></script>
     <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="畑" href="../agri.html" />
     <link rel="prev" title="Algorithm" href="algorithm.html" />
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-99QDTBZGF3"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-74773673-1', 'auto');
-  ga('send', 'pageview');
+  gtag('config', 'G-99QDTBZGF3');
 </script>
 
   </head><body>
@@ -104,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../other/quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other/tensorflow_serving.html">Tensorflow Serving</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../other/search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../other/brownian_motion.html">Brownian Motion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../other/brownian_motion.html">ブラウン運動</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
@@ -238,35 +239,31 @@
 <section id="ndcg-k">
 <h2>nDCG&#64;k<a class="headerlink" href="#ndcg-k" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p>いくつかの定義が存在している</p></li>
 <li><p>関連度のリストに対して計算される</p></li>
-<li><p>nDCGは、normalized Discounted Cumulative Gainの略でDCGを正規化したもの</p></li>
-<li><p>nDCG := DCG / IdealDCG</p>
+<li><p>nDCGは、normalized Discounted Cumulative Gainの略でDCGをIdealDCGで割って正規化したもの (nDCG := DCG / IdealDCG)</p>
 <ul>
 <li><p>DCG := アルゴリズムの予測値によってソートした関連度リストを下位になればなるほど割引して足し上げた値</p></li>
 <li><p>IdealDCG := 関連度自身でソートしたリストのDCG</p></li>
 </ul>
 </li>
+<li><p>DCGの定義は様々あり、</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\begin{align}
-  \label{eq:ndcg1}
-  \text{DCG&#64;}k &amp;:= \sum_{i=1}^{k} \frac{r_i}{\log_2 (i+1)} \\
-  \label{eq:ndcg2}
-  \text{DCG&#64;}k &amp;:= \sum_{i=1}^{k} \frac{2^{r_i} - 1}{\log_2 (i+1)}
-\end{align}</div><ul class="simple">
-<li><p>本来のnDCGは <a class="reference internal" href="#kalervo" id="id1"><span>[Kalervo]</span></a> によって(1)と似た, (3)のように導入されたが、logの底が2の場合rank = 1と同様に rank=2も割引されないため、明示的にそのように意図しないのであれば(1)の定義を用いることが自然に思える</p></li>
+<div class="math notranslate nohighlight" id="equation-eq-ndcg1">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-ndcg1" title="Link to this equation">¶</a></span>\[\text{DCG&#64;}k := \sum_{i=1}^{k} \frac{r_i}{\log_2 (i+1)}\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-ndcg2">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-ndcg2" title="Link to this equation">¶</a></span>\[\text{DCG&#64;}k := \sum_{i=1}^{k} \frac{2^{r_i} - 1}{\log_2 (i+1)}\]</div>
+<ul class="simple">
+<li><p>本来のnDCGは <a class="reference internal" href="#kalervo02" id="id1"><span>[Kalervo02]</span></a> によって <a class="reference internal" href="#equation-eq-ndcg1">(20)</a> と似た次の <a class="reference internal" href="#equation-eq-ndcg3">(22)</a> のように導入されたが、logの底が2の場合rank = 1と同様に rank=2も割引されないため、明示的にそのように意図しないのであれば <a class="reference internal" href="#equation-eq-ndcg1">(20)</a> の定義を用いることが自然に思える</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\begin{align}
-  \text{DCG&#64;}k := r_1 + \sum_{i=2}^{k} \frac{r_i}{\log_2 i}
-\end{align}</div><ul class="simple">
-<li><p>式(2) は <a class="reference internal" href="#burges" id="id2"><span>[Burges]</span></a> によって導入され, 見ての通り 2の関連度乗を足しているので (1)よりも, より関連度の高いものを当てることに重きをおいており、xgboost, LightGBMも採用している</p></li>
+<div class="math notranslate nohighlight" id="equation-eq-ndcg3">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-ndcg3" title="Link to this equation">¶</a></span>\[\text{DCG&#64;}k := r_1 + \sum_{i=2}^{k} \frac{r_i}{\log_2 i}\]</div>
+<ul class="simple">
+<li><p><a class="reference internal" href="#equation-eq-ndcg2">(21)</a> は <a class="reference internal" href="#burges05" id="id2"><span>[Burges05]</span></a> によって導入され, 見ての通り 2の関連度乗を足しているので <a class="reference internal" href="#equation-eq-ndcg1">(20)</a> よりも, より関連度の高いものを当てることに重きをおいており、xgboost, LightGBMも採用している</p></li>
 </ul>
 <section id="catboostdcg">
 <h3>CatBoostのDCGの計算方法<a class="headerlink" href="#catboostdcg" title="Link to this heading">¶</a></h3>
 <ul class="simple">
-<li><p>CatBoostは式(1)のDCGの定義を採用しているが、DCG := 0.5 (OptimisticDCG + PessimisticDCG) と計算している</p>
+<li><p>CatBoostは式 <a class="reference internal" href="#equation-eq-ndcg1">(20)</a> のDCGの定義を採用しているが、DCG := 0.5 (OptimisticDCG + PessimisticDCG) と計算している</p>
 <ul>
 <li><p>OptimisticDCG := アルゴリズムの予測値でソートするとき、同じ予測値なら関連度が高い方を上位とした関連度リストを入力としたDCG</p></li>
 <li><p>PessimisticDCG := アルゴリズムの予測値でソートするとき、同じ予測値なら関連度が低い方を上位とした関連度リストを入力としたDCG</p></li>
@@ -275,12 +272,12 @@
 <li><p>このように計算したほうが、よさげに見える</p></li>
 </ul>
 <div role="list" class="citation-list">
-<div class="citation" id="kalervo" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Kalervo</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="kalervo02" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">Kalervo02</a><span class="fn-bracket">]</span></span>
 <p>Järvelin, Kalervo, and Jaana Kekäläinen. “Cumulated gain-based evaluation of IR techniques.” ACM Transactions on Information Systems (TOIS) 20.4 (2002): 422-446.</p>
 </div>
-<div class="citation" id="burges" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">Burges</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="burges05" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">Burges05</a><span class="fn-bracket">]</span></span>
 <p>Burges, Chris, et al. “Learning to rank using gradient descent.” Proceedings of the 22nd international conference on Machine learning. ACM, 2005.</p>
 </div>
 </div>

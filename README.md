@@ -5,7 +5,7 @@
 ## init
 
 ```
-pip install -U sphinx myst-parser myst-nb sphinxcontrib-pseudocode sphinx-proof myst-parser
+pip install -U sphinx myst-parser myst-nb sphinxcontrib-pseudocode sphinx-proof myst-parser sphinx-favicon
 
 
 pip install pandas scipy numba matplotlib tensorflow torch

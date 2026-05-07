@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Brownian Motion &#8212; papers  documentation</title>
+    <title>ブラウン運動 &#8212; papers  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=db26dd79" />
     <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=579adecb" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css?v=8c6b312c" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=628eaaa2" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=a03d301c" />
     <link rel="stylesheet" href="../_static/bootswatch-3.3.6/simplex/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     <script src="../_static/documentation_options.js?v=5929fcd5"></script>
@@ -25,19 +25,20 @@
     <script src="../_static/js/jquery-fix.js"></script>
     <script src="../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
     <script src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Proceedings" href="../proceedings.html" />
     <link rel="prev" title="検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援" href="search_engine_qu.html" />
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-99QDTBZGF3"></script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  ga('create', 'UA-74773673-1', 'auto');
-  ga('send', 'pageview');
+  gtag('config', 'G-99QDTBZGF3');
 </script>
 
   </head><body>
@@ -104,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="quert.html">Xie (KDD’23) QUERT: Continual Pre-training of Language Model for Query Understanding in Travel Domain Search</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tensorflow_serving.html">Tensorflow Serving</a></li>
 <li class="toctree-l2"><a class="reference internal" href="search_engine_qu.html">検索システム 実務者のための開発改善ガイドブック 11章 検索を成功させるための支援</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Brownian Motion</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ブラウン運動</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../proceedings.html">Proceedings</a><ul>
@@ -145,7 +146,14 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Brownian Motion</a></li>
+<li><a class="reference internal" href="#">ブラウン運動</a><ul>
+<li><a class="reference internal" href="#id2">確率微分方程式</a><ul>
+<li><a class="reference internal" href="#id3">ブラック=ショールズ過程</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ref">Ref</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -187,7 +195,14 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Brownian Motion</a></li>
+<li><a class="reference internal" href="#">ブラウン運動</a><ul>
+<li><a class="reference internal" href="#id2">確率微分方程式</a><ul>
+<li><a class="reference internal" href="#id3">ブラック=ショールズ過程</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ref">Ref</a></li>
+</ul>
+</li>
 </ul>
 
   <li>
@@ -213,35 +228,94 @@
       </div>
     <div class="col-md-9 content">
       
-  <section class="tex2jax_ignore mathjax_ignore" id="brownian-motion">
-<h1>Brownian Motion<a class="headerlink" href="#brownian-motion" title="Link to this heading">¶</a></h1>
-<p><span class="math notranslate nohighlight">\(f(x) = x^2\)</span> aaaa</p>
-<div class="proof theorem admonition" id="my-theorem">
-<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Orthogonal-Projection-Theorem)</p>
-<section class="theorem-content" id="proof-content">
-<p>Given <span class="math notranslate nohighlight">\(y \in \mathbb R^n\)</span> and linear subspace <span class="math notranslate nohighlight">\(S \subset \mathbb R^n\)</span>,
-there exists a unique solution to the minimization problem</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>ブラウン運動<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h1>
+<section id="id2">
+<h2>確率微分方程式<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h2>
+<div class="proof definition admonition" id="def-sde">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (確率微分方程式)</p>
+<section class="definition-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(x(t)\)</span> が確率微分方程式</p>
 <div class="math notranslate nohighlight">
-\[\hat y := \argmin_{z \in S} \|y - z\|\]</div>
-<p>The minimizer <span class="math notranslate nohighlight">\(\hat y\)</span> is the unique vector in <span class="math notranslate nohighlight">\(\mathbb R^n\)</span> that satisfies</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\hat y \in S\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(y - \hat y \perp S\)</span></p></li>
-</ul>
-<p>The vector <span class="math notranslate nohighlight">\(\hat y\)</span> is called the <strong>orthogonal projection</strong> of <span class="math notranslate nohighlight">\(y\)</span> onto <span class="math notranslate nohighlight">\(S\)</span>.</p>
+\[
+ \dd{x} = f(x(t), w(t), t) \dd{t} + g(x(t), w(t), t) \dd{w}
+\]</div>
+<p>の解であることは、<span class="math notranslate nohighlight">\(x\)</span> が</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{\Delta t \rightarrow 0} \Delta x = f(x, w, t) \Delta t + g(x, w, t) \Delta w
+\]</div>
+<p>の定める確率分布に従う確率変数であること。(<span class="math notranslate nohighlight">\(\fallingdotseq\)</span> 上の式を満たすこと)</p>
 </section>
-</div><div class="proof admonition" id="proof">
-<p>Proof. We’ll omit the full proof.</p>
-<p>But we will prove sufficiency of the asserted conditions.</p>
-<p>To this end, let <span class="math notranslate nohighlight">\(y \in \mathbb R^n\)</span> and let <span class="math notranslate nohighlight">\(S\)</span> be a linear subspace of <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(\hat y\)</span> be a vector in <span class="math notranslate nohighlight">\(\mathbb R^n\)</span> such that <span class="math notranslate nohighlight">\(\hat y \in S\)</span> and <span class="math notranslate nohighlight">\(y - \hat y \perp S\)</span>.</p>
-<p>Let <span class="math notranslate nohighlight">\(z\)</span> be any other point in <span class="math notranslate nohighlight">\(S\)</span> and use the fact that <span class="math notranslate nohighlight">\(S\)</span> is a linear subspace to deduce</p>
+</div><div class="proof theorem admonition" id="ito-formula">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (伊藤の公式)</p>
+<section class="theorem-content" id="proof-content">
+<p><span class="math notranslate nohighlight">\(x\)</span> を確率微分方程式
+<span class="math notranslate nohighlight">\(\dd{x} = f(x, w, t) \dd{t} + g(x, w, t) \dd{w}\)</span>
+に従う確率過程とする。</p>
+<p>このとき、関数 <span class="math notranslate nohighlight">\(h=h(x, t)\)</span> の値は次の確率微分方程式</p>
 <div class="math notranslate nohighlight">
-\[\| y - z \|^2
-= \| (y - \hat y) + (\hat y - z) \|^2
-= \| y - \hat y \|^2  + \| \hat y - z  \|^2\]</div>
-<p>Hence <span class="math notranslate nohighlight">\(\| y - z \| \geq \| y - \hat y \|\)</span>, which completes the proof.</p>
-</div>
+\[\dd{h} = \left( \frac{\partial h}{\partial x} f + \frac{1}{2} \frac{\partial^2 h}{\partial x^2}g^2 \sigma^2 + \frac{\partial h}{\partial t} \right) \dd{t}
+  + \frac{\partial h}{\partial x} g \dd{w}\]</div>
+<p>に従う。</p>
+</section>
+</div><p>導出: テーラー展開する。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\dd{h} 
+&amp; = \frac{\partial h}{\partial x} \dd{x} + \frac{\partial h}{\partial t} \dd{t} 
++ \frac{1}{2} \frac{\partial^2 h}{\partial x^2} \dd{x^2} 
++ \frac{\partial^2 h}{\partial x \partial t} \dd{x} \dd{t}
++ \frac{1}{2} \frac{\partial^2 h}{\partial t^2} \dd{t^2}
++ \cdots \\
+&amp; ~~ ( \dd{x} = f \dd{t} + g \dd{w} \text{~~を代入すると} ) \\
+&amp; = \frac{\partial h}{\partial x} (f \dd{t} + g \dd{w}) + \frac{\partial h}{\partial t} \dd{t} 
++ \frac{1}{2} \frac{\partial^2 h}{\partial x^2} (f \dd{t} + g \dd{w})^2 
++ \frac{\partial^2 h}{\partial x \partial t} (f \dd{t} + g \dd{w}) \dd{t}
++ \frac{1}{2} \frac{\partial^2 h}{\partial t^2} \dd{t^2}
++ \cdots \\\end{split}\]</div>
+<p>この中から<span class="math notranslate nohighlight">\(\dd{t}, \dd{w}\)</span>の1次の項だけを取りだすことを考える。(1次以降の微小量は極限をとると消えるので)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}&amp; \frac{\partial h}{\partial x} (f \dd{t} + g \dd{w}) + \frac{\partial h}{\partial t} \dd{t} ~~ \leftarrow \text{この行はそのまま残る} \\
+&amp;+ \frac{1}{2} \frac{\partial^2 h}{\partial x^2} (f \dd{t} + g \dd{w})^2 
+~ (\leftarrow \frac{1}{2} \frac{\partial^2 h}{\partial x^2} ( \underbrace{f^2 \dd{t}^2}_{\text{消える}} + \underbrace{2fg \dd{t} \dd{w}}_{\dd{w}=\pm \sigma \sqrt{\dd{t}} \text{で1.5次なので消える}} + \underbrace{g^2 \dd{w}^2)}_{ \dd{w}^2 = \sigma^2 \dd{t} \text{なので残る}} )
+\\
+&amp;+ \frac{\partial^2 h}{\partial x \partial t} (f \dd{t} + g \dd{w}) \dd{t}  ~~ \leftarrow \text{この行は全部消える}  \\
+&amp;+ \frac{1}{2} \frac{\partial^2 h}{\partial t^2} \dd{t^2}  ~~ \leftarrow \text{この行は全部消える} \\
+&amp;+ \cdots  ~~ \leftarrow \text{これ以降の3次は全部消える}
+\end{split}\]</div>
+<p>なので</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\dd{h}
+&amp; = \frac{\partial h}{\partial x} (f \dd{t} + g \dd{w}) + \frac{\partial h}{\partial t} \dd{t} + \frac{1}{2} \frac{\partial^2 h}{\partial x^2} g^2  \sigma^2 \dd{t} \\
+&amp; = \left( \frac{\partial h}{\partial x} f + \frac{1}{2} \frac{\partial^2 h}{\partial x^2}g^2 \sigma^2 + \frac{\partial h}{\partial t} \right) \dd{t}
+  + \frac{\partial h}{\partial x} g \dd{w}\end{split}\]</div>
+<p>が成り立つ。</p>
+<section id="id3">
+<h3>ブラック=ショールズ過程<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(\dd{x} = ax \dd{t} + bx \dd{w} \)</span> を満たす確率過程</p>
+<div class="math notranslate nohighlight">
+\[\frac{\dd{x}}{x} = ax \dd{t} + bx \dd{w} ~~~ (\text{両辺をxで割る})\]</div>
+<p>(左辺のほうはlogになりそうなので) <span class="math notranslate nohighlight">\(h(x) = \log x\)</span> とおいて、伊藤の公式を使うと</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\dd{h}
+&amp; = \left( \frac{\partial h}{\partial x} f + \frac{1}{2} \frac{\partial^2 h}{\partial x^2}g^2 \sigma^2 + \frac{\partial h}{\partial t} \right) \dd{t}
+  + \frac{\partial h}{\partial x} g \dd{w} \\
+&amp; = \left( \frac{1}{x} ax + \frac{1}{2} (-\frac{1}{x^2}) (bx)^2  \sigma^2 + 0  \right) \dd{t} + \frac{1}{x} bx \dd{w} \\
+&amp; = \left(a - \frac{1}{2} b^2 \sigma^2 \right) \dd{t} + b \dd{w}   \end{split}\]</div>
+<p>両辺伊藤積分すると</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}\int_0^t \dd{h}
+&amp; = \int_0^t \left(a - \frac{1}{2} b^2 \sigma^2 \right) \dd{t} + b \dd{w} \\\end{split}\\\begin{split}\log x(t) - \log x_0 = \left(a - \frac{1}{2} b^2 \sigma^2 \right) t + b w(t) \\\end{split}\\x(t) = x_0 \exp\left( (a - \frac{1}{2} b^2 \sigma^2 ) t + b w(t) \right).\end{aligned}\end{align} \]</div>
+<p>平均は増える、中央値はノイズの分だけ減る、</p>
+<!-- y = \log S とおいて、 \frac{\partial}{\partial S} = \frac{\partial y}{\partial S} \frac{\partial}{\partial y} = \frac{1}{S} \frac{\partial}{\partial y} -->
+</section>
+</section>
+<section id="ref">
+<h2>Ref<a class="headerlink" href="#ref" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>AIcia Solid Project <a class="reference external" href="https://www.youtube.com/watch?v=mrExmReKrcM">【ブラックショールズ方程式への道④】伊藤の公式【確率微分方程式の基礎】</a></p></li>
+</ul>
+</section>
 </section>
 
 

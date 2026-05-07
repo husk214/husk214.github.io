@@ -105,15 +105,19 @@ https://openreview.net/forum?id=H1eSS3CcKX
 - :math:`\mathbf{s}` の要素間の差の行列を :math:`A_{\mathbf{s}}` とする (つまり :math:`A_{\mathbf{s}}[i,j] := |s_i - s_j |`)
 - すると、:math:`\text{sort}(\mathbf{s})` のPermutation matrix :math:`P_{\text{sort}(\mathbf{s})}` は以下になる
 
-.. math:: \begin{align}
-    P_{\text{sort}(\mathbf{s})} [i, j] = \left\{
-    \begin{array}{ll}
-    1 & j = \arg \max [(n+1-2i) \mathbf{s} -  A_{\mathbf{s}} \mathbb{1} ]\\
-    0 & \text{otherwise}.
-    \end{array}
-    \right.
-  \end{align}
+.. math::
   :label: ns4
+
+   \begin{aligned}
+   P_{\text{sort}(\mathbf{s})}[i, j]
+   &=
+   \begin{cases}
+   1 & j = \arg \max [(n+1-2i) \mathbf{s} - A_{\mathbf{s}} \mathbb{1}] \\
+   0 & \text{otherwise}.
+   \end{cases}
+   \end{aligned}
+
+  
 
 - (:math:`\mathbb{1}` は要素がすべて1のcolumn vector)
 

@@ -33,7 +33,11 @@ extensions = [
     "sphinxcontrib.pseudocode",
     "sphinx.ext.githubpages",
     "sphinx_proof",
+    "sphinx_favicon",
 ]
+
+html_favicon = "_static/favicon.ico"
+
 
 # sphinx_to_github = True
 # sphinx_to_github_verbose = True
